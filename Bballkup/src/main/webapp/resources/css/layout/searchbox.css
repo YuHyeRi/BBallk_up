@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.search_div{
+    display: inline-block;
+}
+.search_box img{
+    width: 24px;
+    float: left;
+}
+.search_box>input {
+    width: 200px;
+}

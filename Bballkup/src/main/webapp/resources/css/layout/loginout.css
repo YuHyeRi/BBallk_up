@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.btn{
+    float: left;
+    background-color: white;
+    border: none;
+    color: #222836;
+    cursor: pointer;
+    font-weight: 600;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.pand {
+    float: left;
+    font-size: 8px;
+    padding: 0px;
+    margin-top: 6px;
+    text-align: center;
+    color: #919191;
+}
+.btn:hover{
+    color: #1d2088;
+}

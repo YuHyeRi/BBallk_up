@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.enter_div, .notice_div, .team_div{
+    border-radius: 10px;
+    padding: 10px;
+}
+th{
+    color: white;
+    background-color: #1d2088;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.enter_table,.notice_table,.team_table, .free_table, .bot_table, .sports_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+th, td {
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.tr:hover{
+    background-color: #e3ecfb;
+    cursor: pointer;
+    outline: 1.5px solid #1d2088;
+    /* border-radius: 10px; */
+}
+.bot_table, .sports_table{
+    margin-bottom: 40px;
+}
