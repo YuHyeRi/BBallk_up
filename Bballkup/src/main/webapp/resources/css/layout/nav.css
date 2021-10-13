@@ -45,7 +45,8 @@
 .nav_drop{
     margin-bottom: 40px;
     z-index: 1;
-    min-width: 800px;
+    width:100%;
+    max-width : 1000px;
     display: flex;
     justify-content: space-between;
 }
