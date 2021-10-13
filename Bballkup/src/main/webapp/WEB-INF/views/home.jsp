@@ -81,6 +81,7 @@
 	        </div>
 	    </div>
 	</div>
+	<!-- 여기부터 main contents  -->
 	<div class="mainbar">
         <div class="slideshow-container">
             <div class="mySlides_fade">
@@ -194,6 +195,7 @@
            </div>
        </div>
    </div>
+   <!-- 여기까지 -->
    <footer>
 	<div class="footer">
 	    <div class="footerp">
