@@ -27,13 +27,14 @@ public class loginController {
 	@RequestMapping(value = "/login")
 	public ModelAndView login(HttpServletRequest req, HttpSession session, ModelAndView mav) {
 		
-		if(session.getAttribute("sMNo") != null) {//로그인
-			
-			mav.setViewName("login/logout");
-		}else {//로그인 안됨
-			
-			mav.setViewName("login/login");
-		}
+		/*
+		 * if(session.getAttribute("sMNo") != null) {//로그인
+		 * 
+		 * mav.setViewName("login/login"); }else {//로그인 안됨
+		 * 
+		 * mav.setViewName("login/login"); }
+		 */
+		mav.setViewName("login/login");
 		return mav;
 	}
 	
@@ -51,11 +52,13 @@ public class loginController {
 		HashMap<String, String> data = iLoginService.getLogin(params);
 		
 		if(data != null) {
+			session.setAttribute("sMNo", data.get("MEM_NO"));
 			session.setAttribute("sMId", data.get("MEM_ID"));
 			session.setAttribute("sMNm", data.get("MEM_NM"));
 			session.setAttribute("sMLv", data.get("LEVEL_NO"));
 			
-			System.out.println("m_no : "+session.getAttribute("sMId"));
+			System.out.println("m_no : "+session.getAttribute("sMNo"));
+			System.out.println("m_id : "+session.getAttribute("sMId"));
 			System.out.println("m_nm : "+session.getAttribute("sMNm"));
 			System.out.println("m_lv : "+session.getAttribute("sMLv"));
 			

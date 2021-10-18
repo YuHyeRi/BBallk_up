@@ -3,7 +3,7 @@
 <mapper namespace="login">
 	
 	<select id="getLogin" parameterType="hashmap" resultType="hashmap">
-		SELECT MEM_ID, MEM_NM, MEM_PW, LEVEL_NO
+		SELECT MEM_NO, MEM_ID, MEM_NM, MEM_PW, LEVEL_NO
 		FROM MEM
 		WHERE MEM_ID = #{mem_id}
 		AND MEM_PW = #{mem_pw}
