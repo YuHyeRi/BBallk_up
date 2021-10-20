@@ -62,7 +62,12 @@ public class loginController {
 			System.out.println("m_nm : "+session.getAttribute("sMNm"));
 			System.out.println("m_lv : "+session.getAttribute("sMLv"));
 			
-			mav.setViewName("redirect:login");
+			/*
+			 * if(params.get("mainlist") == "Notice") {
+			 * mav.setViewName("redirect:NoticeList"); }else {
+			 */
+				mav.setViewName("redirect:login");
+			/*}*/
 			
 		}else {//id, pw 안 일치할때(로그인 실패)
 			mav.addObject("msg", "아이디나 비밀번호가 틀립니다.");
