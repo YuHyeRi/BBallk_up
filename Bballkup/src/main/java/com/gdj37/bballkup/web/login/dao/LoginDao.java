@@ -40,6 +40,11 @@ public class LoginDao implements ILoginDao {
 	public int deleteMem(HashMap<String, String> params) throws Throwable {
 		return sqlSession.update("login.deleteMem", params);
 	}
+
+	@Override
+	public HashMap<String, String> getMainNotice(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getMainNotice", params);
+	}
 	
 	
 }

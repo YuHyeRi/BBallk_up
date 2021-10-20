@@ -51,6 +51,6 @@
 		WHERE MEM_NO = #{mem_no}
 	</update>
 	
-	
+
 	
 </mapper>

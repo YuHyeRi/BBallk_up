@@ -42,6 +42,11 @@ public class LoginService implements ILoginService {
 	public int deleteMem(HashMap<String, String> params) throws Throwable {
 		return iLoginDao.deleteMem(params);
 	}
+
+	@Override
+	public HashMap<String, String> getMainNotice(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getMainNotice(params);
+	}
 	
 	
 	
