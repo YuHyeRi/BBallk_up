@@ -27,19 +27,13 @@ public class loginController {
 	@RequestMapping(value = "/login")
 	public ModelAndView login(HttpServletRequest req, HttpSession session, ModelAndView mav) {
 		
-		/*
-		 * if(session.getAttribute("sMNo") != null) {//로그인
-		 * 
-		 * mav.setViewName("login/login"); }else {//로그인 안됨
-		 * 
-		 * mav.setViewName("login/login"); }
-		 */
 		mav.setViewName("login/login");
 		return mav;
 	}
 	
+	@SuppressWarnings("unused")
 	@RequestMapping(value = "/logins")
-	public ModelAndView m1Logins(
+	public ModelAndView logins(
 			@RequestParam HashMap<String, String> params,
 			HttpSession session,
 			ModelAndView mav
@@ -51,21 +45,30 @@ public class loginController {
 		
 		HashMap<String, String> data = iLoginService.getLogin(params);
 		
-		if(data != null) {
-			session.setAttribute("sMNo", data.get("MEM_NO"));
-			session.setAttribute("sMId", data.get("MEM_ID"));
-			session.setAttribute("sMNm", data.get("MEM_NM"));
-			session.setAttribute("sMLv", data.get("LEVEL_NO"));
+		String delYn = "";
+		
+		if(data != null) {//id, pw 일치할때
 			
-			System.out.println("m_no : "+session.getAttribute("sMNo"));
-			System.out.println("m_id : "+session.getAttribute("sMId"));
-			System.out.println("m_nm : "+session.getAttribute("sMNm"));
-			System.out.println("m_lv : "+session.getAttribute("sMLv"));
+			delYn = String.valueOf(data.get("MEM_DEL"));
 			
-			mav.setViewName("redirect:login");
-			
-		}else {//id, pw 안 일치할때(로그인 실패)
-			mav.addObject("msg", "아이디나 비밀번호가 틀립니다.");
+			if(delYn.equals("1")) {
+				session.setAttribute("sMNo", data.get("MEM_NO"));
+				session.setAttribute("sMId", data.get("MEM_ID"));
+				session.setAttribute("sMNm", data.get("MEM_NM"));
+				session.setAttribute("sMLv", data.get("LEVEL_NO"));
+				//getAttribute("키") : 세션에서 해당 키와 값을 넣는다
+				System.out.println("m_no : "+session.getAttribute("sMNo"));
+				System.out.println("m_id : "+session.getAttribute("sMId"));
+				System.out.println("m_nm : "+session.getAttribute("sMNm"));
+				System.out.println("m_lv : "+session.getAttribute("sMLv"));
+				
+				mav.setViewName("redirect:login");
+			}else {
+				mav.addObject("msg", "탈퇴한 회원입니다.");
+				mav.setViewName("login/failedAction");
+			}
+		}else {
+			mav.addObject("msg", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			mav.setViewName("login/failedAction");
 		}
 		
@@ -106,4 +109,65 @@ public class loginController {
 		return mapper.writeValueAsString(modelMap);
 	}
 	
+	@RequestMapping(value = "/memCUDAjax" , method = RequestMethod.POST, 
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody 
+	public String memCUDAjax(HttpSession session, @RequestParam HashMap<String, String> params) throws Throwable{
+		
+
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		String result = "success";
+		
+		try {
+			int cnt = 0;
+			
+			//CUD처리
+			switch (params.get("gbn")) {
+				case "c":
+					//비번 암호화
+					params.put("mem_pw", Utils.encryptAES128(params.get("mem_pw")));
+					cnt = iLoginService.joinMem(params);
+					break;
+				case "u":
+					cnt = iLoginService.updateMem(params);
+					break;
+				case "d":
+					cnt = iLoginService.deleteMem(params);
+					session.invalidate();//session 정보 초기화
+					break;
+
+			}
+			
+			if(cnt == 0) {
+				result = "feiled";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			result = "error";
+		}
+		
+		modelMap.put("result", result);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
+	
+	@RequestMapping(value = "/memUpdate")
+	public ModelAndView memUpdate(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav
+			) throws Throwable {
+		
+		HashMap<String, String> data = iLoginService.getMem(params);
+
+		mav.addObject("data", data);
+		
+		mav.setViewName("login/mem_update");
+		
+		return mav;
+	}
 }

@@ -2,18 +2,54 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="login">
 	
-	<select id="getLogin" parameterType="hashmap" resultType="hashmap">
-		SELECT MEM_NO, MEM_ID, MEM_NM, MEM_PW, LEVEL_NO
-		FROM MEM
-		WHERE MEM_ID = #{mem_id}
-		AND MEM_PW = #{mem_pw}
-	</select>
-	
 	<select id="getMemIdCheck" parameterType="hashmap" resultType="Integer">
 		SELECT COUNT(*)
 		FROM MEM
 		WHERE MEM_ID = #{mem_id}
 	</select>
+	
+	<select id="getLogin" parameterType="hashmap" resultType="hashmap">
+		SELECT MEM_NO, MEM_ID, MEM_NM, MEM_PW, LEVEL_NO, MEM_DEL 
+		FROM MEM
+		WHERE MEM_ID = #{mem_id}
+		AND MEM_PW = #{mem_pw}
+	</select>
+	
+	<select id="getMem" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM MEM
+		WHERE MEM_NO = #{mem_no}
+	</select>
+	
+	<insert id="joinMem" parameterType="hashmap">
+		INSERT INTO MEM(MEM_NO, MEM_ID, MEM_PW, MEM_NM, MEM_PHONE, MEM_GEN, 
+						MEM_BD, MEM_PW_GBN, MEM_PWA, LEVEL_NO)
+		VALUES (MEM_SEQ.NEXTVAL, 
+                #{mem_id},
+		        #{mem_pw}, 
+		        #{mem_nm},
+		        #{mem_phone},
+                #{mem_gen},
+                #{mem_bd},
+                #{mem_pw_gbn},
+                #{mem_pwa},
+                '1'
+		)
+	</insert>
+	
+	<update id="updateMem" parameterType="hashmap">
+		UPDATE MEM
+		SET MEM_PHONE = #{mem_phone},
+		    MEM_GEN = #{mem_gen},
+		    MEM_PW_GBN = #{mem_pw_gbn},
+		    MEM_PWA = #{mem_pwa}
+		WHERE MEM_NO = #{mem_no}
+	</update>
+	
+	<update id="deleteMem" parameterType="hashmap">
+		UPDATE MEM
+		SET MEM_DEL = '0'
+		WHERE MEM_NO = #{mem_no}
+	</update>
 	
 	
 	

@@ -18,6 +18,7 @@
 				alert("비밀번호를 입력해주세여");
 				$("#mem_pw").focus();
 			}else{
+				$("#loginForm").attr("action", "logins");
 				$("#loginForm").submit();
 			}
 			
@@ -38,6 +39,14 @@
 		$("#logoutBtn").on("click", function(){
 			location.href = "logout";
 		});
+		//회원정보수정
+		$("#memUpdateBtn").on("click", function(){
+			location.href = "memUpdate";
+			//$("#sMNo").val($(this).attr("no"));
+			
+			$("#loginForm").attr("action", "memUpdate");
+			$("#loginForm").submit();
+		});
 	});
 	
 	//값이 들어있는지 체크
@@ -54,19 +63,21 @@
 </head>
 <body>
 <div>
+<form action="#" id="loginForm" method="post">
+<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	<c:choose>
 		<c:when test="${empty sMId }">
-			<form action="logins" id="loginForm" method="post">
-				아이디 : <input type="text" id="mem_id" name="mem_id" ><br>
-				비밀번호 : <input type="password" id="mem_pw" name="mem_pw" >
-			</form>
+			아이디 : <input type="text" id="mem_id" name="mem_id" ><br>
+			비밀번호 : <input type="password" id="mem_pw" name="mem_pw" >
 			<input type="button" value="로그인" id="loginBtn">
 			<input type="button" value="회원가입" id="joinBtn">
 		</c:when>
 		<c:otherwise>
 			${sMNm}님 어서오세오.  <input type="button" value="로그아웃" id="logoutBtn">
+			<input type="button" value="정보수정" id="memUpdateBtn">
 		</c:otherwise>
 	</c:choose>
+</form>
 </div>
 </body>
 </html>
