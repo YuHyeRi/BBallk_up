@@ -9,13 +9,15 @@ html {
     height: 100%;
 }
 header {
+	width : 100%;
     margin-left: 100px;
     margin-right: 100px;
     margin-bottom: 30px;
     min-width: 800px;
+    /* max-width:1000px; */
 }
 .logo_div, .nav_drop{
-	min-width: 1000px;
+	min-width: 800px;
 }
 /* 로고 */
 .logo_div>img{
@@ -31,32 +33,32 @@ header {
     left: 83%;
  }
  /* footer */
- footer {
-    padding: 30px;
-    padding-bottom: 50px;
-    background-color: #919191;
-    font-size: 12px;
-    color: white;
-    line-height: 0.5em;
-    /* min-width: 800px; */
-}
- .footer{
- 	max-width: 1000px;
- 	text-align: center;
+ footer{
+ 	padding-top: 30px;
+ 	padding-left : 100px;
+ 	padding-bottom: 50px;
+ 	background-color: #919191;
+ 	width : 100%;
+ 	min-width : 800px;
+ }
+ 
+  .footer{
+ 	display: flex;
  }
  .footerp {
-    float: left;
-    width: 65%;
-    padding-left: 40px;
-}
+ 	font-size: 12px;
+    color: white;
+    line-height: 0.5em;
+ }
+
  .footerbtn {
-    min-width: 150px;
+ 	margin-left : auto;
+ 	width:100%;
+    max-width: 300px;
+    white-space:nowrap;
 }
 .footerbtn>img {
     width: 30px;
     margin: 10px;
-}
-.footerbtn>img:hover{
-    cursor: pointer;
-    /* min-width: 150px; */
+    cursor : pointer;
 }
