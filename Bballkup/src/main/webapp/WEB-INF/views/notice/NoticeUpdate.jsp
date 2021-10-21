@@ -57,6 +57,12 @@ $(document).ready(function(){
 	$("#updateBtn").on("click", function(){
 		$("#con").val(CKEDITOR.instances['con'].getData());
 		
+		if($("#upbtn2").is(":checked")){
+			$("[name='upbtn']").val("0");
+		}else{
+			$("[name='upbtn']").val("1");
+		}
+		
 		if(checkVal("#title")){
 			alert("제목을 입력해 주세요.");
 			$("#title").focus();
@@ -127,7 +133,16 @@ function checkVal(sel) {
 <form action="#" id="updateForm" method="post">
 	번호 : ${data.NOTICE_NO}<input type="hidden" name="no" value="${data.NOTICE_NO}" /><br/>
 	제목 <input type="text" id="title" name="title" value="${data.NOTICE_TITLE}" />
-	<input type="checkbox" id="upbtn" name="upbtn"> 공지등록 <br/>
+	
+	<input type="hidden" name="upbtn" value="사과" />
+	<c:choose>
+		<c:when test="${data.NOTICE_UP eq 0}">
+			<input type="checkbox" id="upbtn2" name="upbtn" checked> 중요공지 <br/>
+		</c:when>
+		<c:otherwise>
+			<input type="checkbox" id="upbtn2" name="upbtn"> 중요공지 <br/>
+		</c:otherwise>
+	</c:choose>
 	
 	작성자 : ${sMNm} <input type="hidden" name="mno" value="${sMNo}" /><br/>
 	<textarea rows="5" cols="5" id="con" name="con">${data.NOTICE_CON}</textarea><br/>

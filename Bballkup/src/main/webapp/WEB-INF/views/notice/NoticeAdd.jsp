@@ -122,8 +122,10 @@ function checkVal(sel) {
 </form>
 <form action="#" id="addForm" method="post">
 	제목 <input type="text" id="title" name="title" />
+	
 	<input type="checkbox" id="upbtn2"> 중요공지 <br/>
 	<input type="hidden" name="upbtn" value="사과" />
+	
 	<input type="hidden" name="mno" id="mno" value="${sMNo}" />
 	<textarea rows="5" cols="5" id="con" name="con"></textarea><br/>
 	첨부파일 : <input type="button" value="첨부파일선택" id="fileBtn" >
