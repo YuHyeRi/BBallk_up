@@ -46,4 +46,9 @@ public class NoticeDao implements INoticeDao{
 	public int NoticeDeletes(HashMap<String, String> params) throws Throwable {
 		return sqlSession.update("Notice.NoticeDeletes", params);
 	}
+
+	@Override
+	public int Noticeup(HashMap<String, String> params) throws Throwable {
+		return sqlSession.update("Notice.Noticeup", params);
+	}
 }

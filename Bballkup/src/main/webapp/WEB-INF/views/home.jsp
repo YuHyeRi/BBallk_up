@@ -52,7 +52,7 @@
 </header>
 <main>
 <jsp:include page="nav.jsp" flush="true" />
-	<!-- 여기부터 main contents  -->
+	<!-- 여기부터 main contents  -->`
 	<div class="mainbar">
         <div class="slideshow-container">
             <div class="mySlides_fade">

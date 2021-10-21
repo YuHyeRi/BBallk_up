@@ -126,7 +126,9 @@ function checkVal(sel) {
 </form>
 <form action="#" id="updateForm" method="post">
 	번호 : ${data.NOTICE_NO}<input type="hidden" name="no" value="${data.NOTICE_NO}" /><br/>
-	제목 <input type="text" id="title" name="title" value="${data.NOTICE_TITLE}" /><br/>
+	제목 <input type="text" id="title" name="title" value="${data.NOTICE_TITLE}" />
+	<input type="checkbox" id="upbtn" name="upbtn"> 공지등록 <br/>
+	
 	작성자 : ${sMNm} <input type="hidden" name="mno" value="${sMNo}" /><br/>
 	<textarea rows="5" cols="5" id="con" name="con">${data.NOTICE_CON}</textarea><br/>
 	첨부파일 : 

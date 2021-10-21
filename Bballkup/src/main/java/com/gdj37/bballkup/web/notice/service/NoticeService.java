@@ -47,4 +47,9 @@ public class NoticeService implements INoticeService{
 	public int NoticeDeletes(HashMap<String, String> params) throws Throwable {
 		return iNoticeDao.NoticeDeletes(params);
 	}
+
+	@Override
+	public int Noticeup(HashMap<String, String> params) throws Throwable {
+		return iNoticeDao.Noticeup(params);
+	}
 }
