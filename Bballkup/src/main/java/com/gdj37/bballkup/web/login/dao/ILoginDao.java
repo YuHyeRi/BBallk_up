@@ -16,4 +16,6 @@ public interface ILoginDao {
 
 	public int deleteMem(HashMap<String, String> params) throws Throwable;
 
+	public HashMap<String, String> getMainNotice(HashMap<String, String> params) throws Throwable;
+
 }
