@@ -26,11 +26,8 @@ td img {
 tr:hover{
 	background-color: #e3ecfb;
     cursor: pointer;
-    outline: 1.5px solid #1d2088;
 }
-tr:not(.nonetr) {
-   color: blue;
-}
+
 </style>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -194,10 +191,10 @@ var html ="";
 <div>
 	<c:choose>
 		<c:when test="${empty sMNo}">
-			<input type="button" value="로그인" id="loginBtn" class="loginBtn"/>
+			<input type="button" value="로그인" id="loginBtn" />
 		</c:when>
 		<c:otherwise>
-			${sMNm}님 어서오세요.<input type="button" value="로그아웃" id="logoutBtn" class="logoutBtn" />
+			${sMNm}님 어서오세요.<input type="button" value="로그아웃" id="logoutBtn" />
 		</c:otherwise>
 	</c:choose>
 </div>
@@ -213,7 +210,7 @@ var html ="";
 		<input type="hidden" name="page" id="page" value="${page}" />
 		<input type="hidden" name="no" id="no" />
 		<input type="hidden" value="Notice" id="mainlist" name="mainlist">
-		<input type="button" value="검색" id="searchBtn" class="searchBtn" />
+		<input type="button" value="검색" id="searchBtn" />
 		<c:if test="${sMLv eq 0}">
 			<input type="button" value="작성" id="addBtn" />
 		</c:if>
@@ -224,7 +221,7 @@ var html ="";
 		<thead>
 			<tr class="nonetr">
 				<th>번호</th>
-				<th>제목</th>
+				<th class="title">제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>

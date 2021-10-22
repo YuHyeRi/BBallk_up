@@ -9,12 +9,13 @@
     border: 2px solid #1d2088;
 }
 
-#loginBtn, #logoutBtn, #searchBtn{
+#loginBtn, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn{
  	background-color: white;
     padding: 5px;
-    width: 100px;
+    width: 80px;
     border-radius: 5px;
     border: 2px solid #1d2088;
+    cursor: pointer;
  }
 
 .team_board_btn>button{
@@ -106,4 +107,7 @@
     background-color: #919191;
     border: 3px solid #919191;
 }
-
+.buttondiv{
+	margin-top: 20px;
+	margin-bottom:20px;
+}

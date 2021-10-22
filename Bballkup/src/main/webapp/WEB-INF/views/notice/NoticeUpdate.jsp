@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 <style type="text/css">
 #att {
 	display: none;
@@ -121,6 +128,10 @@ function checkVal(sel) {
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att" />
 </form>
@@ -131,8 +142,8 @@ function checkVal(sel) {
 	<input type="hidden" name="no" value="${param.no}" />
 </form>
 <form action="#" id="updateForm" method="post">
-	번호 : ${data.NOTICE_NO}<input type="hidden" name="no" value="${data.NOTICE_NO}" /><br/>
-	제목 <input type="text" id="title" name="title" value="${data.NOTICE_TITLE}" />
+	${data.NOTICE_NO}<input type="hidden" name="no" value="${data.NOTICE_NO}" />
+	<input type="text" id="title" name="title" value="${data.NOTICE_TITLE}" />
 	
 	<input type="hidden" name="upbtn" value="사과" />
 	<c:choose>
@@ -142,9 +153,8 @@ function checkVal(sel) {
 		<c:otherwise>
 			<input type="checkbox" id="upbtn2" name="upbtn"> 중요공지 <br/>
 		</c:otherwise>
-	</c:choose>
-	
-	작성자 : ${sMNm} <input type="hidden" name="mno" value="${sMNo}" /><br/>
+	</c:choose><br>
+	${sMNm} <input type="hidden" name="mno" value="${sMNo}" /><br/><br>
 	<textarea rows="5" cols="5" id="con" name="con">${data.NOTICE_CON}</textarea><br/>
 	첨부파일 : 
 	<c:choose>
@@ -162,7 +172,13 @@ function checkVal(sel) {
 	</c:if>
 	<input type="hidden" name="NFile" id="NFile" value="${data.NOTICE_FILE}" />
 </form>
-<input type="button" value="저장" id="updateBtn" />
-<input type="button" value="취소" id="cancelBtn" />
+<div class="buttondiv">
+	<input type="button" value="저장" id="updateBtn" />
+	<input type="button" value="취소" id="cancelBtn" />
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>
