@@ -6,6 +6,6 @@
     font-weight: normal;
     font-style: normal;
 }
-body, nav, div, button, .dropbtn, input, textarea {
+body, nav, div, button, .dropbtn, input, textarea, #searchGbn, html, select, input {
     font-family: 'GongGothicMedium';
 }

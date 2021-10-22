@@ -47,6 +47,7 @@ $(document).ready(function(){
 		
 		if($("#upbtn2").is(":checked")){
 			$("[name='upbtn']").val("0");
+			
 		}else{
 			$("[name='upbtn']").val("1");
 		}

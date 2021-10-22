@@ -9,9 +9,9 @@
 	<link rel="stylesheet" href="resources/css/layout/btn.css">
 	<link rel="stylesheet" href="resources/css/layout/loginout.css">
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	<link rel="stylesheet" href="resources/css/layout/slideshow.css">
-	<link rel="stylesheet" href="resources/css/layout/table.css">
 <style>
 	.maincenterdiv{
 	display: flex;

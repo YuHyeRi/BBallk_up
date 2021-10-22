@@ -6,9 +6,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 <style>
 td img {
 	width : 17px;
+}
+
+.trclass{
+	color: red;
+	font-weight: bold;
+	cursor: pointer;
+}
+tr:hover{
+	background-color: #e3ecfb;
+    cursor: pointer;
+    outline: 1.5px solid #1d2088;
+}
+.nonetr{
+	style: none;
 }
 </style>
 <script type="text/javascript"
@@ -94,21 +115,41 @@ function drawList(list){
 	var html = "";
 	
 	for(var data of list){
+		if(data.NOTICE_UP == 0){
+			html += "<tr class=\"trclass\" no=\"" + data.NOTICE_NO + "\">         ";
+			html += "<td>" + data.NOTICE_NO + "</td>   ";
+			html += "<td>";2
+			html += data.NOTICE_TITLE;
 		
-		html += "<tr no=\"" + data.NOTICE_NO + "\">         ";
-		html += "<td>" + data.NOTICE_NO + "</td>   ";
-		html += "<td>";
-		html += data.NOTICE_TITLE;
+			 if(data.NOTICE_FILE != null) {
+		         html += "<img src=\"resources/images/icon/File.png\" />";
+		      }
 		
-		 if(data.NOTICE_FILE != null) {
-	         html += "<img src=\"resources/images/icon/File.png\" />";
-	      }
+			html += "</td>";
+			html += "<td>" + data.MEM_NM + "</td> ";
+			html += "<td>" + data.NOTICE_DT + "</td> ";
+			html += "<td>" + data.NOTICE_HIT + "</td>   ";
+			
+			
+			html += "</tr>        ";
+		}else{
+			html += "<tr no=\"" + data.NOTICE_NO + "\">         ";
+			html += "<td>" + data.NOTICE_NO + "</td>   ";
+			html += "<td>";
+			html += data.NOTICE_TITLE;
 		
-		html += "</td>";
-		html += "<td>" + data.MEM_NM + "</td> ";
-		html += "<td>" + data.NOTICE_DT + "</td> ";
-		html += "<td>" + data.NOTICE_HIT + "</td>   ";
-		html += "</tr>        ";
+			 if(data.NOTICE_FILE != null) {
+		         html += "<img src=\"resources/images/icon/File.png\" />";
+		      }
+		
+			html += "</td>";
+			html += "<td>" + data.MEM_NM + "</td> ";
+			html += "<td>" + data.NOTICE_DT + "</td> ";
+			html += "<td>" + data.NOTICE_HIT + "</td>   ";
+			
+			
+			html += "</tr>        ";
+		}
 	}
 	$("tbody").html(html);
 }
@@ -144,14 +185,19 @@ var html ="";
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
 <h2>공지사항 목록</h2>
 <div>
 	<c:choose>
 		<c:when test="${empty sMNo}">
-			<input type="button" value="로그인" id="loginBtn" />
+			<input type="button" value="로그인" id="loginBtn" class="loginBtn"/>
 		</c:when>
 		<c:otherwise>
-			${sMNm}님 어서오세요.<input type="button" value="로그아웃" id="logoutBtn" />
+			${sMNm}님 어서오세요.<input type="button" value="로그아웃" id="logoutBtn" class="logoutBtn" />
 		</c:otherwise>
 	</c:choose>
 </div>
@@ -161,21 +207,22 @@ var html ="";
 			<option value="0">제목</option>
 			<!-- <option value="1"></option> -->
 		</select>
+		
 		<input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" id="oldTxt" value="${param.searchTxt}" />
 		<input type="hidden" name="page" id="page" value="${page}" />
 		<input type="hidden" name="no" id="no" />
 		<input type="hidden" value="Notice" id="mainlist" name="mainlist">
-		<input type="button" value="검색" id="searchBtn" />
+		<input type="button" value="검색" id="searchBtn" class="searchBtn" />
 		<c:if test="${sMLv eq 0}">
 			<input type="button" value="작성" id="addBtn" />
 		</c:if>
 	</form>
 </div>
 <div>
-	<table>
+	<table class="notice_table">
 		<thead>
-			<tr>
+			<tr class="nonetr">
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
@@ -183,10 +230,14 @@ var html ="";
 				<th>조회수</th>
 			</tr>
 		</thead>
-		<tbody>
-		</tbody>
+			<tbody>
+			</tbody>
 	</table>
 </div>
 <div class="paging_wrap"></div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

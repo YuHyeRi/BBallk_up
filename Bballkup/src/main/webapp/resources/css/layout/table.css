@@ -15,6 +15,7 @@ th{
     border-spacing: 0;
     width: 100%;
 }
+
 th, td {
     text-align: center;
     padding: 10px;
@@ -30,3 +31,4 @@ th, td {
 .bot_table, .sports_table{
     margin-bottom: 40px;
 }
+
