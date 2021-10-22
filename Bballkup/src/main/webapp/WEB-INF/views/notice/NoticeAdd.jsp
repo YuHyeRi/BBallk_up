@@ -34,12 +34,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#addForm").on("keypress", "input", function(event){
-		if(event.keyCode == 13){ 
-			return false; 
-		}
-	});
-	
 	$("#fileBtn").on("click", function(){
 		$("#att").click();
 	});
@@ -47,9 +41,15 @@ $(document).ready(function(){
 	$("#att").on("change", function(){
 		$("#fileName").html($(this).val().substring($(this).val().lastIndexOf("\\")+ 1));
 	});
-	
+
 	$("#addBtn").on("click", function(){
 		$("#con").val(CKEDITOR.instances['con'].getData());
+		
+		if($("#upbtn2").is(":checked")){
+			$("[name='upbtn']").val("0");
+		}else{
+			$("[name='upbtn']").val("1");
+		}
 		
 		if(checkVal("#title")){
 			alert("제목을 입력해 주세요.");
@@ -108,6 +108,7 @@ function checkVal(sel) {
       return false;
    }
 } 
+
 </script>
 </head>
 <body>
@@ -121,7 +122,11 @@ function checkVal(sel) {
 </form>
 <form action="#" id="addForm" method="post">
 	제목 <input type="text" id="title" name="title" />
-	작성자 : ${sMNm} <input type="hidden" id="mno" name="mno" value="${sMNo}" /><br/>
+	
+	<input type="checkbox" id="upbtn2"> 중요공지 <br/>
+	<input type="hidden" name="upbtn" value="사과" />
+	
+	<input type="hidden" name="mno" id="mno" value="${sMNo}" />
 	<textarea rows="5" cols="5" id="con" name="con"></textarea><br/>
 	첨부파일 : <input type="button" value="첨부파일선택" id="fileBtn" >
 	<span id="fileName"></span>

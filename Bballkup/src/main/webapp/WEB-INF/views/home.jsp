@@ -3,7 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-<meta charset="UTF-8">
 	<title>Home</title>
 	<link rel="stylesheet" href="resources/css/layout/font.css">
 	<link rel="stylesheet" href="resources/css/layout/basic.css">
@@ -18,6 +17,7 @@
 	display: flex;
 	justify-content: center;
 	}
+	
 	.maindiv {
         display: flex;
         width: 100%;
@@ -48,51 +48,11 @@
 </head>
 <body>
 <header>
-	<div class="maincenterdiv">
-	    <div class="logo_div">
-	        <img src="resources/images/logo/뽈크업로고.jpg">
-	        <div class="button_div">
-	            <button class="btn login">로그인</button>
-	            <p class="pand">또는</p>
-	            <button class="btn logout">회원가입</button>
-	        </div>
-	    </div>
-    </div>
+	<jsp:include page="header.jsp" flush="true" />
 </header>
 <main>
-<div class="maincenterdiv">
-	<div class="nav_drop">
-	    <div class="dropdown 1">
-	        <button class="dropbtn">사이트소개</button>
-	        <div class="dropdown-con">
-	            <a href="#">사이트소개</a>
-	            <a href="#">이용가이드</a>
-	        </div>
-	    </div>
-	    <div class="dropdown 2">
-	        <button class="dropbtn">개인커뮤니티</button>
-	        <div class="dropdown-con">
-	            <a href`="#">자유게시판</a>
-	            <a href="#">체육활동<br>참가모집</a>
-	        </div>
-	    </div>
-	    <div class="dropdown 3">
-	        <button class="dropbtn">팀커뮤니티</button>
-	        <div class="dropdown-con">
-	            <a href="#">팀별게시판</a>
-	            <a href="#">팀장 신청</a>
-	        </div>
-	    </div>
-	    <div class="dropdown 4">
-	        <button class="dropbtn">고객지원</button>
-	        <div class="dropdown-con">
-	            <a href="#">공지 사항</a>
-	            <a href="#">질문게시판</a>
-	        </div>
-	    </div>
-	</div>
-</div>
-	<!-- 여기부터 main contents  -->
+<jsp:include page="nav.jsp" flush="true" />
+	<!-- 여기부터 main contents  -->`
 	<div class="mainbar">
         <div class="slideshow-container">
             <div class="mySlides_fade">
@@ -209,24 +169,11 @@
 		</div>
    </div>
    <!-- 여기까지 -->
-   <footer>
-	<div class="footer">
-	    <div class="footerp">
-	        <p>서울특별시 금천구 가산동 가산디지털2로 115 대륭테크노타운3차 1109-1호</p>
-	        <p>박진솔 유혜리 권주영 연지나 이혜선</p>
-	        <p>Copyright © 2021 GoodeeAcademy.co.Ltd. All rights reserved.</p>
-	        <address>Contact webmaster for more information.  02-2108-5900</address>
-	    </div>
-		<div class="footerbtn">
-		    <img src="resources/images/icon/2.png">
-		    <img src="resources/images/icon/3.png">
-		    <img src="resources/images/icon/4.png">
-		    <img src="resources/images/icon/5.png">
-		    <img src="resources/images/icon/6.png">
-		</div>
-	</div>
+<footer>
+	<jsp:include page="footer.jsp" flush="true" />
 </footer>
 </main>
+
 <script type="text/javascript" src="resources/css/js/slideshow.js"></script>
 </body>
 </html>

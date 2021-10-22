@@ -20,12 +20,12 @@
 	</select>
 	
 	<select id="getNoticeList" parameterType="hashmap" resultType="hashmap">
-		SELECT N.NOTICE_NO, N.NOTICE_TITLE, N.MEM_NM, N.NOTICE_DT, N.NOTICE_HIT, N.NOTICE_FILE
-		FROM ( SELECT N.NOTICE_NO, N.NOTICE_TITLE, M.MEM_NM,
-		            TO_CHAR(N.NOTICE_DT, 'YYYY-MM-DD') AS NOTICE_DT, N.NOTICE_HIT, N.NOTICE_FILE,
-		            ROW_NUMBER() OVER(ORDER BY N.NOTICE_NO DESC) AS RNUM
-		        FROM NOTICE N INNER JOIN MEM M ON N.MEM_NO = M.MEM_NO
-		        WHERE NOTICE_DEL = 1
+	 	SELECT N.NOTICE_NO, N.NOTICE_TITLE, N.MEM_NM, N.NOTICE_DT, N.NOTICE_HIT, N.NOTICE_FILE, N.NOTICE_UP
+ 		FROM(
+      			SELECT N.NOTICE_NO, N.NOTICE_TITLE, M.MEM_NM, TO_CHAR(N.NOTICE_DT, 'YYYY-MM-DD') AS NOTICE_DT, N.NOTICE_HIT, N.NOTICE_FILE, N.NOTICE_UP,
+            	ROW_NUMBER() OVER (PARTITION BY N.NOTICE_UP ORDER BY NOTICE_NO DESC) AS RNUM
+      			FROM NOTICE N, MEM M
+      			WHERE N.MEM_NO = M.MEM_NO AND NOTICE_DEL = 1
 		        <if test="searchTxt != null and searchTxt != ''">
 		        	<choose>
 		        		<when test="searchGbn eq 0">
@@ -46,22 +46,23 @@
 	</update>
 	
 	<select id="getNotice" parameterType="hashmap" resultType="hashmap">
-		SELECT N.NOTICE_NO, N.NOTICE_TITLE, M.MEM_NO, M.MEM_NM, N.NOTICE_CON, N.NOTICE_FILE,
-	        TO_CHAR(N.NOTICE_DT, 'YYYY-MM-DD') AS NOTICE_DT, N.NOTICE_HIT
+		SELECT N.NOTICE_NO, N.NOTICE_TITLE, M.MEM_NO, M.MEM_NM, N.NOTICE_CON, N.NOTICE_FILE, N.NOTICE_UP,
+	        TO_CHAR(N.NOTICE_DT, 'YYYY-MM-DD') AS NOTICE_DT, N.NOTICE_HIT, N.NOTICE_UP
 		FROM NOTICE N INNER JOIN MEM M ON N.MEM_NO = M.MEM_NO
 		WHERE 1 = 1
 		AND N.NOTICE_NO = #{no}
 	</select>
 	
-	<select id="NoticeAdd" parameterType="hashmap">
-		INSERT INTO NOTICE(NOTICE_NO, MEM_NO, NOTICE_TITLE, NOTICE_CON, NOTICE_FILE)
-		VALUES(NOTICE_SEQ.NEXTVAL, #{mno}, #{title}, #{con}, #{NFile})
-	</select>
+	<insert id="NoticeAdd" parameterType="hashmap">
+		INSERT INTO NOTICE(NOTICE_NO, MEM_NO, NOTICE_TITLE, NOTICE_CON, NOTICE_FILE, NOTICE_UP)
+		VALUES(NOTICE_SEQ.NEXTVAL, #{mno}, #{title}, #{con}, #{NFile}, #{upbtn})
+	</insert>
 	
 	<update id="NoticeUpdate" parameterType="hashmap">
 		UPDATE NOTICE SET NOTICE_TITLE = #{title},
 		                NOTICE_CON = #{con},
-		                NOTICE_FILE = #{NFile}
+		                NOTICE_FILE = #{NFile},
+		                NOTICE_UP = #{upbtn}
                 WHERE NOTICE_NO = #{no}
                 AND MEM_NO = #{mno}
 	</update>
@@ -69,4 +70,5 @@
 		UPDATE NOTICE SET NOTICE_DEL = 0
     	WHERE NOTICE_NO = #{no}
 	</update>
+	
 </mapper>
