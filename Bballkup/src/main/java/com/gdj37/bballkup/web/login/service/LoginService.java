@@ -1,6 +1,7 @@
 package com.gdj37.bballkup.web.login.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,14 +44,5 @@ public class LoginService implements ILoginService {
 		return iLoginDao.deleteMem(params);
 	}
 
-	@Override
-	public HashMap<String, String> getMainNotice(HashMap<String, String> params) throws Throwable {
-		return iLoginDao.getMainNotice(params);
-	}
-	
-	
-	
-	
-	
 	
 }

@@ -1,6 +1,7 @@
 package com.gdj37.bballkup.web.login.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,11 +41,5 @@ public class LoginDao implements ILoginDao {
 	public int deleteMem(HashMap<String, String> params) throws Throwable {
 		return sqlSession.update("login.deleteMem", params);
 	}
-
-	@Override
-	public HashMap<String, String> getMainNotice(HashMap<String, String> params) throws Throwable {
-		return sqlSession.selectOne("login.getMainNotice", params);
-	}
-	
 	
 }

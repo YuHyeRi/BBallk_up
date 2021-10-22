@@ -50,7 +50,4 @@
 		SET MEM_DEL = '0'
 		WHERE MEM_NO = #{mem_no}
 	</update>
-	
-
-	
 </mapper>
