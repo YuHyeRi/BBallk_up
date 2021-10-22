@@ -28,8 +28,8 @@ tr:hover{
     cursor: pointer;
     outline: 1.5px solid #1d2088;
 }
-.nonetr{
-	style: none;
+tr:not(.nonetr) {
+   color: blue;
 }
 </style>
 <script type="text/javascript"
