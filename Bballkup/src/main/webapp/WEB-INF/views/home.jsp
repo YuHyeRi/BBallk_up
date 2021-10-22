@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
+<meta charset="UTF-8">
 	<title>Home</title>
 	<link rel="stylesheet" href="resources/css/layout/font.css">
 	<link rel="stylesheet" href="resources/css/layout/basic.css">
@@ -71,7 +72,7 @@
 	    <div class="dropdown 2">
 	        <button class="dropbtn">개인커뮤니티</button>
 	        <div class="dropdown-con">
-	            <a href="#">자유게시판</a>
+	            <a href`="#">자유게시판</a>
 	            <a href="#">체육활동<br>참가모집</a>
 	        </div>
 	    </div>
@@ -226,7 +227,6 @@
 	</div>
 </footer>
 </main>
-
 <script type="text/javascript" src="resources/css/js/slideshow.js"></script>
 </body>
 </html>

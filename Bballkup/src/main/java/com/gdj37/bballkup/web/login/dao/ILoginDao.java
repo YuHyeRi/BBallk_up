@@ -1,6 +1,7 @@
 package com.gdj37.bballkup.web.login.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 public interface ILoginDao {
 
@@ -15,7 +16,5 @@ public interface ILoginDao {
 	public int updateMem(HashMap<String, String> params) throws Throwable;
 
 	public int deleteMem(HashMap<String, String> params) throws Throwable;
-
-	public HashMap<String, String> getMainNotice(HashMap<String, String> params) throws Throwable;
 
 }
