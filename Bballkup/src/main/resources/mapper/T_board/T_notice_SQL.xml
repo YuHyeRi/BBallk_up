@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="T_notice">
+	<select id="getnoticeCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT
+		FROM T_BOARD INNER JOIN TB_MANAGE
+	               ON T_BOARD.TBM_NO = TB_MANAGE.TBM_NO
+		WHERE T_BOARD.TB_DEL = 1
+		<if test="searchTxt != null and searchTxt !=''">
+			<choose>
+				<when test="searchGbn eq 0">
+					AND TB_TITLE LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>
+	</select>
+	
+	<select id="getnoticeList" parameterType="hashmap" resultType="hashmap">
+	
+	</select>
+</mapper>
