@@ -67,10 +67,10 @@
 	<h2>부천FC</h2>
 	<p>뜨거운 열정! 부천FC 커뮤니티 입니다</p>
 	<div class="tab">
-	  <button class="tablinks" onclick="opentab(event, 'team')" id="defaultOpen">팀체육활동참가</button>
-	  <button class="tablinks" onclick="opentab(event, 'notice')">공지사항</button>
-	  <button class="tablinks" onclick="opentab(event, 'oneline')">한줄게시판</button>
-	  <button class="tablinks" onclick="opentab(event, 'free')">자유게시판</button>
+	  <button class="tablinks" onclick="opentab(event, 'team')" id="defaultOpen">팀체육활동참가 3</button>
+	  <button class="tablinks" onclick="opentab(event, 'notice')">공지사항 2</button>
+	  <button class="tablinks" onclick="opentab(event, 'oneline')">한줄게시판 4</button>
+	  <button class="tablinks" onclick="opentab(event, 'free')">자유게시판 1</button>
 	</div>
 	
 	<div id="team" class="tabcontent">
