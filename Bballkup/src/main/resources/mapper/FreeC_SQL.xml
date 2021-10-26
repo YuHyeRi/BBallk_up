@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cfree">
+
+	<select id="cfreeList" parameterType="hashmap" resultType="hashmap">
+		SELECT R.FREE_RE_NO, R.FREE_NO, R.MEM_NM, R.MEM_NO, R.FREE_RE_CON, R.FREE_RE_DT
+		FROM (SELECT R.FREE_RE_NO, F.FREE_NO, M.MEM_NM, R.MEM_NO, R.FREE_RE_CON, 
+				TO_CHAR(FREE_RE_DT, 'YYYY-MM-DD hh:mm:ss') AS FREE_RE_DT,
+				ROW_NUMBER()OVER(ORDER BY R.FREE_RE_NO DESC) AS RNUM
+			 	FROM FREE_RE R INNER JOIN FREE F
+								ON R.FREE_NO = F.FREE_NO
+				INNER JOIN MEM M
+								ON R.MEM_NO = M.MEM_NO
+				WHERE FREE_RE_DEL = 1
+			) R
+		WHERE R.RNUM BETWEEN #{startCnt} AND #{endCnt}
+		AND R.FREE_NO = #{no}
+	</select>
+	
+	<select id="cfreeCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT
+		FROM FREE_RE
+		WHERE FREE_RE_DEL = 1
+		AND FREE_NO = #{no}	
+	</select>
+	
+	<insert id="cfreeAdd" parameterType="hashmap">
+		INSERT INTO FREE_RE (FREE_RE_NO, FREE_NO, MEM_NO, FREE_RE_CON)
+		VALUES (FREE_RE_SEQ.NEXTVAL, #{no}, #{mno}, #{con})
+	</insert>
+	
+	<update id="cfreeDel" parameterType="hashmap">
+		UPDATE FREE_RE SET FREE_RE_DEL = 0
+		WHERE FREE_RE_NO = #{reno}
+	</update>
+	
+	<update id="cfreeUpdate" parameterType="hashmap">
+		UPDATE FREE_RE SET FREE_RE_CON = #{con2}
+		WHERE FREE_RE_NO = #{reno}
+	</update>
+
+</mapper>
