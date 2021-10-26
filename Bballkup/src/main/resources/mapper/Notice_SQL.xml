@@ -69,6 +69,7 @@
                 WHERE NOTICE_NO = #{no}
                 AND MEM_NO = #{mno}
 	</update>
+	
 	<update id="NoticeDeletes" parameterType="hashmap">
 		UPDATE NOTICE SET NOTICE_DEL = 0
     	WHERE NOTICE_NO = #{no}

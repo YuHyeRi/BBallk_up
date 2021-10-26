@@ -42,7 +42,7 @@ header {
  	padding-left : 100px;
  	padding-bottom: 50px;
  	background-color: #919191;
- 	width : 100%;
+ 	width : calc(100% - 100px);
  	min-width : 800px;
  }
  

@@ -16,6 +16,57 @@
 	</select>
 	
 	<select id="getnoticeList" parameterType="hashmap" resultType="hashmap">
-	
+	SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS T_BOARD_DT, T.TB_HIT, T.TB_UP
+		FROM T_BOARD T, MEM M
+		WHERE T.MEM_NO = M.MEM_NO
+		AND TB_DEL = 1 AND TB_UP = 0 AND TBM_NO = 2
+		UNION ALL
+	SELECT T.TB_NO, T.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, T.TB_DT, T.TB_HIT, T.TB_UP
+		FROM ( SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS TB_DT, T.TB_HIT, T.TB_UP,
+        ROW_NUMBER() OVER (ORDER BY TB_NO DESC) AS RNUM
+        FROM T_BOARD T, MEM M
+        WHERE T.MEM_NO = M.MEM_NO 
+        AND TB_DEL = 1 AND TB_UP = 1 AND TBM_NO = 2
+        <if test="searchTxt != null and searchTxt != ''">
+        	<choose>
+        		<when test="searchGbn eq 0">
+        			AND T.TB_TITLE LIKE '%' || #{searchTxt} || '%'
+        		</when>
+        	</choose>
+        </if>
+        ) T
+	WHERE T.RNUM BETWEEN #{startCnt} AND #{endCnt}
 	</select>
+	
+	<update id="updatenoticeHit" parameterType="hashmap">
+		UPDATE T_BOARD SET TB_HIT = TB_HIT + 1
+		WHERE TB_NO = #{no}
+	</update>
+	
+	<select id="getnoticeDtl" parameterType="hashmap" resultType="hashmap">
+		 SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE,
+		 TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS TB_DT, T.TB_HIT, T.TB_UP  
+		FROM T_BOARD T INNER JOIN MEM M ON T.MEM_NO = M.MEM_NO
+		WHERE 1 = 1
+		AND T.TB_NO = #{no}
+	</select>
+	
+	<insert id="T_noticeAdd" parameterType="hashmap">
+		INSERT INTO T_BOARD(TB_NO, TBM_NO, MEM_NO, TB_TITLE, TB_CON,TB_FILE, TB_UP)
+		VALUES(NOTICE_SEQ.NEXTVAL, 2, #{mno}, #{title}, #{con}, #{NFile}, #{upbtn})
+	</insert>
+	
+	<update id="T_noticeUpdate" parameterType="hashmap">
+		UPDATE T_BOARD SET TB_TITLE = #{title},
+		                TB_CON = #{con},
+		                TB_FILE = #{NFile},
+		                TB_UP = #{upbtn}
+                WHERE TB_NO = #{no}
+                AND MEM_NO = #{mno}
+	</update>
+	
+	<update id="T_noticeDeletes" parameterType="hashmap">
+		UPDATE T_BOARD SET TB_DEL = 0
+    	WHERE TB_NO = #{no}
+	</update>
 </mapper>

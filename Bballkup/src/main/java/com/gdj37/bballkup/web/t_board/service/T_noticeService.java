@@ -22,4 +22,30 @@ public class T_noticeService implements IT_noticeService {
 	public List<HashMap<String, String>> getnoticeList(HashMap<String, String> params) throws Throwable {
 		return iT_noticeDao.getnoticeList(params);
 	}
+
+	@Override
+	public void updatenoticeHit(HashMap<String, String> params) throws Throwable {
+		iT_noticeDao.updatenoticeHit(params);
+	}
+
+	@Override
+	public HashMap<String, String> getnoticeDtl(HashMap<String, String> params) throws Throwable {
+		return iT_noticeDao.getnoticeDtl(params);
+	}
+
+	@Override
+	public int T_noticeAdd(HashMap<String, String> params) throws Throwable {
+		return iT_noticeDao.T_noticeAdd(params);
+	}
+
+	@Override
+	public int T_noticeUpdate(HashMap<String, String> params) throws Throwable {
+		return iT_noticeDao.T_noticeUpdate(params);
+	}
+
+	@Override
+	public int T_noticeDeletes(HashMap<String, String> params) throws Throwable {
+		return iT_noticeDao.T_noticeDeletes(params);
+	}
+
 }
