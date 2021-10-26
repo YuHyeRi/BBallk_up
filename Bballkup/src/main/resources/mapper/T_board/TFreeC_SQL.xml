@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tFreeC">
+
+	<select id="cTFreeList" parameterType="hashmap" resultType="hashmap"> 
+		SELECT TBR.TB_RE_NO, TBR.MEM_NM, TBR.MEM_NO, TBR.TB_NO, TBR.TB_RE_CON, TBR.TB_RE_DT
+		FROM (SELECT TBR.TB_RE_NO, M.MEM_NM, TBR.MEM_NO, TB.TB_NO, TBR.TB_RE_CON, 
+					TO_CHAR(TBR.TB_RE_DT, 'YYYY-MM-DD hh:mm:ss') AS TB_RE_DT,
+		        	ROW_NUMBER()OVER(ORDER BY TBR.TB_RE_NO DESC) AS RNUM
+		      FROM T_BOARD_RE TBR INNER JOIN T_BOARD TB
+		                           ON TBR.TB_NO = TB.TB_NO
+		                          INNER JOIN MEM M
+		                           ON TBR.MEM_NO = M.MEM_NO
+		      WHERE TB_RE_DEL = 1 
+		) TBR
+		WHERE TBR.RNUM BETWEEN #{startCnt} AND #{endCnt}
+		AND TBR.TB_NO = #{no}
+	</select>
+	
+	<select id="cTFreeCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT 
+		FROM T_BOARD_RE
+		WHERE TB_RE_DEL = 1 
+		AND TB_NO = #{no}
+	</select>
+	
+	<insert id="cTfreeAdd" parameterType="hashmap">
+		INSERT INTO T_BOARD_RE (TB_RE_NO, MEM_NO, TB_NO, TB_RE_CON)
+		VALUES (T_BOARD_RE_SEQ.NEXTVAL, #{mno}, #{no}, #{con})
+	</insert>
+	
+	<update id="cTfreeDel" parameterType="hashmap">
+		UPDATE T_BOARD_RE SET TB_RE_DEL = 0
+		WHERE TB_RE_NO = #{reno}
+	</update>
+	
+	<update id="cTfreeUpdate" parameterType="hashmap">
+		UPDATE T_BOARD_RE SET TB_RE_CON = #{con2}
+		WHERE TB_RE_NO = #{reno}
+	</update>
+	
+
+</mapper>
