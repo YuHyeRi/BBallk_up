@@ -70,6 +70,7 @@
 	  <button class="tablinks" onclick="opentab(event, 'team')" id="defaultOpen">팀체육활동참가</button>
 	  <button class="tablinks" onclick="opentab(event, 'notice')">공지사항</button>
 	  <button class="tablinks" onclick="opentab(event, 'oneline')">한줄게시판</button>
+	  <button class="tablinks" onclick="opentab(event, 'free')">자유게시판</button>
 	</div>
 	
 	<div id="team" class="tabcontent">
@@ -77,12 +78,15 @@
 	</div>
 	
 	<div id="notice" class="tabcontent">
-	<jsp:include page="../header.jsp" flush="true" />
-	   <%-- <jsp:include page="T_notice.jsp" flush="true" /> --%>
+	  <jsp:include page="T_notice.jsp" flush="true" />
 	</div>
 	
 	<div id="oneline" class="tabcontent">
 	  <jsp:include page="T_oneline.jsp" flush="true" />
+	</div>
+	
+	<div id="free" class="tabcontent">
+	  <jsp:include page="T_free.jsp" flush="true" />
 	</div>
 </div>
 </main>
