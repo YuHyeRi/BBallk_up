@@ -242,14 +242,25 @@
 		<input type="hidden" name="no" value="${param.no}" />
 	</form>
 	
-	
-	<div> 번호: ${param.no} </div>
-	<div> 작성자: ${data.MEM_NM} </div>
-	<div> 작성일: ${data.TB_DT} </div>
-	<div> 조회수: ${data.TB_HIT} </div>
-	<div> 제목: ${data.TB_TITLE} </div>
-	<div> 내용: ${data.TB_CON} </div>
 	<div>
+	<table class="free_table2">
+			<thead>
+				<tr>
+					<th>${param.no} </th>
+					<th class="title">${data.TB_TITLE}</th>
+					<th>${data.MEM_NM}</th>
+					<th>${data.TB_DT}</th>
+					<th>${data.TB_HIT}</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	
+	<div class="divcon">
+		<div>
+			<br>
+			${data.TB_CON}
+		</div>
 		<c:if test="${!empty data.TB_FILE}">
 		<div>
 			<c:set var="len" value="${fn:length(data.TB_FILE)}"></c:set>
@@ -271,6 +282,7 @@
 		</c:if>
 	</div><br>
 	<hr>
+	
 	
 	<!-- Comment -->
 	<!-- comm list -->

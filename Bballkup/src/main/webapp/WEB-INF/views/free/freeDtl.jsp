@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 <style>
 	.comm_paging {
 		cursor: pointer;
@@ -214,6 +221,13 @@
 </script>
 </head>
 <body>
+	<header>
+		<jsp:include page="../header.jsp" flush="true" />
+	</header>
+	
+	<main>
+	<jsp:include page="../nav.jsp" flush="true" />
+	
 	<!-- dtl 부분 -->
 	<h2>자유게시판 상세페이지</h2>
 	<form action="#" id="actionForm" method="post">
@@ -238,29 +252,28 @@
 			</c:otherwise>
 		</c:choose>
 	</c:if>
-		
+	
 	<div>
-		번호: ${param.no}
+	<table class="free_table">
+			<thead>
+				<tr>
+					<th>${param.no} </th>
+					<th>${data.CATEGORY_NM} </th>
+					<th class="title">${data.FREE_TITLE}</th>
+					<th>${data.MEM_NM}</th>
+					<th>${data.FREE_DT}</th>
+					<th>${data.FREE_HIT}</th>
+				</tr>
+			</thead>
+		</table>
 	</div>
-	<div>
-		말머리: ${data.CATEGORY_NM}
-	</div>
-	<div>
-		작성자: ${data.MEM_NM}
-	</div>
-	<div>
-		작성일: ${data.FREE_DT} 
-	</div>
-	<div>
-		조회수: ${data.FREE_HIT} 
-	</div>
-	<div>
-		제목: ${data.FREE_TITLE}
-	</div>
-	<div>
-		내용: ${data.FREE_CON}
-	</div>
-	<c:if test="${!empty data.FREE_FILE}">
+	
+	<div class="divcon">
+		<div>
+			<br>
+			${data.FREE_CON}
+		</div>
+		<c:if test="${!empty data.FREE_FILE}">
 		<div>
 			<c:set var="len" value="${fn:length(data.FREE_FILE)}"></c:set>
 			첨부파일: 
@@ -272,6 +285,7 @@
 			<img src="resources/upload/${fn:replace(fn:replace(data.FREE_FILE, '[', '%5B'), ']', '%5D')}" width="100px" height="100px" />
 		</div>
 	</c:if>
+	</div><br>
 	<hr>
 	
 	<!-- comment 부분 -->
@@ -376,5 +390,10 @@
 			</div>
 		</form>
 	</div>
+	</main>
+	
+	<footer>
+		<jsp:include page="../footer.jsp" flush="true" />
+	</footer>
 </body>
 </html>
