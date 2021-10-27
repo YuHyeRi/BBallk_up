@@ -85,6 +85,24 @@ $(document).ready(function(){
 		$("#actionForm").attr("action", "T_noticeDtl");
 		$("#actionForm").submit();
 	});
+	
+	$("#tab2").on("click", function(){
+		$("#actionForm").attr("action", "T_notice");
+		$("#actionForm").submit();
+	});
+	$("#tab4").on("click", function(){
+		$("#actionForm").attr("action", "tFreeList");
+		$("#actionForm").submit();
+	});
+	$("#tab1").on("click", function(){
+		$("#actionForm").attr("action", "T_teammozip");
+		$("#actionForm").submit();
+	});
+	$("#tab3").on("click", function(){
+		$("#actionForm").attr("action", "T_oneline");
+		$("#actionForm").submit();
+	});
+	
 });
 
 
@@ -185,9 +203,7 @@ var html ="";
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-<h2>부천FC</h2>
-<p>뜨거운 열정! 부천FC 커뮤니티 입니다</p>
-	<jsp:include page="../T_board.jsp" flush="true" />
+<jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
 <div>
 	<c:choose>
@@ -204,6 +220,8 @@ var html ="";
 		<select name="searchGbn" id="searchGbn">
 			<option value="0">제목</option>
 		</select>
+		
+		<input type="hidden" id="tab" value="${sNMo}" />
 		
 		<input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" id="oldTxt" value="${param.searchTxt}" />

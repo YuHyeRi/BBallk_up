@@ -14,12 +14,17 @@
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
-<style type="text/css">
+	<link rel="stylesheet" href="resources/css/layout/T_board.css">
+	
+<style>
 #att {
 	display: none;
 }
 .hide_btn {
 	display: none;
+}
+.teambtndiv{
+	height: 450px;
 }
 </style>
 <script type="text/javascript"
@@ -59,6 +64,31 @@ $(document).ready(function(){
 		$("#NFile").val("");
 		$("#fileBtn").attr("class", "");
 		$(this).remove();
+	});
+	
+	$("#tab2").on("click", function(){
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#updateForm").attr("action", "T_notice");
+			$("#updateForm").submit();	
+		}
+	});
+	$("#tab4").on("click", function(){
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#updateForm").attr("action", "tFreeList");
+			$("#updateForm").submit();
+		}
+	});
+	$("#tab1").on("click", function(){
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#updateForm").attr("action", "T_teammozip");
+			$("#updateForm").submit();
+		}
+	});
+	$("#tab3").on("click", function(){
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#updateForm").attr("action", "T_oneline");
+			$("#updateForm").submit();
+		}
 	});
 	
 	$("#updateBtn").on("click", function(){
@@ -129,49 +159,59 @@ function checkVal(sel) {
 </script>
 </head>
 <body>
-<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
-	<input type="file" name="att" id="att" />
-</form>
-<form action="T_notice" id="backForm" method="post">
-	<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
-	<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
-	<input type="hidden" name="page" value="${param.page}" />
-	<input type="hidden" name="no" value="${param.no}" />
-</form>
-<form action="#" id="updateForm" method="post">
-	${data.TB_NO}<input type="hidden" name="no" value="${data.TB_NO}" />
-	<input type="text" id="title" name="title" value="${data.TB_TITLE}" />
-	
-	<input type="hidden" name="upbtn" value="사과" />
-	<c:choose>
-		<c:when test="${data.TB_UP eq 0}">
-			<input type="checkbox" id="upbtn2" name="upbtn" checked> 중요공지 <br/>
-		</c:when>
-		<c:otherwise>
-			<input type="checkbox" id="upbtn2" name="upbtn"> 중요공지 <br/>
-		</c:otherwise>
-	</c:choose><br>
-	${sMNm} <input type="hidden" name="mno" value="${sMNo}" /><br/><br>
-	<textarea rows="5" cols="5" id="con" name="con">${data.TB_CON}</textarea><br/>
-	첨부파일 : 
-	<c:choose>
-		<c:when test="${!empty data.TB_FILE}">
-			<input type="button" value="첨부파일선택" id="fileBtn" class="hide_btn"/>
-		</c:when>
-		<c:otherwise>
-			<input type="button" value="첨부파일선택" id="fileBtn"/>
-		</c:otherwise>
-	</c:choose>
-	<c:set var="len" value="${fn:length(data.TB_FILE)}"></c:set>
-	<span id="fileName">${fn:substring(data.TB_FILE, 20, len)}</span>
-	<c:if test="${!empty data.TB_FILE}">
-		<input type="button" value="첨부파일삭제" id="fileDelBtn"/>
-	</c:if>
-	<input type="hidden" name="NFile" id="NFile" value="${data.TB_FILE}" />
-</form>
-<div class="buttondiv">
-	<input type="button" value="저장" id="updateBtn" />
-	<input type="button" value="취소" id="cancelBtn" />
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<jsp:include page="../T_board.jsp" flush="true" />
+<div class="tabcontent">
+	<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
+		<input type="file" name="att" id="att" />
+	</form>
+	<form action="T_notice" id="backForm" method="post">
+		<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
+		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
+		<input type="hidden" name="page" value="${param.page}" />
+		<input type="hidden" name="no" value="${param.no}" />
+	</form>
+	<form action="#" id="updateForm" method="post">
+		${data.TB_NO}<input type="hidden" name="no" value="${data.TB_NO}" />
+		<input type="text" id="title" name="title" value="${data.TB_TITLE}" />
+		<input type="hidden" id="tab" value="${sNMo}" />
+		<input type="hidden" name="upbtn" value="사과" />
+		<c:choose>
+			<c:when test="${data.TB_UP eq 0}">
+				<input type="checkbox" id="upbtn2" name="upbtn" checked> 중요공지 <br/>
+			</c:when>
+			<c:otherwise>
+				<input type="checkbox" id="upbtn2" name="upbtn"> 중요공지 <br/>
+			</c:otherwise>
+		</c:choose><br>
+		${sMNm} <input type="hidden" name="mno" value="${sMNo}" /><br/><br>
+		<textarea rows="5" cols="5" id="con" name="con">${data.TB_CON}</textarea><br/>
+		첨부파일 : 
+		<c:choose>
+			<c:when test="${!empty data.TB_FILE}">
+				<input type="button" value="첨부파일선택" id="fileBtn" class="hide_btn"/>
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="첨부파일선택" id="fileBtn"/>
+			</c:otherwise>
+		</c:choose>
+		<c:set var="len" value="${fn:length(data.TB_FILE)}"></c:set>
+		<span id="fileName">${fn:substring(data.TB_FILE, 20, len)}</span>
+		<c:if test="${!empty data.TB_FILE}">
+			<input type="button" value="첨부파일삭제" id="fileDelBtn"/>
+		</c:if>
+		<input type="hidden" name="NFile" id="NFile" value="${data.TB_FILE}" />
+	</form>
+		<input type="button" value="저장" id="updateBtn" />
+		<input type="button" value="취소" id="cancelBtn" />
 </div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

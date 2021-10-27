@@ -10,11 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class T_boardController {
 	
-	@RequestMapping(value = "/T_board")
-	public ModelAndView T_board(@RequestParam  HashMap<String, String> params,
+	@RequestMapping(value = "/T_boards")
+	public ModelAndView T_boards(@RequestParam  HashMap<String, String> params,
 								ModelAndView mav) {
 			
-			mav.setViewName("t_board/T_board");
+			mav.setViewName("t_board/T_boards");
 		
 			return mav;
 		}

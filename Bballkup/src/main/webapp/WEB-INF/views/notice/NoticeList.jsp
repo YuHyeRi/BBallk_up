@@ -51,9 +51,6 @@ $(document).ready(function(){
 		$("#actionForm").submit();
 	});
 	
-	/* $("#loginBtn").on("click",function(){
-		location.href = "login";
-	}); */
 	$("#logoutBtn").on("click", function(){
 		location.href = "logout";
 	});
