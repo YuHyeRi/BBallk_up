@@ -32,7 +32,7 @@
 	}
 	
 	.teambtndiv{
-		height: 460px;
+		height: 450px;
 	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -234,7 +234,7 @@
 <jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
 	<!-- dtl -->
-	<h2>팀 자유게시판 상세페이지</h2>
+	<h2>팀 자유게시판</h2>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
 		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
@@ -346,16 +346,15 @@
 			<input type="hidden" name="no" id="no" value="${param.no}">
 			<input type="hidden" name="mno" id="mno" value="${sMNo}">
 			<input type="hidden" name="reno" id="reno2">
-			
-			<div class="user_info">
-				<div class="user_name"><b>${sMNm}</b>님</div><br>
-			</div>
-			<div class="write_con_wrap">
-				<textarea class="write_con" id="con" name="con" placeholder="댓글을 입력해주세요."></textarea><br>
-	        </div>
-	        <div class="btn_wrap">
-	        	<input type="button" value="등록" id="cAddBtn"/>
-			</div>
+			<div class="userinfodiv">
+				<div class="user_info">
+					<div class="user_name"><b>${sMNm}</b>님</div><br>
+				</div>
+				<div class="write_con_wrap">
+					<textarea class="write_con" id="con" name="con" placeholder="댓글을 입력해주세요."></textarea><br>
+		        </div>
+		        	<input type="button" value="등록" id="cAddBtn"/>
+		     </div>
 		</form>
 	</div>
 		
