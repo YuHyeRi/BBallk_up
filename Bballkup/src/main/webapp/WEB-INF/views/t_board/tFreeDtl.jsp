@@ -7,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
+	<link rel="stylesheet" href="resources/css/layout/T_board.css">
+
 <style>
 	.comm_paging {
 		cursor: pointer;
@@ -20,6 +29,10 @@
 		resize: none;
 		width: 600px;
 		height: 50px;
+	}
+	
+	.teambtndiv{
+		height: 460px;
 	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -213,6 +226,13 @@
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<jsp:include page="../T_board.jsp" flush="true" />
+<div class="tabcontent">
 	<!-- dtl -->
 	<h2>팀 자유게시판 상세페이지</h2>
 	<form action="#" id="actionForm" method="post">
@@ -222,14 +242,8 @@
 		<input type="hidden" name="no" value="${param.no}" />
 	</form>
 	
-	<input type="button" value="목록" id="listBtn" /> 
-	<c:if test="${data.MEM_NO eq sMNo}">
-		<input type="button" value="수정" id="updateBtn" /> 
-		<input type="button" value="삭제" id="deleteBtn" /> 
-	</c:if>
 	
 	<div> 번호: ${param.no} </div>
-	<div> 게시판명: ${data.TBM_NM} </div>
 	<div> 작성자: ${data.MEM_NM} </div>
 	<div> 작성일: ${data.TB_DT} </div>
 	<div> 조회수: ${data.TB_HIT} </div>
@@ -248,7 +262,14 @@
 			<img src="resources/upload/${fn:replace(fn:replace(data.TB_FILE, '[', '%5B'), ']', '%5D')}" width="100px" height="100px" />
 		</div>
 	</c:if>
-	</div>
+	</div><br>
+	<div class="freebtndiv">
+		<input type="button" value="목록" id="listBtn" /> 
+		<c:if test="${data.MEM_NO eq sMNo}">
+			<input type="button" value="수정" id="updateBtn" /> 
+			<input type="button" value="삭제" id="deleteBtn" /> 
+		</c:if>
+	</div><br>
 	<hr>
 	
 	<!-- Comment -->
@@ -353,5 +374,10 @@
 			</div>
 		</form>
 	</div>
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

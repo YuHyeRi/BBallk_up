@@ -6,6 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
+	<link rel="stylesheet" href="resources/css/layout/T_board.css">
+	
 <style>
 	#paging_wrap span {
 		cursor: pointer;
@@ -74,6 +83,23 @@
 			$("#actionForm").submit();
 		});
 		
+		$("#tab2").on("click", function(){
+			$("#actionForm").attr("action", "T_notice");
+			$("#actionForm").submit();
+		});
+		$("#tab4").on("click", function(){
+			$("#actionForm").attr("action", "tFreeList");
+			$("#actionForm").submit();
+		});
+		$("#tab1").on("click", function(){
+			$("#actionForm").attr("action", "T_teammozip");
+			$("#actionForm").submit();
+		});
+		$("#tab3").on("click", function(){
+			$("#actionForm").attr("action", "T_oneline");
+			$("#actionForm").submit();
+		});
+		
 	}); // doc end
 	
 	// 데이터 취득용 func
@@ -102,7 +128,6 @@
 		for(var data of list) {
 			html += "<tr no=\"" + data.TB_NO + "\">  ";
 			html += "<td>" + data.TB_NO + "</td>   	";
-			html += "<td>" + data.TBM_NM + "</td>   	";
 			html += "<td>";
 			html += data.TB_TITLE;
 			
@@ -148,6 +173,13 @@
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<jsp:include page="../T_board.jsp" flush="true" />
+<div class="tabcontent">
 	<h2>팀 자유게시판 목록</h2>
 	<div>
 		<c:choose>
@@ -163,6 +195,7 @@
 	
 	<div>
 		<form action="#" id="actionForm" method="post">
+			<input type="hidden" id="tab" value="${sNMo}" />
 			<select id="searchGbn" name="searchGbn">
 				<option value="0">작성자</option>
 				<option value="1">제목</option>
@@ -181,10 +214,9 @@
 	<div>
 		<table>
 			<thead>
-				<tr>
+				<tr class="nonetr">
 					<th>번호</th>
-					<th>게시판명</th>
-					<th>제목</th>
+					<th  class="title">제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
 					<th>조회수</th>
@@ -195,5 +227,9 @@
 	</div>
 	
 	<div id="paging_wrap"></div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

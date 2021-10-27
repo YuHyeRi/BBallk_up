@@ -38,7 +38,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<body>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>

@@ -6,9 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
+	<link rel="stylesheet" href="resources/css/layout/T_board.css">
+	
 <style>
 	#att {
 		display: none;	
+	}
+	.teambtndiv{
+		height: 460px;
 	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -42,6 +54,31 @@
 		// 첨부파일 선택시
 		$("#att").on("change", function() {
 			$("#fileName").html($(this).val().substring($(this).val().lastIndexOf("\\") + 1));
+		});
+		
+		$("#tab2").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#addForm").attr("action", "T_notice");
+				$("#addForm").submit();
+			}
+		});
+		$("#tab4").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#addForm").attr("action", "tFreeList");
+				$("#addForm").submit();
+			}
+		});
+		$("#tab1").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#addForm").attr("action", "T_teammozip");
+				$("#addForm").submit();
+			}
+		});
+		$("#tab3").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#addForm").attr("action", "T_oneline");
+				$("#addForm").submit();
+			}
 		});
 		
 		// 저장버튼
@@ -109,6 +146,13 @@
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<jsp:include page="../T_board.jsp" flush="true" />
+<div class="tabcontent">
 	<h2>팀 자유게시판 글작성 페이지</h2>
 	<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 		<input type="file" name="att" id="att" />
@@ -121,14 +165,21 @@
 	</form>
 	
 	<form action="#" id="addForm" method="post">
+	
+		<input type="hidden" id="tab" value="${sNMo}" />
 		제목: <input type="text" id="title" name="title" /><br/>
 		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/>
 		<textarea rows="5" cols="5" id="con" name="con"></textarea><br/>
 		첨부파일: <input type="button" value="첨부파일선택" id="fileBtn" /><span id="fileName"></span>
 		<input type="hidden" name="tbfile" id="tbfile" />
 	</form>
-	<br>
 	<input type="button" value="저장" id="addBtn" />
 	<input type="button" value="취소" id="cancelBtn" />
+	
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

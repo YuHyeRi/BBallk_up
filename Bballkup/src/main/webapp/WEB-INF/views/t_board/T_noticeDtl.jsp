@@ -105,7 +105,7 @@ $(document).ready(function(){
 	</div>
 	<div class="divcon">
 		<div>
-			내용<br/>
+			<br/>
 			${data.TB_CON}
 		</div>
 		<c:if test="${!empty data.TB_FILE}">
