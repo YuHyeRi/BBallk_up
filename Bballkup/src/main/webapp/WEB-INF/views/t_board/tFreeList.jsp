@@ -132,7 +132,7 @@
 			html += data.TB_TITLE;
 			
 			if(data.TB_FILE != null) {
-				html += "<img src=\"resources/images/file.png\" />";
+				 html += "<img src=\"resources/images/icon/File.png\" />";
 			}
 			
 			html +=  "</td>	";
