@@ -32,7 +32,7 @@
 	}
 	
 	.teambtndiv{
-		height: 460px;
+		height: 450px;
 	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -234,7 +234,7 @@
 <jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
 	<!-- dtl -->
-	<h2>팀 자유게시판 상세페이지</h2>
+	<h2>팀 자유게시판</h2>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
 		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
@@ -261,27 +261,30 @@
 			<br>
 			${data.TB_CON}
 		</div>
-		<c:if test="${!empty data.TB_FILE}">
-		<div>
-			<c:set var="len" value="${fn:length(data.TB_FILE)}"></c:set>
-			첨부파일: 
-			<a href="resources/upload/${fn:replace(fn:replace(data.TB_FILE, '[', '%5B'), ']', '%5D')}" 
-			download="${fn:substring(data.TB_FILE, 20, len)}">${fn:substring(data.TB_FILE, 20, len)}
-			</a>
-		</div>
-		<div>
-			<img src="resources/upload/${fn:replace(fn:replace(data.TB_FILE, '[', '%5B'), ']', '%5D')}" width="100px" height="100px" />
-		</div>
-	</c:if>
 	</div><br>
+		<div class="margindiv">
+			<hr>
+			<c:if test="${!empty data.TB_FILE}">
+			<div>
+				<c:set var="len" value="${fn:length(data.TB_FILE)}"></c:set>
+				첨부파일: 
+				<a href="resources/upload/${fn:replace(fn:replace(data.TB_FILE, '[', '%5B'), ']', '%5D')}" 
+				download="${fn:substring(data.TB_FILE, 20, len)}">${fn:substring(data.TB_FILE, 20, len)}
+				</a>
+			</div>
+			<%-- <div>
+				<img src="resources/upload/${fn:replace(fn:replace(data.TB_FILE, '[', '%5B'), ']', '%5D')}" width="100px" height="100px" />
+			</div> --%>
+			</c:if>
+		</div>
 	<div class="freebtndiv">
 		<input type="button" value="목록" id="listBtn" /> 
 		<c:if test="${data.MEM_NO eq sMNo}">
 			<input type="button" value="수정" id="updateBtn" /> 
 			<input type="button" value="삭제" id="deleteBtn" /> 
 		</c:if>
+		<hr>
 	</div><br>
-	<hr>
 	
 	
 	<!-- Comment -->
@@ -304,13 +307,13 @@
 							<b>${data.MEM_NM}</b>
 							${data.TB_RE_DT}<br>
 							<div class="con_info">
-								<div class="con">${data.TB_RE_CON}</div>
-							</div>
-							<div class="btn_wrap">
-								<c:if test="${data.MEM_NO eq sMNo}">
-									<input type="button" value="수정" id="cUpdateBtn">
-									<input type="button" value="삭제" id="cDelBtn">
-								</c:if>
+								${data.TB_RE_CON}
+								<div class="btn_wrap">
+									<c:if test="${data.MEM_NO eq sMNo}">
+										<input type="button" value="수정" id="cUpdateBtn">
+										<input type="button" value="삭제" id="cDelBtn">
+									</c:if>
+								</div>
 							</div>
 						</div>
 					</c:forEach>
@@ -358,16 +361,15 @@
 			<input type="hidden" name="no" id="no" value="${param.no}">
 			<input type="hidden" name="mno" id="mno" value="${sMNo}">
 			<input type="hidden" name="reno" id="reno2">
-			
-			<div class="user_info">
-				<div class="user_name"><b>${sMNm}</b>님</div><br>
-			</div>
-			<div class="write_con_wrap">
-				<textarea class="write_con" id="con" name="con" placeholder="댓글을 입력해주세요."></textarea><br>
-	        </div>
-	        <div class="btn_wrap">
-	        	<input type="button" value="등록" id="cAddBtn"/>
-			</div>
+			<div class="userinfodiv">
+				<div class="user_info">
+					<div class="user_name"><b>${sMNm}</b>님</div><br>
+				</div>
+				<div class="write_con_wrap">
+					<textarea class="write_con" id="con" name="con" placeholder="댓글을 입력해주세요."></textarea><br>
+		        </div>
+		        	<input type="button" value="등록" id="cAddBtn"/>
+		     </div>
 		</form>
 	</div>
 		

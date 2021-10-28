@@ -82,7 +82,7 @@ $(document).ready(function(){
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
-
+<h2>팀 공지사항</h2>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" id="tab" value="${sNMo}" />
 		<input type="hidden" name="searchGbn" value="${param.searchGbn}" />

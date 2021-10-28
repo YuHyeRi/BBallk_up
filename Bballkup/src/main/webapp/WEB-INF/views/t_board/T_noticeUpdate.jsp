@@ -24,7 +24,7 @@
 	display: none;
 }
 .teambtndiv{
-	height: 450px;
+	height: 470px;
 }
 </style>
 <script type="text/javascript"
@@ -166,6 +166,7 @@ function checkVal(sel) {
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
+<h2>팀 공지사항</h2>
 	<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 		<input type="file" name="att" id="att" />
 	</form>
@@ -190,24 +191,28 @@ function checkVal(sel) {
 		</c:choose><br>
 		${sMNm} <input type="hidden" name="mno" value="${sMNo}" /><br/><br>
 		<textarea rows="5" cols="5" id="con" name="con">${data.TB_CON}</textarea><br/>
-		첨부파일 : 
-		<c:choose>
-			<c:when test="${!empty data.TB_FILE}">
-				<input type="button" value="첨부파일선택" id="fileBtn" class="hide_btn"/>
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="첨부파일선택" id="fileBtn"/>
-			</c:otherwise>
-		</c:choose>
-		<c:set var="len" value="${fn:length(data.TB_FILE)}"></c:set>
-		<span id="fileName">${fn:substring(data.TB_FILE, 20, len)}</span>
-		<c:if test="${!empty data.TB_FILE}">
-			<input type="button" value="첨부파일삭제" id="fileDelBtn"/>
-		</c:if>
-		<input type="hidden" name="NFile" id="NFile" value="${data.TB_FILE}" />
+		<div class ="userinfodiv">
+			첨부파일 : 
+			<c:choose>
+				<c:when test="${!empty data.TB_FILE}">
+					<input type="button" value="첨부파일선택" id="fileBtn" class="hide_btn"/>
+				</c:when>
+				<c:otherwise>
+					<input type="button" value="첨부파일선택" id="fileBtn"/>
+				</c:otherwise>
+			</c:choose>
+			<c:set var="len" value="${fn:length(data.TB_FILE)}"></c:set>
+			<span id="fileName">${fn:substring(data.TB_FILE, 20, len)}</span>
+			<c:if test="${!empty data.TB_FILE}">
+				<input type="button" value="첨부파일삭제" id="fileDelBtn"/>
+			</c:if>
+			<input type="hidden" name="NFile" id="NFile" value="${data.TB_FILE}" />
+		<div class="buttondiv">
+			<input type="button" value="저장" id="updateBtn" />
+			<input type="button" value="취소" id="cancelBtn" />
+		</div>
+		</div>	
 	</form>
-		<input type="button" value="저장" id="updateBtn" />
-		<input type="button" value="취소" id="cancelBtn" />
 </div>
 </main>
 <footer>

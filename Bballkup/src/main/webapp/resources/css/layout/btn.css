@@ -9,7 +9,14 @@
     border: 2px solid #1d2088;
 }
 
-#loginBtn, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn{
+#cDelBtn, #cUpdateBtn{
+	background-color: white;
+	border-radius: 5px;
+    border: 2px solid #1d2088;
+    cursor: pointer;
+}
+
+#loginBtn, #cAddBtn, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn{
  	background-color: white;
     padding: 5px;
     width: 80px;
@@ -107,7 +114,11 @@
     background-color: #919191;
     border: 3px solid #919191;
 }
-.buttondiv{
+.buttondiv, .freebtndiv{
 	margin-top: 20px;
 	margin-bottom:20px;
+}
+
+.btn_wrap{
+	float : right;
 }

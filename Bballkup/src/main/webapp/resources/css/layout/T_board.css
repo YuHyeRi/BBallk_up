@@ -46,9 +46,10 @@
 	min-width : 800px;
 }
 
+.userinfodiv, .freebtndiv, .comm_list, .margindiv{
+	margin-left: 150px;
+}
 
-/* .freebtndiv{
-	float: right;
-} */
-
-
+.comm_data{
+	margin-bottom : 20px;
+}

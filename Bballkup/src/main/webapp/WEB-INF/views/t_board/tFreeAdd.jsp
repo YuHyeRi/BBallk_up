@@ -153,7 +153,7 @@
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
-	<h2>팀 자유게시판 글작성 페이지</h2>
+	<h2>팀 자유게시판</h2>
 	<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 		<input type="file" name="att" id="att" />
 	</form>

@@ -132,7 +132,7 @@
 			html += data.TB_TITLE;
 			
 			if(data.TB_FILE != null) {
-				html += "<img src=\"resources/images/file.png\" />";
+				 html += "<img src=\"resources/images/icon/File.png\" />";
 			}
 			
 			html +=  "</td>	";
@@ -148,11 +148,11 @@
 	function drawPaging(pb) {
 		var html = "";
 		
-		html += "<span page=\"1\">[처음]</span>	";
+		html += "<span page=\"1\">처음</span>	";
 		if($("#page").val() == "1") {
-			html += "<span page=\"1\">[이전]</span>	";
+			html += "<span page=\"1\">이전</span>	";
 		} else {
-			html += "<span page=\"" + ($("#page").val() * 1 - 1) + "\">[이전]</span>	";
+			html += "<span page=\"" + ($("#page").val() * 1 - 1) + "\">이전</span>	";
 		} 
 		for(var i=pb.startPcount; i<=pb.endPcount; i++) {
 			if($("#page").val() == i) {
@@ -162,11 +162,11 @@
 			}
 		}
 		if($("#page").val() == pb.maxPcount) {
-			html += "<span page=\"" + pb.maxPcount + "\">[다음]</span>	";
+			html += "<span page=\"" + pb.maxPcount + "\">다음</span>	";
 		} else {
-			html += "<span page=\"" + ($("#page").val() * 1 + 1) + "\">[다음]</span>	";
+			html += "<span page=\"" + ($("#page").val() * 1 + 1) + "\">다음</span>	";
 		}
-		html += "<span page=\"" + pb.maxPcount + "\">[마지막]</span>	";
+		html += "<span page=\"" + pb.maxPcount + "\">마지막</span>	";
 		
 		$("#paging_wrap").html(html);
 	};
@@ -180,7 +180,7 @@
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
-	<h2>팀 자유게시판 목록</h2>
+	<h2>팀 자유게시판</h2>
 	<div>
 		<c:choose>
 			<c:when test="${empty sMId}">
@@ -227,6 +227,7 @@
 	</div>
 	
 	<div id="paging_wrap"></div>
+</div>
 </main>
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />

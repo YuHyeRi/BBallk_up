@@ -17,6 +17,9 @@
 #att {
 	display: none;
 }
+.teambtndiv{
+	height : 450px;
+}
 </style>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -152,7 +155,7 @@ function checkVal(sel) {
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
-
+<h2>팀 공지사항</h2>
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att" />
 </form>
@@ -170,12 +173,16 @@ function checkVal(sel) {
 	
 	<input type="hidden" name="mno" id="mno" value="${sMNo}" />
 	<textarea rows="5" cols="5" id="con" name="con"></textarea><br/>
+	<div class ="userinfodiv">
 	첨부파일 : <input type="button" value="첨부파일선택" id="fileBtn" >
 	<span id="fileName"></span>
 	<input type="hidden" name="NFile" id="NFile" />
+	<div class="buttondiv">
+		<input type="button" value="저장" id="addBtn" />
+		<input type="button" value="취소" id="cancelBtn" />
+	</div>
+	</div>
 </form>
-<input type="button" value="저장" id="addBtn" />
-<input type="button" value="취소" id="cancelBtn" />
 </div>
 </main>
 <footer>
