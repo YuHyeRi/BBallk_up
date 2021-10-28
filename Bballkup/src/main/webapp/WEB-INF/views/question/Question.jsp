@@ -42,6 +42,7 @@ body {
 	width: 100px;
 	height: 100px;
 	vertical-align: top;
+	text-align: center;
 }
 
 .user_name {
@@ -82,15 +83,22 @@ body {
 	/* margin-top: 5px; */
 }
 
-.action_btn .action_btn4 {
+.action_btn {
 	width: 146px;
 	height: 96px;
 	margin: 2px;
 }
 
-.action_btn2 .action_btn3 .action_btn5 {
+.action_btn4 {
+	width: 146px;
+	height: 50px;
+	margin: 2px;
+}
+
+.action_btn2, .action_btn3, .action_btn5 {
 	width: 71px;
-	height: 96px;
+	/* height: 96px; */
+	height: 50px;
 	margin: 2px;
 }
 

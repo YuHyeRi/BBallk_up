@@ -42,7 +42,7 @@ public class QuestionController {
 		mav.addObject("pb",pb);
 		mav.addObject("page",page);
 		mav.addObject("list",list);
-		mav.setViewName("Question/Question");
+		mav.setViewName("question/Question");
 		
 		return mav;
 	}
@@ -58,7 +58,7 @@ public class QuestionController {
 			mav.setViewName("redirect:Question");
 		} else {
 			mav.addObject("msg","저장에 실패하였습니다.");
-			mav.setViewName("Question/failedAction");
+			mav.setViewName("question/failedAction");
 		}
 		
 		return mav;
@@ -74,7 +74,7 @@ public class QuestionController {
 			mav.setViewName("redirect:Question"); 
 		} else {
 			mav.addObject("msg","수정에 실패하였습니다.");
-			mav.setViewName("Question/failedAction");						
+			mav.setViewName("question/failedAction");						
 		}	
 		return mav;
 	}
@@ -89,7 +89,7 @@ public class QuestionController {
 			mav.setViewName("redirect:Question");
 		}else {
 			mav.addObject("msg","삭제에 실패하였습니다.");
-			mav.setViewName("Question/failedAction");
+			mav.setViewName("question/failedAction");
 		}
 		return mav;
 	}
@@ -105,7 +105,7 @@ public class QuestionController {
 			mav.setViewName("redirect:Question");
 		}else {
 			mav.addObject("msg","답변에 실패하였습니다.");
-			mav.setViewName("Question/failedAction");
+			mav.setViewName("question/failedAction");
 		}
 		return mav;
 	}
@@ -120,7 +120,7 @@ public class QuestionController {
 			mav.setViewName("redirect:Question");
 		}else {
 			mav.addObject("msg","답변 삭제에 실패하였습니다.");
-			mav.setViewName("Question/failedAction");
+			mav.setViewName("question/failedAction");
 		}
 		return mav;
 	}
