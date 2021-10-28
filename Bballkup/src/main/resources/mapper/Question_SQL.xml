@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="question">
+
+	<select id="getQList" parameterType="hashmap" resultType="hashmap">
+		SELECT  Q.Q_NO, Q.MEM_NO, Q.Q_CON, Q.Q_DT, MEM_NM, Q.Q_SECRET, Q.Q_RE_NO, Q.Q_RE_CON, Q.Q_RE_DT
+		FROM (
+ 			SELECT Q.Q_NO, Q.MEM_NO, Q.Q_CON, M.MEM_NM , TO_CHAR(Q_DT,'YYYY-MM-DD')AS Q_DT,
+ 			Q.Q_SECRET, Q.Q_RE_NO, Q.Q_RE_CON, Q.Q_RE_DT,
+ 			ROW_NUMBER() OVER(ORDER BY Q_NO DESC) AS RNUM
+ 			FROM QUESTION Q INNER JOIN MEM M ON Q.MEM_NO = M.MEM_NO
+ 			 WHERE Q_DEL = 1
+  		) Q
+		WHERE Q.RNUM BETWEEN #{startCnt} AND #{endCnt}	
+	</select>
+	
+	<select id="getQCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM QUESTION
+		WHERE Q_DEL = 1
+	</select>
+	
+	<insert id="addQ" parameterType="hashmap">
+		INSERT INTO QUESTION(Q_NO, MEM_NO, Q_CON) 
+		VALUES (QUESTION_SEQ.NEXTVAL, #{sMNo}, #{q_con})	
+	</insert>
+	
+	<update id="updateQ" parameterType="hashmap">
+		UPDATE QUESTION SET Q_CON = #{q_con}
+		WHERE Q_NO = #{no}
+	</update>
+	
+	<update id="deleteQ" parameterType="hashmap">
+		UPDATE QUESTION SET Q_DEL = 0
+		WHERE Q_NO = #{no}
+	</update>
+	
+	<!-- 답변 내용 추가 업데이트 -->
+	<update id="repleQ" parameterType="hashmap">
+		UPDATE QUESTION SET Q_RE_NO ='4', Q_RE_CON=#{q_re_con}, Q_RE_DT=SYSDATE
+		WHERE Q_NO = #{no}
+	</update>
+	
+	<update id="repleDeleteQ" parameterType="hashmap">
+		UPDATE QUESTION SET Q_RE_NO = null, Q_RE_CON= null, Q_RE_DT=null
+		WHERE Q_NO = #{no}
+	</update>
+	
+	<!-- 답변 글 있는거만 출력하기 -->
+	<!-- <select id="repleQCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM QUESTION
+		WHERE Q_RE_CON IS NOT NULL AND Q_NO = #{no}
+	</select> -->
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
