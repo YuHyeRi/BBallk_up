@@ -197,6 +197,7 @@ $(document).ready(function() {
 		$("#actionForm").submit();
 	}
 	
+	// textarea에 val가 없을때 영역 감추기 
 	$(".q_re_con").each(function() {
 		console.log($(this).val());
 		if($(this).val() == "") {
@@ -350,6 +351,7 @@ function checkObjVal(obj) {
 		return false;
 	}
 }
+			
 </script>
 </head>
 <body>
@@ -429,12 +431,13 @@ function checkObjVal(obj) {
 					</div>
 					<!-- 댓글영역 -->
 					<div class="ob_data_reple" id="ob_data_reple" no="${data.Q_NO}">
+						<c:if test="${!empty data.Q_RE_CON}">
 						<div class="reple_wrap reple_text_area" >
 							<div class="user_info">
 								<img src="resources/images/arrowright.png" width="70px" height="70px">			
 							</div>
 							<div class="con_info">
-								<div id="reple_con" class="reple_con">${data.Q_RE_CON}</div>
+								<div id="reple_con" class="reple_con" value="${data.Q_RE_CON}">${data.Q_RE_CON}</div>
 							</div>
 							<div class="btn_wrap">
 								<c:if test="${sMLv eq 0}">
@@ -443,6 +446,7 @@ function checkObjVal(obj) {
 								</c:if>
 							</div>
 						</div>
+						</c:if>
 						<c:if test="${sMLv eq 0}">
 							<div class="reple_wrap reple_write_area" >
 								<div class="user_info">
