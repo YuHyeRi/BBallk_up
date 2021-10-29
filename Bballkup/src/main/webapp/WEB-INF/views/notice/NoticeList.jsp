@@ -80,7 +80,6 @@ $(document).ready(function(){
 	
 	$("tbody").on("click", "tr", function(){ 
 		$("#no").val($(this).attr("no"));
-		
 		$("#actionForm").attr("action", "Notice");
 		$("#actionForm").submit();
 	});
@@ -195,6 +194,7 @@ var html ="";
 		</c:otherwise>
 	</c:choose>
 </div>
+
 <div>
 	<form action="#" id="actionForm" method="post">
 		<select name="searchGbn" id="searchGbn">
@@ -206,7 +206,6 @@ var html ="";
 		<input type="hidden" id="oldTxt" value="${param.searchTxt}" />
 		<input type="hidden" name="page" id="page" value="${page}" />
 		<input type="hidden" name="no" id="no" />
-		<input type="hidden" value="Notice" id="mainlist" name="mainlist">
 		<input type="button" value="검색" id="searchBtn" />
 		<c:if test="${sMLv eq 0}">
 			<input type="button" value="작성" id="addBtn" />

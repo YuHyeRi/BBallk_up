@@ -26,6 +26,7 @@ header {
 /* 로고 */
 .logo_div>img{
     width: 150px;
+    cursor: pointer;
 }
 .logo_div{
     position: relative;

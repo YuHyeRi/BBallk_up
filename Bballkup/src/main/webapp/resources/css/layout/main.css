@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.maincenterdiv{
+	display: flex;
+	justify-content: center;
+	}
+	
+	.maindiv {
+        display: flex;
+        width: 100%;
+        /* div 세로길이 */
+        height: auto;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        /* 갓종인 */
+        min-width: 800px;
+        max-width: 1000px;
+        justify-content: center;
+    }
+    .mainrightdiv {
+        flex-direction: column; 
+        width: 50%;
+        height: 100%;
+    }
+    .mainleft {
+        width: 50%;
+        background-color: pink;
+    }
+   /*  .mainright1 {
+        font-size: 10px;
+    } */
+    .mainright2 {
+    	margin : 10px;
+    	margin-bottom : 0px;
+    	border : 2px solid #d2d2d2;
+    	border-radius : 10px;
+    	text-align : center;
+        height: 250px;
+    }

@@ -29,6 +29,13 @@ $(document).ready(function(){
 		$("#actionForm").submit();
 	});
 	
+	$("#mainlistBtn").on("click", function(){
+		location.href="NoticeList";
+	});
+	$("#mainbtn").on("click", function(){
+		history.back();
+	});
+	
 	$("#deleteBtn").on("click", function(){
 		if(confirm("삭제하시겠습니까?")){
 			var params = $("#actionForm").serialize();
@@ -82,7 +89,7 @@ $(document).ready(function(){
 </div>
 <div class="divcon">
 	<div>
-		내용<br/>
+		<br/>
 		${data.NOTICE_CON}
 	</div>
 	<c:if test="${!empty data.NOTICE_FILE}">
@@ -101,7 +108,15 @@ $(document).ready(function(){
 			<input type="button" value="수정" id="updateBtn" />
 			<input type="button" value="삭제" id="deleteBtn" />	
 		</c:if>
-		<input type="button" value="목록" id="listBtn" />
+		<c:choose>
+			<c:when test="${!empty param.searchGbn}">
+				<input type="button" value="목록" id="listBtn" />
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="메인으로" id="mainbtn">
+				<input type="button" value="목록" id="mainlistBtn" />
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>
 </main>
