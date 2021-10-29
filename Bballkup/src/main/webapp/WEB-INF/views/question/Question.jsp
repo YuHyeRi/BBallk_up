@@ -437,7 +437,7 @@ function checkObjVal(obj) {
 								<img src="resources/images/arrowright.png" width="70px" height="70px">			
 							</div>
 							<div class="con_info">
-								<div id="reple_con" class="reple_con" value="${data.Q_RE_CON}">${data.Q_RE_CON}</div>
+								<div id="reple_con" class="reple_con">${data.Q_RE_CON}</div>
 							</div>
 							<div class="btn_wrap">
 								<c:if test="${sMLv eq 0}">
