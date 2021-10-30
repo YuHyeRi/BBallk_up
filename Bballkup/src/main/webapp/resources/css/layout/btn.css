@@ -9,14 +9,14 @@
     border: 2px solid #1d2088;
 }
 
-#cDelBtn, #cUpdateBtn{
+#cDelBtn, #cUpdateBtn {
 	background-color: white;
 	border-radius: 5px;
     border: 2px solid #1d2088;
     cursor: pointer;
 }
 
-#loginBtn, #cAddBtn, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn{
+#loginBtn, #cAddBtn, #mainlistBtn, #teambuttons>input, #mainbtn, .teambtns, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn{
  	background-color: white;
     padding: 5px;
     width: 80px;
@@ -24,6 +24,11 @@
     border: 2px solid #1d2088;
     cursor: pointer;
  }
+
+#teambuttons>input:hover {
+	background-color: #e3ecfb;
+    cursor: pointer;
+}
 
 .team_board_btn>button{
     width: auto;

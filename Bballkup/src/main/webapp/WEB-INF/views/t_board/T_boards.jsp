@@ -18,6 +18,9 @@
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	
+	
 	$("#tab2").on("click", function(){
 		$("#actionForm").attr("action", "T_notice");
 		$("#actionForm").submit();

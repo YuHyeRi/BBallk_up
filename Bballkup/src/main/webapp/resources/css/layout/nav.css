@@ -46,7 +46,7 @@
     margin-bottom: 40px;
     z-index: 1;
     width:100%;
-    max-width : 1000px;
+    /* max-width : 1000px; */
     display: flex;
     justify-content: space-between;
 }
