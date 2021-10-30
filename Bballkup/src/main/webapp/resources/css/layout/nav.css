@@ -42,6 +42,11 @@
     height: 100px;
     text-align: center;
 }
+
+.siteplan{
+	cursor: pointer;
+}
+
 .nav_drop{
     margin-bottom: 40px;
     z-index: 1;

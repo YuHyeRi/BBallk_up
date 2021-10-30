@@ -73,14 +73,15 @@ $(document).ready(function(){
 			}
 		});
 		
-		$("#loginBtn").on("click",function(){
-			
+		//로그인로그아웃
+		$("#login").on("click",function(){
 			$("#main3").attr("action","login");
 			$("#main3").submit();
 		});
 		
-		$("#logoutBtn").on("click", function(){
-			location.href = "logout";
+		$("#logout").on("click", function(){
+			$("#loginForm").attr("action","logout");
+			$("#loginForm").submit();
 		});
 		
 });
@@ -141,8 +142,10 @@ function drawList(list){
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
 <main>
+<jsp:include page="../nav.jsp" flush="true" />
+
 <form action="#" id="loginForm" method="post">
-	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	<input type="hidden" id="no" name="no" value="${sMNo}">
 </form>
 <form action="#" id="main1" method="post">
 
@@ -154,7 +157,7 @@ function drawList(list){
 	<input type="hidden" id="no" name="no" value="${sMNo}"/>
 </form>
 
-<jsp:include page="../nav.jsp" flush="true" />
+
 <div class="mainbar">
         <div class="slideshow-container">
             <div class="mySlides_fade">
@@ -177,18 +180,6 @@ function drawList(list){
             </div>
 		</div>
 	</div>
-<div>
-	<c:choose>
-		<c:when test="${empty sMNo}">
-			<input type="button" value="로그인" id="loginBtn" />
-		</c:when>
-		<c:otherwise>
-			${sMNm}님 어서오세요.
-			<input type="button" value="로그아웃" id="logoutBtn" />
-		</c:otherwise>
-	</c:choose>
-</div>
-
 <div class="maincenterdiv">
 	<div class="maindiv">
 		 <div class="mainleft">
@@ -235,9 +226,6 @@ function drawList(list){
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
-
-<script type="text/javascript" src="resources/css/js/loginout.js"></script>
 <script type="text/javascript" src="resources/css/js/slideshow.js"></script>
-
 </body>
 </html>

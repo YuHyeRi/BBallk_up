@@ -64,7 +64,7 @@ public class loginController {
 				System.out.println("m_nm : "+session.getAttribute("sMNm"));
 				System.out.println("m_lv : "+session.getAttribute("sMLv"));
 				
-				mav.setViewName("redirect:login");
+				 mav.setViewName("redirect:Main"); 
 			}else {
 				mav.addObject("msg", "탈퇴한 회원입니다.");
 				mav.setViewName("login/failedAction");
@@ -82,7 +82,7 @@ public class loginController {
 		
 		session.invalidate();//session 정보 초기화
 		
-		mav.setViewName("redirect:login");
+		mav.setViewName("redirect:Main");
 		
 		return mav;
 	}

@@ -24,9 +24,6 @@ public class MainController {
 	@Autowired
 	public IMainService iMainService;
 
-	@Autowired
-	public IPagingService iPagingService;
-
 	@RequestMapping(value = "/Main")
 	public ModelAndView Main(@RequestParam HashMap<String, String> params,
 					HttpSession session, ModelAndView mav) throws Throwable{
@@ -51,5 +48,6 @@ public class MainController {
 		
 		return mapper.writeValueAsString(modelMap);
 	}
+	
 	
 }

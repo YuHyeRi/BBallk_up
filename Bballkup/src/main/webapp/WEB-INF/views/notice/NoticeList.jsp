@@ -45,14 +45,15 @@ $(document).ready(function(){
 		$("#actionForm").submit();
 	});
 	
-	$("#loginBtn").on("click",function(){
-		
-		$("#actionForm").attr("action","login");
-		$("#actionForm").submit();
+	//로그인로그아웃
+	$("#login").on("click",function(){
+		$("#loginForm").attr("action","login");
+		$("#loginForm").submit();
 	});
 	
-	$("#logoutBtn").on("click", function(){
-		location.href = "logout";
+	$("#logout").on("click", function(){
+		$("#loginForm").attr("action","logout");
+		$("#loginForm").submit();
 	});
 	
 	//검색
@@ -184,18 +185,12 @@ var html ="";
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <h2>공지사항 목록</h2>
-<div>
-	<c:choose>
-		<c:when test="${empty sMNo}">
-			<input type="button" value="로그인" id="loginBtn" />
-		</c:when>
-		<c:otherwise>
-			${sMNm}님 어서오세요.<input type="button" value="로그아웃" id="logoutBtn" />
-		</c:otherwise>
-	</c:choose>
-</div>
 
 <div>
+	<form action="#" id="loginForm" method="post">
+	<input type="hidden" id="no" name="no" value="${sMNo}">
+	</form>
+	
 	<form action="#" id="actionForm" method="post">
 		<select name="searchGbn" id="searchGbn">
 			<option value="0">제목</option>

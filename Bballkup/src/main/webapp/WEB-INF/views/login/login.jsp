@@ -47,6 +47,7 @@
 			$("#loginForm").attr("action", "memUpdate");
 			$("#loginForm").submit();
 		});
+		
 	});
 	
 	//값이 들어있는지 체크
@@ -75,6 +76,7 @@
 		<c:otherwise>
 			${sMNm}님 어서오세오.  <input type="button" value="로그아웃" id="logoutBtn">
 			<input type="button" value="정보수정" id="memUpdateBtn">
+			<input type="button" value="메인으로"  onClick="location.href='Main'">
 		</c:otherwise>
 	</c:choose>
 </form>
