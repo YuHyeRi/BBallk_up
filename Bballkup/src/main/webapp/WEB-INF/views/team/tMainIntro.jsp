@@ -36,12 +36,12 @@
 		width: 150px;
 		height: 40px;
 		background-color: rgb(210, 210, 210);
-		border-radius: 10px 10px;
+		border-radius: 10px;
 	}
 	
 	#regBtn:hover, #enterBtn:hover {
 		cursor: pointer;
-		background-color: rgba(0, 20, 255, 50);
+		background-color: #1d2088;
 		color: white;
 	}
 	

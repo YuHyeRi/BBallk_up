@@ -19,7 +19,10 @@
 		background-color: rgba(240, 240, 240, 10);
 		min-width: 300px;
 	}
-	
+	#backBtn:hover{
+		background-color: #e3ecfb;
+    	cursor: pointer;
+	}
 	#regBtn {
 		width: 100px;
 		height: 40px;
@@ -28,7 +31,7 @@
 	}
 	
 	#regBtn:hover {
-		background-color: rgba(0, 20, 255, 50);
+		background-color: #1d2088;
 		color: white;
 		cursor: pointer;
 	}

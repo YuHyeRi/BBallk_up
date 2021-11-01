@@ -16,3 +16,26 @@
 	display: table-cell;
 	vertical-align: middle;
 }
+
+.write_con {
+	height: 90px;
+	resize: none;
+	margin: 2px;
+}
+textarea {
+	width: 100%;
+}
+.write_con_wrap, .con_info {
+	width : 70%;
+	display: inline-block;
+	height: 100px;
+	vertical-align: top;
+}
+
+.btn_wrap{
+	float: right;
+	display : flex;
+	flex-direction: column;
+	padding-top: 17px;
+	margin-right: 20px;
+}

@@ -38,8 +38,7 @@
 		});
 		
 		//가입
-		$("#joinBtn").on("click", function(){
-			
+		$("#join").on("click", function(){
 			location.href="join";
 		});
 		//로그아웃
@@ -71,8 +70,9 @@
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
-<main class="mainmain">
+<main>
 <jsp:include page="../nav.jsp" flush="true" />
+<div class="mainmain">
 <div class="logindiv">
 <form action="#" id="loginForm" method="post">
 <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
@@ -87,6 +87,7 @@
 			<!-- <input type="button" value="회원가입" id="joinBtn"> -->
 		</div>
 </form>
+</div>
 </div>
 </main>
 <footer>

@@ -41,11 +41,11 @@
 		height: 30px;
 		text-align: center;
 		background-color: rgb(210, 210, 210);
-		border-radius: 10px 10px;
+		border-radius: 10px;
 	}
 	
 	.list_wrap td:hover {
-		background-color: #1d2088;
+		background-color: #e3ecfb;;
 		color: white;
 		cursor: pointer;
 	}

@@ -9,73 +9,36 @@
 <title>고객지원-질문답변게시판</title>
 	<link rel="stylesheet" href="resources/css/layout/font.css">
 	<link rel="stylesheet" href="resources/css/layout/basic.css">
-	<link rel="stylesheet" href="resources/css/layout/btn.css">
 	<link rel="stylesheet" href="resources/css/layout/loginout.css">
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/question.css">
 	
-<style type="text/css">
-/* .write_area {
-	height: 110px;
-} */
-
-/* .secretCheck {
-   text-align: right;
-} */
-
-/* .secretCheck .secret_text {
-	font-size: 11px;
-} */
-
-
-
-
-.write_con_wrap {
-	display: inline-block;
-	width: 550px;
-	height: 100px;
-	vertical-align: top;
-}
-
-.write_con {
-	width: 540px;
-	height: 90px;
-	resize: none;
-	margin: 2px;
-}
-
+<style>
 .reple_con {
 	width: 540px;
 	height: 90px;
 	resize: none;
 	margin: 2px;
 }
-
-.btn_wrap {
-	display: inline-block;
-	width: 150px;
-	height: 100px;
-	vertical-align: top;
-	/* margin-top: 5px; */
+.reple_text_area{
+	background-color: #e3ecfb;
 }
-
-.action_btn {
-	width: 146px;
-	height: 96px;
-	margin: 2px;
-}
-
-.action_btn4 {
-	width: 146px;
+#addBtn{
 	height: 50px;
-	margin: 2px;
 }
 
-.action_btn2, .action_btn3, .action_btn5 {
-	width: 71px;
-	/* height: 96px; */
-	height: 50px;
-	margin: 2px;
+input:hover{
+	background-color: #e3ecfb;
+}
+
+input{
+	background-color: white;
+    padding: 5px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #1d2088;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .write_area .action_btn2 {
@@ -94,7 +57,6 @@
 	height: 100px;
 	vertical-align: middle;
 	text-align: center;
-	font-size: 12pt;
 }
 
 .data_req_wrap {
@@ -111,7 +73,6 @@
 	height: 100px;
 	vertical-align: middle;
 	text-align: center;
-	font-size: 12pt;
 }
 
 .ob_data {
@@ -121,7 +82,6 @@
 
 .con_info {
 	display: inline-table;
-	width: 550px;
 	height: 100px;
 	vertical-align: top;
 }
@@ -132,33 +92,27 @@
 	height: 100px;
 	vertical-align: middle;
 	text-align: left;
-	font-size: 12pt;
 }
 .q_re_con {
 	display: inline-table;
-	width: 500px;
 	height: 45px;
 	vertical-align: middle;
 }
 .reple_con {
 	display: inline-table;
-	width: 520px;
 	height: 50px;
 	vertical-align: middle;
 	text-align: left;
-	font-size: 12pt;
 }
 
-.paging_wrap {
-	margin: 5px 0px;
-	padding: 5px 0px;
+#paging_wrap2 {
+	margin: 20px;
 	border-top: 1px solid #444444;
 	text-align: center;
 }
 
-.paging_wrap span {
+#paging_wrap2 span {
 	margin: 0px 5px;
-	font-size: 12pt;
 	cursor: pointer;
 }
 
@@ -246,7 +200,7 @@ $(document).ready(function() {
 	});
 	
 	//페이징
-	$("#paging_wrap").on("click","span",function() {
+	$("#paging_wrap2").on("click","span",function() {
 		$("#actionForm").attr("action","Question");
 		$("#page").val($(this).attr("page"));
 		$("#actionForm").submit();
@@ -444,8 +398,7 @@ function checkObjVal(obj) {
 			</c:choose>		
 		</div>
 	<!-- Paging -->
-		<div class="paging_wrap">
-		<div id="paging_wrap">
+		<div id="paging_wrap2">
 			<!-- 이전 -->
 		<c:choose>
 			<c:when test="${page eq 1}"> 
@@ -475,7 +428,6 @@ function checkObjVal(obj) {
 			</c:otherwise>
 		</c:choose>
 		</div>
-	</div>
 	</div>
 </div>
 </main>
