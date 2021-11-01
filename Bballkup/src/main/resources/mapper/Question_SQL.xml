@@ -46,13 +46,6 @@
 		WHERE Q_NO = #{no}
 	</update>
 	
-	<!-- 답변 글 있는거만 출력하기 -->
-	<!-- <select id="repleQCnt" parameterType="hashmap" resultType="Integer">
-		SELECT COUNT(*)
-		FROM QUESTION
-		WHERE Q_RE_CON IS NOT NULL AND Q_NO = #{no}
-	</select> -->
-	
 </mapper>
 
 
