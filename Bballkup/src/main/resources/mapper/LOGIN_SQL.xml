@@ -16,8 +16,11 @@
 	</select>
 	
 	<select id="getMem" parameterType="hashmap" resultType="hashmap">
-		SELECT * FROM MEM
-		WHERE MEM_NO = #{mem_no}
+		SELECT M.MEM_NO, M.MEM_ID, M.MEM_PW, M.MEM_NM, M.MEM_PHONE, M.MEM_GEN, 
+			   M.MEM_BD, M.MEM_PW_GBN, M.MEM_PWA, M.LEVEL_NO, C.CARD_NO 
+		FROM MEM M LEFT JOIN CARD C
+					ON M.MEM_NO = C.MEM_NO
+		WHERE M.MEM_NO = #{mem_no}
 	</select>
 	
 	<insert id="joinMem" parameterType="hashmap">
@@ -38,10 +41,12 @@
 	
 	<update id="updateMem" parameterType="hashmap">
 		UPDATE MEM
-		SET MEM_PHONE = #{mem_phone},
-		    MEM_GEN = #{mem_gen},
-		    MEM_PW_GBN = #{mem_pw_gbn},
-		    MEM_PWA = #{mem_pwa}
+		SET MEM_PHONE = #{mem_phone}
+			<if test="sMLv eq 1">
+			    ,MEM_GEN = #{mem_gen},
+			    MEM_PW_GBN = #{mem_pw_gbn},
+			    MEM_PWA = #{mem_pwa}
+			</if>
 		WHERE MEM_NO = #{mem_no}
 	</update>
 	
@@ -50,4 +55,138 @@
 		SET MEM_DEL = '0'
 		WHERE MEM_NO = #{mem_no}
 	</update>
+	
+	<select id="memPwCheck" parameterType="hashmap" resultType="hashmap">
+		SELECT MEM_PW
+		FROM MEM
+		WHERE MEM_NO=#{mem_no}
+		AND MEM_DEL=1
+	</select>
+	
+	<update id="pwUpdateMem" parameterType="hashmap">
+		UPDATE MEM
+		SET MEM_PW = #{mem_pw}
+		WHERE MEM_NO = #{mem_no}
+	</update>
+	
+	<select id="getMemFindId" parameterType="hashmap" resultType="hashmap">
+		SELECT MEM_ID
+		FROM MEM
+		WHERE MEM_NM=#{mem_nm}
+		AND MEM_PHONE=#{mem_phone}
+		AND MEM_BD=#{mem_bd}
+		AND MEM_DEL=1
+	</select>
+	
+	<select id="getMemFindIdCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM MEM
+		WHERE MEM_NM=#{mem_nm}
+		AND MEM_PHONE=#{mem_phone}
+		AND MEM_BD=#{mem_bd}
+		AND MEM_DEL=1
+	</select>
+	
+	<select id="getMemIdCntCheck" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM MEM
+		WHERE MEM_ID=#{mem_id}
+		AND  MEM_NM=#{mem_nm}
+		AND MEM_DEL=1
+	</select>
+	
+	<select id="getMemPwAllCheck" parameterType="hashmap" resultType="hashmap">
+		SELECT MEM_NO, MEM_ID, MEM_PW, MEM_NM, MEM_PHONE, MEM_GEN, 
+			   MEM_BD, MEM_PW_GBN, MEM_PWA, LEVEL_NO
+		FROM MEM
+		WHERE MEM_ID=#{mem_id}
+		AND  MEM_NM=#{mem_nm}
+		AND  MEM_PW_GBN=#{mem_pw_gbn}
+		AND  MEM_PWA=#{mem_pwa}
+		AND MEM_DEL=1
+	</select>
+	
+	<select id="getMemNoCntCheck" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*)
+		FROM MEM
+		WHERE MEM_ID=#{mem_id}
+		AND  MEM_NM=#{mem_nm}
+		AND  MEM_PW_GBN=#{mem_pw_gbn}
+		AND  MEM_PWA=#{mem_pwa}
+		AND MEM_DEL=1
+	</select>
+	
+	<select id="getAllBoardCnt" parameterType="hashmap" resultType="Integer">
+		WITH ALLLIST AS(
+		    SELECT FREE_NO AS NO, '개인' AS TEAM_NM, 0 AS TBM_NO, 0 AS GBN, '자유게시판' AS TBM_NM, FREE_TITLE AS TITLE, FREE_CON AS CON, TO_CHAR(FREE_DT, 'YYYY-MM-DD') AS DT, FREE_HIT AS HIT, FREE_FILE AS B_FILE, MEM_NO, FREE_DEL AS DEL FROM FREE
+		    UNION ALL
+		    SELECT TB.TB_NO AS NO, T.TEAM_NM AS TEAM_NM, TB.TBM_NO AS TBM_NO, TM.TEAM_NO AS GBN, TM.TBM_NM AS TBM_NM, TB.TB_TITLE AS TITLE, TB_CON AS CON, TO_CHAR(TB.TB_DT, 'YYYY-MM-DD') AS DT, TB.TB_HIT AS HIT, TB.TB_FILE AS B_FILE, TB.MEM_NO, TB.TB_DEL AS DEL 
+		    FROM T_BOARD TB, TB_MANAGE TM, TEAM T
+		    WHERE TB.TBM_NO = TM.TBM_NO
+		    AND TM.TEAM_NO = T.TEAM_NO
+		)
+		SELECT COUNT(*)   
+		FROM
+		(SELECT NO, TEAM_NM, TBM_NO, GBN, TBM_NM, TITLE, CON, DT, HIT, B_FILE, MEM_NO, DEL, 
+		        ROW_NUMBER() OVER (ORDER BY NO DESC) AS RNUM
+		FROM ALLLIST
+		WHERE DEL = 1
+		AND MEM_NO = #{mem_no}
+		<if test="searchBoardGbn eq 1">
+			AND TEAM_NM  IN '개인'
+		</if>
+		<if test="searchBoardGbn eq 2">
+			AND TEAM_NM  NOT IN '개인'
+		</if>
+		<if test="searchTxt != null and searchTxt != ''">
+		<choose>
+			<when test="searchGbn eq 0">
+				AND TITLE LIKE '%'|| #{searchTxt} ||'%'
+			</when>
+			<when test="searchGbn eq 1">
+				AND TITLE LIKE '%'|| #{searchTxt} ||'%'
+    			OR CON LIKE '%'|| #{searchTxt} ||'%'
+			</when>
+		</choose>
+		</if>
+		) AB
+	</select>
+	
+	<select id="getAllBoardList" resultType="hashmap" parameterType="hashmap">
+		WITH ALLLIST AS(
+		    SELECT FREE_NO AS NO, '개인' AS TEAM_NM, 0 AS TBM_NO, 0 AS GBN, '자유게시판' AS TBM_NM, FREE_TITLE AS TITLE, FREE_CON AS CON, TO_CHAR(FREE_DT, 'YYYY-MM-DD') AS DT, FREE_HIT AS HIT, FREE_FILE AS B_FILE, MEM_NO, FREE_DEL AS DEL FROM FREE
+		    UNION ALL
+		    SELECT TB.TB_NO AS NO, T.TEAM_NM AS TEAM_NM, TB.TBM_NO AS TBM_NO, TM.TEAM_NO AS GBN, TM.TBM_NM AS TBM_NM, TB.TB_TITLE AS TITLE, TB_CON AS CON, TO_CHAR(TB.TB_DT, 'YYYY-MM-DD') AS DT, TB.TB_HIT AS HIT, TB.TB_FILE AS B_FILE, TB.MEM_NO, TB.TB_DEL AS DEL 
+		    FROM T_BOARD TB, TB_MANAGE TM, TEAM T
+		    WHERE TB.TBM_NO = TM.TBM_NO
+		    AND TM.TEAM_NO = T.TEAM_NO
+		)
+		SELECT *  
+		FROM
+		(SELECT NO, TEAM_NM, TBM_NO, GBN, TBM_NM, TITLE, CON, DT, HIT, B_FILE, MEM_NO, DEL, 
+		        ROW_NUMBER() OVER (ORDER BY NO DESC) AS RNUM
+		FROM ALLLIST
+		WHERE DEL = 1
+		AND MEM_NO = #{mem_no}
+		<if test="searchBoardGbn eq 1">
+			AND TEAM_NM  IN '개인'
+		</if>
+		<if test="searchBoardGbn eq 2">
+			AND TEAM_NM  NOT IN '개인'
+		</if>
+		<if test="searchTxt != null and searchTxt != ''">
+		<choose>
+			<when test="searchGbn eq 0">
+				AND TITLE LIKE '%'|| #{searchTxt} ||'%'
+			</when>
+			<when test="searchGbn eq 1">
+				AND TITLE LIKE '%'|| #{searchTxt} ||'%'
+    			OR CON LIKE '%'|| #{searchTxt} ||'%'
+			</when>
+		</choose>
+		</if>
+		) AB
+		WHERE AB.RNUM BETWEEN #{startCnt} AND #{endCnt}
+	</select>
+	
 </mapper>

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface ILoginService {
-
 	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable;
 
 	public int getMemIdCheck(HashMap<String, String> params) throws Throwable;
@@ -16,5 +15,21 @@ public interface ILoginService {
 	public int updateMem(HashMap<String, String> params) throws Throwable;
 
 	public int deleteMem(HashMap<String, String> params) throws Throwable;
+
+	public int pwUpdateMem(HashMap<String, String> params) throws Throwable;
+
+	public HashMap<String, String> getMemFindId(HashMap<String, String> params) throws Throwable;
+
+	public int getMemFindIdCnt(HashMap<String, String> params) throws Throwable;
+
+	public int getMemIdCntCheck(HashMap<String, String> params) throws Throwable;
+
+	public HashMap<String, String> getMemPwAllCheck(HashMap<String, String> params) throws Throwable;
+
+	public int getMemNoCntCheck(HashMap<String, String> params) throws Throwable;
+
+	public int getAllBoardCnt(HashMap<String, String> params) throws Throwable;
+
+	public List<HashMap<String, String>> getAllBoardList(HashMap<String, String> params) throws Throwable;
 
 }

@@ -12,6 +12,7 @@ public class LoginDao implements ILoginDao {
 
 	@Autowired
 	public SqlSession sqlSession;
+
 	@Override
 	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable {
 		return sqlSession.selectOne("login.getLogin", params);
@@ -41,5 +42,45 @@ public class LoginDao implements ILoginDao {
 	public int deleteMem(HashMap<String, String> params) throws Throwable {
 		return sqlSession.update("login.deleteMem", params);
 	}
-	
+
+	@Override
+	public int pwUpdateMem(HashMap<String, String> params) throws Throwable {
+		return sqlSession.update("login.pwUpdateMem", params);
+	}
+
+	@Override
+	public HashMap<String, String> getMemFindId(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getMemFindId", params);
+	}
+
+	@Override
+	public int getMemFindIdCnt(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getMemFindIdCnt", params);
+	}
+
+	@Override
+	public int getMemIdCntCheck(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getMemIdCntCheck", params);
+	}
+
+	@Override
+	public HashMap<String, String> getMemPwAllCheck(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getMemPwAllCheck", params);
+	}
+
+	@Override
+	public int getMemNoCntCheck(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getMemNoCntCheck", params);
+	}
+
+	@Override
+	public int getAllBoardCnt(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getAllBoardCnt", params);
+	}
+
+	@Override
+	public List<HashMap<String, String>> getAllBoardList(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectList("login.getAllBoardList", params);
+	}
+
 }

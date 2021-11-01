@@ -7,8 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	
-
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -45,7 +43,6 @@
 		});
 		
 		$("#addBtn").on("click", function(){
-			
 			
 			if(checkVal("#mem_id")){
 				
@@ -86,30 +83,32 @@
 				
 				
 			}else{
-				var params = $("#joinForm").serialize();
-				
-				$.ajax({
-					url : "memCUDAjax",
-					type : "post",
-					dataType : "json",
-					data : params,
-					success : function(res){
-						if(res.result == "success"){
-							
-							location.href = "login";
-							
-						}else if(res.result == "feiled"){
-							
-							alert("작성에 실패했습니다.");
-							
-						}else{
-							alert("작성중 문제가 발생했습니다.")
+				if(confirm("가입하시겠습니까?")){
+					var params = $("#joinForm").serialize();
+					
+					$.ajax({
+						url : "memCUDAjax",
+						type : "post",
+						dataType : "json",
+						data : params,
+						success : function(res){
+							if(res.result == "success"){
+								
+								location.href = "login";
+								
+							}else if(res.result == "feiled"){
+								
+								alert("작성에 실패했습니다.");
+								
+							}else{
+								alert("작성중 문제가 발생했습니다.")
+							}
+						},
+						error : function(request, status, error){
+							console.log(error);
 						}
-					},
-					error : function(request, status, error){
-						console.log(error);
-					}
-				});
+					});
+				}
 			}
 		});
 	});//d
@@ -120,6 +119,7 @@
 		var memPw2 = document.getElementById("mem_pw2");
 		var memNm = document.getElementById("mem_nm");
 		var memPhone = document.getElementById("mem_phone");
+		var memBd = document.getElementById("mem_bd");
 		
 		var ch;
 		
@@ -187,6 +187,22 @@
             memNm.focus();
             return true;
         }
+		//폰번호 유효성 검사
+        var patternPhone = /01[016789]{1}-[^0][0-9]{3,4}-[0-9]{4}/;
+
+        if(!patternPhone.test(memPhone.value))
+        {
+            alert('핸드폰 번호를 확인 해주세요');
+            memPhone.focus();
+            return true;
+        }
+        //생년월일 유효성 검사
+        if(memBd.value.length<8){
+            alert("생년월일 형식은 ex)20000101 입니다.");
+            memBd.focus();
+            return true;
+        }
+
     }
 	
 	//값이 들어있는지 체크

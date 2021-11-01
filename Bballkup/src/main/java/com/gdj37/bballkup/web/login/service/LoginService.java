@@ -13,7 +13,7 @@ public class LoginService implements ILoginService {
 
 	@Autowired
 	public ILoginDao iLoginDao;
-
+	
 	@Override
 	public HashMap<String, String> getLogin(HashMap<String, String> params) throws Throwable {
 		return iLoginDao.getLogin(params);
@@ -42,6 +42,46 @@ public class LoginService implements ILoginService {
 	@Override
 	public int deleteMem(HashMap<String, String> params) throws Throwable {
 		return iLoginDao.deleteMem(params);
+	}
+
+	@Override
+	public int pwUpdateMem(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.pwUpdateMem(params);
+	}
+
+	@Override
+	public HashMap<String, String> getMemFindId(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getMemFindId(params);
+	}
+
+	@Override
+	public int getMemFindIdCnt(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getMemFindIdCnt(params);
+	}
+
+	@Override
+	public int getMemIdCntCheck(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getMemIdCntCheck(params);
+	}
+
+	@Override
+	public HashMap<String, String> getMemPwAllCheck(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getMemPwAllCheck(params);
+	}
+
+	@Override
+	public int getMemNoCntCheck(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getMemNoCntCheck(params);
+	}
+
+	@Override
+	public int getAllBoardCnt(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getAllBoardCnt(params);
+	}
+
+	@Override
+	public List<HashMap<String, String>> getAllBoardList(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getAllBoardList(params);
 	}
 
 	

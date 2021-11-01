@@ -18,8 +18,25 @@
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	//엔터키 폼 실행 막기
+	$("#loginForm").on("keypress", "input", function(){
+		if(event.ketCode == 13){ //엔터키가 눌렸을때
+			return false;		 //form실행 이벤트를 하지않음
+		}
+	});
+	//회원정보수정
 	$(".meminfo").on("click",function(){
-		$("#loginForm").attr("action","memUpdate");
+		
+		$("#gbn").val("u");
+		$("#loginForm").attr("action", "pwCheckGo");
+		$("#loginForm").submit();
+	});
+	
+	//비밀번호변경
+	$(".mypassword").on("click",function(){
+		
+		$("#gbn").val("pu");
+		$("#loginForm").attr("action", "pwCheckGo");
 		$("#loginForm").submit();
 	});
 	
@@ -30,6 +47,11 @@ $(document).ready(function(){
 
 	$("#mypage").on("click", function(){
 		$("#loginForm").attr("action","Mypage");
+		$("#loginForm").submit();
+	});
+	
+	$("#myBoardListBtn").on("click", function(){
+		$("#loginForm").attr("action","myBoardList");
 		$("#loginForm").submit();
 	});
 });
@@ -44,6 +66,7 @@ $(document).ready(function(){
 <form action="#" id="loginForm" method="post">
 	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	<input type="hidden" id="gbn" name="gbn" value="">
 </form>
 <div class="mypage1">
 	<div class="myphoto">
@@ -51,21 +74,21 @@ $(document).ready(function(){
 	</div>
 	<div class="myinfo">
 	    <div class="myname">
-	         <p>이름</p>
+	         <p>${sMNm}</p>
 		</div>
 		<div class="myphone">
-	    	<p>핸드폰 번호</p>
+	    	<p>${data.MEM_PHONE}</p>
 	    </div>
 	    <div class="mycard">
 	    	<c:choose>
-	    		<c:when test="">
-	    		<p>카드가 &nbsp;<span>등록되어있습니다.</span></p>
+	    		<c:when test="data.CARD_NO != null and data.CARD_NO != ''">
+	    			<p>카드가 &nbsp;<span>등록되어있습니다.</span></p>
 	    		</c:when>
 	    		<c:otherwise>
-	    		
+	    			<p>카드가 &nbsp;<span>등록되어있지않습니다.</span></p>
 	    		</c:otherwise>
 	    	</c:choose>
-	    	<p>카드가 &nbsp;<span>등록되어있습니다.</span></p>
+	    	<!-- <p>카드가 &nbsp;<span>등록되어있습니다.</span></p> -->
 	    </div>
 	</div>
 </div>
@@ -86,7 +109,7 @@ $(document).ready(function(){
     </div>
     <div class="mybuttons2">
         <div class="mybtn mypost">
-            <img src="resources/images/icon/내가쓴게시글.png" type="button">
+            <img id="myBoardListBtn" src="resources/images/icon/내가쓴게시글.png" type="button">
             <p>내가쓴게시글</p>
         </div>
         <div class="mybtn mypassword">
