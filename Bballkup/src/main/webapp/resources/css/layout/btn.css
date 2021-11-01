@@ -16,7 +16,7 @@
     cursor: pointer;
 }
 
-#loginBtn, #cancleBtn, #joinBtn, #cAddBtn, #mainlistBtn, #teambuttons>input, #mainbtn, .teambtns, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn{
+#loginBtn, #backBtn, #cancleBtn, #joinBtn, #cAddBtn, #mainlistBtn, #teambuttons>input, #mainbtn, .teambtns, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn{
  	background-color: white;
     padding: 5px;
     width: 80px;

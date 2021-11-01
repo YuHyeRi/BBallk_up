@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
+.mainmain{
+	justify-content: center;
+	display: flex;
+}
 .memdiv{
 	border : 2px solid #1d2088;
-	position: absolute;
 	width:700px;
 	padding : 10px;
 	height: auto;
 	text-align:center;
-	top:55%;
-	left:50%;
-	transform: translate(-50%,-50%);
 	border-radius: 15px;
 }
 

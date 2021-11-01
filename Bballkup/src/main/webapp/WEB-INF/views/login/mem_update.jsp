@@ -129,8 +129,9 @@
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
-<main class="mainmain">
+<main>
 <jsp:include page="../nav.jsp" flush="true" />
+<div class="mainmain">
 <div class="memdiv">
 	<form action="#" id="mUpdateForm" method="post">
 		<input type="hidden" name="gbn" value="u" >
@@ -169,6 +170,7 @@
 		<input type="button" value="탈퇴" id="deleteBtn">
 		<input type="button" value="취소" id="cancleBtn">
 	</div>
+</div>
 </div>	
 </main>
 <footer>

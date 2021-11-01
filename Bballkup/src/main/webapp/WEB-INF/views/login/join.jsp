@@ -7,124 +7,126 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+</style>
+
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#mem_id").on("change", function(){
-			
-			var params = $("#joinForm").serialize();
-			
-			$.ajax({
-				url : "memCntCheckAjax",
-				type : "post",
-				dataType : "json",
-				data : params,
-				success : function(res){
-					if(res.cnt > 0){
+   $(document).ready(function(){
+      $("#mem_id").on("change", function(){
+         
+         var params = $("#joinForm").serialize();
+         
+         $.ajax({
+            url : "memCntCheckAjax",
+            type : "post",
+            dataType : "json",
+            data : params,
+            success : function(res){
+               if(res.cnt > 0){
 
-						$("#check").html("중복!!");
-						$("#check").css("color", "red");
-						$("#checkId").val("false");
-						
-					}else{
-						$("#check").html("");
-						$("#checkId").val("true");
-					}
-				},
-				error : function(request, status, error){
-					console.log(error);
-				}
-			});
-		}); 
-		
-		$("#cancleBtn").on("click", function(){
-			
-			history.back();
-		});
-		
-		$("#addBtn").on("click", function(){
-			
-			if(checkVal("#mem_id")){
-				
-				alert("아이디를 입력하세요.");
-				$("#mem_id").focus();
-				
-			}else if(checkVal("#mem_pw")){
-				
-				alert("비밀번호를 입력하세요.");
-				$("#mem_pw").focus();
-				
-			}else if(checkVal("#mem_pw2")){
-				
-				alert("재확인용 비밀번호를 입력하세요.");
-				$("#mem_pw2").focus();
-				
-			}else if(checkVal("#mem_nm")){
-				
-				alert("이름을 입력하세요.");
-				$("#mem_nm").focus();
-				
-			}else if(checkVal("#mem_phone")){
-				
-				alert("핸드폰번호를 입력하세요.");
-				$("#mem_phone").focus();
-				
-			}else if(checkVal("#mem_bd")){
-				
-				alert("생년월일을 선택하세요.");
-				$("#mem_bd").focus();
-				
-			}else if(checkVal("#mem_pwa")){
-				
-				alert("비밀번호 확인용 답변을 입력하세요.");
-				$("#mem_pwa").focus();
-				
-			}else if(check()){
-				
-				
-			}else{
-				if(confirm("가입하시겠습니까?")){
-					var params = $("#joinForm").serialize();
-					
-					$.ajax({
-						url : "memCUDAjax",
-						type : "post",
-						dataType : "json",
-						data : params,
-						success : function(res){
-							if(res.result == "success"){
-								
-								location.href = "login";
-								
-							}else if(res.result == "feiled"){
-								
-								alert("작성에 실패했습니다.");
-								
-							}else{
-								alert("작성중 문제가 발생했습니다.")
-							}
-						},
-						error : function(request, status, error){
-							console.log(error);
-						}
-					});
-				}
-			}
-		});
-	});//d
-	
-	function check() {
-		var memId = document.getElementById("mem_id");
-		var memPw = document.getElementById("mem_pw");
-		var memPw2 = document.getElementById("mem_pw2");
-		var memNm = document.getElementById("mem_nm");
-		var memPhone = document.getElementById("mem_phone");
-		var memBd = document.getElementById("mem_bd");
-		
-		var ch;
-		
-		//아이디 길이 체크 (4~12자)
-     	if (memId.value.length<5) {
+                  $("#check").html("중복!!");
+                  $("#check").css("color", "red");
+                  $("#checkId").val("false");
+                  
+               }else{
+                  $("#check").html("");
+                  $("#checkId").val("true");
+               }
+            },
+            error : function(request, status, error){
+               console.log(error);
+            }
+         });
+      }); 
+      
+      $("#cancleBtn").on("click", function(){
+         
+         history.back();
+      });
+      
+      $("#addBtn").on("click", function(){
+         
+         
+         if(checkVal("#mem_id")){
+            
+            alert("아이디를 입력하세요.");
+            $("#mem_id").focus();
+            
+         }else if(checkVal("#mem_pw")){
+            
+            alert("비밀번호를 입력하세요.");
+            $("#mem_pw").focus();
+            
+         }else if(checkVal("#mem_pw2")){
+            
+            alert("재확인용 비밀번호를 입력하세요.");
+            $("#mem_pw2").focus();
+            
+         }else if(checkVal("#mem_nm")){
+            
+            alert("이름을 입력하세요.");
+            $("#mem_nm").focus();
+            
+         }else if(checkVal("#mem_phone")){
+            
+            alert("핸드폰번호를 입력하세요.");
+            $("#mem_phone").focus();
+            
+         }else if(checkVal("#mem_bd")){
+            
+            alert("생년월일을 선택하세요.");
+            $("#mem_bd").focus();
+            
+         }else if(checkVal("#mem_pwa")){
+            
+            alert("비밀번호 확인용 답변을 입력하세요.");
+            $("#mem_pwa").focus();
+            
+         }else if(check()){
+            
+            
+         }else{
+            var params = $("#joinForm").serialize();
+            
+            $.ajax({
+               url : "memCUDAjax",
+               type : "post",
+               dataType : "json",
+               data : params,
+               success : function(res){
+                  if(res.result == "success"){
+                     
+                     location.href = "login";
+                     
+                  }else if(res.result == "feiled"){
+                     
+                     alert("작성에 실패했습니다.");
+                     
+                  }else{
+                     alert("작성중 문제가 발생했습니다.")
+                  }
+               },
+               error : function(request, status, error){
+                  console.log(error);
+               }
+            });
+         }
+      });
+   });//d
+   
+   function check() {
+      var memId = document.getElementById("mem_id");
+      var memPw = document.getElementById("mem_pw");
+      var memPw2 = document.getElementById("mem_pw2");
+      var memNm = document.getElementById("mem_nm");
+      var memPhone = document.getElementById("mem_phone");
+      
+      var ch;
+      
+      //아이디 길이 체크 (4~12자)
+        if (memId.value.length<5) {
             alert("아이디는 5자 이상 입력해주세요.");
             memId.focus();
             return true;
@@ -181,70 +183,54 @@
             return true;
         }
         
- 		//이름 유효성 검사
+       //이름 유효성 검사
         if(memNm.value.length<2){
             alert("이름을 2자 이상 입력해주십시오.");
             memNm.focus();
             return true;
         }
-		//폰번호 유효성 검사
-        var patternPhone = /01[016789]{1}-[^0][0-9]{3,4}-[0-9]{4}/;
-
-        if(!patternPhone.test(memPhone.value))
-        {
-            alert('핸드폰 번호를 확인 해주세요');
-            memPhone.focus();
-            return true;
-        }
-        //생년월일 유효성 검사
-        if(memBd.value.length<8){
-            alert("생년월일 형식은 ex)20000101 입니다.");
-            memBd.focus();
-            return true;
-        }
-
     }
-	
-	//값이 들어있는지 체크
-	function checkVal(sel){
-		if($.trim($(sel).val()) == ''){
-			return true;
-		}else{
-			return false;
-		}
-	}
+   
+   //값이 들어있는지 체크
+   function checkVal(sel){
+      if($.trim($(sel).val()) == ''){
+         return true;
+      }else{
+         return false;
+      }
+   }
 </script>
 </head>
 <body>
-	<form action="#" id="joinForm" method="post">
-		<input type="hidden" name="gbn" value="c" >
-		아이디<br> 
-			<input type="text" id="mem_id" name="mem_id" placeholder="아이디입력(영문,숫자조합 5글자 이상)">
-			<span id="check"></span><br><br>
-		비밀번호<br> 
-			<input type="password" id="mem_pw" name="mem_pw" placeholder="비밀번호(영문, 숫자 조합)"><br>
-			<input type="password" id="mem_pw2" name="mem_pw2" placeholder="비밀번호 재확인"><br><br>
-		이름<br> 
-			<input type="text" id="mem_nm" name="mem_nm" placeholder="이름입력(2자 이상)"><br><br>
-		핸드폰<br> 
-			<input type="text" id="mem_phone" name="mem_phone" placeholder="010-0000-0000"><br><br>
-		성별<br>
-			여자<input type="radio" name="mem_gen" id="mem_genF" value="F" checked="checked">
-			남자<input type="radio" name="mem_gen" id="mem_genM" value="M"><br><br>
-		생년월일<br>
-			<input type="text" id="mem_bd" name="mem_bd" placeholder="19990101"><br><br>
-		비밀번호 확인용 질문<br>
-			<select name="mem_pw_gbn" id="mem_pw_gbn">
-				<option value="1">출신 초등학교는 어디인가요?</option>
-				<option value="2">가장 존경하는 인물은 누구인가요?</option>
-				<option value="3">자신의 보물제1호는 무엇인가요?</option>
-				<option value="4">인상깊게 읽은 책은 무엇인가요?</option>
-			</select><br>
-		비밀번호 확인용 답변<br>
-			<input type="text" id="mem_pwa" name="mem_pwa" placeholder="답변"><br><br>
-	</form>
-	<br><br>
-	<input type="button" value="저장" id="addBtn">
-	<input type="button" value="취소" id="cancleBtn">
+   <form action="#" id="joinForm" method="post">
+      <input type="hidden" name="gbn" value="c" >
+      아이디<br> 
+         <input type="text" id="mem_id" name="mem_id" placeholder="아이디입력(영문,숫자조합 5글자 이상)">
+         <span id="check"></span><br><br>
+      비밀번호<br> 
+         <input type="password" id="mem_pw" name="mem_pw" placeholder="비밀번호(영문, 숫자 조합)"><br>
+         <input type="password" id="mem_pw2" name="mem_pw2" placeholder="비밀번호 재확인"><br><br>
+      이름<br> 
+         <input type="text" id="mem_nm" name="mem_nm" placeholder="이름입력(2자 이상)"><br><br>
+      핸드폰<br> 
+         <input type="text" id="mem_phone" name="mem_phone" placeholder="010-0000-0000"><br><br>
+      성별<br>
+         여자<input type="radio" name="mem_gen" id="mem_genF" value="F" checked="checked">
+         남자<input type="radio" name="mem_gen" id="mem_genM" value="M"><br><br>
+      생년월일<br>
+         <input type="text" id="mem_bd" name="mem_bd" placeholder="19990101"><br><br>
+      비밀번호 확인용 질문<br>
+         <select name="mem_pw_gbn" id="mem_pw_gbn">
+            <option value="1">출신 초등학교는 어디인가요?</option>
+            <option value="2">가장 존경하는 인물은 누구인가요?</option>
+            <option value="3">자신의 보물제1호는 무엇인가요?</option>
+            <option value="4">인상깊게 읽은 책은 무엇인가요?</option>
+         </select><br>
+      비밀번호 확인용 답변<br>
+         <input type="text" id="mem_pwa" name="mem_pwa" placeholder="답변"><br><br>
+   </form>
+   <br><br>
+   <input type="button" value="저장" id="addBtn">
+   <input type="button" value="취소" id="cancleBtn">
 </body>
 </html>

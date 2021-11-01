@@ -19,9 +19,8 @@
 <style type="text/css">
 body {
 	margin: 0px;
-	font-size: 0pt;
+	font-size: 0px;
 }
-
 .login_wrap {
 	text-align: right;
 	padding: 10px;

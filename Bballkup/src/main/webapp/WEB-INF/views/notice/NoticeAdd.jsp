@@ -5,9 +5,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
+	
 <style type="text/css">
 #att {
 	display: none;
+}
+.btndiv{
+	margin : 20px 0 20px 0
 }
 </style>
 <script type="text/javascript"
@@ -113,6 +124,12 @@ function checkVal(sel) {
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att" />
 </form>
@@ -133,7 +150,13 @@ function checkVal(sel) {
 	<span id="fileName"></span>
 	<input type="hidden" name="NFile" id="NFile" />
 </form>
-<input type="button" value="저장" id="addBtn" />
-<input type="button" value="취소" id="cancelBtn" />
+<div class="btndiv">
+	<input type="button" value="저장" id="addBtn" />
+	<input type="button" value="취소" id="cancelBtn" />
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>
