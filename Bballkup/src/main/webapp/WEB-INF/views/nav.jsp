@@ -5,7 +5,7 @@
         <button class="dropbtn">사이트소개</button>
         <div class="dropdown-con">
             <a href="javascript:location.href='Siteplan';">사이트소개</a>
-            <a href="#">이용가이드</a>
+            <a href="javascript:location.href='Used';">이용가이드</a>
         </div>
     </div>
     <div class="dropdown 2">

@@ -188,7 +188,7 @@ var html ="";
 
 <div>
 	<form action="#" id="loginForm" method="post">
-	<input type="hidden" id="no" name="no" value="${sMNo}">
+	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	</form>
 	
 	<form action="#" id="actionForm" method="post">

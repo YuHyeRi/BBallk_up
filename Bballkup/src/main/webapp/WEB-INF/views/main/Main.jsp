@@ -84,6 +84,16 @@ $(document).ready(function(){
 			$("#loginForm").submit();
 		});
 		
+		$("#join").on("click", function(){
+			$("#loginForm").attr("action","join");
+			$("#loginForm").submit();
+		});
+		
+		$("#mypage").on("click", function(){
+			$("#loginForm").attr("action","memUpdate");
+			$("#loginForm").submit();
+		});
+		
 });
 function drawBtn(list3){
 	var html = "";
@@ -145,8 +155,10 @@ function drawList(list){
 <jsp:include page="../nav.jsp" flush="true" />
 
 <form action="#" id="loginForm" method="post">
-	<input type="hidden" id="no" name="no" value="${sMNo}">
+	<input type="hidden" id="logno" name="logno" value="${sMNo}">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 </form>
+
 <form action="#" id="main1" method="post">
 
 </form>

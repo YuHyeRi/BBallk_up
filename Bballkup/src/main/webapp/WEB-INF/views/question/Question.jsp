@@ -7,12 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>고객지원-질문답변게시판</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
+	
 <style type="text/css">
-body {
-	margin: 0px;
-	font-size: 0pt;
-}
-
 .login_wrap {
 	text-align: right;
 	padding: 10px;
@@ -355,6 +358,12 @@ function checkObjVal(obj) {
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<%-- 
 	<!-- 최상단 로그인 -->
 	<div class="login_wrap">
 		<c:choose>
@@ -366,9 +375,9 @@ function checkObjVal(obj) {
 			<input type="button" value="로그아웃" id="logoutBtn" />	
 		</c:otherwise>
 		</c:choose>
-	</div> 
+	</div> --%> 
 	<!-- 작성+리스트 -->
-<main class="ob_wrap">	
+	<div class="ob_wrap">	
 	<form action="#" id="actionForm" method="post">
 	<input type="hidden" id="no" name="no"/>
 	<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
@@ -507,6 +516,10 @@ function checkObjVal(obj) {
 		</c:choose>
 		</div>
 	</div>
-</main>	
+	</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

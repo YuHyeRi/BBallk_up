@@ -36,6 +36,25 @@ $(document).ready(function(){
 		history.back();
 	});
 	
+	$("#login").on("click",function(){
+		$("#loginForm").attr("action","login");
+		$("#loginForm").submit();});
+			
+	$("#logout").on("click", function(){
+		$("#loginForm").attr("action","logout");
+		$("#loginForm").submit();
+	});
+
+	$("#join").on("click", function(){
+		$("#loginForm").attr("action","join");
+		$("#loginForm").submit();
+	});
+			
+	$("#mypage").on("click", function(){
+		$("#loginForm").attr("action","memUpdate");
+		$("#loginForm").submit();
+	});
+	
 	$("#deleteBtn").on("click", function(){
 		if(confirm("삭제하시겠습니까?")){
 			var params = $("#actionForm").serialize();
@@ -68,6 +87,11 @@ $(document).ready(function(){
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
 <main>
+<form action="#" id="loginForm" method="post">
+	<input type="hidden" id="logno" name="logno" value="${sMNo}">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
+
 <form action="#" id="actionForm" method="post">
 	<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
 	<input type="hidden" name="searchTxt" value="${param.searchTxt}" />

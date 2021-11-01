@@ -19,6 +19,35 @@
     margin-right: 100px;
 }
 </style>
+<script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#login").on("click",function(){
+		$("#loginForm").attr("action","login");
+		$("#loginForm").submit();
+	});
+			
+	$("#logout").on("click", function(){
+		$("#loginForm").attr("action","logout");
+		$("#loginForm").submit();
+	});
+	
+	$("#join").on("click", function(){
+		$("#loginForm").attr("action","join");
+		$("#loginForm").submit();
+	});
+			
+	$("#mypage").on("click", function(){
+		$("#loginForm").attr("action","memUpdate");
+		$("#loginForm").submit();
+	});
+	
+	$(".join").on("click", function(){
+		$("#loginForm").attr("action","join");
+		$("#loginForm").submit();
+	});
+});
+</script>
 </head>
 <body>
 <header>
@@ -26,11 +55,15 @@
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
+<form action="#" id="loginForm" method="post">
+	<input type="hidden" id="logno" name="logno" value="${sMNo}">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <div class="site-top1">
 	<div class="site-text">
 	    <h1 style="font-size:50px">I am Seoul People</h1>
 	    <p>And I love Sports</p>
-	    <button><span>sign up</span></button>
+	    <button class="join"><span>sign up</span></button>
 	</div>
 </div>
 <!-- 관리자만 이미지 수정 버튼 보임 -->
