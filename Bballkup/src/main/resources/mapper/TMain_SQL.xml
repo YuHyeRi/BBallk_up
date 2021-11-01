@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tmain">
+
+	<select id="tMainList" parameterType="hashmap" resultType="hashmap">
+		SELECT T.TEAM_NM, T.TEAM_NO, T.MEM_NO 
+		FROM TEAM T INNER JOIN MEM M
+					ON T.MEM_NO = M.MEM_NO 
+		WHERE TEAM_DEL = 1
+		<if test="searchTxt != null and searchTxt != ''" >
+			AND TEAM_NM LIKE '%' || #{searchTxt} || '%'
+		</if>
+		ORDER BY TEAM_NO DESC
+	</select>
+	
+	<select id="tMainDtl" parameterType="hashmap" resultType="hashmap">
+		SELECT T.TEAM_NM, T.TEAM_LOGO, S.SPORT_NM, T.TEAM_INTRO, T.MEM_NO
+		FROM TEAM T INNER JOIN SPORT S
+					ON T.SPORT_NO = S.SPORT_NO
+					INNER JOIN MEM M
+            		ON T.MEM_NO = M.MEM_NO
+		WHERE TEAM_DEL = 1
+		AND TEAM_NO = #{tno}
+	</select>
+	
+	<insert id="teamReg" parameterType="hashmap">
+		INSERT INTO T_MEM (MEM_NO, TEAM_NO)
+		VALUES (#{mno}, #{tno})
+	</insert>
+	
+	<select id="teamRegOX" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT FROM T_MEM
+		WHERE MEM_NO = #{mno}
+		AND TEAM_NO = #{tno}
+	</select>
+	
+	<select id="applyState" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) AS CNT FROM T_MEM
+		WHERE APPLY_STATE = '신청완료'
+		AND MEM_NO = #{mno}
+		AND TEAM_NO = #{tno}
+	</select>
+	
+
+
+</mapper>
