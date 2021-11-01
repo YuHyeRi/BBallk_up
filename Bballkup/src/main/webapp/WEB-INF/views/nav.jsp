@@ -18,7 +18,7 @@
     <div class="dropdown 3">
         <button class="dropbtn">팀커뮤니티</button>
         <div class="dropdown-con">
-            <a href="#">팀별게시판</a>
+            <a href="javascript:location.href='tMain';">팀별게시판</a>
             <a href="#">팀장 신청</a>
         </div>
     </div>

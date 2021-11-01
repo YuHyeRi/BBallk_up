@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.memdiv{
+	border : 2px solid #1d2088;
+	position: absolute;
+	width:700px;
+	padding : 10px;
+	height: auto;
+	text-align:center;
+	top:55%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	border-radius: 15px;
+}
+
+#updateBtn:hover{
+	background-color: #e3ecfb;;
+}
+#deleteBtn:hover{
+	background-color: #e3ecfb;;
+}
+#cancleBtn:hover{
+	background-color: #e3ecfb;;
+}

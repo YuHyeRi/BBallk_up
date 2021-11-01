@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.ob_wrap {
+	border: 2px solid #1d2088;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+.user_info {
+	display: inline-table;
+	width: 100px;
+	height: 100px;
+	vertical-align: top;
+	text-align: center;
+}
+.user_name {
+	display: table-cell;
+	vertical-align: middle;
+}

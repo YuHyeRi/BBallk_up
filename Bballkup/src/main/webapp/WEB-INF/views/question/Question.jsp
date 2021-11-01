@@ -12,50 +12,23 @@
 	<link rel="stylesheet" href="resources/css/layout/btn.css">
 	<link rel="stylesheet" href="resources/css/layout/loginout.css">
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
-	<link rel="stylesheet" href="resources/css/layout/table.css">
-	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
+	<link rel="stylesheet" href="resources/css/layout/question.css">
 	
 <style type="text/css">
-.login_wrap {
-	text-align: right;
-	padding: 10px;
-	font-size:12pt;
-}
-
-.ob_wrap {
-	width: 800px;
-	margin: 0px auto;
-	border: 1px solid #444444;
-}
-
-.write_area {
+/* .write_area {
 	height: 110px;
-}
+} */
 
-.secretCheck {
+/* .secretCheck {
    text-align: right;
-}
+} */
 
-.secretCheck .secret_text {
+/* .secretCheck .secret_text {
 	font-size: 11px;
-}
+} */
 
-.user_info {
-	display: inline-table;
-	width: 100px;
-	height: 100px;
-	vertical-align: top;
-	text-align: center;
-}
 
-.user_name {
-	display: table-cell;
-	width: 100px;
-	height: 100px;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 12pt;
-}
+
 
 .write_con_wrap {
 	display: inline-block;
@@ -363,128 +336,115 @@ function checkObjVal(obj) {
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-<%-- 
-	<!-- 최상단 로그인 -->
-	<div class="login_wrap">
-		<c:choose>
-			<c:when test="${empty sMNo}">
-				<input type="button" value="로그인" id="loginBtn"/>
-			</c:when>
-		<c:otherwise>
-			${sMNm}님 어서오십시오.
-			<input type="button" value="로그아웃" id="logoutBtn" />	
-		</c:otherwise>
-		</c:choose>
-	</div> --%> 
+<div class="qqdiv">
 	<!-- 작성+리스트 -->
 	<div class="ob_wrap">	
-	<form action="#" id="actionForm" method="post">
-	<input type="hidden" id="no" name="no"/>
-	<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
-	<input type="hidden" name="page" id="page" value="${page}"/>
-	
-	<div class="write_area">
-		<c:choose>
-			<c:when test="${empty sMNo}">
-				<div class="login_req_wrap">
-					<div class="login_req"> 작성 시 로그인이 필요합니다. 
-					<input type="button" value="로그인" id="loginBtn"/></div>
-				</div>	
-			</c:when>
-			<c:otherwise>			
-				<div class="user_info">
-					<div class="user_name">${sMNm}</div>
-				</div>
-				<div class="write_con_wrap">
-					<textarea class="write_con" id="q_con" name="q_con"></textarea>
-				</div>
-				<div class="btn_wrap">
-					<input type="button" value="저장" class="action_btn" id="addBtn"/>
-					<input type="button" value="수정" class="action_btn2" id="update2Btn"/>
-					<input type="button" value="취소" class="action_btn2" id="cancelBtn"/>
-				</div>			
-		    </c:otherwise>
-		</c:choose>
-	</div>
-	</form>
-	<form action="#" id ="RepleForm" method="post">
-		<input type="hidden" name="no" id="no2" />
+		<form action="#" id="actionForm" method="post">
+		<input type="hidden" id="no" name="no"/>
 		<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
-		<input type="hidden" name="q_re_con" id="q_re_con" />
-	</form>
-	<!-- List -->
-	<div class="ob_list_wrap">
-		<c:choose>
-			<c:when test="${fn:length(list) eq 0}">
-				<div class="data_req_wrap">
-					<div class="data_req">데이터가 없습니다.</div>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<c:forEach var="data" items="${list}">
-					<div class="ob_data" no="${data.Q_NO}">
-						<div class="user_info">
-							<div class="user_name">${data.MEM_NM}</div>
-						</div>
-						<div class="con_info">
-							<div class="con">${data.Q_CON}</div>
-						</div>
-						<div class="btn_wrap">				
-							<c:if test="${data.MEM_NO eq sMNo || sMNo eq 4}">
-								<c:if test="${data.MEM_NO eq sMNo}">
-									<input type="button" value="수정" class="action_btn2" id="updateBtn" />
-								</c:if>
-								<input type="button" value="삭제" class="action_btn2" id="deleteBtn" />
-							</c:if>
-						</div>
+		<input type="hidden" name="page" id="page" value="${page}"/>
+		
+		<div class="write_area">
+			<c:choose>
+				<c:when test="${empty sMNo}">
+					<div class="login_req_wrap">
+						<div class="login_req"> 작성 시 로그인이 필요합니다. 
+						<input type="button" value="로그인" id="loginBtn"/></div>
+					</div>	
+				</c:when>
+				<c:otherwise>			
+					<div class="user_info">
+						<div class="user_name">${sMNm}</div>
 					</div>
-					<!-- 댓글영역 -->
-					<div class="ob_data_reple" id="ob_data_reple" no="${data.Q_NO}">
-						<c:if test="${!empty data.Q_RE_CON}">
-						<div class="reple_wrap reple_text_area" >
+					<div class="write_con_wrap">
+						<textarea class="write_con" id="q_con" name="q_con"></textarea>
+					</div>
+					<div class="btn_wrap">
+						<input type="button" value="저장" class="action_btn" id="addBtn"/>
+						<input type="button" value="수정" class="action_btn2" id="update2Btn"/>
+						<input type="button" value="취소" class="action_btn2" id="cancelBtn"/>
+					</div>			
+			    </c:otherwise>
+			</c:choose>
+		</div>
+		</form>
+		<form action="#" id ="RepleForm" method="post">
+			<input type="hidden" name="no" id="no2" />
+			<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
+			<input type="hidden" name="q_re_con" id="q_re_con" />
+		</form>
+		<!-- List -->
+		<div class="ob_list_wrap">
+			<c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<div class="data_req_wrap">
+						<div class="data_req">데이터가 없습니다.</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="data" items="${list}">
+						<div class="ob_data" no="${data.Q_NO}">
 							<div class="user_info">
-								<img src="resources/images/arrowright.png" width="70px" height="70px">			
+								<div class="user_name">${data.MEM_NM}</div>
 							</div>
 							<div class="con_info">
-								<div id="reple_con" class="reple_con">${data.Q_RE_CON}</div>
+								<div class="con">${data.Q_CON}</div>
 							</div>
-							<div class="btn_wrap">
-								<c:if test="${sMLv eq 0}">
-									<input type="button" value="수정" class="action_btn3" id="reple_text_updateBtn" />
-									<input type="button" value="삭제" class="action_btn3" id="reple_deleteBtn" />					
+							<div class="btn_wrap">				
+								<c:if test="${data.MEM_NO eq sMNo || sMNo eq 4}">
+									<c:if test="${data.MEM_NO eq sMNo}">
+										<input type="button" value="수정" class="action_btn2" id="updateBtn" />
+									</c:if>
+									<input type="button" value="삭제" class="action_btn2" id="deleteBtn" />
 								</c:if>
 							</div>
 						</div>
-						</c:if>
-						<c:if test="${sMLv eq 0}">
-							<div class="reple_wrap reple_write_area" >
+						<!-- 댓글영역 -->
+						<div class="ob_data_reple" id="ob_data_reple" no="${data.Q_NO}">
+							<c:if test="${!empty data.Q_RE_CON}">
+							<div class="reple_wrap reple_text_area" >
 								<div class="user_info">
-									<img src="resources/images/arrowright.png" width="70px" height="70px">			
+									<img src="resources/images/icon/답변.png" width="20px">			
 								</div>
 								<div class="con_info">
-									<textarea class="q_re_con" placeholder="댓글을 입력해주세요.">${data.Q_RE_CON}</textarea>	
+									<div id="reple_con" class="reple_con">${data.Q_RE_CON}</div>
 								</div>
 								<div class="btn_wrap">
-									<c:choose>
-										<c:when test="${empty data.Q_RE_CON}">
-											<input type="button" value="등록" class="action_btn4" id="reple_addBtn" />
-										</c:when>
-										<c:otherwise>
-											<input type="button" value="수정" class="action_btn5" id="reple_write_updateBtn" />
-											<input type="button" value="취소" class="action_btn5" id="reple_cancelBtn"/>
-										</c:otherwise>
-									</c:choose>
+									<c:if test="${sMLv eq 0}">
+										<input type="button" value="수정" class="action_btn3" id="reple_text_updateBtn" />
+										<input type="button" value="삭제" class="action_btn3" id="reple_deleteBtn" />					
+									</c:if>
 								</div>
 							</div>
-						</c:if>										
-					</div>
-				</c:forEach>
-			</c:otherwise>
-		</c:choose>		
-	</div>
-
-<!-- Paging -->
-	<div class="paging_wrap">
+							</c:if>
+							<c:if test="${sMLv eq 0}">
+								<div class="reple_wrap reple_write_area" >
+									<div class="user_info">
+										<img src="resources/images/icon/답변.png" width="20px">			
+									</div>
+									<div class="con_info">
+										<textarea class="q_re_con" placeholder="댓글을 입력해주세요.">${data.Q_RE_CON}</textarea>	
+									</div>
+									<div class="btn_wrap">
+										<c:choose>
+											<c:when test="${empty data.Q_RE_CON}">
+												<input type="button" value="등록" class="action_btn4" id="reple_addBtn" />
+											</c:when>
+											<c:otherwise>
+												<input type="button" value="수정" class="action_btn5" id="reple_write_updateBtn" />
+												<input type="button" value="취소" class="action_btn5" id="reple_cancelBtn"/>
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</c:if>										
+						</div>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>		
+		</div>
+	<!-- Paging -->
+		<div class="paging_wrap">
 		<div id="paging_wrap">
 			<!-- 이전 -->
 		<c:choose>
@@ -517,6 +477,7 @@ function checkObjVal(obj) {
 		</div>
 	</div>
 	</div>
+</div>
 </main>
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />

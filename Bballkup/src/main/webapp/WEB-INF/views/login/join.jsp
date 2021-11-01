@@ -7,12 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	
+
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
-		
-		
 		$("#mem_id").on("change", function(){
 			
 			var params = $("#joinForm").serialize();

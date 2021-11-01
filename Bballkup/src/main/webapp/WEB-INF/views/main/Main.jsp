@@ -90,7 +90,7 @@ $(document).ready(function(){
 		});
 		
 		$("#mypage").on("click", function(){
-			$("#loginForm").attr("action","memUpdate");
+			$("#loginForm").attr("action","Mypage");
 			$("#loginForm").submit();
 		});
 		

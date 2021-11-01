@@ -45,7 +45,7 @@
 	}
 	
 	.list_wrap td:hover {
-		background-color: rgba(0, 20, 255, 50);
+		background-color: #1d2088;
 		color: white;
 		cursor: pointer;
 	}

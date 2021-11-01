@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/login.css">
+	
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -58,28 +65,32 @@
 			return false;
 		}
 	}
-	
-	
 </script>
 </head>
 <body>
-<div>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main class="mainmain">
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="logindiv">
 <form action="#" id="loginForm" method="post">
 <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-	<c:choose>
-		<c:when test="${empty sMId }">
-			아이디 : <input type="text" id="mem_id" name="mem_id" ><br>
-			비밀번호 : <input type="password" id="mem_pw" name="mem_pw" >
-			<input type="button" value="로그인" id="loginBtn">
-			<input type="button" value="회원가입" id="joinBtn">
-		</c:when>
-		<c:otherwise>
-			${sMNm}님 어서오세오.  <input type="button" value="로그아웃" id="logoutBtn">
-			<input type="button" value="정보수정" id="memUpdateBtn">
-			<input type="button" value="메인으로"  onClick="location.href='Main'">
-		</c:otherwise>
-	</c:choose>
+	<h2>Login</h2>
+		<div class="idpassForm">
+			<input type="text" id="mem_id" name="mem_id" placeholder="ID" >
+			<input type="password" id="mem_pw" name="mem_pw" placeholder="PW">
+		</div>
+			<input type="button" value="LOG IN" id="loginBtn">
+		<div class="btntext">
+			Don't you have ID? <a href="join"> sign up</a>		
+			<!-- <input type="button" value="회원가입" id="joinBtn"> -->
+		</div>
 </form>
 </div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

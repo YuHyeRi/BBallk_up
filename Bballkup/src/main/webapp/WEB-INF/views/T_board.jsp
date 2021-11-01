@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <div>
 	<h2>부천FC</h2>
 	<p>뜨거운 열정! 부천FC 커뮤니티 입니다</p>

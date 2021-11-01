@@ -7,6 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/login.css">
+	<link rel="stylesheet" href="resources/css/layout/memupdate.css">
+
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -22,13 +30,21 @@
 		}
 		
 		$("#cancleBtn").on("click", function(){
-			
 			history.back();
 		});
 		
+		$("#logout").on("click", function(){
+			$("#loginForm").attr("action","logout");
+			$("#loginForm").submit();
+		});
+		
+		$("#mypage").on("click", function(){
+			$("#loginForm").attr("action","Mypage");
+			$("#loginForm").submit();
+		});
+		
+		
 		$("#updateBtn").on("click", function(){
-			
-			
 			if(checkVal("#mem_phone")){
 				
 				alert("핸드폰번호를 입력하세요.");
@@ -110,6 +126,12 @@
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main class="mainmain">
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="memdiv">
 	<form action="#" id="mUpdateForm" method="post">
 		<input type="hidden" name="gbn" value="u" >
 		<input type="hidden" name="mem_no" value="${data.MEM_NO}" >
@@ -130,7 +152,7 @@
 				<option value="2">가장 존경하는 인물은 누구인가요?</option>
 				<option value="3">자신의 보물제1호는 무엇인가요?</option>
 				<option value="4">인상깊게 읽은 책은 무엇인가요?</option>
-			</select><br>
+			</select><br><br>
 		비밀번호 확인용 답변<br>
 			<input type="text" id="mem_pwa" name="mem_pwa" value="${data.MEM_PWA}" placeholder="답변"><br><br>
 	</form>
@@ -138,9 +160,19 @@
 		<input type="hidden" name="gbn" value="d" >
 		<input type="hidden" name="mem_no" value="${data.MEM_NO}" >
 	</form>
-	<br><br>
-	<input type="button" value="수정" id="updateBtn">
-	<input type="button" value="탈퇴" id="deleteBtn">
-	<input type="button" value="취소" id="cancleBtn">
+	<form action="#" id="loginForm" method="post">
+	<input type="hidden" id="logno" name="logno" value="${sMNo}">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	</form>
+	<div class="membtns">
+		<input type="button" value="수정" id="updateBtn">
+		<input type="button" value="탈퇴" id="deleteBtn">
+		<input type="button" value="취소" id="cancleBtn">
+	</div>
+</div>	
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

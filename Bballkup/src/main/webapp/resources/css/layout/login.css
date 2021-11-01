@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+.logindiv{
+	border : 2px solid #1d2088;
+	position: absolute;
+	width:300px;
+	height:400px;
+	text-align:center;
+	top:55%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	border-radius: 15px;
+}
+
+.mainmain{
+	height: 550px;
+}
+
+#mem_id, #mem_pw{
+	 border:none;
+	 border-bottom: 2px solid #adadad;
+ 	 width: 100%;
+ 	 padding : 15px 0 15px 0;
+	 color: #636e72;
+	 font-size:16px;
+	 height:25px;
+	 background: none;
+}
+
+.idpassForm{
+  	margin: 30px;
+}
+
+#loginBtn{
+	position:relative;
+	padding : 10px;
+	margin : 40px 0 40px 0;
+	font-weight: bold;
+	width : 80%;
+}
+
+#loginBtn:hover{
+	background-color: #e3ecfb;
+}
+
+a{
+	text-decoration: none;
+}
