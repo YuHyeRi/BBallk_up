@@ -26,7 +26,7 @@
         <button class="dropbtn">고객지원</button>
         <div class="dropdown-con">
             <a href="javascript:location.href='NoticeList';">공지 사항</a>
-            <a href="#">질문게시판</a>
+            <a href="javascript:location.href='Question';">질문게시판</a>
         </div>
     </div>
 </div>
