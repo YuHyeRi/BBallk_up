@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/login.css">
+	<link rel="stylesheet" href="resources/css/layout/memupdate.css">
+
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -104,21 +112,36 @@
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="mainmain">
+<div class="memdiv">
 <form action="#" method="post" id="pwUpdateForm">
 <input type="hidden" name="gbn" value="pu" >
-<c:choose>
-	<c:when test="${empty sMNo }">
-		<input type="hidden" name="mem_no" value="${data.MEM_NO}" >	
-	</c:when>
-	<c:otherwise>
-		<input type="hidden" name="mem_no" value="${sMNo}" >
-	</c:otherwise>
-</c:choose>
+	<c:choose>
+		<c:when test="${empty sMNo }">
+			<input type="hidden" name="mem_no" value="${data.MEM_NO}" >	
+		</c:when>
+		<c:otherwise>
+			<input type="hidden" name="mem_no" value="${sMNo}" >
+		</c:otherwise>
+	</c:choose>
 	비밀번호 재설정<br> 
 	<input type="password" id="mem_pw" name="mem_pw" placeholder="비밀번호(영문, 숫자 조합)"><br>
 	<input type="password" id="mem_pw2" name="mem_pw2" placeholder="비밀번호 재확인"><br><br>
-	<input type="button" value="변경" id="updateBtn">
-	<input type="button" value="취소" id="cancleBtn">
+	<div class="membtns">
+		<input type="button" value="변경" id="updateBtn">
+		<input type="button" value="취소" id="cancleBtn">
+	</div>
 </form>
+</div>
+</div>	
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

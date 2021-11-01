@@ -6,14 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 <style>
-	.paging_wrap span {
-	   cursor: pointer;
+	#paging_wrap span {
+		cursor: pointer;
 	}
 	
-	td img{
-		width : 15px;
+	table {
+		text-align: center;
 	}
+	
+	td img {
+		width: 15px;
+	}
+	
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -154,6 +166,12 @@ function drawPaging(pb){
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+	<h2>자유게시판 목록</h2>
 <div>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
@@ -177,13 +195,13 @@ function drawPaging(pb){
 	</form>
 </div>
 <div>
-	<table>
+	<table class="notice_table">
 		<thead>
-			<tr>
+			<tr class="nonetr">
 				<th>번호</th>
 				<th>커뮤니티</th>
 				<th>게시판명</th>
-				<th>제목</th>
+				<th class="title">제목</th>
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
@@ -194,6 +212,10 @@ function drawPaging(pb){
 </div>
 <div class="paging_wrap">
 </div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>
 

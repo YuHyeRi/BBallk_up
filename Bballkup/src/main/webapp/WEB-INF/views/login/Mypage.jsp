@@ -24,6 +24,11 @@ $(document).ready(function(){
 			return false;		 //form실행 이벤트를 하지않음
 		}
 	});
+	//내가 쓴 글 리스트
+	$(".mypost").on("click", function(){
+		$("#loginForm").attr("action","myBoardList");
+		$("#loginForm").submit();
+	});
 	//회원정보수정
 	$(".meminfo").on("click",function(){
 		
@@ -50,10 +55,6 @@ $(document).ready(function(){
 		$("#loginForm").submit();
 	});
 	
-	$("#myBoardListBtn").on("click", function(){
-		$("#loginForm").attr("action","myBoardList");
-		$("#loginForm").submit();
-	});
 });
 </script>
 </head>
