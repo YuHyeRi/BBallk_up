@@ -3,16 +3,17 @@
 <mapper namespace="tFree">
 
 	<select id="tFreeList" parameterType="hashmap" resultType="hashmap"> 
-		SELECT TB.TBM_NM, TB.TB_NO, TB.MEM_NM, TB.TB_TITLE, TB.TB_FILE, TB.TB_DT, TB.TB_HIT
-		FROM (SELECT TBM.TBM_NM, TB.TB_NO, M.MEM_NM, TB.TB_TITLE, TB.TB_FILE, 
-				TO_CHAR(TB.TB_DT, 'YYYY-MM-DD') AS TB_DT, TB.TB_HIT,
-       			ROW_NUMBER()OVER(ORDER BY TB_NO DESC) AS RNUM
+		SELECT TB.TBM_NM, TB.TB_NO, TB.MEM_NM, TB.TB_TITLE, TB.TB_CON, TB.TB_FILE, TB.TB_DT, TB.TB_HIT, TB.TEAM_NO
+		FROM (SELECT TBM.TBM_NM, TB.TB_NO, M.MEM_NM, TB.TB_TITLE, TB.TB_CON, TB.TB_FILE, 
+						TO_CHAR(TB.TB_DT, 'YYYY-MM-DD') AS TB_DT, TB.TB_HIT, TB.TEAM_NO, 
+						ROW_NUMBER()OVER(ORDER BY TB_NO DESC) AS RNUM
         		FROM T_BOARD TB INNER JOIN TB_MANAGE TBM
-                        		ON TB.TBM_NO = TBM.TBM_NO
-                        		INNER JOIN MEM M
-                        		ON TB.MEM_NO = M.MEM_NO
+                    				ON TB.TBM_NO = TBM.TBM_NO
+                				INNER JOIN MEM M
+                    				ON TB.MEM_NO = M.MEM_NO
         		WHERE TB_DEL = 1 
         		AND TBM_NM = '자유게시판'
+        		AND TB.TEAM_NO = #{tno}
         		<if test = "searchTxt != null and searchTxt != ''">
         			<choose>
         				<when test = "searchGbn eq 0">
@@ -35,6 +36,7 @@
 		                ON TB.TBM_NO = TBM.TBM_NO
 		WHERE TB_DEL = 1 
 		AND TBM_NM = '자유게시판'
+		AND TB.TEAM_NO = #{tno}
 		<if test = "searchTxt != null and searchTxt != ''">
         			<choose>
         				<when test = "searchGbn eq 0">
@@ -69,11 +71,12 @@
 		UPDATE T_BOARD SET TB_DEL = 0
 		WHERE TBM_NO = 1
 		AND TB_NO = #{no}
+		AND TEAM_NO = #{tno}
 	</update>
 	
 	<insert id="tFreeAdd" parameterType="hashmap">
-		INSERT INTO T_BOARD (TB_NO, MEM_NO, TBM_NO, TB_TITLE, TB_CON, TB_FILE)
-		VALUES (T_BOARD_SEQ.NEXTVAL, #{mno}, 1, #{title}, #{con}, #{tbfile})
+		INSERT INTO T_BOARD (TB_NO, MEM_NO, TBM_NO, TB_TITLE, TB_CON, TB_FILE, TEAM_NO)
+		VALUES (T_BOARD_SEQ.NEXTVAL, #{mno}, 1, #{title}, #{con}, #{tbfile}, #{tno})
 	</insert>
 	
 	<update id="tFreeUpdate" parameterType="hashmap">

@@ -132,9 +132,11 @@
 		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" name="page" value="${param.page}" />
 		<input type="hidden" name="no" value="${param.no}" />
+		<input type="hidden" name="tno" value="${param.tno}" />
 	</form>
 	
 	<form action="#" id="updateForm" method="post">
+		<input type="hidden" name="tno" value="${param.tno}" >
 		번호: ${param.no}<input type="hidden" name="no" value="${param.no}" /><br>
 		제목: <input type="text" id="title" name="title" value="${data.TB_TITLE}"/><br/>
 		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/>

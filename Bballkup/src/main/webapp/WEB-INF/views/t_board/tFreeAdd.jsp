@@ -110,7 +110,7 @@
 								success: function(res){
 									if(res.result == "success"){
 										alert("정상적으로 작성 되었습니다.")
-										location.href = "tFreeList";
+										history.back();
 									} else if(res.result="failed"){
 										alert("작성에 실패하였습니다.");
 									} else {
@@ -162,10 +162,11 @@
 		<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
 		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" name="page" value="${param.page}" />
+		<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 	</form>
 	
 	<form action="#" id="addForm" method="post">
-	
+		<input type="hidden" name="tno" value="${param.tno}" />
 		<input type="hidden" id="tab" value="${sNMo}" />
 		제목: <input type="text" id="title" name="title" /><br/>
 		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/>

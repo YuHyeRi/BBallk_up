@@ -87,17 +87,6 @@ public class TMainController {
 		return mav;
 	}
 	
-	// 수정ing -- team_no에 맞는 게시판으로 이동하기 위한 컨트롤러
-	@RequestMapping(value="/goTB")
-	public ModelAndView goTB(@RequestParam HashMap<String, String> params,
-								ModelAndView mav) throws Throwable {
-		
-		
-		return mav;
-	}
-	
-	
-	
 	
 	
 } // class end

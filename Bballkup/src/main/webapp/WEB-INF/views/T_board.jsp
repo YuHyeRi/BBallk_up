@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div>
-	<h2>부천FC</h2>
-	<p>뜨거운 열정! 부천FC 커뮤니티 입니다</p>
+	<h2>${param.tnm}</h2>
+	<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
 </div>
 <div class="tabbox">
 	<div class="teambtndiv">

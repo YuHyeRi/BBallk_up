@@ -64,7 +64,7 @@
 					data: params,
 					success: function(res) {
 						if(res.result == "success") {
-							location.href = "tFreeList";
+							history.back();
 						} else if(res.result == "failed") {
 							alert("게시글 삭제에 실패 하였습니다.");
 						} else {
@@ -240,6 +240,7 @@
 		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" name="page" value="${param.page}" />
 		<input type="hidden" name="no" value="${param.no}" />
+		<input type="hidden" name="tno" value="${param.tno}" />
 	</form>
 	
 	<div>

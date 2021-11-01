@@ -204,6 +204,7 @@
 			<input type="hidden" id="oldTxt" value="${param.searchTxt}" />
 			<input type="hidden" id="page" name="page" value="${page}" />
 			<input type="hidden" id="no" name="no" />
+			<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 			<input type="button" value="검색" id="searchBtn" />
 			<c:if test="${!empty sMId}">
 				<input type="button" value="글작성" id="addBtn" />

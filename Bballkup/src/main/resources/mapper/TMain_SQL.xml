@@ -7,6 +7,7 @@
 		FROM TEAM T INNER JOIN MEM M
 					ON T.MEM_NO = M.MEM_NO 
 		WHERE TEAM_DEL = 1
+		AND TEAM_STATE = '승인완료'
 		<if test="searchTxt != null and searchTxt != ''" >
 			AND TEAM_NM LIKE '%' || #{searchTxt} || '%'
 		</if>
@@ -20,6 +21,7 @@
 					INNER JOIN MEM M
             		ON T.MEM_NO = M.MEM_NO
 		WHERE TEAM_DEL = 1
+		AND TEAM_STATE = '승인완료'
 		AND TEAM_NO = #{tno}
 	</select>
 	
@@ -40,6 +42,7 @@
 		AND MEM_NO = #{mno}
 		AND TEAM_NO = #{tno}
 	</select>
+	
 	
 
 
