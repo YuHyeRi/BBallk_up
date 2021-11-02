@@ -40,6 +40,8 @@ public class T_onelineController {
 		params.put("endCnt", Integer.toString(pb.getEndCount()));
 		List<HashMap<String, String>> list = it_onelineService.tOneList(params);
 		
+		//int cnt2 = it_onelineService.tOneLeader(params);
+		
 		mav.addObject("pb",pb);
 		mav.addObject("page",page);
 		mav.addObject("list",list);
@@ -52,7 +54,7 @@ public class T_onelineController {
 	public ModelAndView T_onelineAdds(
 			@RequestParam HashMap<String, String> params,
 			ModelAndView mav) throws Throwable{
-		System.out.println(params);
+		System.out.println(params);// 받아오는 값 확인
 		int cnt = it_onelineService.tOneAdd(params);
 		
 		if(cnt>0) {
