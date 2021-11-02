@@ -166,12 +166,15 @@ function drawPaging(pb){
 </script>
 </head>
 <body>
+<form action="#" id="loginForm">
+<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-	<h2>자유게시판 목록</h2>
+	<h2>내가 쓴 글 목록</h2>
 <div>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
@@ -216,6 +219,7 @@ function drawPaging(pb){
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
 

@@ -45,7 +45,7 @@ $(document).ready(function(){
 		$("#backForm").submit();
 	});
 	
-	$("#addForm").on("keypress", "input", function(event){
+	$("#updateForm").on("keypress", "input", function(event){
 		if(event.keyCode == 13){
 			return false;
 		}
@@ -175,9 +175,11 @@ function checkVal(sel) {
 		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" name="page" value="${param.page}" />
 		<input type="hidden" name="no" value="${param.no}" />
+		<input type="hidden" name="tno" value="${param.tno}" />
 	</form>
 	<form action="#" id="updateForm" method="post">
-		${data.TB_NO}<input type="hidden" name="no" value="${data.TB_NO}" />
+		<input type="hidden" name="tno" value="${param.tno}" >
+		${data.TB_NO}<input type="hidden" name="no" value="${param.no}" />
 		<input type="text" id="title" name="title" value="${data.TB_TITLE}" />
 		<input type="hidden" id="tab" value="${sNMo}" />
 		<input type="hidden" name="upbtn" value="사과" />

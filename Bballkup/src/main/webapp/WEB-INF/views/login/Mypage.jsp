@@ -59,6 +59,9 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<form action="#" id="loginForm">
+<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
@@ -126,6 +129,6 @@ $(document).ready(function(){
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
-
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

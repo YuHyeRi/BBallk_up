@@ -30,6 +30,16 @@ $(document).ready(function(){
 		$("#actionForm").submit();
 	});
 	
+	$("#logout").on("click", function(){
+		$("#loginForm").attr("action","logout");
+		$("#loginForm").submit();
+	});
+	
+	$("#mypage").on("click", function(){
+		$("#loginForm").attr("action","Mypage");
+		$("#loginForm").submit();
+	});
+	
 	$("#tab2").on("click", function(){
 		$("#actionForm").attr("action", "T_notice");
 		$("#actionForm").submit();
@@ -58,7 +68,8 @@ $(document).ready(function(){
 				data: params, 
 				success: function(res){ 
 					if(res.result == "success"){
-						location.href = "T_notice"
+						history.back();
+						
 					}else if(res.result == "failed"){
 						alert("삭제에 실패하였습니다.");
 					}else{
@@ -83,8 +94,11 @@ $(document).ready(function(){
 <jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
 <h2>팀 공지사항</h2>
+	<form action="#" id="loginForm" method="post">
+		<input type="hidden" name="mem_no" value="${sMNo}">
+	</form>
 	<form action="#" id="actionForm" method="post">
-		<input type="hidden" id="tab" value="${sNMo}" />
+		<input type="hidden" id="mno" name="mno" value="${param.mno}" />
 		<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
 		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" name="page" value="${param.page}" />
@@ -122,9 +136,16 @@ $(document).ready(function(){
 			</div>
 		</c:if>
 		<div class="buttondiv">
-			<input type="button" value="수정" id="updateBtn" />
-			<input type="button" value="삭제" id="deleteBtn" />
-			<input type="button" value="목록" id="listBtn" />
+			<c:choose>
+				<c:when test="${sMNo eq data.MEM_NO}">
+					<input type="button" value="수정" id="updateBtn" />
+					<input type="button" value="삭제" id="deleteBtn" />
+					<input type="button" value="목록" id="listBtn" />
+				</c:when>
+				<c:otherwise>
+					<input type="button" value="목록" id="listBtn" />
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 </div>

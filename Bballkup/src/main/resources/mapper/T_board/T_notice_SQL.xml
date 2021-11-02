@@ -55,8 +55,8 @@
 	</update>
 	
 	<select id="getnoticeDtl" parameterType="hashmap" resultType="hashmap">
-		 SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE,
-		 TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS TB_DT, T.TB_HIT, T.TB_UP  
+		SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, T.MEM_NO,
+		TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS TB_DT, T.TB_HIT, T.TB_UP, T.MEM_NO  
 		FROM T_BOARD T INNER JOIN MEM M ON T.MEM_NO = M.MEM_NO
 		WHERE 1 = 1
 		AND T.TB_NO = #{no}
