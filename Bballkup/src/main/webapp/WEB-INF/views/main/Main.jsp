@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	<link rel="stylesheet" href="resources/css/layout/slideshow.css">
 	<link rel="stylesheet" href="resources/css/layout/main.css">
+	
 <style>
 	
 td img {
