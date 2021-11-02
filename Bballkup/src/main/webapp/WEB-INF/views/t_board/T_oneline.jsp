@@ -384,7 +384,10 @@ function checkObjVal(obj) {
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
-	<!-- 최상단 로그인 -->
+<form action="#" id="loginForm" method="post">
+   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
+	<%-- <!-- 최상단 로그인 -->
 	<div class="login_wrap">
 		<c:choose>
 			<c:when test="${empty sMNo}">
@@ -395,7 +398,7 @@ function checkObjVal(obj) {
 			<input type="button" value="로그아웃" id="logoutBtn" />	
 		</c:otherwise>
 		</c:choose>
-	</div> 
+	</div>  --%>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
@@ -467,7 +470,7 @@ function checkObjVal(obj) {
 						<c:if test="${!empty data.TB_Q_RE_CON}">
 						<div class="reple_wrap reple_text_area" >
 							<div class="user_info">
-								<img src="resources/images/arrowright.png" width="70px" height="70px">			
+								<img src="resources/images/icon/답변.png" width="50px" height="50px">			
 							</div>
 							<div class="con_info">
 								<div id="reple_con" class="reple_con">${data.TB_Q_RE_CON}</div>
@@ -483,7 +486,7 @@ function checkObjVal(obj) {
 						<c:if test="${sMNo eq 5}">
 							<div class="reple_wrap reple_write_area" >
 								<div class="user_info">
-									<img src="resources/images/arrowright.png" width="70px" height="70px">			
+									<img src="resources/images/icon/답변.png" width="50px" height="50px">			
 								</div>
 								<div class="con_info">
 									<textarea class="q_re_con" placeholder="댓글을 입력해주세요.">${data.TB_Q_RE_CON}</textarea>	
