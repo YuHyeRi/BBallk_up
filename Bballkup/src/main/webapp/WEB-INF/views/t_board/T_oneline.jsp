@@ -16,19 +16,20 @@
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	<link rel="stylesheet" href="resources/css/layout/T_board.css">
 <style type="text/css">
-body {
-	margin: 0px;
-	font-size: 0px;
-}
+
 .login_wrap {
 	text-align: right;
 	padding: 10px;
 	font-size:12pt;
 }
 
+#actionForm {
+	min-width: 500px;
+}
 .ob_wrap {
 	width: 800px;
-	margin: 0px auto;
+	/* margin: 0px auto; */
+	margin: 0px 300px;
 	border: 1px solid #444444;
 }
 
