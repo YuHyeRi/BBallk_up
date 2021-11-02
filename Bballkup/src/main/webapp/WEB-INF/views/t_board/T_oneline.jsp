@@ -15,35 +15,99 @@
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	<link rel="stylesheet" href="resources/css/layout/T_board.css">
-	<link rel="stylesheet" href="resources/css/layout/question.css">
-
 <style type="text/css">
 
-reple_con {
+.login_wrap {
+	text-align: right;
+	padding: 10px;
+	font-size:12pt;
+}
+
+#actionForm {
+	min-width: 500px;
+}
+.ob_wrap {
+	width: 800px;
+	/* margin: 0px auto; */
+	margin: 0px 300px;
+	border: 1px solid #444444;
+}
+
+.write_area {
+	height: 110px;
+}
+
+.secretCheck {
+   text-align: right;
+}
+
+.secretCheck .secret_text {
+	font-size: 11px;
+}
+
+.user_info {
+	display: inline-table;
+	width: 100px;
+	height: 100px;
+	vertical-align: top;
+	text-align: center;
+}
+
+.user_name {
+	display: table-cell;
+	width: 100px;
+	height: 100px;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 12pt;
+}
+
+.write_con_wrap {
+	display: inline-block;
+	width: 550px;
+	height: 100px;
+	vertical-align: top;
+}
+
+.write_con {
 	width: 540px;
 	height: 90px;
 	resize: none;
 	margin: 2px;
 }
-.reple_text_area{
-	background-color: #e3ecfb;
+
+.reple_con {
+	width: 540px;
+	height: 90px;
+	resize: none;
+	margin: 2px;
 }
-#addBtn{
+
+.btn_wrap {
+	display: inline-block;
+	width: 150px;
+	height: 100px;
+	vertical-align: top;
+	/* margin-top: 5px; */
+}
+
+.action_btn {
+	width: 146px;
+	height: 96px;
+	margin: 2px;
+}
+
+.action_btn4 {
+	width: 146px;
 	height: 50px;
+	margin: 2px;
 }
 
-input:hover{
-	background-color: #e3ecfb;
-}
-
-input{
-	background-color: white;
-    padding: 5px;
-    width: 80px;
-    border-radius: 5px;
-    border: 2px solid #1d2088;
-    cursor: pointer;
-    margin-bottom: 10px;
+.action_btn2, .action_btn3, .action_btn5 {
+	width: 71px;
+	/* height: 96px; */
+	height: 50px;
+	margin: 2px;
 }
 
 .write_area .action_btn2 {
@@ -62,6 +126,7 @@ input{
 	height: 100px;
 	vertical-align: middle;
 	text-align: center;
+	font-size: 12pt;
 }
 
 .data_req_wrap {
@@ -78,6 +143,7 @@ input{
 	height: 100px;
 	vertical-align: middle;
 	text-align: center;
+	font-size: 12pt;
 }
 
 .ob_data {
@@ -87,6 +153,7 @@ input{
 
 .con_info {
 	display: inline-table;
+	width: 550px;
 	height: 100px;
 	vertical-align: top;
 }
@@ -97,30 +164,34 @@ input{
 	height: 100px;
 	vertical-align: middle;
 	text-align: left;
+	font-size: 12pt;
 }
 .q_re_con {
 	display: inline-table;
+	width: 500px;
 	height: 45px;
 	vertical-align: middle;
 }
 .reple_con {
 	display: inline-table;
+	width: 520px;
 	height: 50px;
 	vertical-align: middle;
 	text-align: left;
+	font-size: 12pt;
 }
 
-#paging_wrap2 {
-	margin: 20px;
+.paging_wrap {
+	margin: 5px 0px;
+	padding: 5px 0px;
 	border-top: 1px solid #444444;
 	text-align: center;
 }
-
-#paging_wrap2 span {
+.paging_wrap span {
 	margin: 0px 5px;
+	font-size: 12pt;
 	cursor: pointer;
 }
-
 
 </style>
 <script type="text/javascript"
@@ -206,8 +277,8 @@ $(document).ready(function() {
 	});
 	
 	//페이징
-	$("#paging_wrap").on("click","span",function() {
-		$("#actionForm").attr("action","Question");
+	$(".paging_wrap").on("click","span",function() {
+		$("#actionForm").attr("action","T_oneline");
 		$("#page").val($(this).attr("page"));
 		$("#actionForm").submit();
 	});
@@ -315,6 +386,7 @@ function checkObjVal(obj) {
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
+
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
@@ -326,7 +398,7 @@ function checkObjVal(obj) {
 	<input type="hidden" id="no" name="no"/>
 	<input type="hidden" id="mno" name="mno" value="${sMNo}"/>
 	<input type="hidden" name="page" id="page" value="${page}"/>
-	<input type="hidden" id="tno2" name="tno" value="${param.tno}" />
+	<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 	
 	<div class="write_area">
 		<c:choose>
@@ -355,6 +427,7 @@ function checkObjVal(obj) {
 	<form action="#" id ="RepleForm" method="post">
 		<input type="hidden" name="no" id="no2" />
 		<input type="hidden" id="mno" name="mno" value="${mno}"/>
+		<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 		<input type="hidden" name="q_re_con" id="q_re_con" />
 	</form>
 	<!-- List -->
@@ -427,8 +500,7 @@ function checkObjVal(obj) {
 	</div>
 
 <!-- Paging -->
-	<div id="paging_wrap2">
-			<!-- 이전 -->
+	<div class="paging_wrap">		
 		<c:choose>
 			<c:when test="${page eq 1}"> 
 				<span page="1">이전</span>
@@ -436,8 +508,7 @@ function checkObjVal(obj) {
 			<c:otherwise>
 				<span page="${page - 1}">이전</span>
 			</c:otherwise>
-		</c:choose>		
-		<!-- 페이지 넘버 -->
+		</c:choose>	
 		<c:forEach var="i" begin="${pb.startPcount}" end="${pb.endPcount}" step="1">
 			<c:choose>
 				<c:when test="${page eq i}"> 

@@ -39,9 +39,7 @@ public class T_onelineController {
 		params.put("startCnt", Integer.toString(pb.getStartCount()));
 		params.put("endCnt", Integer.toString(pb.getEndCount()));
 		List<HashMap<String, String>> list = it_onelineService.tOneList(params);
-		
-		//int cnt2 = it_onelineService.tOneLeader(params);
-		
+			
 		mav.addObject("pb",pb);
 		mav.addObject("page",page);
 		mav.addObject("list",list);
