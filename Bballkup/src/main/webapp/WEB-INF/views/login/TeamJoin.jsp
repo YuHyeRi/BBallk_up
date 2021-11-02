@@ -31,8 +31,6 @@ $(document).ready(function(){
 	
 	$("tbody").on("click", "tr", function(){
 		
-		//$("#no").val($(this).attr("no"));
-		
 		$("#actionForm").attr("action", "myTeamJoinAjax");
 		$("#actionForm").submit();
 	});
