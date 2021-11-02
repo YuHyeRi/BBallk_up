@@ -32,4 +32,6 @@ public interface ILoginService {
 
 	public List<HashMap<String, String>> getAllBoardList(HashMap<String, String> params) throws Throwable;
 
+	public List<HashMap<String, String>> getTeamJoin(HashMap<String, String> params) throws Throwable;
+
 }

@@ -189,4 +189,11 @@
 		WHERE AB.RNUM BETWEEN #{startCnt} AND #{endCnt}
 	</select>
 	
+	<select id="getTeamJoin" resultType="hashmap" parameterType="hashmap">
+		SELECT TM.MEM_NO, T.TEAM_NO, T.TEAM_NM, TM.APPLY_STATE
+		FROM T_MEM TM INNER JOIN TEAM T
+		ON TM.TEAM_NO = T.TEAM_NO
+		WHERE TM.MEM_NO = #{mem_no}
+	</select>
+	
 </mapper>

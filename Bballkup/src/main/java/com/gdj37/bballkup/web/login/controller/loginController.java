@@ -331,4 +331,55 @@ public class loginController {
 		return mapper.writeValueAsString(modelMap);
 		
 	}
+	
+	//내가 가입한 팀 목록 이동
+	@RequestMapping(value = "/TeamJoin")
+	public ModelAndView myTeamJoinList(
+			@RequestParam HashMap<String, String> params,ModelAndView mav) {
+		
+		/*
+		 * String page = "1";
+		 * 
+		 * if(params.get("page") != null) {
+		 * 
+		 * page = params.get("page"); }
+		 * 
+		 * mav.addObject("page", page);
+		 */
+		
+		mav.setViewName("login/TeamJoin");
+		
+		return mav;
+	}
+	
+	//내가 가입한 팀 현황 
+		@RequestMapping(value = "/myTeamJoinAjax" , method = RequestMethod.POST, 
+				produces = "text/json;charset=UTF-8")
+		@ResponseBody
+		public String myTeamJoinAjax(@RequestParam HashMap<String, String> params) throws Throwable{
+			ObjectMapper mapper = new ObjectMapper();	//jackson객체
+			
+			Map<String, Object> modelMap = new HashMap<String, Object>(); //데이터를 담을 맵
+			
+			//페이지 취득
+			//int page = Integer.parseInt(params.get("page"));
+			
+			//개수 취득
+			//int cnt = iLoginService.getAllBoardCnt(params);
+			//페이징 정보 취득
+			//PagingBean pb = iPagingService.getPagingBean(page, cnt, 10, 10);
+			//데이터 시작, 종료값 할당
+			//params.put("startCnt", Integer.toString(pb.getStartCount()));
+			//params.put("endCnt", Integer.toString(pb.getEndCount()));
+			
+			//리스트 조회
+			List<HashMap<String, String>> list = iLoginService.getTeamJoin(params);
+			
+			//데이터 담기
+			modelMap.put("list", list);
+			//modelMap.put("pb", pb);
+			//데이터를 문자열화
+			return mapper.writeValueAsString(modelMap);
+			
+		}
 }
