@@ -381,12 +381,12 @@ function checkObjVal(obj) {
 </head>
 <body>
 
+<form action="#" id="loginForm">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
-<form action="#" id="loginForm" method="post">
-   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-</form>
 	<%-- <!-- 최상단 로그인 -->
 	<div class="login_wrap">
 		<c:choose>
@@ -546,5 +546,6 @@ function checkObjVal(obj) {
 </div>
 </div>
 </main>	
+	<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
