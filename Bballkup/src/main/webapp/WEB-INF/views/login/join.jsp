@@ -202,6 +202,7 @@
 </script>
 </head>
 <body>
+
    <form action="#" id="joinForm" method="post">
       <input type="hidden" name="gbn" value="c" >
       아이디<br> 
@@ -232,5 +233,6 @@
    <br><br>
    <input type="button" value="저장" id="addBtn">
    <input type="button" value="취소" id="cancleBtn">
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

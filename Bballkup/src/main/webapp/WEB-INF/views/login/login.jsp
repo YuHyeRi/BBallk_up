@@ -78,8 +78,8 @@
 <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	<h2>Login</h2>
 		<div class="idpassForm">
-			<input type="text" id="mem_id" name="mem_id" placeholder="ID" >
-			<input type="password" id="mem_pw" name="mem_pw" placeholder="PW">
+			<input type="text" class="mem_id_pw" id="mem_id" name="mem_id" placeholder="ID" >
+			<input type="password" class="mem_id_pw" id="mem_pw" name="mem_pw" placeholder="PW">
 		</div>
 			<input type="button" value="LOG IN" id="loginBtn">
 		<div class="btntext">
