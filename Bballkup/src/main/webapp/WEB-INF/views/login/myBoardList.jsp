@@ -76,11 +76,23 @@ $(document).ready(function(){
 	});
 	
 	$("tbody").on("click", "tr", function(){
-		
+		var tbmNo = $(this).attr("tbmNo");
+		var bGbn = $(this).attr("bGbn");
 		$("#no").val($(this).attr("no"));
-		
-		$("#actionForm").attr("action", "myBoard");
-		$("#actionForm").submit();
+		//alert("tbmNo??" + tbmNo + ", bGbn??" + bGbn + ", no??" + $(this).attr("no"));
+		if(tbmNo == 0){
+			if(bGbn == 0){
+				//개인-자유
+				$("#boardGoForm").attr("action", "freeDtl");
+			}
+		}else{
+			if(tbmNo == 1){
+				$("#boardGoForm").attr("action", "tFreeDtl");
+			}else if(tbmNo == 2){
+				$("#boardGoForm").attr("action", "T_noticeDtl");
+			}
+		}
+		$("#boardGoForm").submit();
 	});
 	
 });
@@ -111,13 +123,13 @@ function drawList(list){
 	
 	for(var data of list){
 		
-		html += "<tr no=\"" + data.NO + "\">           ";
+		html += "<tr no=\"" + data.NO + "\" tbmNo=\"" + data.TBM_NO + "\" bGbn=\""+ data.GBN + "\">";
 		html += "<td>" + data.NO + "</td>     ";
 		html += "<td>" + data.TEAM_NM + "</td>     ";
 		html += "<td>" + data.TBM_NM + "</td>     ";
 		html += "<td>";
-		html += data.TITLE;
-
+		html += data.TITLE;	
+		
 		if(data.B_FILE != null){
 			
 			html += "<img src=\"resources/images/attFile.png\">";
@@ -176,6 +188,9 @@ function drawPaging(pb){
 <jsp:include page="../nav.jsp" flush="true" />
 	<h2>내가 쓴 글 목록</h2>
 <div>
+	<form action="#" id="boardGoForm" method="post">
+		<input type="hidden" name="no" id="no" value="${sMNo}">
+	</form>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
 		<select name="searchBoardGbn" id="searchBoardGbn">

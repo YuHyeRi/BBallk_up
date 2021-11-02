@@ -65,8 +65,9 @@
 					data : params,
 					success : function(res){
 						if(res.result == "success"){
-							
-							location.href = "login";
+							alert("정보가 수정되었습니다.");
+							$("#loginForm").attr("action","Mypage");
+							$("#loginForm").submit();
 							
 						}else if(res.result == "feiled"){
 							
@@ -96,7 +97,7 @@
 					success : function(res){
 						if(res.result == "success"){
 							
-							location.href = "login";
+							location.href = "Main";
 							
 						}else if(res.result == "feiled"){
 							
@@ -138,6 +139,7 @@
 <div class="memdiv">
 	<form action="#" id="mUpdateForm" method="post">
 		<input type="hidden" name="gbn" value="u" >
+		<input type="hidden" name="sMLv" value="${sMLv}" >
 		<input type="hidden" name="mem_no" value="${data.MEM_NO}" >
 		아이디<br> 
 			${sMId}<br><br>
