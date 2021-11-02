@@ -79,7 +79,7 @@ $(document).ready(function(){
 		var tbmNo = $(this).attr("tbmNo");
 		var bGbn = $(this).attr("bGbn");
 		$("#no").val($(this).attr("no"));
-		//alert("tbmNo??" + tbmNo + ", bGbn??" + bGbn + ", no??" + $(this).attr("no"));
+
 		if(tbmNo == 0){
 			if(bGbn == 0){
 				//개인-자유
@@ -207,9 +207,6 @@ function drawPaging(pb){
 		<input type="hidden" name="page" id="page" value="${page}">
 		<input type="hidden" name="no" id="no">
 		<input type="button" value="검색" id="searchBtn">
-		<c:if test="${!empty sMNo}">
-			<input type="button" value="작성" id="addBtn">
-		</c:if>
 	</form>
 </div>
 <div>
