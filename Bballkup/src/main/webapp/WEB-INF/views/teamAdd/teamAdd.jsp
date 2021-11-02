@@ -7,9 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>팀장신청</title>
+<link rel="stylesheet" href="resources/css/layout/font.css">
+<link rel="stylesheet" href="resources/css/layout/basic.css">
+<link rel="stylesheet" href="resources/css/layout/btn.css">
+<link rel="stylesheet" href="resources/css/layout/loginout.css">
+<link rel="stylesheet" href="resources/css/layout/nav.css">
+<link rel="stylesheet" href="resources/css/layout/main.css">
+<link rel="stylesheet" href="resources/css/layout/myCard.css">
+
 <style type="text/css">
 #att{
 	display:none;
+}
+
+img{
+	width:200px;
 }
 </style>
 <script src="resources/script/jquery/jquery-1.12.4.min.js" type="text/javascript"></script>
@@ -17,7 +29,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
  	//신청취소
-	$("#cancleBtn").on("click", function(){
+	$("#cancelBtn").on("click", function(){
 		history.back();
 	});
 	
@@ -110,7 +122,8 @@ $(document).ready(function(){
 					}else{
 						if(res.result == "success"){
 							alert("팀장신청이 완료되었습니다.");
-							location.href = "login";
+							$("#addForm").attr("action","Main");
+							$("#addForm").submit();
 						}else if(res.result == "failed"){
 							alert("팀장신청에 실패했습니다.");
 						}else{
@@ -138,14 +151,24 @@ function checkVal(sel){
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att">
 </form>
-팀장아이디:${data.MEM_ID}<br>
-이름:${data.MEM_NM}<br>
-휴대폰번호:${data.MEM_PHONE}<br>
+<div class="cardBig">
+<div class="cardDiv">
+	<div class = "addCon">
+	<h2>팀 커뮤니티 >> 팀장신청</h2>
+				<br>
+				<br>
+				<br>
+	</div>
 <form action="#" id="addForm" method="post">
-	<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	팀명 <input type="text" id="teamNm" name="teamNm">
 	<input type="button" id="tNmChk" name="tNmChk" value="중복확인">
 	<br>
@@ -171,9 +194,17 @@ function checkVal(sel){
 		<option value="13">골프장</option>
 	</select><br>
 	팀 소개<br>
-	<textarea rows="5" cols="5" id="teamIntro" name="teamIntro" style="width:100px;"></textarea><br>
+	<textarea rows="5" cols="5" id="teamIntro" name="teamIntro" style="width:300px;"></textarea><br>
 </form>
-<input type="button" value="저장" id="addBtn">
-<input type="button" value="취소" id="cancleBtn">
+<div class = "btnDiv1">
+	<input type="button" value="저장" id="addBtn">
+	<input type="button" value="취소" id="cancelBtn">
+</div>
+</div>
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

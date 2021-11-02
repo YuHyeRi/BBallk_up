@@ -51,7 +51,12 @@ $(document).ready(function(){
 	});
 
 	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","Mypage");
+		$("#loginForm").attr("action","myPage");
+		$("#loginForm").submit();
+	});
+	
+	$("#card").on("click", function(){
+		$("#loginForm").attr("action", "myCard");
 		$("#loginForm").submit();
 	});
 	
@@ -59,9 +64,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<form action="#" id="loginForm">
-<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-</form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
@@ -69,6 +71,8 @@ $(document).ready(function(){
 <jsp:include page="../nav.jsp" flush="true" />
 <form action="#" id="loginForm" method="post">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	<input type="hidden" id="mem_nm" name="mem_nm" value="${data.MEM_NM}">
+	<input type="hidden" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}">
 	<input type="hidden" id="gbn" name="gbn" value="">
 </form>
 <div class="mypage1">
@@ -84,14 +88,13 @@ $(document).ready(function(){
 	    </div>
 	    <div class="mycard">
 	    	<c:choose>
-	    		<c:when test="data.CARD_NO != null and data.CARD_NO != ''">
-	    			<p>카드가 &nbsp;<span>등록되어있습니다.</span></p>
+	    		<c:when test="${data.CARD_NO != null and data.CARD_NO != ''}">
+	    			<p>카드가 &nbsp;<span class=blue>등록되어있습니다.</span></p>
 	    		</c:when>
 	    		<c:otherwise>
-	    			<p>카드가 &nbsp;<span>등록되어있지않습니다.</span></p>
+	    			<p>카드가 &nbsp;<span class=red>등록되어있지않습니다.</span></p>
 	    		</c:otherwise>
 	    	</c:choose>
-	    	<!-- <p>카드가 &nbsp;<span>등록되어있습니다.</span></p> -->
 	    </div>
 	</div>
 </div>
@@ -101,7 +104,7 @@ $(document).ready(function(){
             <img src="resources/images/icon/예약내역조회.png" type="button">
             <p>예약내역조회</p>
         </div>
-        <div class="mybtn card">
+        <div class="mybtn card" id="card" name="card">
             <img src="resources/images/icon/카드등록.png" type="button">
             <p>카드등록</p>
         </div>

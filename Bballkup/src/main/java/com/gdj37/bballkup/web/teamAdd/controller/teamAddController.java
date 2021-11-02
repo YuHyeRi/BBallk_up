@@ -3,6 +3,8 @@ package com.gdj37.bballkup.web.teamAdd.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,38 +26,32 @@ public class teamAddController {
 	@Autowired
 	public IMyPageService iMyPageService;
 	
-	@RequestMapping(value = "/teamChk" , method = RequestMethod.POST, 
-			produces = "text/json;charset=UTF-8")
-	@ResponseBody 
-	public String teamChk(@RequestParam HashMap<String, String> params) throws Throwable{
-		
-		ObjectMapper mapper = new ObjectMapper();
-		
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		
-		String result = "success";
-		
-		try {
-			  int teamChk = iTeamAddService.teamChk(params);
-			  System.out.println("팀 체크 : "+teamChk);
-			  
-			  if(teamChk > 0) { 
-				  result = "overlap"; 
-			  }else {
-				  result = "success";
-			  }
-			
-			  System.out.println(result);
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			result = "error";
-		}
-		
-		modelMap.put("result", result);
-		
-		return mapper.writeValueAsString(modelMap);
-	}
+	/* 메소드 로그인 컨트롤러로 이동
+	 * @RequestMapping(value = "/teamChk" , method = RequestMethod.POST, produces =
+	 * "text/json;charset=UTF-8")
+	 * 
+	 * @ResponseBody public String teamChk(@RequestParam HashMap<String, String>
+	 * params) throws Throwable{
+	 * 
+	 * ObjectMapper mapper = new ObjectMapper();
+	 * 
+	 * Map<String, Object> modelMap = new HashMap<String, Object>();
+	 * 
+	 * String result = "success";
+	 * 
+	 * try { int teamChk = iTeamAddService.teamChk(params);
+	 * System.out.println("팀 체크 : "+teamChk);
+	 * 
+	 * if(teamChk > 0) { result = "overlap"; }else { result = "success"; }
+	 * 
+	 * System.out.println(result); } catch (Exception e) { e.printStackTrace();
+	 * 
+	 * result = "error"; }
+	 * 
+	 * modelMap.put("result", result);
+	 * 
+	 * return mapper.writeValueAsString(modelMap); }
+	 */
 	
 	@RequestMapping(value = "/tNmChk" , method = RequestMethod.POST, 
 			produces = "text/json;charset=UTF-8")
@@ -91,14 +87,14 @@ public class teamAddController {
 	}
 	
 	@RequestMapping(value = "/teamAdd")
-	public ModelAndView teamAdd(@RequestParam HashMap<String, String> params,
-								ModelAndView mav) throws Throwable {
+	public ModelAndView teamAdd(@RequestParam HashMap<String, String> params,				
+								ModelAndView mav) throws Throwable {				
 		
-		
-		HashMap<String, String> data = iMyPageService.getMEM(params);
-		  
-		mav.addObject("data", data); 
-		System.out.println(data);
+		/*
+		 * HashMap<String, String> data = iMyPageService.getMEM(params);
+		 * 
+		 * mav.addObject("data", data); System.out.println(data);
+		 */
 	 
 		mav.setViewName("teamAdd/teamAdd");
 		

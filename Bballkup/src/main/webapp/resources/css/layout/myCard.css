@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.cardDiv{
+	border : 2px solid #1d2088;
+	width:500px;
+	height:400px;
+	border-radius: 15px;
+	margin-bottom: 40px;
+	padding:20px 20px 30px 20px;
+}
+
+.cardBig{
+	justify-content: center;
+	display: flex;
+
+}
+
+.btnDiv1{
+	text-align:center;
+	padding-top: 60px;
+}
+
+.btnDiv2{
+	text-align:center;
+}
+
+#cancel1:hover, #cancel2:hover, #deleteCard:hover, #cardAdd:hover, #addBtn:hover, #cancelBtn:hover{
+	background-color: #e3ecfb;
+    cursor: pointer;
+}
+
+.cardInfo{
+	text-align:center;
+}
+
+.addCon{
+	text-align:center;
+}

@@ -6,18 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지>>카드등록</title>
-<style>
-#myImg{
-	padding-bottom:20px;
-}
-.myInfo{
-	display:flex;
-}
-.userdiv{
-	margin-top:50px;
-	padding-left:10px;
-}
-</style>
+<link rel="stylesheet" href="resources/css/layout/font.css">
+<link rel="stylesheet" href="resources/css/layout/basic.css">
+<link rel="stylesheet" href="resources/css/layout/btn.css">
+<link rel="stylesheet" href="resources/css/layout/loginout.css">
+<link rel="stylesheet" href="resources/css/layout/nav.css">
+<link rel="stylesheet" href="resources/css/layout/main.css">
+<link rel="stylesheet" href="resources/css/layout/myCard.css">
+
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <script type="text/javascript">
@@ -185,6 +181,16 @@ $(document).ready(function(){
 			return true;
 		}
 	});
+	
+	$("#cancel1").on("click", function(){
+		$("#deleteForm").attr("action","myPage");
+		$("#deleteForm").submit();
+	});
+	
+	$("#cancel2").on("click", function(){
+		$("#addForm").attr("action","myPage");
+		$("#addForm").submit();
+	});
 });
 
 function checkVal(sel){
@@ -198,43 +204,64 @@ function checkVal(sel){
 </script>
 </head>
 <body>
-<h2>마이페이지>>카드등록</h2>
-<div class="myInfo">
-	<img src ="resources/images/kitty.png" id="myImg" alt ="야옹이">
-	<div class="userdiv">
-		${param.mem_nm}<br>
-		${param.mem_phone}<br>
-	</div>
-</div>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="cardBig">
+<div class="cardDiv">
 <c:choose>
 	<c:when test="${!empty data.CARD_NUM}">
-		<h2>카드 등록 정보</h2>
-		${data.CARD_NUM} (앞 8자리) ****-**** (뒤 8자리)
+		
+		<div class="cardInfo">
+			<h2>마이페이지 >> 카드 등록 정보</h2>
+			<br>
+			<br>
+			<br>
+			${data.CARD_NUM} (앞 8자리) ****-**** (뒤 8자리)
+		</div>
 		<form action="#" id="deleteForm" method="post">
 			<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
+			<input type="hidden" id="mem_nm" name="mem_nm" value="${param.mem_nm}">
+			<input type="hidden" id="mem_phone" name="mem_phone" value="${param.mem_phone}">
 			<input type="hidden" id="gbn" name="gbn" value="d">
 		</form>
-		<input type="button" id="deleteCard" name="deleteCard" value="카드정보삭제">
+		<div class="btnDiv1">
+			<input type="button" id="cancel1" name="cancel1" value="돌아가기">
+			<input type="button" id="deleteCard" name="deleteCard" value="카드삭제">
+		</div>
 	</c:when>
 	<c:otherwise>
 		<form action="#" id="addForm" method="post">
 			<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
+			<input type="hidden" id="mem_nm" name="mem_nm" value="${param.mem_nm}">
+			<input type="hidden" id="mem_phone" name="mem_phone" value="${param.mem_phone}">
 			<input type="hidden" id="gbn" name="gbn" value="c">
-			<h2>카드 등록</h2>
+			<h2>마이페이지 >> 카드 등록</h2>
 			카드번호<br>
 			<input type="text" id="cardNum1" name="cardNum1" maxlength='8' placeholder="카드번호 앞 8자리 입력" style="margin:10px;" class="numberOnly">
-			<input type="password" id="cardNum2" name="cardNum2" maxlength='8' placeholder="카드번호 뒤 8자리 입력" class="numberOnly"><br>
+			<input type="password" id="cardNum2" name="cardNum2" maxlength='8' placeholder="카드번호 뒤 8자리 입력" class="numberOnly"><br><br>
 			유효기간<br>
 			<input type="text" id="cardMon" name="cardMon" maxlength='2' placeholder="월" style="margin:10px;width:30px;">
 			/
-			<input type="text" id="cardYear" name="cardYear" maxlength='2' placeholder="년" style="margin:10px;width:30px;" class="numberOnly"><br>
+			<input type="text" id="cardYear" name="cardYear" maxlength='2' placeholder="년" style="margin:10px;width:30px;" class="numberOnly"><br><br>
 			CVC(카드 뒷면 3자리)<br>
-			<input type="password" id="cardCVC" name="cardCVC" maxlength='3' style="margin:10px;" class="numberOnly"><br>
+			<input type="password" id="cardCVC" name="cardCVC" maxlength='3' style="margin:10px;" class="numberOnly"><br><br>
 			비밀번호(앞 2자리)<br>
-			<input type="password" id="cardPw" name="cardPw" maxlength='2' style="margin:10px;" class="numberOnly"><br>
+			<input type="password" id="cardPw" name="cardPw" maxlength='2' style="margin:10px;" class="numberOnly"><br><br>
 		</form>
-		<input type="button" id="cardAdd" name="cardAdd" value="카드등록">
+		<div class="btnDiv2">
+			<input type="button" id="cancel2" name="cancel2" value="취소">
+			<input type="button" id="cardAdd" name="cardAdd" value="카드등록">
+		</div>
 	</c:otherwise>
 </c:choose>
+</div>
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>
