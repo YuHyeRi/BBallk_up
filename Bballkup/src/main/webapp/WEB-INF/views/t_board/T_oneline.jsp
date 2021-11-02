@@ -245,7 +245,6 @@ $(document).ready(function() {
 	
 	// 저장
 	$(".write_area #addBtn").on("click",function(){	
-		
 		if(checkVal("#q_con")){
 			alert("내용을 입력하세요.");
 			$("#q_con").focus();
@@ -341,6 +340,23 @@ $(document).ready(function() {
 		$(this).parent().parent().hide();
 		$(this).parent().parent().parent().children(".reple_text_area").show();
 	});
+	
+	$("#tab2").on("click", function(){
+		$("#actionForm").attr("action", "T_notice");
+		$("#actionForm").submit();
+	});
+	$("#tab4").on("click", function(){
+		$("#actionForm").attr("action", "tFreeList");
+		$("#actionForm").submit();
+	});
+	$("#tab1").on("click", function(){
+		$("#actionForm").attr("action", "T_teammozip");
+		$("#actionForm").submit();
+	});
+	$("#tab3").on("click", function(){
+		$("#actionForm").attr("action", "T_oneline");
+		$("#actionForm").submit();
+	});
 });
 
 
@@ -363,6 +379,9 @@ function checkObjVal(obj) {
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
 	<!-- 최상단 로그인 -->
 	<div class="login_wrap">
 		<c:choose>
@@ -375,12 +394,18 @@ function checkObjVal(obj) {
 		</c:otherwise>
 		</c:choose>
 	</div> 
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<jsp:include page="../T_board.jsp" flush="true" />
+<div class="tabcontent">
+<h2>팀 한줄게시판</h2>
 	<!-- 작성+리스트 -->
-<main class="ob_wrap">	
+<div class="ob_wrap">	
 	<form action="#" id="actionForm" method="post">
 	<input type="hidden" id="no" name="no"/>
-	<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
+	<input type="hidden" id="mno" name="mno" value="${sMNo}"/>
 	<input type="hidden" name="page" id="page" value="${page}"/>
+	<input type="hidden" id="tno2" name="tno" value="${param.tno}" />
 	
 	<div class="write_area">
 		<c:choose>
@@ -397,7 +422,7 @@ function checkObjVal(obj) {
 				<div class="write_con_wrap">
 					<textarea class="write_con" id="q_con" name="q_con"></textarea>
 				</div>
-				<div class="btn_wrap">
+				<div class="btn_wrap" no="${data.TEAM_NO}">
 					<input type="button" value="저장" class="action_btn" id="addBtn"/>
 					<input type="button" value="수정" class="action_btn2" id="update2Btn"/>
 					<input type="button" value="취소" class="action_btn2" id="cancelBtn"/>
@@ -408,7 +433,7 @@ function checkObjVal(obj) {
 	</form>
 	<form action="#" id ="RepleForm" method="post">
 		<input type="hidden" name="no" id="no2" />
-		<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
+		<input type="hidden" id="mno" name="mno" value="${mno}"/>
 		<input type="hidden" name="q_re_con" id="q_re_con" />
 	</form>
 	<!-- List -->
@@ -513,6 +538,8 @@ function checkObjVal(obj) {
 		</c:choose>
 		</div>
 	</div>
+</div>
+</div>
 </main>	
 </body>
 </html>
