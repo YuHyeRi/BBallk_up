@@ -15,21 +15,21 @@
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	<link rel="stylesheet" href="resources/css/layout/T_board.css">
-
 <style type="text/css">
-body {
-	margin: 0px;
-	font-size: 0px;
-}
+
 .login_wrap {
 	text-align: right;
 	padding: 10px;
 	font-size:12pt;
 }
 
+#actionForm {
+	min-width: 500px;
+}
 .ob_wrap {
 	width: 800px;
-	margin: 0px auto;
+	/* margin: 0px auto; */
+	margin: 0px 300px;
 	border: 1px solid #444444;
 }
 
@@ -187,7 +187,6 @@ body {
 	border-top: 1px solid #444444;
 	text-align: center;
 }
-
 .paging_wrap span {
 	margin: 0px 5px;
 	font-size: 12pt;
@@ -278,8 +277,8 @@ $(document).ready(function() {
 	});
 	
 	//페이징
-	$("#paging_wrap").on("click","span",function() {
-		$("#actionForm").attr("action","Question");
+	$(".paging_wrap").on("click","span",function() {
+		$("#actionForm").attr("action","T_oneline");
 		$("#page").val($(this).attr("page"));
 		$("#actionForm").submit();
 	});
@@ -381,24 +380,13 @@ function checkObjVal(obj) {
 </head>
 <body>
 
+<form action="#" id="loginForm">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
-<form action="#" id="loginForm" method="post">
-   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-</form>
-	<%-- <!-- 최상단 로그인 -->
-	<div class="login_wrap">
-		<c:choose>
-			<c:when test="${empty sMNo}">
-				<input type="button" value="로그인" id="loginBtn"/>
-			</c:when>
-		<c:otherwise>
-			${sMNm}님 어서오십시오.
-			<input type="button" value="로그아웃" id="logoutBtn" />	
-		</c:otherwise>
-		</c:choose>
-	</div>  --%>
+
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
@@ -410,7 +398,7 @@ function checkObjVal(obj) {
 	<input type="hidden" id="no" name="no"/>
 	<input type="hidden" id="mno" name="mno" value="${sMNo}"/>
 	<input type="hidden" name="page" id="page" value="${page}"/>
-	<input type="hidden" id="tno2" name="tno" value="${param.tno}" />
+	<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 	
 	<div class="write_area">
 		<c:choose>
@@ -439,6 +427,7 @@ function checkObjVal(obj) {
 	<form action="#" id ="RepleForm" method="post">
 		<input type="hidden" name="no" id="no2" />
 		<input type="hidden" id="mno" name="mno" value="${mno}"/>
+		<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 		<input type="hidden" name="q_re_con" id="q_re_con" />
 	</form>
 	<!-- List -->
@@ -511,9 +500,7 @@ function checkObjVal(obj) {
 	</div>
 
 <!-- Paging -->
-	<div class="paging_wrap">
-		<div id="paging_wrap">
-			<!-- 이전 -->
+	<div class="paging_wrap">		
 		<c:choose>
 			<c:when test="${page eq 1}"> 
 				<span page="1">이전</span>
@@ -521,8 +508,7 @@ function checkObjVal(obj) {
 			<c:otherwise>
 				<span page="${page - 1}">이전</span>
 			</c:otherwise>
-		</c:choose>		
-		<!-- 페이지 넘버 -->
+		</c:choose>	
 		<c:forEach var="i" begin="${pb.startPcount}" end="${pb.endPcount}" step="1">
 			<c:choose>
 				<c:when test="${page eq i}"> 
@@ -541,10 +527,10 @@ function checkObjVal(obj) {
 				<span page ="${page + 1}">다음</span>
 			</c:otherwise>
 		</c:choose>
-		</div>
 	</div>
 </div>
 </div>
 </main>	
+	<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	<link rel="stylesheet" href="resources/css/layout/slideshow.css">
 	<link rel="stylesheet" href="resources/css/layout/main.css">
+	
 <style>
 	
 td img {
@@ -46,6 +47,7 @@ $(document).ready(function(){
 				drawList(res.list);
 			},
 			error: function(request, status, error){ 
+				console.log(request);
 				console.log(error);
 			}
 		});
@@ -58,8 +60,6 @@ $(document).ready(function(){
 		});
 		
 		//팀커뮤니티
-		var params = $("#main3").serialize();
-
 		$.ajax({
 			url: "Mainnotice", 
 			type: "post", 
@@ -75,8 +75,8 @@ $(document).ready(function(){
 		
 		//로그인로그아웃
 		$("#login").on("click",function(){
-			$("#main3").attr("action","login");
-			$("#main3").submit();
+			$("#loginForm").attr("action","login");
+			$("#loginForm").submit();
 		});
 		
 		$("#logout").on("click", function(){
@@ -94,12 +94,18 @@ $(document).ready(function(){
 			$("#loginForm").submit();
 		});
 		
+		$("#teambuttons").on("click", "input[type='button']", function() {
+			$("#tno").val($(this).attr("no"));
+			$("#main2").attr("action", "tMainIntro");
+			$("#main2").submit();
+		});
 });
+
 function drawBtn(list3){
 	var html = "";
 	
 	for(var data of list3){
-		html += "<input type=\"button\" value=\"" + data.TEAM_NM + "\"> ";
+		html += "<input type=\"button\" no=\"" + data.TEAM_NO + "\" value=\"" + data.TEAM_NM + "\"> ";
 	}
 	$("#teambuttons").html(html);
 }
@@ -155,7 +161,6 @@ function drawList(list){
 <jsp:include page="../nav.jsp" flush="true" />
 
 <form action="#" id="loginForm" method="post">
-	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 </form>
 
@@ -163,12 +168,13 @@ function drawList(list){
 
 </form>
 <form action="#" id="main2" method="post">
-	<input type="hidden" name="no" id="no" />
+	<!-- 공지번호 -->
+	<input type="hidden" id="no" name="no"/>
+	<!-- 로그인 회원번호 -->
+	<input type="hidden" name="mno" value="${sMNo}"/>
+	<!-- 팀번호 -->
+	<input type="hidden" id="tno" name="tno"/>
 </form>
-<form action="#" id="main3" method="post">
-	<input type="hidden" id="no" name="no" value="${sMNo}"/>
-</form>
-
 
 <div class="mainbar">
         <div class="slideshow-container">

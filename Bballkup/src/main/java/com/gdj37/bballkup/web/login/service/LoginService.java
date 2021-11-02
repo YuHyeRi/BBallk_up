@@ -84,5 +84,11 @@ public class LoginService implements ILoginService {
 		return iLoginDao.getAllBoardList(params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getTeamJoin(HashMap<String, String> params) throws Throwable {
+		
+		return iLoginDao.getTeamJoin(params);
+	}
+
 	
 }

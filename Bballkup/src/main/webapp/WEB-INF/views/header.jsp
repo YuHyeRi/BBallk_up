@@ -17,5 +17,10 @@
         	</c:otherwise>
          </c:choose>
         </div>
+        <c:choose>
+        	<c:when test="${!empty sMNo}">
+	        	<p class="pclass">${sMNm}님 환영합니다 :)</p>
+        	</c:when>
+        </c:choose>
     </div>
 

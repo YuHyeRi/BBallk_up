@@ -352,4 +352,33 @@ public class loginController {
 		return mapper.writeValueAsString(modelMap);
 		
 	}
+	
+	//내가 가입한 팀 목록 이동
+	@RequestMapping(value = "/TeamJoin")
+	public ModelAndView myTeamJoinList(
+			@RequestParam HashMap<String, String> params,ModelAndView mav) {
+		
+		mav.setViewName("login/TeamJoin");
+		
+		return mav;
+	}
+	
+	//내가 가입한 팀 현황 
+		@RequestMapping(value = "/myTeamJoinAjax" , method = RequestMethod.POST, 
+				produces = "text/json;charset=UTF-8")
+		@ResponseBody
+		public String myTeamJoinAjax(@RequestParam HashMap<String, String> params) throws Throwable{
+			ObjectMapper mapper = new ObjectMapper();	//jackson객체
+			
+			Map<String, Object> modelMap = new HashMap<String, Object>(); //데이터를 담을 맵
+			
+			//리스트 조회
+			List<HashMap<String, String>> list = iLoginService.getTeamJoin(params);
+			
+			//데이터 담기
+			modelMap.put("list", list);
+			//데이터를 문자열화
+			return mapper.writeValueAsString(modelMap);
+			
+		}
 }

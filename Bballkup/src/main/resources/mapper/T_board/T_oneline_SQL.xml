@@ -33,23 +33,23 @@
 	
 	<update id="tOneUpdate" parameterType="hashmap">
 		UPDATE T_BOARD SET TB_CON = #{q_con}
-		WHERE TB_NO = #{no}
+		WHERE TB_NO = #{no} AND TEAM_NO = #{tno}
 	</update>
 	
 	<update id="tOneDelete" parameterType="hashmap">
 		UPDATE T_BOARD SET TB_DEL = 0
-		WHERE TB_NO = #{no}
+		WHERE TB_NO = #{no} AND TEAM_NO = #{tno}
 	</update>
 	
 	<!-- 답변 내용 추가 업데이트 -->
 	<update id="tOneReple" parameterType="hashmap">
 		UPDATE T_BOARD SET TB_Q_RE_NO ='5', TB_Q_RE_CON=#{q_re_con}, TB_Q_RE_DT=SYSDATE
-		WHERE TB_NO = #{no}
+		WHERE TB_NO = #{no} AND TEAM_NO = #{tno}
 	</update>
 	
 	<update id="tOneRepleDelete" parameterType="hashmap">
 		UPDATE T_BOARD SET TB_Q_RE_NO = null, TB_Q_RE_CON= null, TB_Q_RE_DT=null
-		WHERE TB_NO = #{no}
+		WHERE TB_NO = #{no} AND TEAM_NO = #{tno}
 	</update>
 	
 </mapper>

@@ -26,9 +26,12 @@
 	</select>
 	
 	<select id="getMain3List" parameterType="hashmap" resultType="hashmap">
-		SELECT TEAM_NM FROM T_MEM, TEAM
-	    WHERE T_MEM.TEAM_NO = TEAM.TEAM_NO
-	    AND T_MEM.MEM_NO  = #{no}
+		SELECT T.TEAM_NO, T.TEAM_NM  
+		FROM T_MEM TM INNER JOIN TEAM T
+		                      ON TM.TEAM_NO = T.TEAM_NO
+		                     AND TM.MEM_NO  = #{mno}
+		                     AND TM.APPLY_STATE = '승인완료'
+        					 AND T.TEAM_STATE = '승인완료'
 	</select>
 	
 </mapper>

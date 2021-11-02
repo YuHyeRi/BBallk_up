@@ -24,6 +24,11 @@ $(document).ready(function(){
 			return false;		 //form실행 이벤트를 하지않음
 		}
 	});
+	//내가 가입한 팀현황
+	$(".jointeam").on("click", function(){
+		$("#loginForm").attr("action","TeamJoin");
+		$("#loginForm").submit();
+	});
 	//내가 쓴 글 리스트
 	$(".mypost").on("click", function(){
 		$("#loginForm").attr("action","myBoardList");
@@ -51,7 +56,7 @@ $(document).ready(function(){
 	});
 
 	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","myPage");
+		$("#loginForm").attr("action","Mypage");
 		$("#loginForm").submit();
 	});
 	
@@ -64,17 +69,20 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<header>
-	<jsp:include page="../header.jsp" flush="true" />
-</header>
-<main>
-<jsp:include page="../nav.jsp" flush="true" />
+
 <form action="#" id="loginForm" method="post">
+	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	<input type="hidden" id="mem_nm" name="mem_nm" value="${data.MEM_NM}">
 	<input type="hidden" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}">
 	<input type="hidden" id="gbn" name="gbn" value="">
 </form>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+
 <div class="mypage1">
 	<div class="myphoto">
 	     <img src="resources/images/icon/사진.png">

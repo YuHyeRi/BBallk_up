@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 <style>
 	#att {
 		display: none;
@@ -123,6 +130,17 @@
 </script>
 </head>
 <body>
+<form action="#" id="loginForm">
+<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
+
+	<header>
+		<jsp:include page="../header.jsp" flush="true" />
+	</header>
+	
+	<main>
+	<jsp:include page="../nav.jsp" flush="true" />
+
 	<h2>자유게시판 글수정 페이지</h2>
 	<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 		<input type="file" name="att" id="att" />
@@ -165,5 +183,13 @@
 	<br>
 		<input type="button" value="수정" id="updateBtn" />
 		<input type="button" value="취소" id="cancelBtn" />
+		
+	</main>
+	
+	<footer>
+		<jsp:include page="../footer.jsp" flush="true" />
+	</footer>
+		
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
