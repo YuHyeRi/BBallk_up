@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myPage">
+	<select id="getMEM" parameterType="hashmap" resultType="hashmap">
+		SELECT MEM_PHONE, MEM_ID, MEM_NM
+		FROM MEM
+		WHERE MEM_NO = #{mem_no}
+	</select>
+	
+	<select id="getCardChk" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) 
+		FROM CARD 
+		WHERE MEM_NO = #{mem_no}
+	</select>
+	
+	<select id="getCard" parameterType="hashmap" resultType="hashmap">
+		SELECT SUBSTR(CARD_NUM1, 0, 4) || '-' || SUBSTR(CARD_NUM1, 5) AS CARD_NUM
+		FROM CARD
+		WHERE MEM_NO = #{mem_no}
+	</select>
+	
+	<insert id="addCard" parameterType="hashmap">
+		INSERT INTO CARD(CARD_NO, MEM_NO, CARD_NUM1, CARD_NUM2, CARD_MON, CARD_YEAR, CARD_CVC, CARD_PW, CARD_DT)
+		VALUES(CARD_SEQ.NEXTVAl, #{mem_no}, #{cardNum1}, #{cardNum2}, #{cardMon}, #{cardYear}, #{cardCVC}, #{cardPw}, SYSDATE)
+	</insert>
+	
+	<delete id="deleteCard" parameterType="hashmap">
+		DELETE FROM CARD WHERE MEM_NO = #{mem_no}
+	</delete>
+	
+	<select id="getMemCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) 
+		FROM MEM
+	</select>
+	
+	<select id="getMemList" parameterType="hashmap" resultType="hashmap">
+		SELECT MEM_NO, MEM_ID, MEM_NM, MEM_JOIN, MEM_PHONE
+		FROM (SELECT MEM_NO, MEM_ID, MEM_NM, TO_CHAR(MEM_JOIN,'YYYY-MM-DD') AS MEM_JOIN, MEM_PHONE,
+		ROW_NUMBER() OVER(ORDER BY MEM_NO DESC) AS RNUM
+		FROM MEM
+		WHERE MEM_NO != 4
+		<if test="searchTxt != null and searchTxt != ''">
+			<choose>
+				<when test="searchGbn eq 0">
+					AND MEM_ID LIKE '%' || #{searchTxt} || '%'
+				</when>
+				<when test="searchGbn eq 1">
+					AND MEM_NM LIKE '%' || #{searchTxt} || '%'
+				</when>
+			</choose>
+		</if>
+		) MEM
+		WHERE MEM.RNUM BETWEEN #{startCnt} AND #{endCnt}
+	</select>
+	
+	<select id="getTeamList" parameterType="hashmap" resultType="hashmap">
+		SELECT MEM.MEM_NM, MEM.MEM_ID, MEM.MEM_PHONE, TEAM.TEAM_NO, TEAM.TEAM_NM
+		FROM MEM, TEAM, T_MEM
+		WHERE MEM.MEM_NO = T_MEM.MEM_NO 
+			AND T_MEM.TEAM_NO = TEAM.TEAM_NO 
+			AND MEM.MEM_NO = #{mem_no}
+	</select>
+</mapper>

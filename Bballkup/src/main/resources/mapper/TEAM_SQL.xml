@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="team">
+	<select id="teamChk" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM TEAM WHERE MEM_NO = #{mem_no}
+	</select>
+	
+	<insert id="teamAdd" parameterType="hashmap">
+		INSERT INTO TEAM(TEAM_NO, MEM_NO, SPORT_NO, TEAM_NM, TEAM_INTRO, 
+						TEAM_LOGO, TEAM_STATE, TEAM_JOIN_DT, TEAM_DEL)
+		VALUES(TEAM_SEQ.NEXTVAL, #{mem_no}, #{sport}, #{teamNm}, #{teamIntro}, 
+				#{teamImg}, '승인대기', SYSDATE, 1)
+	</insert>
+	
+	<select id="tNmChk" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM TEAM WHERE TEAM_NM = #{teamNm}
+	</select>
+</mapper>
