@@ -15,99 +15,35 @@
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	<link rel="stylesheet" href="resources/css/layout/T_board.css">
+	<link rel="stylesheet" href="resources/css/layout/question.css">
 
 <style type="text/css">
-body {
-	margin: 0px;
-	font-size: 0px;
-}
-.login_wrap {
-	text-align: right;
-	padding: 10px;
-	font-size:12pt;
-}
 
-.ob_wrap {
-	width: 800px;
-	margin: 0px auto;
-	border: 1px solid #444444;
-}
-
-.write_area {
-	height: 110px;
-}
-
-.secretCheck {
-   text-align: right;
-}
-
-.secretCheck .secret_text {
-	font-size: 11px;
-}
-
-.user_info {
-	display: inline-table;
-	width: 100px;
-	height: 100px;
-	vertical-align: top;
-	text-align: center;
-}
-
-.user_name {
-	display: table-cell;
-	width: 100px;
-	height: 100px;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 12pt;
-}
-
-.write_con_wrap {
-	display: inline-block;
-	width: 550px;
-	height: 100px;
-	vertical-align: top;
-}
-
-.write_con {
+reple_con {
 	width: 540px;
 	height: 90px;
 	resize: none;
 	margin: 2px;
 }
-
-.reple_con {
-	width: 540px;
-	height: 90px;
-	resize: none;
-	margin: 2px;
+.reple_text_area{
+	background-color: #e3ecfb;
 }
-
-.btn_wrap {
-	display: inline-block;
-	width: 150px;
-	height: 100px;
-	vertical-align: top;
-	/* margin-top: 5px; */
-}
-
-.action_btn {
-	width: 146px;
-	height: 96px;
-	margin: 2px;
-}
-
-.action_btn4 {
-	width: 146px;
+#addBtn{
 	height: 50px;
-	margin: 2px;
 }
 
-.action_btn2, .action_btn3, .action_btn5 {
-	width: 71px;
-	/* height: 96px; */
-	height: 50px;
-	margin: 2px;
+input:hover{
+	background-color: #e3ecfb;
+}
+
+input{
+	background-color: white;
+    padding: 5px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #1d2088;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .write_area .action_btn2 {
@@ -126,7 +62,6 @@ body {
 	height: 100px;
 	vertical-align: middle;
 	text-align: center;
-	font-size: 12pt;
 }
 
 .data_req_wrap {
@@ -143,7 +78,6 @@ body {
 	height: 100px;
 	vertical-align: middle;
 	text-align: center;
-	font-size: 12pt;
 }
 
 .ob_data {
@@ -153,7 +87,6 @@ body {
 
 .con_info {
 	display: inline-table;
-	width: 550px;
 	height: 100px;
 	vertical-align: top;
 }
@@ -164,35 +97,30 @@ body {
 	height: 100px;
 	vertical-align: middle;
 	text-align: left;
-	font-size: 12pt;
 }
 .q_re_con {
 	display: inline-table;
-	width: 500px;
 	height: 45px;
 	vertical-align: middle;
 }
 .reple_con {
 	display: inline-table;
-	width: 520px;
 	height: 50px;
 	vertical-align: middle;
 	text-align: left;
-	font-size: 12pt;
 }
 
-.paging_wrap {
-	margin: 5px 0px;
-	padding: 5px 0px;
+#paging_wrap2 {
+	margin: 20px;
 	border-top: 1px solid #444444;
 	text-align: center;
 }
 
-.paging_wrap span {
+#paging_wrap2 span {
 	margin: 0px 5px;
-	font-size: 12pt;
 	cursor: pointer;
 }
+
 
 </style>
 <script type="text/javascript"
@@ -387,18 +315,6 @@ function checkObjVal(obj) {
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
-	<%-- <!-- 최상단 로그인 -->
-	<div class="login_wrap">
-		<c:choose>
-			<c:when test="${empty sMNo}">
-				<input type="button" value="로그인" id="loginBtn"/>
-			</c:when>
-		<c:otherwise>
-			${sMNm}님 어서오십시오.
-			<input type="button" value="로그아웃" id="logoutBtn" />	
-		</c:otherwise>
-		</c:choose>
-	</div>  --%>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <jsp:include page="../T_board.jsp" flush="true" />
@@ -511,8 +427,7 @@ function checkObjVal(obj) {
 	</div>
 
 <!-- Paging -->
-	<div class="paging_wrap">
-		<div id="paging_wrap">
+	<div id="paging_wrap2">
 			<!-- 이전 -->
 		<c:choose>
 			<c:when test="${page eq 1}"> 
@@ -541,7 +456,6 @@ function checkObjVal(obj) {
 				<span page ="${page + 1}">다음</span>
 			</c:otherwise>
 		</c:choose>
-		</div>
 	</div>
 </div>
 </div>

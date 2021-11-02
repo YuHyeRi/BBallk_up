@@ -11,6 +11,7 @@
 	            <button class="btn join" id="join">회원가입</button>
         	</c:when>
         	<c:otherwise>
+        		<p class="pand">${sMNm}님 반갑습니다 :)</p><br><br>
 	            <button class="btn logout" id="logout">로그아웃</button>
 	            <p class="pand">또는</p>
 	            <button class="btn mypage" id="mypage">마이페이지</button>

@@ -29,13 +29,10 @@ $(document).ready(function(){
 		location.href = "m1Logout";
 	});
 	
-	$("tbody").on("click", "tr", function(){
-		
-		//$("#no").val($(this).attr("no"));
-		
+	/* $("tbody").on("click", "tr", function(){		
 		$("#actionForm").attr("action", "myTeamJoinAjax");
 		$("#actionForm").submit();
-	});
+	}); */
 }); //document end
 
 //데이터 취득
