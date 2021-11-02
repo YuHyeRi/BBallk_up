@@ -363,8 +363,15 @@ function checkObjVal(obj) {
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main class="ob_wrap">
+<jsp:include page="../nav.jsp" flush="true" />
+<jsp:include page="../T_board.jsp" flush="true" />
+<div class="tabcontent">
 	<!-- 최상단 로그인 -->
-	<div class="login_wrap">
+	<%-- <div class="login_wrap">
 		<c:choose>
 			<c:when test="${empty sMNo}">
 				<input type="button" value="로그인" id="loginBtn"/>
@@ -374,9 +381,8 @@ function checkObjVal(obj) {
 			<input type="button" value="로그아웃" id="logoutBtn" />	
 		</c:otherwise>
 		</c:choose>
-	</div> 
+	</div>  --%>
 	<!-- 작성+리스트 -->
-<main class="ob_wrap">	
 	<form action="#" id="actionForm" method="post">
 	<input type="hidden" id="no" name="no"/>
 	<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
@@ -513,6 +519,10 @@ function checkObjVal(obj) {
 		</c:choose>
 		</div>
 	</div>
-</main>	
+	</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>
