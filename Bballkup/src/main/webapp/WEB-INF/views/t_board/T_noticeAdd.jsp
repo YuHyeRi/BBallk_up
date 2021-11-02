@@ -49,6 +49,16 @@ $(document).ready(function(){
 		$("#att").click();
 	});
 	
+	$("#logout").on("click", function(){
+		$("#loginForm").attr("action","logout");
+		$("#loginForm").submit();
+	});
+	
+	$("#mypage").on("click", function(){
+		$("#loginForm").attr("action","memUpdate");
+		$("#loginForm").submit();
+	});
+	
 	$("#att").on("change", function(){
 		$("#fileName").html($(this).val().substring($(this).val().lastIndexOf("\\")+ 1));
 	});
@@ -159,15 +169,23 @@ function checkVal(sel) {
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att" />
 </form>
+
+<form action="#" id="loginForm" method="post">
+	<input type="hidden" id="logno" name="logno" value="${sMNo}">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
+
 <form action="T_notice" id="backForm" method="post">
 	<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
 	<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
 	<input type="hidden" name="page" value="${param.page}" />
+	<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 </form>
 <form action="#" id="addForm" method="post">
 	제목 <input type="text" id="title" name="title" />
-	
+	<input type="hidden" name="tno" value="${param.tno}" />
 	<input type="hidden" id="tab" value="${sNMo}" />
+	
 	<input type="checkbox" id="upbtn2"> 중요공지 <br/>
 	<input type="hidden" name="upbtn" value="사과" />
 	

@@ -3,9 +3,13 @@
 <mapper namespace="T_notice">
 	<select id="getnoticeCnt" parameterType="hashmap" resultType="Integer">
 		SELECT COUNT(*) AS CNT
-		FROM T_BOARD INNER JOIN TB_MANAGE
-	               ON T_BOARD.TBM_NO = TB_MANAGE.TBM_NO
-		WHERE T_BOARD.TB_DEL = 1
+		FROM T_BOARD INNER JOIN MEM
+                ON T_BOARD.MEM_NO = MEM.MEM_NO
+                INNER JOIN TB_MANAGE
+                ON T_BOARD.TBM_NO = TB_MANAGE.TBM_NO
+		WHERE MEM.MEM_DEL = 1
+        AND TBM_NM = '공지사항'
+        AND TB_MANAGE.TEAM_NO = #{tno}
 		<if test="searchTxt != null and searchTxt !=''">
 			<choose>
 				<when test="searchGbn eq 0">
@@ -16,17 +20,23 @@
 	</select>
 	
 	<select id="getnoticeList" parameterType="hashmap" resultType="hashmap">
-	SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS T_BOARD_DT, T.TB_HIT, T.TB_UP
+	SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS T_BOARD_DT, T.TB_HIT, T.TB_UP, T.TEAM_NO
 		FROM T_BOARD T, MEM M
 		WHERE T.MEM_NO = M.MEM_NO
-		AND TB_DEL = 1 AND TB_UP = 0 AND TBM_NO = 2
+		AND TB_DEL = 1
+		AND TB_UP = 0
+		AND TBM_NO = 2
+		AND TEAM_NO = #{tno}
 		UNION ALL
-	SELECT T.TB_NO, T.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, T.TB_DT, T.TB_HIT, T.TB_UP
-		FROM ( SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS TB_DT, T.TB_HIT, T.TB_UP,
+		SELECT T.TB_NO, T.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, T.TB_DT, T.TB_HIT, T.TB_UP, T.TEAM_NO
+		FROM ( SELECT T.TB_NO, M.MEM_NM, T.TB_TITLE, T.TB_CON, T.TB_FILE, TO_CHAR(T.TB_DT, 'YYYY-MM-DD') AS TB_DT, T.TB_HIT, T.TB_UP, T.TEAM_NO,
         ROW_NUMBER() OVER (ORDER BY TB_NO DESC) AS RNUM
         FROM T_BOARD T, MEM M
         WHERE T.MEM_NO = M.MEM_NO 
-        AND TB_DEL = 1 AND TB_UP = 1 AND TBM_NO = 2
+        AND TB_DEL = 1
+        AND TB_UP = 1
+        AND TBM_NO = 2
+        AND TEAM_NO = #{tno}
         <if test="searchTxt != null and searchTxt != ''">
         	<choose>
         		<when test="searchGbn eq 0">
@@ -40,7 +50,8 @@
 	
 	<update id="updatenoticeHit" parameterType="hashmap">
 		UPDATE T_BOARD SET TB_HIT = TB_HIT + 1
-		WHERE TB_NO = #{no}
+		WHERE TBM_NO = 2
+		AND TB_NO = #{no}
 	</update>
 	
 	<select id="getnoticeDtl" parameterType="hashmap" resultType="hashmap">
@@ -52,8 +63,8 @@
 	</select>
 	
 	<insert id="T_noticeAdd" parameterType="hashmap">
-		INSERT INTO T_BOARD(TB_NO, TBM_NO, MEM_NO, TB_TITLE, TB_CON,TB_FILE, TB_UP)
-		VALUES(NOTICE_SEQ.NEXTVAL, 2, #{mno}, #{title}, #{con}, #{NFile}, #{upbtn})
+		INSERT INTO T_BOARD(TB_NO, TBM_NO, MEM_NO, TB_TITLE, TB_CON,TB_FILE, TB_UP, TEAM_NO)
+		VALUES(T_BOARD_SEQ.NEXTVAL, 2, #{mno}, #{title}, #{con}, #{NFile}, #{upbtn}, #{tno})
 	</insert>
 	
 	<update id="T_noticeUpdate" parameterType="hashmap">
@@ -67,6 +78,8 @@
 	
 	<update id="T_noticeDeletes" parameterType="hashmap">
 		UPDATE T_BOARD SET TB_DEL = 0
-    	WHERE TB_NO = #{no}
+    	WHERE TBM_NO = 2
+    	AND TB_NO = #{no}
+    	AND TEAM_NO = #{tno}
 	</update>
 </mapper>

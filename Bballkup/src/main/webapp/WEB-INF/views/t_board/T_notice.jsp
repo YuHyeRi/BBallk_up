@@ -47,20 +47,18 @@ $(document).ready(function(){
 		reloadList();
 	});
 	
-	$("#loginBtn").on("click",function(){
-		
-		$("#actionForm").attr("action","login");
-		$("#actionForm").submit();
+	$("#logout").on("click", function(){
+		$("#loginForm").attr("action","logout");
+		$("#loginForm").submit();
 	});
 	
-	$("#logoutBtn").on("click", function(){
-		location.href = "logout";
+	$("#mypage").on("click", function(){
+		$("#loginForm").attr("action","Mypage");
+		$("#loginForm").submit();
 	});
-	
 	
 	$("#addBtn").on("click", function(){
 		$("#searchTxt").val($("#oldTxt").val());
-		
 		$("#actionForm").attr("action", "T_noticeAdd");
 		$("#actionForm").submit();
 	});
@@ -207,20 +205,17 @@ var html ="";
 <div class="tabcontent">
 <h2>팀 공지사항</h2>
 <div>
-	<c:choose>
-		<c:when test="${empty sMNo}">
-			<input type="button" value="로그인" id="loginBtn" />
-		</c:when>
-		<c:otherwise>
-			${sMNm}님 어서오세요.<input type="button" value="로그아웃" id="logoutBtn" />
-		</c:otherwise>
-	</c:choose>
-</div>
-<div>
+	<form action="#" id="loginForm" method="post">
+		<input type="hidden" id="logno" name="logno" value="${sMNo}">
+		<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	</form>
+		
 	<form action="#" id="actionForm" method="post">
 		<select name="searchGbn" id="searchGbn">
 			<option value="0">제목</option>
 		</select>
+		<input type="hidden" id="no" name="no" />
+		<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 		
 		<input type="hidden" id="tab" value="${sNMo}" />
 		

@@ -89,6 +89,8 @@ $(document).ready(function(){
 		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" name="page" value="${param.page}" />
 		<input type="hidden" name="no" value="${param.no}" />
+		<input type="hidden" name="tno" value="${param.tno}" />
+		
 	</form>
 	<div>
 		<table class="notice_table2">
