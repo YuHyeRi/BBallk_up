@@ -64,20 +64,17 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<form action="#" id="loginForm">
-<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-<input type="hidden" id="gbn" name="gbn" value="">
+<form action="#" id="loginForm" method="post">
+	<input type="hidden" id="logno" name="logno" value="${sMNo}">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	<input type="hidden" id="gbn" name="gbn" value="">
 </form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-<form action="#" id="loginForm" method="post">
-	<input type="hidden" id="logno" name="logno" value="${sMNo}">
-	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-	<input type="hidden" id="gbn" name="gbn" value="">
-</form>
+
 <div class="mypage1">
 	<div class="myphoto">
 	     <img src="resources/images/icon/사진.png">
