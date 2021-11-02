@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/login.css">
+	<link rel="stylesheet" href="resources/css/layout/memupdate.css">
 <style type="text/css">
 	#pwQ{
 		display: none;
@@ -92,7 +99,6 @@
 						if(res.cnt > 0){
 							
 							$("#mem_no").val(res.data.MEM_NO);
-							//alert("변경"+$("#mem_no").val());
 							$("#findPwForm").attr("action", "memUpdate");
 							$("#findPwForm").submit(); 
 							
@@ -119,6 +125,13 @@
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="mainmain">
+<div class="memdiv">
 	<form action="#" id="findPwForm" method="post">
 		<input type="hidden" name="gbn" value="pu"> 
 		<input type="hidden" name="mem_no" id="mem_no" value="${data.MEM_NO}" >
@@ -138,13 +151,21 @@
 		비밀번호 확인용 답변<br>
 			<input type="text" id="mem_pwa" name="mem_pwa" placeholder="답변"><br><br>
 			<br><br>
+			<div class="membtns">
 			<input type="button" value="재설정" id="updatePwBtn">
+			</div>
 		</div>
 	</form>
 	<br><br>
-	<div id="btnDiv">
+	<div id="btnDiv" class="membtns">
 	<input type="button" value="확인" id="findPwBtn">
 	<input type="button" value="취소" id="cancleBtn">
 	</div>
+</div>
+</div>	
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

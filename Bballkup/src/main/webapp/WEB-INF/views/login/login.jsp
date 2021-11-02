@@ -83,7 +83,8 @@
 		</div>
 			<input type="button" value="LOG IN" id="loginBtn">
 		<div class="btntext">
-			Don't you have ID? <a href="join"> sign up</a>		
+			Don't you have ID? <a href="join"> sign up</a><br>
+			<a href="findId"> find ID</a>&nbsp;or&nbsp;<a href="findPw"> find PW</a>
 			<!-- <input type="button" value="회원가입" id="joinBtn"> -->
 		</div>
 </form>

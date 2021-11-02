@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/login.css">
+	<link rel="stylesheet" href="resources/css/layout/memupdate.css">
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -108,6 +115,13 @@
 </script>
 </head>
 <body>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="mainmain">
+<div class="memdiv">
 	<form action="#" id="findIdForm" method="post">
 		이름<br> 
 			<input type="text" id="mem_nm" name="mem_nm" placeholder="이름입력(2자 이상)"><br><br>
@@ -117,7 +131,15 @@
 			<input type="text" id="mem_bd" name="mem_bd" placeholder="19990101"><br><br>
 	</form>
 	<br><br>
+	<div class="membtns">
 	<input type="button" value="찾기" id="findBtn">
 	<input type="button" value="취소" id="cancleBtn">
+	</div>
+</div>
+</div>	
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>

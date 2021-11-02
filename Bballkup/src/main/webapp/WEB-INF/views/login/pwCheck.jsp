@@ -6,6 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/login.css">
+	
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -51,13 +58,26 @@
 </script>
 </head>
 <body>
-<div>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="mainmain">
+<div class="logindiv">
 <form action="#" id="pwCheckForm" method="post">
 	<input type="hidden" id="gbn" name="gbn" value="${param.gbn}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-	비밀번호 확인 : <input type="password" id="pwCheck" name="pwCheck" ><br>
+	<div class="idpassForm">
+	<br><br>비밀번호 확인<br><br><input type="password" id="pwCheck" name="pwCheck" ><br>
+	</div>
 	<input type="button" value="정보수정" id="memUpdateBtn">
 </form>
 </div>
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
 </body>
 </html>
