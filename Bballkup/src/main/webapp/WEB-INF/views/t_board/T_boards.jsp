@@ -76,13 +76,16 @@
 		<jsp:include page="../T_board.jsp" flush="true" />
 		
 		<div class="tabcontent">
-			<div class="team_no_list" no="${param.tno}">
-				<form action="#" id="actionForm" method="post">
-					<input type="hidden" id="tab" value="${sNMo}" />
-					<input type="hidden" id="tno3" name="tno">
-					<input type="hidden" id="tnm" name="tnm" value="${param.tnm}">
-				</form>
-			</div>
+				<div class="team_no_list" no="${param.tno}">
+					<form action="#" id="actionForm" method="post">
+						<input type="hidden" id="tab" value="${sNMo}" />
+						<input type="hidden" id="tno3" name="tno">
+						<input type="hidden" id="tnm" name="tnm" value="${param.tnm}">
+					</form>
+				</div>
+				<div class="righttab">
+				<p>ㅎㅇㅎㅇ</p>
+				</div>
 		</div>
 	</main>
 	
