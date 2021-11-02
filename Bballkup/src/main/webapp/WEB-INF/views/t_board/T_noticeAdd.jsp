@@ -55,7 +55,7 @@ $(document).ready(function(){
 	});
 	
 	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","memUpdate");
+		$("#loginForm").attr("action","Mypage");
 		$("#loginForm").submit();
 	});
 	
@@ -123,7 +123,7 @@ $(document).ready(function(){
 							data: params,
 							success: function(res){
 								if(res.result == "success"){
-									location.href = "T_notice";
+									$("#backForm").submit();
 								}else if (res.result == "failed"){
 									alert("작성에 실패하였습니다.");
 								}else{
@@ -171,8 +171,7 @@ function checkVal(sel) {
 </form>
 
 <form action="#" id="loginForm" method="post">
-	<input type="hidden" id="logno" name="logno" value="${sMNo}">
-	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	<input type="hidden" name="mem_no" value="${sMNo}">
 </form>
 
 <form action="T_notice" id="backForm" method="post">
@@ -184,12 +183,10 @@ function checkVal(sel) {
 <form action="#" id="addForm" method="post">
 	제목 <input type="text" id="title" name="title" />
 	<input type="hidden" name="tno" value="${param.tno}" />
-	<input type="hidden" id="tab" value="${sNMo}" />
 	
 	<input type="checkbox" id="upbtn2"> 중요공지 <br/>
 	<input type="hidden" name="upbtn" value="사과" />
-	
-	<input type="hidden" name="mno" id="mno" value="${sMNo}" />
+	<input type="hidden" id="mno" name="mno" value="${param.mno}">
 	<textarea rows="5" cols="5" id="con" name="con"></textarea><br/>
 	<div class ="userinfodiv">
 	첨부파일 : <input type="button" value="첨부파일선택" id="fileBtn" >
