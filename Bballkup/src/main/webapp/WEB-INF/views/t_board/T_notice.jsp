@@ -206,18 +206,16 @@ var html ="";
 <h2>팀 공지사항</h2>
 <div>
 	<form action="#" id="loginForm" method="post">
-		<input type="hidden" id="logno" name="logno" value="${sMNo}">
-		<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+		<input type="hidden" name="mem_no" value="${sMNo}">
 	</form>
 		
 	<form action="#" id="actionForm" method="post">
 		<select name="searchGbn" id="searchGbn">
 			<option value="0">제목</option>
 		</select>
-		<input type="hidden" id="no" name="no" />
 		<input type="hidden" id="tno" name="tno" value="${param.tno}" />
 		
-		<input type="hidden" id="tab" value="${sNMo}" />
+		<input type="hidden" id="mno" name="mno" value="${sMNo}">
 		
 		<input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt}" />
 		<input type="hidden" id="oldTxt" value="${param.searchTxt}" />

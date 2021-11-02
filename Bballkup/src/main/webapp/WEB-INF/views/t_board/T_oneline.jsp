@@ -245,6 +245,7 @@ $(document).ready(function() {
 	
 	// 저장
 	$(".write_area #addBtn").on("click",function(){	
+		
 		if(checkVal("#q_con")){
 			alert("내용을 입력하세요.");
 			$("#q_con").focus();
@@ -379,6 +380,7 @@ function checkObjVal(obj) {
 </script>
 </head>
 <body>
+
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
