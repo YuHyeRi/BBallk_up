@@ -341,6 +341,23 @@ $(document).ready(function() {
 		$(this).parent().parent().hide();
 		$(this).parent().parent().parent().children(".reple_text_area").show();
 	});
+	
+	$("#tab2").on("click", function(){
+		$("#actionForm").attr("action", "T_notice");
+		$("#actionForm").submit();
+	});
+	$("#tab4").on("click", function(){
+		$("#actionForm").attr("action", "tFreeList");
+		$("#actionForm").submit();
+	});
+	$("#tab1").on("click", function(){
+		$("#actionForm").attr("action", "T_teammozip");
+		$("#actionForm").submit();
+	});
+	$("#tab3").on("click", function(){
+		$("#actionForm").attr("action", "T_oneline");
+		$("#actionForm").submit();
+	});
 });
 
 
@@ -363,15 +380,12 @@ function checkObjVal(obj) {
 </script>
 </head>
 <body>
+
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
-<main class="ob_wrap">
-<jsp:include page="../nav.jsp" flush="true" />
-<jsp:include page="../T_board.jsp" flush="true" />
-<div class="tabcontent">
 	<!-- 최상단 로그인 -->
-	<%-- <div class="login_wrap">
+	<div class="login_wrap">
 		<c:choose>
 			<c:when test="${empty sMNo}">
 				<input type="button" value="로그인" id="loginBtn"/>
@@ -381,12 +395,19 @@ function checkObjVal(obj) {
 			<input type="button" value="로그아웃" id="logoutBtn" />	
 		</c:otherwise>
 		</c:choose>
-	</div>  --%>
+	</div> 
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<jsp:include page="../T_board.jsp" flush="true" />
+<div class="tabcontent">
+<h2>팀 한줄게시판</h2>
 	<!-- 작성+리스트 -->
+<div class="ob_wrap">	
 	<form action="#" id="actionForm" method="post">
 	<input type="hidden" id="no" name="no"/>
-	<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
+	<input type="hidden" id="mno" name="mno" value="${sMNo}"/>
 	<input type="hidden" name="page" id="page" value="${page}"/>
+	<input type="hidden" id="tno2" name="tno" value="${param.tno}" />
 	
 	<div class="write_area">
 		<c:choose>
@@ -403,7 +424,7 @@ function checkObjVal(obj) {
 				<div class="write_con_wrap">
 					<textarea class="write_con" id="q_con" name="q_con"></textarea>
 				</div>
-				<div class="btn_wrap">
+				<div class="btn_wrap" no="${data.TEAM_NO}">
 					<input type="button" value="저장" class="action_btn" id="addBtn"/>
 					<input type="button" value="수정" class="action_btn2" id="update2Btn"/>
 					<input type="button" value="취소" class="action_btn2" id="cancelBtn"/>
@@ -414,7 +435,7 @@ function checkObjVal(obj) {
 	</form>
 	<form action="#" id ="RepleForm" method="post">
 		<input type="hidden" name="no" id="no2" />
-		<input type="hidden" id="sMNo" name="sMNo" value="${sMNo}"/>
+		<input type="hidden" id="mno" name="mno" value="${mno}"/>
 		<input type="hidden" name="q_re_con" id="q_re_con" />
 	</form>
 	<!-- List -->
@@ -519,10 +540,8 @@ function checkObjVal(obj) {
 		</c:choose>
 		</div>
 	</div>
-	</div>
-</main>
-<footer>
-	<jsp:include page="../footer.jsp" flush="true" />
-</footer>
+</div>
+</div>
+</main>	
 </body>
 </html>

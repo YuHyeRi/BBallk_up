@@ -52,10 +52,11 @@ public class T_onelineController {
 	public ModelAndView T_onelineAdds(
 			@RequestParam HashMap<String, String> params,
 			ModelAndView mav) throws Throwable{
-		
+		System.out.println(params);
 		int cnt = it_onelineService.tOneAdd(params);
 		
 		if(cnt>0) {
+			mav.addObject("tno", params.get("tno"));
 			mav.setViewName("redirect:T_oneline");
 		} else {
 			mav.addObject("msg","저장에 실패하였습니다.");
@@ -72,6 +73,7 @@ public class T_onelineController {
 		
 		int cnt = it_onelineService.tOneUpdate(params);
 		if(cnt > 0) { // 수정 성공
+			mav.addObject("tno", params.get("tno"));
 			mav.setViewName("redirect:T_oneline"); 
 		} else {
 			mav.addObject("msg","수정에 실패하였습니다.");
@@ -87,6 +89,7 @@ public class T_onelineController {
 		
 		int cnt = it_onelineService.tOneDelete(params);
 		if(cnt>0) {
+			mav.addObject("tno", params.get("tno"));
 			mav.setViewName("redirect:T_oneline");
 		}else {
 			mav.addObject("msg","삭제에 실패하였습니다.");
@@ -102,7 +105,8 @@ public class T_onelineController {
 
 		// 답변 내용 추가 업데이트 카운트 
 		int cnt = it_onelineService.tOneReple(params); 
-		if(cnt > 0) {			
+		if(cnt > 0) {
+			mav.addObject("tno", params.get("tno"));
 			mav.setViewName("redirect:T_oneline");
 		}else {
 			mav.addObject("msg","답변에 실패하였습니다.");
@@ -118,6 +122,7 @@ public class T_onelineController {
 		
 		int cnt = it_onelineService.tOneRepleDelete(params);
 		if(cnt>0) {
+			mav.addObject("tno", params.get("tno"));
 			mav.setViewName("redirect:T_oneline");
 		}else {
 			mav.addObject("msg","답변 삭제에 실패하였습니다.");
