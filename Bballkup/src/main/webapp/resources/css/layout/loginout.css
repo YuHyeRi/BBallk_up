@@ -22,8 +22,8 @@
 }
 
 .pclass{
-	position : absolute;
 	left : 83%;
+	position : absolute;
 	font-size: 5px;
 	color: #919191;
 }

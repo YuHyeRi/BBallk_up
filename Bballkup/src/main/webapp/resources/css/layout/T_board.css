@@ -13,8 +13,8 @@
 }
 
 .tabbtn {
+  color : black;
   background-color: inherit;
-  color: black;
   padding: 22px 16px;
   width: 100%;
   border: none;
