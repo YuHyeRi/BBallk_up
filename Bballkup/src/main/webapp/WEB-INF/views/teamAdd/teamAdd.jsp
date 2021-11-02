@@ -21,7 +21,7 @@
 }
 
 img{
-	width:200px;
+	width:80px;
 }
 </style>
 <script src="resources/script/jquery/jquery-1.12.4.min.js" type="text/javascript"></script>
@@ -156,14 +156,13 @@ function checkVal(sel){
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
+<div class="cardBig">
+<div class="addDiv">
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att">
 </form>
-<div class="cardBig">
-<div class="cardDiv">
 	<div class = "addCon">
 	<h2>팀 커뮤니티 >> 팀장신청</h2>
-				<br>
 				<br>
 				<br>
 	</div>
@@ -172,11 +171,12 @@ function checkVal(sel){
 	팀명 <input type="text" id="teamNm" name="teamNm">
 	<input type="button" id="tNmChk" name="tNmChk" value="중복확인">
 	<br>
+	<br>
 	팀 로고 : <input type="button" value="이미지선택" id="fileBtn" >
-	<span id="fileName">${fn:substring(data.TEAM_LOGO, 20, len)}</span><br>
+	<span id="fileName">${fn:substring(data.TEAM_LOGO, 20, len)}</span><br><br>
 	<input type="hidden" name="teamImg" id="teamImg" >
 	<div id = "imgView"></div>
-
+	<br>
 	주 이용시설
 	<select id="sport" name="sport">
 		<option value="1">테니스장</option>
@@ -192,13 +192,13 @@ function checkVal(sel){
 		<option value="11">교육시설</option>
 		<option value="12">탁구장</option>
 		<option value="13">골프장</option>
-	</select><br>
-	팀 소개<br>
+	</select><br><br>
+	팀 소개<br><br>
 	<textarea rows="5" cols="5" id="teamIntro" name="teamIntro" style="width:300px;"></textarea><br>
 </form>
-<div class = "btnDiv1">
-	<input type="button" value="저장" id="addBtn">
+<div class = "addBtn">
 	<input type="button" value="취소" id="cancelBtn">
+	<input type="button" value="저장" id="addBtn">
 </div>
 </div>
 </div>

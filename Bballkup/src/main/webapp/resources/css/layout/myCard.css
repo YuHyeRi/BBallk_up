@@ -9,10 +9,18 @@
 	padding:20px 20px 30px 20px;
 }
 
+.addDiv{
+	border : 2px solid #1d2088;
+	width:500px;
+	height:500px;
+	border-radius: 15px;
+	margin-bottom: 40px;
+	padding:20px 20px 30px 20px;
+}
+
 .cardBig{
 	justify-content: center;
 	display: flex;
-
 }
 
 .btnDiv1{
@@ -22,6 +30,11 @@
 
 .btnDiv2{
 	text-align:center;
+}
+
+.addBtn{
+	text-align:center;
+	padding-top: 30px;
 }
 
 #cancel1:hover, #cancel2:hover, #deleteCard:hover, #cardAdd:hover, #addBtn:hover, #cancelBtn:hover{
