@@ -79,8 +79,8 @@ $(document).ready(function(){
 		
 		$("#no").val($(this).attr("no"));
 		
-		$("#actionForm").attr("action", "myBoard");
-		$("#actionForm").submit();
+		$("#boardGoForm").attr("action", "freeDtl");
+		$("#boardGoForm").submit();
 	});
 	
 });
@@ -176,6 +176,10 @@ function drawPaging(pb){
 <jsp:include page="../nav.jsp" flush="true" />
 	<h2>내가 쓴 글 목록</h2>
 <div>
+	<form action="#" id="boardGoForm" method="post">
+		<input type="hidden" name="no" id="no" value="${sMNo}">
+		<input type="hidden" name="no" id="no" value="${sMNo}">
+	</form>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
 		<select name="searchBoardGbn" id="searchBoardGbn">

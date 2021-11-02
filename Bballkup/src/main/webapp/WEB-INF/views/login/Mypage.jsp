@@ -61,6 +61,7 @@ $(document).ready(function(){
 <body>
 <form action="#" id="loginForm">
 <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+<input type="hidden" id="gbn" name="gbn" value="">
 </form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
