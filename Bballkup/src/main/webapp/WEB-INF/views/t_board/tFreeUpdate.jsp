@@ -163,9 +163,9 @@
 	
 	<form action="#" id="updateForm" method="post">
 		<input type="hidden" name="tno" value="${param.tno}" >
-		번호: ${param.no}<input type="hidden" name="no" value="${param.no}" /><br>
-		제목: <input type="text" id="title" name="title" value="${data.TB_TITLE}"/><br/>
-		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/>
+		번호: ${param.no}<input type="hidden" name="no" value="${param.no}" /><br><br>
+		제목: <input type="text" id="title" name="title" value="${data.TB_TITLE}"/><br/><br>
+		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/><br>
 		<textarea rows="5" cols="5" id="con" name="con">${data.TB_CON}</textarea><br/>
 		첨부파일: 
 		<c:choose>

@@ -140,9 +140,9 @@
 		<select id="categoryno" name="categoryno">
 			<option value="0">[자유수다]</option>	
 			<option value="1">[용병구해요]</option>	
-		</select><br>
-		제목: <input type="text" id="title" name="title" /><br/>
-		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/>
+		</select><br><br>
+		제목: <input type="text" id="title" name="title" /><br/><br>
+		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/><br>
 		<textarea rows="5" cols="5" id="con" name="con"></textarea><br/>
 		첨부파일: <input type="button" value="첨부파일선택" id="fileBtn" /><span id="fileName"></span>
 		<input type="hidden" name="freeFile" id="freeFile" />
