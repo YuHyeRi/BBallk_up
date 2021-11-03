@@ -8,10 +8,10 @@
         <address>Contact webmaster for more information.  02-2108-5900</address>
     </div>
 	<div class="footerbtn">
-	   	 <img src="resources/images/icon/2.png">
-		 <img src="resources/images/icon/3.png">
-		 <img src="resources/images/icon/4.png">
-		 <img src="resources/images/icon/5.png">
-		 <img src="resources/images/icon/6.png">
+	   	 <img src="resources/images/icon/2.png" onclick="javascript:location.href='https://www.instagram.com/';">
+		<!--  <img src="resources/images/icon/3.png"> -->
+		 <img src="resources/images/icon/4.png" onclick="javascript:location.href='https://www.google.com/';">
+		<!--  <img src="resources/images/icon/5.png" > -->
+		 <img src="resources/images/icon/6.png" onclick="javascript:location.href='login';">
 	</div>
 </div>

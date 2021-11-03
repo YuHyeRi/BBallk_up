@@ -6,17 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/main.css">
+	<link rel="stylesheet" href="resources/css/layout/mypage.css">
+	
 <style>
-#myImg{
+/* #myImg{
 	padding-bottom:20px;
 }
-.myInfo{
-	display:flex;
-}
+
 .userdiv{
 	margin-top:50px;
 	padding-left:10px;
-}
+} */
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
@@ -47,28 +53,63 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<h2>마이페이지</h2>
-<form action="#" id="loginForm" method="post">
-   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-</form>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<h2>관리자페이지</h2>
 <form action="#" id="actionForm" method="post">
 	<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
 	<input type="hidden" id="mem_nm" name="mem_nm" value="${param.mem_nm}">
 	<input type="hidden" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}">
+</form>
 <%-- 	<input type="hidden" name="searchTxt" id="searchTxt" value="${searchTxt}" >
 	<input type="hidden" name="oldTxt" id="oldTxt" value="${searchTxt}" >
 	<input type="hidden" name="page" id="page" value="${page}"> --%>
-	<div class="myInfo">
-		<img src ="resources/images/kitty.png" id="myImg" alt ="야옹이">
-		<div class="userdiv">
-			${param.mem_nm}<br>
-			${data.MEM_PHONE}<br>
+<div class="mypage1">
+	<div class="myphoto">
+		<img src="resources/images/icon/사진.png" id="myImg" alt ="야옹이">
+	</div>
+	<div class="userdiv">
+		 <div class="myname">
+		 	<%-- <p>${param.mem_nm}</p> --%>
+		 	<p>${data.MEM_NM}</p>
+		 </div>
+		<div class="myphone">
+			<p>${data.MEM_PHONE}</p>
 		</div>
 	</div>
-</form>
-<input type="button" id="memManage" name="memManage" value="회원관리">
+</div>
+<div class="mypage2">
+	<div class="mybuttons1">
+		<div class="mybtn memManage">
+			<img id="memManage" name="memManage" src="resources/images/icon/팀가입현황.png" type="button">
+			<p>회원관리</p>
+		</div>
+		<div class="mybtn teamManage">
+			<img id="teamManage" name="teamManage" src="resources/images/icon/팀관리.png" type="button">
+            <p>팀관리</p>
+		</div>
+		<div class="mybtn changePw">
+			<img id="changePw" name="changePw" src="resources/images/icon/패스워드변경.png" type="button">
+            <p>패스워드변경</p>
+		</div>
+		<div class="mybtn changeInfo">
+            <img id="changeInfo" name="changeInfo" src="resources/images/icon/회원정보수정.png" type="button">
+            <p>관리자정보수정</p>
+        </div>
+	</div>
+</div>
+	
+<!-- <input type="button" id="memManage" name="memManage" value="회원관리">
 <input type="button" id="teamManage" name="teamManage" value="팀관리" style="margin-bottom:10px;"><br>
 <input type="button" id="changePw" name="changePw" value="비밀번호변경">
-<input type="button" id="changeInfo" name="changeInfo" value="관리자정보수정">
+<input type="button" id="changeInfo" name="changeInfo" value="관리자정보수정"> -->
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
