@@ -177,12 +177,13 @@
 	<form action="#" id="addForm" method="post">
 		<input type="hidden" name="tno" value="${param.tno}" />
 		<input type="hidden" id="tab" value="${sNMo}" />
-		제목: <input type="text" id="title" name="title" /><br/>
-		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/>
+		제목: <input type="text" id="title" name="title" /><br/><br>
+		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/><br>
 		<textarea rows="5" cols="5" id="con" name="con"></textarea><br/>
 		첨부파일: <input type="button" value="첨부파일선택" id="fileBtn" /><span id="fileName"></span>
 		<input type="hidden" name="tbfile" id="tbfile" />
 	</form>
+	<br><br>
 	<input type="button" value="저장" id="addBtn" />
 	<input type="button" value="취소" id="cancelBtn" />
 </div>

@@ -91,7 +91,7 @@ public class myPageController {
 		List<HashMap<String, String>> list = iMyPageService.getMemList(params);
 		
 		modelMap.put("list", list);
-		//System.out.println("뽑은 리스트들 : "+list);
+		
 		modelMap.put("pb", pb);
 		
 		return mapper.writeValueAsString(modelMap);

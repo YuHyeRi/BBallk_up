@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지>>회원관리</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
+
 <style type="text/css">
 .paging_wrap span {
    cursor: pointer;
@@ -120,7 +128,12 @@ function drawPaging(pb){
 </script>
 </head>
 <body>
-<h2>관리자페이지>>회원관리</h2>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<h2>관리자페이지 >> 회원관리</h2>
 회원검색<br>
 <form action="#" id="actionForm" method="post">
 		<input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt}" >
@@ -135,9 +148,9 @@ function drawPaging(pb){
 		<input type="button" value="검색" id="searchBtn">
 </form>
 <div>
-	<table>
+	<table class="notice_table">
 		<thead>
-			<tr>
+			<tr class = "nonetr">
 				<th>회원번호</th>
 				<th>아이디</th>
 				<th>회원명</th>
@@ -150,5 +163,11 @@ function drawPaging(pb){
 </div>
 <div class="paging_wrap">
 </div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
+
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
