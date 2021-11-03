@@ -155,14 +155,14 @@
 	</form>
 	
 	<form action="#" id="updateForm" method="post">
-		번호: ${param.no}<input type="hidden" name="no" value="${param.no}" /><br>
+		번호: ${param.no}<input type="hidden" name="no" value="${param.no}" /><br><br>
 		말머리: 
 		<select id="categoryno" name="categoryno">
 			<option value="0" disabled>[자유수다]</option>	
 			<option value="1" disabled>[용병구해요]</option>
-		</select><br>
-		제목: <input type="text" id="title" name="title" value="${data.FREE_TITLE}"/><br/>
-		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/>
+		</select><br><br>
+		제목: <input type="text" id="title" name="title" value="${data.FREE_TITLE}"/><br/><br>
+		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/><br>
 		<textarea rows="5" cols="5" id="con" name="con">${data.FREE_CON}</textarea><br/>
 		첨부파일: 
 		<c:choose>

@@ -18,6 +18,16 @@
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#cancel1").on("click", function(){
+		$("#deleteForm").attr("action","myPage");
+		$("#deleteForm").submit();
+	});
+	
+	$("#cancel2").on("click", function(){
+		$("#addForm").attr("action","myPage");
+		$("#addForm").submit();
+	});
+	
 	//카드등록
 	$("#cardAdd").on("click", function(){
 		if(checkVal("#cardNum1")){
@@ -182,15 +192,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#cancel1").on("click", function(){
-		$("#deleteForm").attr("action","myPage");
-		$("#deleteForm").submit();
-	});
-	
-	$("#cancel2").on("click", function(){
-		$("#addForm").attr("action","myPage");
-		$("#addForm").submit();
-	});
+
 });
 
 function checkVal(sel){

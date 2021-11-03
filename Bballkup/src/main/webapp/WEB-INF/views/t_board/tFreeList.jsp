@@ -207,7 +207,7 @@
 				<input type="button" value="글작성" id="addBtn" />
 			</c:if>
 		</form>
-	</div>
+	</div><br>
 
 	<div>
 		<table>
@@ -222,7 +222,7 @@
 			</thead>
 			<tbody></tbody>
 		</table>
-	</div>
+	</div><br><br>
 	
 	<div id="paging_wrap"></div>
 </div>

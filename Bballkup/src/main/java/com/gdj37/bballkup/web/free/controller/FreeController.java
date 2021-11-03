@@ -59,7 +59,7 @@ public class FreeController {
 		
 		int page = Integer.parseInt(params.get("page"));
 		int cnt = iFreeService.getFreeCnt(params);
-		PagingBean pb = iPagingService.getPagingBean(page, cnt, 5, 10);
+		PagingBean pb = iPagingService.getPagingBean(page, cnt);
 		
 		params.put("startCnt", Integer.toString(pb.getStartCount()));
 		params.put("endCnt", Integer.toString(pb.getEndCount()));
