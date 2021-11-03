@@ -94,6 +94,11 @@ $(document).ready(function(){
 			$("#loginForm").submit();
 		});
 		
+		$("#mgrpage").on("click", function(){
+			$("#loginForm").attr("action","mgrPage");
+			$("#loginForm").submit();
+		});
+		
 		$("#teambuttons").on("click", "input[type='button']", function() {
 			$("#tno").val($(this).attr("no"));
 			$("#main2").attr("action", "tMainIntro");

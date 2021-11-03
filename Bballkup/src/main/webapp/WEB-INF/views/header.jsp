@@ -6,14 +6,23 @@
         <div class="button_div">
         <c:choose>
         	<c:when test="${empty sMNo}">
-        	 	<button class="btn login" id="login">로그인</button>
-	            <p class="pand">또는</p>
-	            <button class="btn join" id="join">회원가입</button>
+        			<button class="btn login" id="login">로그인</button>
+		            <p class="pand">또는</p>
+		            <button class="btn join" id="join">회원가입</button>
         	</c:when>
         	<c:otherwise>
-	            <button class="btn logout" id="logout">로그아웃</button>
-	            <p class="pand">또는</p>
-	            <button class="btn mypage" id="mypage">마이페이지</button>
+        		<c:choose>
+	        		<c:when test="${sMLv eq 0}">
+	        			<button class="btn logout" id="logout">로그아웃</button>
+			            <p class="pand">또는</p>
+			            <button class="btn mgrpage" id="mgrpage">관리자페이지</button>
+	        		</c:when>
+	        		<c:otherwise>
+			            <button class="btn logout" id="logout">로그아웃</button>
+			            <p class="pand">또는</p>
+			            <button class="btn mypage" id="mypage">마이페이지</button>
+	        		</c:otherwise>
+	        	</c:choose>
         	</c:otherwise>
          </c:choose>
         </div>

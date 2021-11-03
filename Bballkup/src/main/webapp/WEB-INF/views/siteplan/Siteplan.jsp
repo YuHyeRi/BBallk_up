@@ -27,21 +27,11 @@ $(document).ready(function() {
 		$("#loginForm").submit();
 	});
 			
-	$("#logout").on("click", function(){
-		$("#loginForm").attr("action","logout");
-		$("#loginForm").submit();
-	});
-	
 	$("#join").on("click", function(){
 		$("#loginForm").attr("action","join");
 		$("#loginForm").submit();
 	});
 			
-	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","Mypage");
-		$("#loginForm").submit();
-	});
-	
 	$(".join").on("click", function(){
 		$("#loginForm").attr("action","join");
 		$("#loginForm").submit();

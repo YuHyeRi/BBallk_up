@@ -80,6 +80,7 @@
 .sports_mini>button:hover{
     background-color: #e3ecfb;
 }
+
 .sports_mini {
     display: flex;
     justify-content: space-between;
