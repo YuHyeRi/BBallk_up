@@ -52,6 +52,22 @@ public class myPageController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/teamManage") //관리자페이지>>팀관리
+	public ModelAndView teamManage(@RequestParam  HashMap<String, String> params,
+								ModelAndView mav) {
+		String page = "1";
+		
+		if(params.get("page") != null) {
+			page = params.get("page");
+		}
+		System.out.println("memManage_page:"+page);
+		mav.addObject("page", page);
+		
+		mav.setViewName("myPage/teamManage");
+	
+		return mav;
+	}
+	
 	@RequestMapping(value = "/memManage") //관리자페이지>>회원관리
 	public ModelAndView memManage(@RequestParam  HashMap<String, String> params,
 								ModelAndView mav) {

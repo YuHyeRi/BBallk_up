@@ -154,7 +154,7 @@ function drawPaging(pb){
 <h2>관리자페이지 >> 회원관리</h2>
 회원검색<br>
 <form action="#" id="loginForm" method="post">
-   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+   <input type="hidden" name="mem_no" value="${sMNo}">
 </form>
 <form action="#" id="actionForm" method="post">
 		<input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt}" >

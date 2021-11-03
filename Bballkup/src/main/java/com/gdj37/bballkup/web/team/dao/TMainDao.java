@@ -49,6 +49,10 @@ public class TMainDao implements ITMainDao {
 		return session.update("tmain.tMemManageUpdate", params);
 	}
 
+	@Override
+	public int teamManageBtn(HashMap<String, String> params) throws Throwable {
+		return session.selectOne("tmain.teamManageBtn", params);
+	}
 
 	
 } // class end
