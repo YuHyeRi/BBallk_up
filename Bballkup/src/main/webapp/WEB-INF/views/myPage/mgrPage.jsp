@@ -46,7 +46,7 @@ $(document).ready(function(){
 	   $("#loginForm").submit();
 	});
 	
-	$("#memManage").on("click", function(){
+	$(".memManage").on("click", function(){
 		location.href="memManage";
 	});
 	
