@@ -7,8 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/login.css">
+	<link rel="stylesheet" href="resources/css/layout/memupdate.css">
+	
 <style>
-
+#mem_id, #mem_pw, #mem_pw2, #mem_nm, #mem_phone, #mem_bd, #mem_pwa{
+	width: 220px;
+}
+#addBtn:hover {
+	background-color: #e3ecfb;
+}
 </style>
 
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -42,13 +55,12 @@
       }); 
       
       $("#cancleBtn").on("click", function(){
-         
          history.back();
       });
       
+      
+      
       $("#addBtn").on("click", function(){
-         
-         
          if(checkVal("#mem_id")){
             
             alert("아이디를 입력하세요.");
@@ -202,7 +214,16 @@
 </script>
 </head>
 <body>
-
+<form action="#" id="loginForm">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="mainmain">
+<div class="memdiv">
    <form action="#" id="joinForm" method="post">
       <input type="hidden" name="gbn" value="c" >
       아이디<br> 
@@ -233,6 +254,12 @@
    <br><br>
    <input type="button" value="저장" id="addBtn">
    <input type="button" value="취소" id="cancleBtn">
-<script type="text/javascript" src="resources/css/js/header.js"></script>
+</div>
+</div>	
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
+   <script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

@@ -21,13 +21,6 @@
 		height: 500px;
 	}
 
-	.area-1 {
-	 
-	}
-	
-	.area-2 {
-	
-	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
