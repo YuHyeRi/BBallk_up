@@ -90,5 +90,20 @@ public class LoginService implements ILoginService {
 		return iLoginDao.getTeamJoin(params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getMatchList(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getMatchList(params);
+	}
+
+	@Override
+	public HashMap<String, String> getAttend(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getAttend(params);
+	}
+
+	@Override
+	public int getMatchCnt(HashMap<String, String> params) throws Throwable {
+		return iLoginDao.getMatchCnt(params);
+	}
+
 	
 }

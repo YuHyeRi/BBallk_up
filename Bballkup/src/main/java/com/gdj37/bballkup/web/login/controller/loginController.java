@@ -387,6 +387,15 @@ public class loginController {
 		public ModelAndView myMatchList(
 				@RequestParam HashMap<String, String> params,ModelAndView mav) {
 			
+			String page = "1";
+			
+			if(params.get("page") != null) {
+				
+				page = params.get("page");
+			}
+			
+			mav.addObject("page", page);
+			
 			mav.setViewName("login/myMatchList");
 			
 			return mav;
@@ -401,11 +410,27 @@ public class loginController {
 			
 			Map<String, Object> modelMap = new HashMap<String, Object>(); //데이터를 담을 맵
 			
-			//리스트 조회
-			List<HashMap<String, String>> list = iLoginService.getTeamJoin(params);
+			HashMap<String, String> data = iLoginService.getAttend(params);
+			System.out.println("??" + data.get("MATCH_NO"));
+			params.put("match_no", data.get("MATCH_NO"));
+			
+			//페이지 취득
+			int page = Integer.parseInt(params.get("page"));
+			
+			//개수 취득
+			int cnt = iLoginService.getMatchCnt(params);
+			//페이징 정보 취득
+			PagingBean pb = iPagingService.getPagingBean(page, cnt, 3, 2);
+			//데이터 시작, 종료값 할당
+			params.put("startCnt", Integer.toString(pb.getStartCount()));
+			params.put("endCnt", Integer.toString(pb.getEndCount()));
+			
+			//나의 예약 리스트 조회
+			List<HashMap<String, String>> list = iLoginService.getMatchList(params);
 			
 			//데이터 담기
 			modelMap.put("list", list);
+			modelMap.put("pb", pb);
 			//데이터를 문자열화
 			return mapper.writeValueAsString(modelMap);
 		}
