@@ -161,6 +161,7 @@ function drawList(list){
 <body>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
+	<jsp:include page="../modal.jsp" flush="true" />
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
@@ -184,10 +185,10 @@ function drawList(list){
 <div class="mainbar">
         <div class="slideshow-container">
             <div class="mySlides_fade">
-              <img src="resources/images/slide/메인1.jpg" style="width:100%">
+              <img src="resources/images/slide/메인5.jpg" style="width:100%">
             </div>
             <div class="mySlides_fade">
-              <img src="resources/images/slide/메인4.jpg" style="width:100%">
+              <img src="resources/images/slide/메인1.jpg" style="width:100%">
             </div>
             <div class="mySlides_fade">
               <img src="resources/images/slide/메인2.jpg" style="width:100%">
@@ -196,7 +197,7 @@ function drawList(list){
               <img src="resources/images/slide/메인3.jpg" style="width:100%">
             </div>
             <div class="mySlides_fade">
-              <img src="resources/images/slide/메인5.jpg" style="width:100%">
+              <img src="resources/images/slide/메인4.jpg" style="width:100%">
             </div>
             <div class="dots" style="text-align:center">
               <span class="dot" onclick="currentSlide(1)"></span> 
