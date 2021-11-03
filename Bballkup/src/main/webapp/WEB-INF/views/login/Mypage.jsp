@@ -24,6 +24,11 @@ $(document).ready(function(){
 			return false;		 //form실행 이벤트를 하지않음
 		}
 	});
+	//나의 예약 내역
+	$(".booking").on("click", function(){
+		$("#loginForm").attr("action","myMatchList");
+		$("#loginForm").submit();
+	});
 	//내가 가입한 팀현황
 	$(".jointeam").on("click", function(){
 		$("#loginForm").attr("action","TeamJoin");
