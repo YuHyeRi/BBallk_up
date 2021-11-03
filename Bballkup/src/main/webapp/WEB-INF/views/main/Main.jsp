@@ -184,22 +184,26 @@ function drawList(list){
 <div class="mainbar">
         <div class="slideshow-container">
             <div class="mySlides_fade">
-              <img src="resources/images/slide/sample3.jpg" style="width:100%">
+              <img src="resources/images/slide/메인1.jpg" style="width:100%">
             </div>
             <div class="mySlides_fade">
-              <img src="resources/images/slide/sample2.jpg" style="width:100%">
+              <img src="resources/images/slide/메인4.jpg" style="width:100%">
             </div>
             <div class="mySlides_fade">
-              <img src="resources/images/slide/sample1.jpg" style="width:100%">
+              <img src="resources/images/slide/메인2.jpg" style="width:100%">
             </div>
             <div class="mySlides_fade">
-              <img src="resources/images/slide/sample4.jpg" style="width:100%">
+              <img src="resources/images/slide/메인3.jpg" style="width:100%">
+            </div>
+            <div class="mySlides_fade">
+              <img src="resources/images/slide/메인5.jpg" style="width:100%">
             </div>
             <div class="dots" style="text-align:center">
               <span class="dot" onclick="currentSlide(1)"></span> 
               <span class="dot" onclick="currentSlide(2)"></span> 
               <span class="dot" onclick="currentSlide(3)"></span> 
               <span class="dot" onclick="currentSlide(4)"></span> 
+              <span class="dot" onclick="currentSlide(5)"></span> 
             </div>
 		</div>
 	</div>
