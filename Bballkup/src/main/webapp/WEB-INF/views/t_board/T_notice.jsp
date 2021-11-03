@@ -201,8 +201,14 @@ var html ="";
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-<jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
+<div>
+	<h2>${param.tnm}</h2>
+	<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
+</div>
+<div class="bigtab">
+	<jsp:include page="../T_board.jsp" flush="true" />
+<div class="righttab">
 <h2>팀 공지사항</h2>
 <div>
 	<form action="#" id="loginForm" method="post">
@@ -242,6 +248,8 @@ var html ="";
 	</table>
 </div>
 <div class="paging_wrap"></div>
+</div>
+</div>
 </div>
 </main>
 <footer>

@@ -1,15 +1,20 @@
 @charset "UTF-8";
 
-/* * {box-sizing: border-box} */
-
+.bigtab{
+	display: flex;
+}
+.righttab{
+	width: 100%;
+}
+ .lefttab{
+ 	display: flex;
+ 	width: min-content;
+ 	margin-right : 20px;
+ }
 .teambtndiv {
-  margin : 10px;
-  float: left;
-  background-color : white;
+  background-color: white;
   width: 15%;
-  min-width : 150px;
-  margin-bottom : 150px;
-  height: 400px;
+  min-width: 150px;
 }
 
 .tabbtn {
@@ -46,9 +51,7 @@
 	min-width : 800px;
 }
 
-.userinfodiv, .freebtndiv, .comm_list, .margindiv{
-	margin-left: 150px;
-}
+
 
 .comm_data{
 	margin-bottom : 20px;

@@ -51,7 +51,7 @@ $(document).ready(function(){
 	});
 			
 	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","memUpdate");
+		$("#loginForm").attr("action","Mypage");
 		$("#loginForm").submit();
 	});
 	
@@ -87,6 +87,7 @@ $(document).ready(function(){
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
 <main>
+<jsp:include page="../nav.jsp" flush="true" />
 <form action="#" id="loginForm" method="post">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 </form>
@@ -98,7 +99,7 @@ $(document).ready(function(){
 	<input type="hidden" name="no" value="${param.no}" />
 </form>
 <div>
-	<table class="notice_table2">
+	<table class="notice_table">
 		<thead>
 			<tr>
 				<th>${data.NOTICE_NO} </th>

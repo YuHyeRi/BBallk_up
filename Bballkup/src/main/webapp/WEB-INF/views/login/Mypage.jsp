@@ -24,6 +24,11 @@ $(document).ready(function(){
 			return false;		 //form실행 이벤트를 하지않음
 		}
 	});
+	//나의 예약 내역
+	$(".booking").on("click", function(){
+		$("#loginForm").attr("action","myMatchList");
+		$("#loginForm").submit();
+	});
 	//내가 가입한 팀현황
 	$(".jointeam").on("click", function(){
 		$("#loginForm").attr("action","TeamJoin");
@@ -71,7 +76,6 @@ $(document).ready(function(){
 <body>
 
 <form action="#" id="loginForm" method="post">
-	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	<input type="hidden" id="mem_nm" name="mem_nm" value="${data.MEM_NM}">
 	<input type="hidden" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}">

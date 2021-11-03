@@ -167,7 +167,6 @@
 		<input type="hidden" name="mem_no" value="${data.MEM_NO}" >
 	</form>
 	<form action="#" id="loginForm" method="post">
-	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	</form>
 	<div class="membtns">

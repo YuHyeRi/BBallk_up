@@ -56,6 +56,16 @@ $(document).ready(function(){
 		$("#loginForm").submit();
 	});
 	
+	$("#join").on("click", function(){
+		$("#loginForm").attr("action","join");
+		$("#loginForm").submit();
+	});
+			
+	$("#mypage").on("click", function(){
+		$("#loginForm").attr("action","Mypage");
+		$("#loginForm").submit();
+	});
+	
 	//검색
 	$("#searchBtn").on("click", function(){
 		$("#oldTxt").val($("#searchTxt").val());

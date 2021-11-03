@@ -140,8 +140,14 @@
 
 <main>
 	<jsp:include page="../nav.jsp" flush="true" />
-	<jsp:include page="../T_board.jsp" flush="true" />
 	<div class="tabcontent">
+<div>
+	<h2>${param.tnm}</h2>
+	<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
+</div>
+<div class="bigtab">
+	<jsp:include page="../T_board.jsp" flush="true" />
+<div class="righttab">
 	<h2>팀 자유게시판 글수정 페이지</h2>
 	<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 		<input type="file" name="att" id="att" />
@@ -181,6 +187,8 @@
 		<input type="button" value="수정" id="updateBtn" />
 		<input type="button" value="취소" id="cancelBtn" />
 		</div>
+	</div>
+</div>
 </main>
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />

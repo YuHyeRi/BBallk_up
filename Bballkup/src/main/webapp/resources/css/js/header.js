@@ -22,6 +22,6 @@
 	});
 	
 	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","Mypage");
+		$("#loginForm").attr("action","myPage");
 		$("#loginForm").submit();
 	});
