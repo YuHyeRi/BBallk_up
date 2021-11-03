@@ -189,6 +189,15 @@
             memNm.focus();
             return true;
         }
+      //폰번호 유효성 검사
+        var patternPhone = /01[016789]{1}-[^0][0-9]{3,4}-[0-9]{4}/;
+
+        if(!patternPhone.test(memPhone.value))
+        {
+            alert('핸드폰 번호를 확인 해주세요');
+            memPhone.focus();
+            return true;
+        }
     }
    
    //값이 들어있는지 체크
@@ -214,12 +223,12 @@
       이름<br> 
          <input type="text" id="mem_nm" name="mem_nm" placeholder="이름입력(2자 이상)"><br><br>
       핸드폰<br> 
-         <input type="text" id="mem_phone" name="mem_phone" placeholder="010-0000-0000"><br><br>
+         <input type="text" id="mem_phone" name="mem_phone" maxlength="13" placeholder="010-0000-0000"><br><br>
       성별<br>
          여자<input type="radio" name="mem_gen" id="mem_genF" value="F" checked="checked">
          남자<input type="radio" name="mem_gen" id="mem_genM" value="M"><br><br>
       생년월일<br>
-         <input type="text" id="mem_bd" name="mem_bd" placeholder="19990101"><br><br>
+         <input type="text" id="mem_bd" name="mem_bd" maxlength="8" placeholder="19990101"><br><br>
       비밀번호 확인용 질문<br>
          <select name="mem_pw_gbn" id="mem_pw_gbn">
             <option value="1">출신 초등학교는 어디인가요?</option>
