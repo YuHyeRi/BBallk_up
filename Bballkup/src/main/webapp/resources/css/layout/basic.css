@@ -26,7 +26,7 @@ header {
 }
 /* 로고 */
 .logo_div>img{
-    width: 150px;
+    width: 180px;
     cursor: pointer;
 }
 .logo_div{
