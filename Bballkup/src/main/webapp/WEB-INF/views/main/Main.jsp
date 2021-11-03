@@ -161,7 +161,6 @@ function drawList(list){
 <body>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
-	<jsp:include page="../modal.jsp" flush="true" />
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
