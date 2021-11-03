@@ -113,9 +113,9 @@ public class reserveController {
 	}
 	
 	@RequestMapping(value="/pDtl")
-	public ModelAndView freeDtl(@RequestParam HashMap<String, String> params, 
+	public ModelAndView pDtl(@RequestParam HashMap<String, String> params, 
 									ModelAndView mav) throws Throwable {
-		if(params.get("no") != null) {
+		if(params.get("match_no") != null) {
 			
 			HashMap<String, String> data = iReserveService.getMatch(params);
 			

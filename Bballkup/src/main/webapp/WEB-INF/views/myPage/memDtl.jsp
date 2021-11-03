@@ -138,7 +138,7 @@ function drawMem(data){
 <div class="cardBig">
 <div class="cardDiv">
 <form action="#" id="loginForm" method="post">
-   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+   <input type="hidden" name="mem_no" value="${sMNo}">
 </form>
 <div class="topDiv">
 <h2>회원관리 >> 회원상세</h2>

@@ -233,7 +233,7 @@ function checkVal(sel){
 <div class="cardBig">
 <div class="cardDiv">
 <form action="#" id="loginForm" method="post">
-   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+   <input type="hidden" name="mem_no" value="${sMNo}">
 </form>
 <c:choose>
 	<c:when test="${!empty data.CARD_NUM}">

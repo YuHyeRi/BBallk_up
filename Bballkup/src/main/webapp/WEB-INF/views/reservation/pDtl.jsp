@@ -1,12 +1,129 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>개인 체육활동 모집 상세</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/myCard.css">
+<style>
+#list, #del{
+	background-color: white;
+    padding: 5px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #1d2088;
+    cursor: pointer;
+}
+#attend{
+	background-color: white;
+    padding: 5px;
+    width: 100px;
+    height:50px;
+    border-radius: 5px;
+    border: 2px solid #1d2088;
+    font-size: medium;
+	cursor:pointer;
+}
+#attend:hover, #list:hover, #del:hover {
+	background-color:#e3ecfb;
+}
+.attendDiv{
+	text-align:center;
+}
+.dtlBtn{
+	margin-top:50px;
+}
+#del{
+	float:right;
+}
+</style>
+<script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
+<script>
+$(document).ready(function() {
+	
+	$("#list").on("click", function() {
+		$("#actionForm").attr("action", "pList");
+		$("#actionForm").submit();
+	});
+	
+});
+
+function checkVal(sel){
+	if($.trim($(sel).val()) == ""){
+		return true;
+	} else {
+		return false;
+	}
+}
+</script>
 </head>
 <body>
+<form action="#" id="loginForm">
+<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
 
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="cardBig">
+<div class="addDiv">
+<h2>개인 체육활동 참가모집 상세페이지</h2>
+<form action="#" id="actionForm" method="post">
+	<input type="hidden" name="page" value="${param.page}" />
+	<input type="hidden" name="match_no" value="${param.match_no}" />
+</form>
+<br>
+[참가모집 게시글 상세]
+<br><br>
+▶ 경기일 : ${data.MATCH_DDAY}<br><br>	
+▶ 시설명 : ${data.SPORT_NM}<br><br>
+▶ 장소 : ${data.PLACE_NM}<br><br>
+▶ 총 시설 이용료는 ${data.MATCH_PAY}원이며, 참가 인원에 따라 균등하게 분할 계산되어 청구됩니다.<br>
+<br><br>
+[작성자 게시글]<br><br>
+▶ ${data.MATCH_CON}<br><br>
+<c:choose>
+	<c:when test="${sMNo != 4 && sMNo != data.MEM_NO}">
+		<div class="attendDiv">
+			<input type="button" id="attend" name="attend" value="참가하기"><br>
+		</div>
+			<input type="button" id="list" name="list" value="목록으로">
+	</c:when>
+	<c:when test="${sMNo == 4}">
+		<div class="dtlBtn">
+			<input type="button" id="list" name="list" value="목록으로">
+			<input type="button" id="del" name="del" value="글 삭제">
+		</div>
+	</c:when>
+	<c:otherwise>
+	
+	</c:otherwise>
+</c:choose>
+
+<div class="dtlBtn">
+	<input type="button" id="list" name="list" value="목록으로">
+	<input type="button" id="del" name="del" value="글 삭제">
+</div>
+
+</div>
+</div>
+</main>
+
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
+
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

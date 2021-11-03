@@ -27,6 +27,10 @@
 	text-align:center;
 	margin-bottom: 0.83em;
 }
+
+tr:hover{
+	cursor:pointer;
+}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
@@ -55,6 +59,12 @@ $(document).ready(function() {
 	$("#addBtn").on("click", function(){
 		 $("#actionForm").attr("action","reservation");
 		 $("#actionForm").submit();
+	});
+	
+	$("tbody").on("click", "tr", function() {
+		$("#match_no").val($(this).attr("no"));
+		$("#actionForm").attr("action", "pDtl");
+		$("#actionForm").submit();
 	});
 });
 function reloadList() {
@@ -119,7 +129,7 @@ function drawPaging(pb) {
 </head>
 <body>
 <form action="#" id="loginForm">
-	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	<input type="hidden" name="mem_no" value="${sMNo}">
 </form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
@@ -127,14 +137,14 @@ function drawPaging(pb) {
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <div class="pIntro">
-	<h2>개인 체육활동 참가모집 게시판</h2>
+<h2>개인 체육활동 참가모집 게시판</h2>
 </div>
 	<div>
 		<form action="#" id="actionForm" method="post">
 			<input type="hidden" id="team_no" name="team_no" value="">
 			<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 			<input type="hidden" id="page" name="page" value="${page}" />
-			<input type="hidden" id="no" name="no" />
+			<input type="hidden" id="match_no" name="match_no" />
 		</form>
 	</div>
 	<div class="pAdd">

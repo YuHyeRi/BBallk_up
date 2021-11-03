@@ -10,7 +10,7 @@ th{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.enter_table,.notice_table,.team_table, .free_table, .bot_table, .sports_table {
+.enter_table,.notice_table,.team_table, .free_table, .bot_table, .sports_table{
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
