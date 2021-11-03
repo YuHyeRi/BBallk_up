@@ -73,9 +73,15 @@
 	
 	<main>
 		<jsp:include page="../nav.jsp" flush="true" />
-		<jsp:include page="../T_board.jsp" flush="true" />
 		
 		<div class="tabcontent">
+			<div>
+				<h2>${param.tnm}</h2>
+				<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
+			</div>
+			<div class="bigtab">
+				<jsp:include page="../T_board.jsp" flush="true" />
+			<div class="righttab">
 				<div class="team_no_list" no="${param.tno}">
 					<form action="#" id="actionForm" method="post">
 						<input type="hidden" id="tab" value="${sNMo}" />
@@ -83,16 +89,14 @@
 						<input type="hidden" id="tnm" name="tnm" value="${param.tnm}">
 					</form>
 				</div>
-				<div class="righttab">
-				<p>ㅎㅇㅎㅇ</p>
-				</div>
+			</div>
 		</div>
-	</main>
-	
-	<footer>
-		<jsp:include page="../footer.jsp" flush="true" />
-	</footer>
-	
-	<script type="text/javascript" src="resources/css/js/header.js"></script>
+	</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
+
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

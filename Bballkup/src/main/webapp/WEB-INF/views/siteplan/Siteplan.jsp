@@ -38,7 +38,7 @@ $(document).ready(function() {
 	});
 			
 	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","memUpdate");
+		$("#loginForm").attr("action","Mypage");
 		$("#loginForm").submit();
 	});
 	
@@ -56,7 +56,6 @@ $(document).ready(function() {
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <form action="#" id="loginForm" method="post">
-	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 </form>
 <div class="site-top1">

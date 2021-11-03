@@ -65,7 +65,6 @@ $(document).ready(function(){
 </head>
 <body>
 <form action="#" id="loginForm" method="post">
-	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	<input type="hidden" id="gbn" name="gbn" value="">
 </form>

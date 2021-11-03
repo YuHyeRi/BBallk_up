@@ -40,6 +40,26 @@ $(document).ready(function(){
 		$("#backForm").submit();
 	});
 	
+	$("#login").on("click",function(){
+		$("#loginForm").attr("action","login");
+		$("#loginForm").submit();
+	});
+			
+	$("#logout").on("click", function(){
+		$("#loginForm").attr("action","logout");
+		$("#loginForm").submit();
+	});
+	
+	$("#join").on("click", function(){
+		$("#loginForm").attr("action","join");
+		$("#loginForm").submit();
+	});
+			
+	$("#mypage").on("click", function(){
+		$("#loginForm").attr("action","Mypage");
+		$("#loginForm").submit();
+	});
+	
 	$("#addForm").on("keypress", "input", function(event){
 		if(event.keyCode == 13){
 			return false;
@@ -132,6 +152,11 @@ function checkVal(sel) {
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
 <main>
+<jsp:include page="../nav.jsp" flush="true" />
+	
+<form action="#" id="loginForm" method="post">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att" />
 </form>
