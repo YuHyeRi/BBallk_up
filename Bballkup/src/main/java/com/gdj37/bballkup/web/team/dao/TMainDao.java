@@ -38,6 +38,11 @@ public class TMainDao implements ITMainDao {
 		return session.selectOne("tmain.applyState", params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> tMemManageList(HashMap<String, String> params) throws Throwable {
+		return session.selectList("tmain.tMemManageList", params);
+	}
+
 
 	
 } // class end
