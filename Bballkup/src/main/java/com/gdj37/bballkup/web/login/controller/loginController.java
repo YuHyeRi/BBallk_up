@@ -408,6 +408,5 @@ public class loginController {
 			modelMap.put("list", list);
 			//데이터를 문자열화
 			return mapper.writeValueAsString(modelMap);
-			
 		}
 }
