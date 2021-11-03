@@ -221,7 +221,7 @@
 			        TO_CHAR(M.MATCH_DT, 'YYYY-MM-DD') AS MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
 			FROM MATCHES M LEFT JOIN TEAM T
 			                ON M.TEAM_NO = T.TEAM_NO
-			WHERE MATCH_DEL = 1) M, SPORT S
+			) M, SPORT S
 			WHERE M.SPORT_NO = S.SPORT_NO
 			AND M.MEM_NO = #{mem_no}
 			UNION ALL
@@ -230,7 +230,7 @@
 			        TO_CHAR(M.MATCH_DT, 'YYYY-MM-DD') AS MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
 			FROM MATCHES M LEFT JOIN TEAM T
 			                ON M.TEAM_NO = T.TEAM_NO
-			WHERE MATCH_DEL = 1) M, SPORT S
+			) M, SPORT S
 			WHERE M.SPORT_NO = S.SPORT_NO
 			AND M.MATCH_NO IN(${match_no})
 		)
@@ -238,7 +238,20 @@
 		FROM (SELECT MATCH_NO, SPORT_NO, SPORT_NM, TEAM_NO, TEAM_NM, PLACE_NM, MATCH_CON, MATCH_DT, MATCH_FILE, MEM_NO, 
 		             MATCH_PAY, MATCH_STATE, MATCH_DEL,
 		             ROW_NUMBER() OVER (ORDER BY MATCH_NO DESC) AS RNUM
-		     FROM RESLIST)ML
+		     FROM RESLIST
+		     WHERE MATCH_DEL = 1
+		     <if test="searchTxt != null and searchTxt != ''">
+				<choose>
+					<when test="searchGbn eq 0">
+						AND SPORT_NM LIKE '%'|| #{searchTxt} ||'%'
+					</when>
+					<when test="searchGbn eq 1">
+						AND PLACE_NM LIKE '%'|| #{searchTxt} ||'%'
+					</when>
+				</choose>
+			 </if>
+		     )ML
+		
 	</select>
 	
 	<select id="getMatchList" resultType="hashmap" parameterType="hashmap">
@@ -248,7 +261,7 @@
 			        TO_CHAR(M.MATCH_DT, 'YYYY-MM-DD') AS MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
 			FROM MATCHES M LEFT JOIN TEAM T
 			                ON M.TEAM_NO = T.TEAM_NO
-			WHERE MATCH_DEL = 1) M, SPORT S
+			) M, SPORT S
 			WHERE M.SPORT_NO = S.SPORT_NO
 			AND M.MEM_NO = #{mem_no}
 			UNION ALL
@@ -257,7 +270,7 @@
 			        TO_CHAR(M.MATCH_DT, 'YYYY-MM-DD') AS MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
 			FROM MATCHES M LEFT JOIN TEAM T
 			                ON M.TEAM_NO = T.TEAM_NO
-			WHERE MATCH_DEL = 1) M, SPORT S
+			) M, SPORT S
 			WHERE M.SPORT_NO = S.SPORT_NO
 			AND M.MATCH_NO IN(${match_no})
 		)
@@ -265,7 +278,20 @@
 		FROM (SELECT MATCH_NO, SPORT_NO, SPORT_NM, TEAM_NO, TEAM_NM, PLACE_NM, MATCH_CON, MATCH_DT, MATCH_FILE, MEM_NO, 
 		             MATCH_PAY, MATCH_STATE, MATCH_DEL,
 		             ROW_NUMBER() OVER (ORDER BY MATCH_NO DESC) AS RNUM
-		     FROM RESLIST)ML
+		     FROM RESLIST
+		     WHERE MATCH_DEL = 1
+		     <if test="searchTxt != null and searchTxt != ''">
+				<choose>
+					<when test="searchGbn eq 0">
+						AND SPORT_NM LIKE '%'|| #{searchTxt} ||'%'
+					</when>
+					<when test="searchGbn eq 1">
+						AND PLACE_NM LIKE '%'|| #{searchTxt} ||'%'
+					</when>
+				</choose>
+			 </if>
+		     )ML
+		
 		WHERE ML.RNUM BETWEEN #{startCnt} AND #{endCnt}
 	</select>
 	

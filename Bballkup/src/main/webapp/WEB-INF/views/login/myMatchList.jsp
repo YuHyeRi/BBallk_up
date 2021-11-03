@@ -202,14 +202,9 @@ function drawPaging(pb){
 	</form>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
-		<select name="searchBoardGbn" id="searchBoardGbn">
-			<option value="0">전체</option>
-			<option value="1">개인커뮤니티</option>
-			<option value="2">팀커뮤니티</option>
-		</select>
 		<select name="searchGbn" id="searchGbn">
-			<option value="0">제목</option>
-			<option value="1">제목+내용</option>
+			<option value="0">종목</option>
+			<option value="1">장소명</option>
 		</select>
 		<input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt }" >
 		<input type="hidden" name="oldTxt" id="oldTxt" value="${param.searchTxt }" >
