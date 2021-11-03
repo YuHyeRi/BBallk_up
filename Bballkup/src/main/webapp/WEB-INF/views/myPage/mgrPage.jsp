@@ -30,6 +30,11 @@ $(document).ready(function(){
 	$(".memManage").on("click", function(){
 		location.href="memManage";
 	});
+	
+	$(".teamManage").on("click", function(){
+		location.href="teamManage";
+	});
+	
 });
 </script>
 </head>
