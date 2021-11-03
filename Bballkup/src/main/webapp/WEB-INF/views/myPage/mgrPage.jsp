@@ -14,16 +14,6 @@
 	<link rel="stylesheet" href="resources/css/layout/main.css">
 	<link rel="stylesheet" href="resources/css/layout/mypage.css">
 	
-<style>
-/* #myImg{
-	padding-bottom:20px;
-}
-
-.userdiv{
-	margin-top:50px;
-	padding-left:10px;
-} */
-</style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){

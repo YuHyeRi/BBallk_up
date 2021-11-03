@@ -31,5 +31,11 @@ public class ReserveService implements IReserveService{
 
 		return iReserveDao.getMatchList(params);
 	}
+
+	@Override
+	public HashMap<String, String> getMatch(HashMap<String, String> params) throws Throwable {
+
+		return iReserveDao.getMatch(params);
+	}
 	
 }

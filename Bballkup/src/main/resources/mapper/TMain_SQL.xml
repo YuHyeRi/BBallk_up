@@ -58,5 +58,11 @@
 		AND TEAM_NO = #{tno}
 	</update>
 
+	<select id="teamManageBtn" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM TEAM
+		WHERE TEAM_STATE = '승인완료'
+		AND MEM_NO = #{mno}
+		AND TEAM_NO = #{tno}
+	</select>
 
 </mapper>
