@@ -18,7 +18,7 @@
         <button class="dropbtn">개인커뮤니티</button>
         <div class="dropdown-con">
             <a href="javascript:location.href='freeList';">자유게시판</a>
-            <a href="#" class="siteplan">체육활동<br>참가모집</a>
+            <a href="pList" class="siteplan">체육활동<br>참가모집</a>
         </div>
     </div>
     <div class="dropdown 3">

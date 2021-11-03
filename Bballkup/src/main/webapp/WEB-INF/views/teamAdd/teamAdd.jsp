@@ -28,6 +28,25 @@ img{
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#login").on("click",function(){
+	   $("#loginForm").attr("action","login");
+	   $("#loginForm").submit();});
+		      
+	$("#logout").on("click", function(){
+	   $("#loginForm").attr("action","logout");
+	   $("#loginForm").submit();
+	});
+
+	$("#join").on("click", function(){
+	   $("#loginForm").attr("action","join");
+	   $("#loginForm").submit();
+	});
+	      
+	$("#mypage").on("click", function(){
+	   $("#loginForm").attr("action","myPage");
+	   $("#loginForm").submit();
+	});
+		
  	//신청취소
 	$("#cancelBtn").on("click", function(){
 		history.back();
@@ -158,6 +177,9 @@ function checkVal(sel){
 <jsp:include page="../nav.jsp" flush="true" />
 <div class="cardBig">
 <div class="addDiv">
+<form action="#" id="loginForm" method="post">
+   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att">
 </form>

@@ -18,6 +18,25 @@
 <script type="text/javascript" src="resources/script/jquery/jquery.form.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#login").on("click",function(){
+	   $("#loginForm").attr("action","login");
+	   $("#loginForm").submit();});
+		      
+	$("#logout").on("click", function(){
+	   $("#loginForm").attr("action","logout");
+	   $("#loginForm").submit();
+	});
+
+	$("#join").on("click", function(){
+	   $("#loginForm").attr("action","join");
+	   $("#loginForm").submit();
+	});
+	      
+	$("#mypage").on("click", function(){
+	   $("#loginForm").attr("action","myPage");
+	   $("#loginForm").submit();
+	});
+	
 	$("#cancel1").on("click", function(){
 		$("#deleteForm").attr("action","myPage");
 		$("#deleteForm").submit();
@@ -213,6 +232,9 @@ function checkVal(sel){
 <jsp:include page="../nav.jsp" flush="true" />
 <div class="cardBig">
 <div class="cardDiv">
+<form action="#" id="loginForm" method="post">
+   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <c:choose>
 	<c:when test="${!empty data.CARD_NUM}">
 		
