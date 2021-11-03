@@ -1,0 +1,24 @@
+package com.gdj37.bballkup.web.myPage.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+public interface IMyPageService {
+
+	public HashMap<String, String> getMEM(HashMap<String, String> params) throws Throwable;
+
+	public int getCardChk(HashMap<String, String> params) throws Throwable;
+
+	public HashMap<String, String> getCard(HashMap<String, String> params) throws Throwable;
+
+	public int addCard(HashMap<String, String> params) throws Throwable;
+
+	public int deleteCard(HashMap<String, String> params) throws Throwable;
+
+	public int getMemCnt(HashMap<String, String> params) throws Throwable;
+
+	public List<HashMap<String, String>> getMemList(HashMap<String, String> params) throws Throwable;
+
+	public List<HashMap<String, String>> getTeamList(HashMap<String, String> params) throws Throwable;
+
+}

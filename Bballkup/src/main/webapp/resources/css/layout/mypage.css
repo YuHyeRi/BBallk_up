@@ -40,8 +40,11 @@
 .mybtn>p {
     margin-top: 30px;
 }
-p>span{
+.red{
     color: red;
+}
+.blue{
+    color: blue;
 }
 .mybtn:hover{
     background-color:  #e3ecfb;
