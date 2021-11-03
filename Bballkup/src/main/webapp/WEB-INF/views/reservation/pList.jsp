@@ -14,10 +14,18 @@
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 <style type="text/css">
 #addBtn{
-	float:right;
-	width:100px;
+	width:auto;
 	height:50px;
 	margin-bottom:10px;
+	font-size: medium;
+	cursor:pointer;
+}
+#addBtn:hover{
+	background-color:#e3ecfb;
+}
+.pAdd{
+	text-align:center;
+	margin-bottom: 0.83em;
 }
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -73,6 +81,7 @@ function drawList(list) {
 	for(var data of list) {
 		html += "<tr no=\"" + data.MATCH_NO + "\">  ";
 		html += "<td>" + data.MATCH_DDAY + "</td>  	";
+		html += "<td>" + data.SPORT_NM + "</td>  	";
 		html += "<td>" + data.PLACE_NM + "</td>  	";
 		html += "<td>" + data.MATCH_STATE + "</td>   	";
 		html += "<td>" + data.MEM_ID + "</td>   	";
@@ -117,8 +126,9 @@ function drawPaging(pb) {
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-<h2>개인 체육활동 참가모집 게시판</h2>
-<div>이용 가이드</div>
+<div class="pIntro">
+	<h2>개인 체육활동 참가모집 게시판</h2>
+</div>
 	<div>
 		<form action="#" id="actionForm" method="post">
 			<input type="hidden" id="team_no" name="team_no" value="">
@@ -126,13 +136,16 @@ function drawPaging(pb) {
 			<input type="hidden" id="page" name="page" value="${page}" />
 			<input type="hidden" id="no" name="no" />
 		</form>
-	</div><br><br>
-	<input type="button" id="addBtn" name="addBtn" value="모임 주최하기">
+	</div>
+	<div class="pAdd">
+		<input type="button" id="addBtn" name="addBtn" value="모임 주최하기">
+	</div>
 	<div>
 		<table class="notice_table">
 			<thead>
 				<tr class="nonetr">
 					<th>경기일</th>
+					<th>시설명</th>
 					<th class="title">장소</th>
 					<th>마감여부</th>
 					<th>작성자</th>

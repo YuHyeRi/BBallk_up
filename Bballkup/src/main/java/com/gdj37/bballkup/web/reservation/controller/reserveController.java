@@ -111,4 +111,21 @@ public class reserveController {
 		
 		return mapper.writeValueAsString(modelMap);
 	}
+	
+	@RequestMapping(value="/pDtl")
+	public ModelAndView freeDtl(@RequestParam HashMap<String, String> params, 
+									ModelAndView mav) throws Throwable {
+		if(params.get("no") != null) {
+			
+			HashMap<String, String> data = iReserveService.getMatch(params);
+			
+			mav.addObject("data", data);
+			mav.setViewName("reservation/pDtl");
+			
+		} else {
+			mav.setViewName("redirect/pList");
+		}
+		
+		return mav;
+	}
 }
