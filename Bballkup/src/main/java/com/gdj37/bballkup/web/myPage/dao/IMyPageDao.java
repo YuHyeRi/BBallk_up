@@ -20,4 +20,8 @@ public interface IMyPageDao {
 	public List<HashMap<String, String>> getMemList(HashMap<String, String> params) throws Throwable;
 
 	public List<HashMap<String, String>> getTeamList(HashMap<String, String> params) throws Throwable;
+
+	public List<HashMap<String, String>> teamManageList(HashMap<String, String> params) throws Throwable;
+
+	public int teamManageUpdate(HashMap<String, String> params) throws Throwable;
 }

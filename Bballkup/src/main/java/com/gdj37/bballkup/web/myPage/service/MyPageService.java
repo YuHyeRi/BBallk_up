@@ -64,4 +64,14 @@ public class MyPageService implements IMyPageService{
 		return iMyPageDao.getTeamList(params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> teamManageList(HashMap<String, String> params) throws Throwable {
+		return iMyPageDao.teamManageList(params);
+	}
+
+	@Override
+	public int teamManageUpdate(HashMap<String, String> params) throws Throwable {
+		return iMyPageDao.teamManageUpdate(params);
+	}
+
 }
