@@ -130,5 +130,20 @@ public class TMainController {
 		return mapper.writeValueAsString(modelMap);
 		
 	}
-			
-} // class end
+	
+	@RequestMapping(value="/tMemManageUpdate")
+	public ModelAndView tMemManageUpdate(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) throws Throwable {
+		
+		int cnt = iTMainService.tMemManageUpdate(params);
+		if(cnt > 0) {
+			mav.setViewName("team/tMemManage");
+		} else {
+			mav.addObject("msg", "가입신청에 실패하였습니다.");
+			mav.setViewName("team/failedAction");
+		}
+		return mav;
+	}
+		
+}// class end

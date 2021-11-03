@@ -52,7 +52,7 @@
 		WHERE TM.TEAM_NO = #{tno}
 	</select>
 	
-	<update id="tOneDelete" parameterType="hashmap">
+	<update id="tMemManageUpdate" parameterType="hashmap">
 		UPDATE T_MEM SET APPLY_STATE = '승인완료'
 		WHERE MEM_NO = #{mno}
 		AND TEAM_NO = #{tno}

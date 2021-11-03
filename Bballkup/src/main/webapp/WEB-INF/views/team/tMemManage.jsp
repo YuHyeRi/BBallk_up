@@ -18,6 +18,36 @@
 <script>
 	$(document).ready(function() {
 		reloadList();
+		
+		$("tbody").on("click", "#applyBtn", function() {
+			//console.log($(this).attr("no"));
+			//console.log($(this).val());
+			
+			var no = $(this).attr("no");
+			$("#mno").val(no);
+			
+			if($(this).val() == '승인완료'){
+				alert("이미 승인된 팀원입니다.");
+			} else {
+				$("#actionForm").attr("action","tMemManageUpdate");
+				$("#actionForm").submit(); 
+				 
+				var params = $("#actionForm").serialize();
+				 
+				$.ajax({
+					url : "tMemManageUpdate",	
+					type : "post",			
+					dataType : "json",		
+					data : params,			
+					success : function(res){
+						drawList(res.list);
+					},
+					error : function(request, status, error){
+						console.log(error);
+					}
+				});
+			}
+		});
 	});
 	
 	function reloadList(){		
@@ -36,6 +66,7 @@
 			}
 		});
 	}
+	
 	function drawList(list){
 		var html = "";
 		
@@ -46,15 +77,11 @@
 			html += "<td>" + data.MEM_NM + "</td>     ";
 			html += "<td>" + data.T_MEM_DT + "</td>  ";
 			html += "<td>" + data.APPLY_STATE + "</td>  ";
-			html += "<td><input type=\"button\" id=\"applyBtn\" onclick=\"clickEvnt()\" value=\""+data.APPLY_STATE+"\"></td>  ";
+			html += "<td><input type=\"button\" id=\"applyBtn\" no=\"" + data.MEM_NO + "\" value=\""+data.APPLY_STATE+"\"></td>  ";
 			html += "</tr>          ";				
 		}
 		
 		$("tbody").html(html);
-	}
-	function clickEvnt(){
-		console.log("탐");
-		
 	}
 </script>
 </head>
@@ -72,7 +99,7 @@
 	
 	<h2>팀원관리</h2>
 	<form action="#" id="actionForm" method="post">
-		<input type="hidden" name="mem_no" id="mem_no"> 
+		<input type="hidden" id="mno" name="mno" />
 		<input type="hidden" name="tno" id="tno" value="${param.tno}"/>
 	</form>
 		<table>

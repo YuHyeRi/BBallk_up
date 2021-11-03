@@ -17,6 +17,8 @@ public interface ITMainDao {
 
 	public List<HashMap<String, String>> tMemManageList(HashMap<String, String> params) throws Throwable;
 
+	public int tMemManageUpdate(HashMap<String, String> params) throws Throwable;
+
 	
 
 }
