@@ -25,11 +25,6 @@ $(document).ready(function(){
 	   $("#loginForm").attr("action","logout");
 	   $("#loginForm").submit();
 	});
-
-	$("#join").on("click", function(){
-	   $("#loginForm").attr("action","join");
-	   $("#loginForm").submit();
-	});
 	      
 	$("#mgrpage").on("click", function(){
 	   $("#loginForm").attr("action","mgrPage");

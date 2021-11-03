@@ -55,6 +55,26 @@ $(document).ready(function() {
 		$("#actionForm").submit();
 	});
 	
+	$("#login").on("click",function(){
+	   $("#loginForm").attr("action","login");
+	   $("#loginForm").submit();
+	});
+		      
+	$("#logout").on("click", function(){
+	   $("#loginForm").attr("action","logout");
+	   $("#loginForm").submit();
+	});
+	      
+	$("#mypage").on("click", function(){
+	   $("#loginForm").attr("action","myPage");
+	   $("#loginForm").submit();
+	});
+
+	$("#mgrpage").on("click", function(){
+	   $("#loginForm").attr("action","mgrPage");
+	   $("#loginForm").submit();
+	});	
+	
 });
 
 function checkVal(sel){
@@ -94,27 +114,27 @@ function checkVal(sel){
 [작성자 게시글]<br><br>
 ▶ ${data.MATCH_CON}<br><br>
 <c:choose>
-	<c:when test="${sMNo != 4 && sMNo != data.MEM_NO}">
+	<c:when test="${sMNo != 4 && sMNo != data.MEM_NO}"><!-- 작성자 제외 -->
 		<div class="attendDiv">
 			<input type="button" id="attend" name="attend" value="참가하기"><br>
 		</div>
+		<div class="dtlBtn">
 			<input type="button" id="list" name="list" value="목록으로">
+		</div>
 	</c:when>
-	<c:when test="${sMNo == 4}">
+	<c:when test="${sMNo == 4}"><!-- 관리자 -->
 		<div class="dtlBtn">
 			<input type="button" id="list" name="list" value="목록으로">
 			<input type="button" id="del" name="del" value="글 삭제">
 		</div>
 	</c:when>
 	<c:otherwise>
-	
+		<div class="dtlBtn"><!-- 글 작성자 -->
+			<input type="button" id="list" name="list" value="목록으로">
+			<input type="button" id="del" name="del" value="글 삭제">
+		</div>
 	</c:otherwise>
 </c:choose>
-
-<div class="dtlBtn">
-	<input type="button" id="list" name="list" value="목록으로">
-	<input type="button" id="del" name="del" value="글 삭제">
-</div>
 
 </div>
 </div>

@@ -49,14 +49,14 @@ $(document).ready(function() {
 	   $("#loginForm").attr("action","logout");
 	   $("#loginForm").submit();
 	});
-
-	$("#join").on("click", function(){
-	   $("#loginForm").attr("action","join");
-	   $("#loginForm").submit();
-	});
 	      
 	$("#mypage").on("click", function(){
 	   $("#loginForm").attr("action","myPage");
+	   $("#loginForm").submit();
+	});
+
+	$("#mgrpage").on("click", function(){
+	   $("#loginForm").attr("action","mgrPage");
 	   $("#loginForm").submit();
 	});
 	
@@ -152,9 +152,11 @@ function drawPaging(pb) {
 			<input type="hidden" id="match_no" name="match_no" />
 		</form>
 	</div>
-	<div class="pAdd">
-		<input type="button" id="addBtn" name="addBtn" value="모임 주최하기">
-	</div>
+	<c:if test="${sMNo != 4}">
+		<div class="pAdd">
+			<input type="button" id="addBtn" name="addBtn" value="모임 주최하기">
+		</div>
+	</c:if>
 	<div>
 		<table class="notice_table">
 			<thead>

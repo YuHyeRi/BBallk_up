@@ -20,18 +20,14 @@
 $(document).ready(function(){
 	$("#login").on("click",function(){
 	   $("#loginForm").attr("action","login");
-	   $("#loginForm").submit();});
+	   $("#loginForm").submit();
+	});
 		      
 	$("#logout").on("click", function(){
 	   $("#loginForm").attr("action","logout");
 	   $("#loginForm").submit();
 	});
 
-	$("#join").on("click", function(){
-	   $("#loginForm").attr("action","join");
-	   $("#loginForm").submit();
-	});
-	      
 	$("#mypage").on("click", function(){
 	   $("#loginForm").attr("action","myPage");
 	   $("#loginForm").submit();

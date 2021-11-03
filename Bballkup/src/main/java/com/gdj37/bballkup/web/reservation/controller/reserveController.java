@@ -28,9 +28,16 @@ public class reserveController {
 	public IPagingService iPagingService;
 	
 	@RequestMapping(value = "/reservation")
-	public ModelAndView reservation(ModelAndView mav) {
+	public ModelAndView reservation(@RequestParam HashMap<String, String> params,
+									ModelAndView mav) {
 		
-		mav.setViewName("reservation/reservation");
+		/* int cnt = iReserveService.getCard(params); */
+		
+		/*
+		 * if(cnt > 0) { mav.setViewName("reservation/reservation"); }else {
+		 * mav.addObject("msg","카드가 등록되어 있어야 주최가 가능합니다.");
+		 * mav.setViewName("reservation/pList"); }
+		 */
 		
 		return mav;
 	}
@@ -100,6 +107,7 @@ public class reserveController {
 		
 		int page = Integer.parseInt(params.get("page"));
 		int cnt = iReserveService.getMatchCnt(params);
+		
 		PagingBean pb = iPagingService.getPagingBean(page, cnt);
 		
 		params.put("startCnt", Integer.toString(pb.getStartCount()));
