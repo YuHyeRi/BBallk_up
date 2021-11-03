@@ -5,7 +5,7 @@
 	<select id="cTFreeList" parameterType="hashmap" resultType="hashmap"> 
 		SELECT TBR.TB_RE_NO, TBR.MEM_NM, TBR.MEM_NO, TBR.TB_NO, TBR.TB_RE_CON, TBR.TB_RE_DT
 		FROM (SELECT TBR.TB_RE_NO, M.MEM_NM, TBR.MEM_NO, TB.TB_NO, TBR.TB_RE_CON, 
-					TO_CHAR(TBR.TB_RE_DT, 'YYYY-MM-DD hh:mm:ss') AS TB_RE_DT,
+					TO_CHAR(TBR.TB_RE_DT, 'YYYY-MM-DD HH24:MI:SS') AS TB_RE_DT,
 		        	ROW_NUMBER()OVER(ORDER BY TBR.TB_RE_NO DESC) AS RNUM
 		      FROM T_BOARD_RE TBR INNER JOIN T_BOARD TB
 		                           ON TBR.TB_NO = TB.TB_NO

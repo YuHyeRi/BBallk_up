@@ -241,7 +241,7 @@
 		<input type="hidden" name="no" value="${param.no}" />
 	</form>
 	
-	<input type="button" value="목록" id="listBtn" /> 
+	<input type="button" value="목록" id="listBtn" />
 	<c:if test="${sMLv eq 0}">
 		<input type="button" value="삭제" id="deleteBtn" /> 
 	</c:if>
@@ -256,6 +256,7 @@
 			</c:otherwise>
 		</c:choose>
 	</c:if>
+	<br><br>
 	
 	<div>
 	<table class="free_table">
@@ -313,7 +314,7 @@
 							${data.FREE_RE_DT}<br>
 							<div class="con_info">
 								<div class="con">${data.FREE_RE_CON}</div>
-							</div>
+							</div><br><br>
 							<div class="btn_wrap">
 								<c:if test="${data.MEM_NO eq sMNo}">
 									<input type="button" value="수정" id="cUpdateBtn">

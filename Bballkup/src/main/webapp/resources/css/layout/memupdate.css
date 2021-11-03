@@ -7,10 +7,11 @@
 .memdiv{
 	border : 2px solid #1d2088;
 	width:700px;
-	padding : 10px;
+	padding : 20px 10px 10px 10px;
 	height: auto;
 	text-align:center;
 	border-radius: 15px;
+	margin-bottom: 40px;
 }
 
 #updateBtn:hover{
