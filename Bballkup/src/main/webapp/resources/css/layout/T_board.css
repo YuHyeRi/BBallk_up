@@ -9,6 +9,7 @@
  .lefttab{
  	display: flex;
  	width: min-content;
+ 	margin-right : 20px;
  }
 .teambtndiv {
   background-color: white;
