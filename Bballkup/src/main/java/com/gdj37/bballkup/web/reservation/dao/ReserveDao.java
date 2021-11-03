@@ -29,4 +29,10 @@ public class ReserveDao implements IReserveDao{
 
 		return sqlSession.selectList("match.getMatchList", params);
 	}
+
+	@Override
+	public HashMap<String, String> getMatch(HashMap<String, String> params) throws Throwable {
+
+		return sqlSession.selectOne("match.getMatch", params);
+	}
 }

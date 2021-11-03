@@ -11,4 +11,6 @@ public interface IReserveDao {
 
 	public List<HashMap<String, String>> getMatchList(HashMap<String, String> params) throws Throwable;
 
+	public HashMap<String, String> getMatch(HashMap<String, String> params) throws Throwable;
+
 }
