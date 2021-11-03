@@ -214,4 +214,89 @@
 		WHERE TM.MEM_NO = #{mem_no}
 	</select>
 	
+	<select id="getMatchCnt" resultType="Integer" parameterType="hashmap">
+		WITH RESLIST AS(
+			SELECT M.MATCH_NO, M.SPORT_NO, S.SPORT_NM, M.TEAM_NO, M.TEAM_NM, M.PLACE_NM, M.MATCH_CON, MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
+			FROM (SELECT M.MATCH_NO, M.SPORT_NO, NVL(T.TEAM_NO, 0) TEAM_NO, NVL(T.TEAM_NM, '개인') AS TEAM_NM, M.PLACE_NM, M.MATCH_CON, 
+			        TO_CHAR(M.MATCH_DT, 'YYYY-MM-DD') AS MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
+			FROM MATCHES M LEFT JOIN TEAM T
+			                ON M.TEAM_NO = T.TEAM_NO
+			) M, SPORT S
+			WHERE M.SPORT_NO = S.SPORT_NO
+			AND M.MEM_NO = #{mem_no}
+			UNION ALL
+			SELECT M.MATCH_NO, M.SPORT_NO, S.SPORT_NM, M.TEAM_NO, M.TEAM_NM, M.PLACE_NM, M.MATCH_CON, MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
+			FROM (SELECT M.MATCH_NO, M.SPORT_NO, NVL(T.TEAM_NO, 0) TEAM_NO, NVL(T.TEAM_NM, '개인') AS TEAM_NM, M.PLACE_NM, M.MATCH_CON, 
+			        TO_CHAR(M.MATCH_DT, 'YYYY-MM-DD') AS MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
+			FROM MATCHES M LEFT JOIN TEAM T
+			                ON M.TEAM_NO = T.TEAM_NO
+			) M, SPORT S
+			WHERE M.SPORT_NO = S.SPORT_NO
+			AND M.MATCH_NO IN(${match_no})
+		)
+		SELECT COUNT(*)
+		FROM (SELECT MATCH_NO, SPORT_NO, SPORT_NM, TEAM_NO, TEAM_NM, PLACE_NM, MATCH_CON, MATCH_DT, MATCH_FILE, MEM_NO, 
+		             MATCH_PAY, MATCH_STATE, MATCH_DEL,
+		             ROW_NUMBER() OVER (ORDER BY MATCH_NO DESC) AS RNUM
+		     FROM RESLIST
+		     WHERE MATCH_DEL = 1
+		     <if test="searchTxt != null and searchTxt != ''">
+				<choose>
+					<when test="searchGbn eq 0">
+						AND SPORT_NM LIKE '%'|| #{searchTxt} ||'%'
+					</when>
+					<when test="searchGbn eq 1">
+						AND PLACE_NM LIKE '%'|| #{searchTxt} ||'%'
+					</when>
+				</choose>
+			 </if>
+		     )ML
+		
+	</select>
+	
+	<select id="getMatchList" resultType="hashmap" parameterType="hashmap">
+		WITH RESLIST AS(
+			SELECT M.MATCH_NO, M.SPORT_NO, S.SPORT_NM, M.TEAM_NO, M.TEAM_NM, M.PLACE_NM, M.MATCH_CON, MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
+			FROM (SELECT M.MATCH_NO, M.SPORT_NO, NVL(T.TEAM_NO, 0) TEAM_NO, NVL(T.TEAM_NM, '개인') AS TEAM_NM, M.PLACE_NM, M.MATCH_CON, 
+			        TO_CHAR(M.MATCH_DT, 'YYYY-MM-DD') AS MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
+			FROM MATCHES M LEFT JOIN TEAM T
+			                ON M.TEAM_NO = T.TEAM_NO
+			) M, SPORT S
+			WHERE M.SPORT_NO = S.SPORT_NO
+			AND M.MEM_NO = #{mem_no}
+			UNION ALL
+			SELECT M.MATCH_NO, M.SPORT_NO, S.SPORT_NM, M.TEAM_NO, M.TEAM_NM, M.PLACE_NM, M.MATCH_CON, MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
+			FROM (SELECT M.MATCH_NO, M.SPORT_NO, NVL(T.TEAM_NO, 0) TEAM_NO, NVL(T.TEAM_NM, '개인') AS TEAM_NM, M.PLACE_NM, M.MATCH_CON, 
+			        TO_CHAR(M.MATCH_DT, 'YYYY-MM-DD') AS MATCH_DT, M.MATCH_FILE, M.MEM_NO, M.MATCH_PAY, M.MATCH_STATE, M.MATCH_DEL
+			FROM MATCHES M LEFT JOIN TEAM T
+			                ON M.TEAM_NO = T.TEAM_NO
+			) M, SPORT S
+			WHERE M.SPORT_NO = S.SPORT_NO
+			AND M.MATCH_NO IN(${match_no})
+		)
+		SELECT *
+		FROM (SELECT MATCH_NO, SPORT_NO, SPORT_NM, TEAM_NO, TEAM_NM, PLACE_NM, MATCH_CON, MATCH_DT, MATCH_FILE, MEM_NO, 
+		             MATCH_PAY, MATCH_STATE, MATCH_DEL,
+		             ROW_NUMBER() OVER (ORDER BY MATCH_NO DESC) AS RNUM
+		     FROM RESLIST
+		     WHERE MATCH_DEL = 1
+		     <if test="searchTxt != null and searchTxt != ''">
+				<choose>
+					<when test="searchGbn eq 0">
+						AND SPORT_NM LIKE '%'|| #{searchTxt} ||'%'
+					</when>
+					<when test="searchGbn eq 1">
+						AND PLACE_NM LIKE '%'|| #{searchTxt} ||'%'
+					</when>
+				</choose>
+			 </if>
+		     )ML
+		
+		WHERE ML.RNUM BETWEEN #{startCnt} AND #{endCnt}
+	</select>
+	
+	<select id="getAttend" parameterType="hashmap" resultType="hashmap">
+		SELECT LISTAGG(MATCH_NO, ',') AS MATCH_NO FROM ATTEND
+		WHERE MEM_NO = #{mem_no}
+	</select>
 </mapper>

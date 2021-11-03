@@ -21,6 +21,24 @@
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#login").on("click",function(){
+	   $("#loginForm").attr("action","login");
+	   $("#loginForm").submit();});
+		      
+	$("#logout").on("click", function(){
+	   $("#loginForm").attr("action","logout");
+	   $("#loginForm").submit();
+	});
+
+	$("#join").on("click", function(){
+	   $("#loginForm").attr("action","join");
+	   $("#loginForm").submit();
+	});
+	      
+	$("#mgrpage").on("click", function(){
+	   $("#loginForm").attr("action","mgrPage");
+	   $("#loginForm").submit();
+	});
 	
 	if("${param.searchGbn}" != ""){
 		$("#searchGbn").val("${param.searchGbn}");
@@ -135,6 +153,9 @@ function drawPaging(pb){
 <jsp:include page="../nav.jsp" flush="true" />
 <h2>관리자페이지 >> 회원관리</h2>
 회원검색<br>
+<form action="#" id="loginForm" method="post">
+   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <form action="#" id="actionForm" method="post">
 		<input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt}" >
 		<input type="hidden" name="oldTxt" id="oldTxt" value="${param.searchTxt}" >

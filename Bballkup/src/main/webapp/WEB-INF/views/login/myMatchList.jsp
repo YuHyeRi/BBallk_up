@@ -103,7 +103,7 @@ function reloadList(){
 	var params = $("#actionForm").serialize(); // form의 데이터를 문자열로 변환
 	
 	$.ajax({	//jquery의 ajax 함수 호출
-		url : "myBoardListAjax",	// 접속
+		url : "myMatchListAjax",	// 접속
 		type : "post",			// 전송방식
 		dataType : "json",		// 받아올 데이터의 형태
 		data : params,			// 보낼 데이터(문자열 형태)
@@ -120,24 +120,33 @@ function reloadList(){
 //목록 그리기
 function drawList(list){
 	var html = "";
+	/* html += "<td>";
+	html += data.TITLE;	
 	
+	if(data.B_FILE != null){
+		
+		html += "<img src=\"resources/images/attFile.png\">";
+	}
+	
+	html += "</td>  "; 
+	<th>번호</th>
+	<th>커뮤니티</th>
+	<th>날짜</th>
+	<th>종목</th>
+	<th class="title">제목</th>
+	<th>결제금액</th>
+	<th>진행사항</th>
+	*/
 	for(var data of list){
 		
-		html += "<tr no=\"" + data.NO + "\" tbmNo=\"" + data.TBM_NO + "\" bGbn=\""+ data.GBN + "\">";
-		html += "<td>" + data.NO + "</td>     ";
+		html += "<tr no=\"" + data.MATCH_NO + "\">";
+		html += "<td>" + data.MATCH_NO + "</td>     ";
+		html += "<td>" + data.MATCH_DT + "</td>     ";
 		html += "<td>" + data.TEAM_NM + "</td>     ";
-		html += "<td>" + data.TBM_NM + "</td>     ";
-		html += "<td>";
-		html += data.TITLE;	
-		
-		if(data.B_FILE != null){
-			
-			html += "<img src=\"resources/images/attFile.png\">";
-		}
-		
-		html += "</td>  ";
-		html += "<td>" + data.DT + "</td>  ";
-		html += "<td>" + data.HIT + "</td>     ";
+		html += "<td>" + data.SPORT_NM + "</td>     ";
+		html += "<td>" + data.PLACE_NM + "</td>  ";
+		html += "<td>" + data.MATCH_PAY + "</td>  ";
+		html += "<td>" + data.MATCH_STATE + "</td>  ";
 		html += "</tr>          ";
 	}
 	
@@ -193,14 +202,9 @@ function drawPaging(pb){
 	</form>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
-		<select name="searchBoardGbn" id="searchBoardGbn">
-			<option value="0">전체</option>
-			<option value="1">개인커뮤니티</option>
-			<option value="2">팀커뮤니티</option>
-		</select>
 		<select name="searchGbn" id="searchGbn">
-			<option value="0">제목</option>
-			<option value="1">제목+내용</option>
+			<option value="0">종목</option>
+			<option value="1">장소명</option>
 		</select>
 		<input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt }" >
 		<input type="hidden" name="oldTxt" id="oldTxt" value="${param.searchTxt }" >
@@ -208,17 +212,18 @@ function drawPaging(pb){
 		<input type="hidden" name="no" id="no">
 		<input type="button" value="검색" id="searchBtn">
 	</form>
-</div>
+</div><br><br>
 <div>
 	<table class="notice_table">
 		<thead>
 			<tr class="nonetr">
 				<th>번호</th>
+				<th>날짜</th>
 				<th>커뮤니티</th>
-				<th>게시판명</th>
+				<th>종목</th>
 				<th class="title">제목</th>
-				<th>작성일</th>
-				<th>조회수</th>
+				<th>결제금액</th>
+				<th>진행사항</th>
 			</tr>
 		</thead>
 		<tbody>

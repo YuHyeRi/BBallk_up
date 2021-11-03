@@ -129,9 +129,9 @@
 		이름<br> 
 			<input type="text" id="mem_nm" name="mem_nm" placeholder="이름입력(2자 이상)"><br><br>
 		핸드폰<br> 
-			<input type="text" id="mem_phone" name="mem_phone" placeholder="010-0000-0000"><br><br>
+			<input type="text" id="mem_phone" name="mem_phone" maxlength="13" placeholder="010-0000-0000"><br><br>
 		생년월일<br>
-			<input type="text" id="mem_bd" name="mem_bd" placeholder="19990101"><br><br>
+			<input type="text" id="mem_bd" name="mem_bd" maxlength="8" placeholder="19990101"><br><br>
 	</form>
 	<br><br>
 	<div class="membtns">

@@ -37,7 +37,7 @@
 	padding-top: 30px;
 }
 
-#cancel1:hover, #cancel2:hover, #deleteCard:hover, #cardAdd:hover, #addBtn:hover, #cancelBtn:hover{
+#cancel1:hover, #cancel2:hover, #deleteCard:hover, #cardAdd:hover, #addBtn:hover, #cancelBtn:hover, #cancel:hover, #reservation:hover{
 	background-color: #e3ecfb;
     cursor: pointer;
 }

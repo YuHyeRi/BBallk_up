@@ -88,4 +88,19 @@ public class LoginDao implements ILoginDao {
 		return sqlSession.selectList("login.getTeamJoin", params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> getMatchList(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectList("login.getMatchList", params);
+	}
+
+	@Override
+	public HashMap<String, String> getAttend(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getAttend", params);
+	}
+
+	@Override
+	public int getMatchCnt(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectOne("login.getMatchCnt", params);
+	}
+
 }

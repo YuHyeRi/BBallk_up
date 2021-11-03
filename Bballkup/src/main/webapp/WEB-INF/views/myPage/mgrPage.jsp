@@ -27,7 +27,26 @@
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$(".memManage").on("click", function(){
+	$("#login").on("click",function(){
+	   $("#loginForm").attr("action","login");
+	   $("#loginForm").submit();});
+		      
+	$("#logout").on("click", function(){
+	   $("#loginForm").attr("action","logout");
+	   $("#loginForm").submit();
+	});
+
+	$("#join").on("click", function(){
+	   $("#loginForm").attr("action","join");
+	   $("#loginForm").submit();
+	});
+	      
+	$("#mgrpage").on("click", function(){
+	   $("#loginForm").attr("action","mgrPage");
+	   $("#loginForm").submit();
+	});
+	
+	$("#memManage").on("click", function(){
 		location.href="memManage";
 	});
 	

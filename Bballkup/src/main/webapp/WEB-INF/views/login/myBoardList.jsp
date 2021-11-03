@@ -208,7 +208,7 @@ function drawPaging(pb){
 		<input type="hidden" name="no" id="no">
 		<input type="button" value="검색" id="searchBtn">
 	</form>
-</div>
+</div><br><br>
 <div>
 	<table class="notice_table">
 		<thead>
@@ -216,7 +216,7 @@ function drawPaging(pb){
 				<th>번호</th>
 				<th>커뮤니티</th>
 				<th>게시판명</th>
-				<th class="title">제목</th>
+				<th class="title">장소</th>
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>

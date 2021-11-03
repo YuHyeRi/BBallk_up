@@ -148,7 +148,7 @@
 		생년월일<br>
 			${data.MEM_BD}<br><br>
 		핸드폰<br> 
-			<input type="text" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}" placeholder="010-0000-0000"><br><br>
+			<input type="text" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}" maxlength="13" placeholder="010-0000-0000"><br><br>
 		성별<br>
 			여자<input type="radio" class="mem_gen" name="mem_gen" id="mem_genF" value="F">
 			남자<input type="radio" class="mem_gen" name="mem_gen" id="mem_genM" value="M"><br><br>			

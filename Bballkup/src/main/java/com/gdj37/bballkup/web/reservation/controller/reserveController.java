@@ -1,7 +1,10 @@
 package com.gdj37.bballkup.web.reservation.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gdj37.bballkup.common.bean.PagingBean;
+import com.gdj37.bballkup.common.service.IPagingService;
 import com.gdj37.bballkup.web.reservation.service.IReserveService;
 
 @Controller
 public class reserveController {
 	@Autowired
 	public IReserveService iReserveService;
+	
+	@Autowired
+	public IPagingService iPagingService;
 	
 	@RequestMapping(value = "/reservation")
 	public ModelAndView reservation(ModelAndView mav) {
@@ -63,4 +71,44 @@ public class reserveController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/pList")
+	public ModelAndView pList(@RequestParam HashMap<String, String> params, 
+			HttpSession session, ModelAndView mav) {
+		
+		int page = 1;
+		if(params.get("page") != null) {
+			page = Integer.parseInt(params.get("page"));
+		}
+		
+		mav.addObject("page", page);
+		
+		if(session.getAttribute("sMId") != null) {
+			mav.setViewName("reservation/pList");
+			
+		} else {
+			mav.setViewName("redirect:login");
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/pLists", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String pLists(@RequestParam HashMap<String, String> params) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		int page = Integer.parseInt(params.get("page"));
+		int cnt = iReserveService.getMatchCnt(params);
+		PagingBean pb = iPagingService.getPagingBean(page, cnt);
+		
+		params.put("startCnt", Integer.toString(pb.getStartCount()));
+		params.put("endCnt", Integer.toString(pb.getEndCount()));
+		
+		List<HashMap<String, String>> list = iReserveService.getMatchList(params);
+		modelMap.put("list", list);
+		modelMap.put("pb", pb);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
 }

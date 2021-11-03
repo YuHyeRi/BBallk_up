@@ -35,5 +35,11 @@ public interface ILoginDao {
 	public List<HashMap<String, String>> getAllBoardList(HashMap<String, String> params) throws Throwable;
 
 	public List<HashMap<String, String>> getTeamJoin(HashMap<String, String> params) throws Throwable;
+
+	public List<HashMap<String, String>> getMatchList(HashMap<String, String> params) throws Throwable;
+
+	public HashMap<String, String> getAttend(HashMap<String, String> params) throws Throwable;
+
+	public int getMatchCnt(HashMap<String, String> params) throws Throwable;
 	
 }
