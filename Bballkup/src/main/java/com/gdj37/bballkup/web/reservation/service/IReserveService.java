@@ -13,4 +13,10 @@ public interface IReserveService {
 
 	public HashMap<String, String> getMatch(HashMap<String, String> params) throws Throwable;
 
+	public int getCard(HashMap<String, String> params) throws Throwable;
+
+	public int attend(HashMap<String, String> params) throws Throwable;
+
+	public int getAtt(HashMap<String, String> params) throws Throwable;
+
 }

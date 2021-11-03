@@ -51,8 +51,7 @@
 $(document).ready(function() {
 	
 	$("#list").on("click", function() {
-		$("#actionForm").attr("action", "pList");
-		$("#actionForm").submit();
+		location.href="pList";
 	});
 	
 	$("#login").on("click",function(){
@@ -75,6 +74,11 @@ $(document).ready(function() {
 	   $("#loginForm").submit();
 	});	
 	
+	$("#attend").on("click", function(){
+		$("#actionForm").attr("action", "pAttend");
+		$("#actionForm").submit();
+	});
+	
 });
 
 function checkVal(sel){
@@ -88,7 +92,7 @@ function checkVal(sel){
 </head>
 <body>
 <form action="#" id="loginForm">
-<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+<input type="hidden" name="mem_no" value="${sMNo}">
 </form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
@@ -100,8 +104,13 @@ function checkVal(sel){
 <div class="addDiv">
 <h2>개인 체육활동 참가모집 상세페이지</h2>
 <form action="#" id="actionForm" method="post">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	<input type="hidden" name="page" value="${param.page}" />
 	<input type="hidden" name="match_no" value="${param.match_no}" />
+	<input type="hidden" id="match_dday" name="match_dday" value="${data.MATCH_DDAY}">
+	<input type="hidden" id="sport_nm" name="sport_nm" value="${data.SPORT_NM}">
+	<input type="hidden" id="place_nm" name="place_nm" value="${data.PLACE_NM}">
+	<input type="hidden" id="match_pay" name="match_pay" value="${data.MATCH_PAY}">
 </form>
 <br>
 [참가모집 게시글 상세]
@@ -115,9 +124,18 @@ function checkVal(sel){
 ▶ ${data.MATCH_CON}<br><br>
 <c:choose>
 	<c:when test="${sMNo != 4 && sMNo != data.MEM_NO}"><!-- 작성자 제외 -->
-		<div class="attendDiv">
-			<input type="button" id="attend" name="attend" value="참가하기"><br>
-		</div>
+		<c:choose>
+			<c:when test="${attCnt eq 1}">
+				<div class="attendDiv">
+					<p>이미 참가신청이 완료되었습니다.</p>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="attendDiv">
+					<input type="button" id="attend" name="attend" value="참가하기"><br>
+				</div>
+			</c:otherwise>
+		</c:choose>
 		<div class="dtlBtn">
 			<input type="button" id="list" name="list" value="목록으로">
 		</div>

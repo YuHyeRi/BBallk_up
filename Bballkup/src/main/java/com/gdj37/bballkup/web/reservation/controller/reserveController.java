@@ -29,15 +29,18 @@ public class reserveController {
 	
 	@RequestMapping(value = "/reservation")
 	public ModelAndView reservation(@RequestParam HashMap<String, String> params,
-									ModelAndView mav) {
+									ModelAndView mav) throws Throwable {
 		
-		/* int cnt = iReserveService.getCard(params); */
+		 int cnt = iReserveService.getCard(params); 
 		
-		/*
-		 * if(cnt > 0) { mav.setViewName("reservation/reservation"); }else {
-		 * mav.addObject("msg","카드가 등록되어 있어야 주최가 가능합니다.");
-		 * mav.setViewName("reservation/pList"); }
-		 */
+		
+		 if(cnt > 0) { 
+			 mav.setViewName("reservation/reservation"); 
+		 
+		 }else {
+			 mav.addObject("msg","카드가 등록되어 있어야 주최가 가능합니다.");
+			 mav.setViewName("reservation/failedAction"); 
+		 }
 		
 		return mav;
 	}
@@ -128,6 +131,12 @@ public class reserveController {
 			HashMap<String, String> data = iReserveService.getMatch(params);
 			
 			mav.addObject("data", data);
+			
+			int attCnt = iReserveService.getAtt(params);
+			
+			if(attCnt > 0) {
+				mav.addObject("attCnt", attCnt);
+			}			
 			mav.setViewName("reservation/pDtl");
 			
 		} else {
@@ -135,5 +144,49 @@ public class reserveController {
 		}
 		
 		return mav;
+	}
+	
+	@RequestMapping(value = "/pAttend")
+	public ModelAndView pAttend(@RequestParam HashMap<String, String> params,
+									ModelAndView mav) throws Throwable {
+
+			int cnt = iReserveService.getCard(params); 
+			
+			if(cnt > 0) { 
+				mav.setViewName("reservation/pAttend"); 
+				
+			}else {
+				mav.addObject("msg","카드가 등록되어 있어야 참여가 가능합니다.");
+				mav.setViewName("reservation/failedAction"); 
+			}
+		return mav;
+	}
+	
+	@RequestMapping(value = "/pAttends" , method = RequestMethod.POST, 
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody 
+	public String pAttends(@RequestParam HashMap<String, String> params) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		String result = "success";
+
+		try {
+				int cnt = iReserveService.attend(params);
+				if(cnt == 0) {
+					  result = "failed";
+				}
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			result = "error";
+		}
+		
+		modelMap.put("result", result);
+		
+		return mapper.writeValueAsString(modelMap);
 	}
 }

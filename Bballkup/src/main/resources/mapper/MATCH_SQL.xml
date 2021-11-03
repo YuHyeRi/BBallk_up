@@ -30,4 +30,17 @@
 		WHERE MATCHES.SPORT_NO = SPORT.SPORT_NO AND MATCHES.MEM_NO = MEM.MEM_NO
 		AND MATCH_NO = #{match_no}
 	</select>
+	
+	<select id="getCard" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM CARD WHERE MEM_NO = #{mem_no}
+	</select>
+	
+	<insert id="attend" parameterType="hashmap">
+		INSERT INTO ATTEND (MEM_NO, MATCH_NO, ATTEND_DT, ATTEND_DEL) 
+		VALUES (#{mem_no}, #{match_no}, SYSDATE, 1)
+	</insert>
+	
+	<select id="getAtt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM ATTEND WHERE MATCH_NO = #{match_no} AND MEM_NO = #{mem_no}
+	</select>
 </mapper>
