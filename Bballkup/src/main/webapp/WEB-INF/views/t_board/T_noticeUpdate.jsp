@@ -164,8 +164,14 @@ function checkVal(sel) {
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-<jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
+<div>
+	<h2>${param.tnm}</h2>
+	<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
+</div>
+<div class="bigtab">
+	<jsp:include page="../T_board.jsp" flush="true" />
+<div class="righttab">
 <h2>팀 공지사항</h2>
 	<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 		<input type="file" name="att" id="att" />
@@ -215,6 +221,8 @@ function checkVal(sel) {
 		</div>
 		</div>	
 	</form>
+</div>
+</div>
 </div>
 </main>
 <footer>

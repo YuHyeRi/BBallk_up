@@ -182,21 +182,14 @@
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-<jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
-	<h2>팀 자유게시판</h2>
-	<div>
-		<c:choose>
-			<c:when test="${empty sMId}">
-				<input type="button" value="로그인" id="loginBtn" />
-			</c:when>
-			<c:otherwise>
-				<b>${sMNm}님</b> 어서오세요 :)
-				<input type="button" value="로그아웃" id="logoutBtn" />
-			</c:otherwise>
-		</c:choose>
-	</div>
-	
+<div>
+	<h2>${param.tnm}</h2>
+	<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
+</div>
+<div class="bigtab">
+	<jsp:include page="../T_board.jsp" flush="true" />
+<div class="righttab">
 	<div>
 		<form action="#" id="actionForm" method="post">
 			<input type="hidden" id="tab" value="${sNMo}" />
@@ -232,6 +225,8 @@
 	</div>
 	
 	<div id="paging_wrap"></div>
+</div>
+</div>
 </div>
 </main>
 <footer>

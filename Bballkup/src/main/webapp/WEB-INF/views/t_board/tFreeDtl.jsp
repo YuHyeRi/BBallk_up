@@ -235,8 +235,14 @@
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-<jsp:include page="../T_board.jsp" flush="true" />
 <div class="tabcontent">
+<div>
+	<h2>${param.tnm}</h2>
+	<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
+</div>
+<div class="bigtab">
+	<jsp:include page="../T_board.jsp" flush="true" />
+<div class="righttab">
 	<!-- dtl -->
 	<h2>팀 자유게시판</h2>
 	<form action="#" id="actionForm" method="post">
@@ -393,6 +399,8 @@
 			</div>
 		</form>
 	</div>
+</div>
+</div>
 </div>
 </main>
 <footer>

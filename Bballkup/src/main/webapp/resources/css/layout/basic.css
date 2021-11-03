@@ -73,7 +73,6 @@ header {
 	cursor: pointer;
 	text-align: center;
 	margin: 20px;
-	margin-left: 150px;
 }
 .paging_wrap>span, #paging_wrap>span{
 	padding: 10px;

@@ -76,7 +76,6 @@ $(document).ready(function(){
 <body>
 
 <form action="#" id="loginForm" method="post">
-	<input type="hidden" id="logno" name="logno" value="${sMNo}">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	<input type="hidden" id="mem_nm" name="mem_nm" value="${data.MEM_NM}">
 	<input type="hidden" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}">
