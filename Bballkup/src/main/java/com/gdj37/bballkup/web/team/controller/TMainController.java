@@ -62,9 +62,10 @@ public class TMainController {
 		mav.addObject("applyState", applyState);
 		// System.out.println("applyState =====> " + applyState);
 		
-		// 4. 입장하기(B) 해당 팀번호 게시판으로 이동
-		// HashMap<String, String> goTB = iTMainService.goTB(params);
-		// mav.addObject("goTB", goTB);
+		// 4. 팀장에게만 팀관리 버튼 노출
+		int teamManageBtn = iTMainService.teamManageBtn(params);
+		mav.addObject("teamManageBtn", teamManageBtn);
+		// System.out.println("teamManageBtn =====> " + teamManageBtn);
 		
 		mav.setViewName("team/tMainIntro");
 		return mav;

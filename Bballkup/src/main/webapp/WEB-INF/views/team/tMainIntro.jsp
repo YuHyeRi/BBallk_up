@@ -50,6 +50,13 @@
 <script>
 	$(document).ready(function() {
 		
+		// 팀장인 사람에게만 팀관리 버튼 노출
+		if('${teamManageBtn}' > 0) {
+			$("#tMemManage").show();
+		} else {
+			$("#tMemManage").hide();
+		}
+		
 		// 팀 가입한 사람과 아닌사람에 따라 버튼 다르게 노출
 		if('${cnt}' > 0) {
 			$("#regBtn").hide();
