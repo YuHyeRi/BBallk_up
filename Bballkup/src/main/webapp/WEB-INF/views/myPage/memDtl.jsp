@@ -5,19 +5,42 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지>>회원관리>>회원상세</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	<link rel="stylesheet" href="resources/css/layout/myCard.css">
+	
 <style type="text/css">
 #memImg{
-	padding-bottom:20px;
+	padding-top:40px;
+	width:60px;
+	height:60px;
 }
 .memInfo{
 	display:flex;
+	padding-bottom:30px;
+	justify-content: center;
 }
 .userdiv{
 	margin-top:25px;
 	padding-left:10px;
 }
-.team{
-	margin-bottom:20px;
+#listBtn:hover{
+	background-color: #e3ecfb;
+    cursor: pointer;
+}
+#listBtn{
+	float:right;
+	margin-top:20px;
+}
+h2{
+	display:inline-block;
+}
+.noneDiv{
+	text-align:center;
 }
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -41,8 +64,12 @@ function reloadList(){
 		dataType : "json",		
 		data : params,			
 		success : function(res){
-			drawList(res.list);
 			drawMem(res.data);
+			if(res.list.length == 0){
+				nonMsg();
+			}else{
+				drawList(res.list);
+			}
 		},
 		error : function(request, status, error){
 			console.log(error);
@@ -65,6 +92,14 @@ function drawList(list){
 	$("tbody").html(html);
 }
 
+	function nonMsg(){
+	var html = "";
+	
+	html = "<p> 현재 소속된 팀이 없습니다 </p>";
+
+	$(".noneDiv").html(html);
+}
+
 function drawMem(data){
 	var html = "";
 	
@@ -76,9 +111,20 @@ function drawMem(data){
 </script>
 </head>
 <body>
-<h2>회원관리>>회원상세</h2>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="cardBig">
+<div class="cardDiv">
+<div class="topDiv">
+<h2>회원관리 >> 회원상세</h2>
+<input type="button" value="목록으로" id="listBtn">
+</div>
+
 <div class="memInfo">
-	<img src ="resources/images/kitty.png" id="memImg" alt ="야옹이">
+	<img src ="resources/images/icon/사진.png" id="memImg" alt ="야옹이">
 	<div class="userdiv">
 	</div>
 </div>
@@ -87,9 +133,9 @@ function drawMem(data){
 		<input type="hidden" name="page" id="page" value="${param.page}">
 </form>
 <div class="team">
-	<table>
+	<table class="notice_table">
 		<thead>
-			<tr>
+			<tr class = "nonetr">
 				<th>팀번호</th>
 				<th>팀명</th>
 			</tr>
@@ -98,6 +144,14 @@ function drawMem(data){
 		</tbody>
 	</table>
 </div>
-<input type="button" value="목록" id="listBtn">
+<div class="noneDiv"></div>
+</div>
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
+
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
