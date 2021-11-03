@@ -31,6 +31,10 @@
 tr:hover{
 	cursor:pointer;
 }
+.pIntro>h2{
+	display: inline-block;
+	margin-right: 30px;
+}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
@@ -138,6 +142,7 @@ function drawPaging(pb) {
 <jsp:include page="../nav.jsp" flush="true" />
 <div class="pIntro">
 <h2>개인 체육활동 참가모집 게시판</h2>
+	<jsp:include page="../modal.jsp" flush="true" />
 </div>
 	<div>
 		<form action="#" id="actionForm" method="post">

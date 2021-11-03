@@ -19,6 +19,6 @@ public interface ITMainDao {
 
 	public int tMemManageUpdate(HashMap<String, String> params) throws Throwable;
 
-	
+	public int teamManageBtn(HashMap<String, String> params) throws Throwable;
 
 }

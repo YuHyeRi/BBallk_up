@@ -50,5 +50,9 @@ public class TMainService implements ITMainService {
 		return iTMainDao.tMemManageUpdate(params);
 	}
 
+	@Override
+	public int teamManageBtn(HashMap<String, String> params) throws Throwable {
+		return iTMainDao.teamManageBtn(params);
+	}
 
 } // class end
