@@ -13,7 +13,12 @@
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/main.css">
 	<link rel="stylesheet" href="resources/css/layout/mypage.css">
-
+<style>
+.myinfo{
+	left: 300px;
+    top: 60px;
+}
+</style>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
