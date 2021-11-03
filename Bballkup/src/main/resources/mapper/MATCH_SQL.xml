@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="match">
+	<insert id="matchAdd" parameterType="hashmap">
+		INSERT INTO MATCHES (MATCH_NO, MEM_NO, SPORT_NO, PLACE_NM, 
+							MATCH_DDAY, MATCH_PAY, MATCH_CON, 
+							MATCH_STATE, MATCH_DT, MATCH_DEL)
+        VALUES (MATCH_SEQ.NEXTVAL, #{mem_no}, #{sport}, #{place}, #{date}, '50000', #{con}, '모집중', SYSDATE, 1)
+	</insert>
+</mapper>

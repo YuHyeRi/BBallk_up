@@ -20,6 +20,7 @@ import com.gdj37.bballkup.common.bean.PagingBean;
 import com.gdj37.bballkup.common.service.IPagingService;
 import com.gdj37.bballkup.util.Utils;
 import com.gdj37.bballkup.web.login.service.ILoginService;
+import com.gdj37.bballkup.web.teamAdd.service.ITeamAddService;
 
 @Controller
 public class loginController {
@@ -29,6 +30,9 @@ public class loginController {
 	
 	@Autowired
 	public IPagingService iPagingService;
+	
+	@Autowired
+	public ITeamAddService iTeamAddService;
 	
 	@RequestMapping(value = "/login")
 	public ModelAndView login(HttpServletRequest req, HttpSession session, ModelAndView mav) {
@@ -51,9 +55,23 @@ public class loginController {
 		
 		HashMap<String, String> data = iLoginService.getLogin(params);
 		
-		
+		int result = 0;
+		String nm = "";
 		
 		if(data != null) {//id, pw 일치할때
+			nm = String.valueOf(data.get("MEM_NO"));
+			params.put("mem_no", nm);
+			
+			int teamChk = iTeamAddService.teamChk(params); //팀장여부 확인
+			System.out.println("팀 체크 : "+teamChk);
+			
+			if(teamChk > 0) { 
+				  result = 1;
+			  }else {
+				  result = 0;
+			  }
+			
+			System.out.println("결과 : "+result);
 			
 			String delYn = String.valueOf(data.get("MEM_DEL"));
 			
@@ -62,13 +80,16 @@ public class loginController {
 				session.setAttribute("sMId", data.get("MEM_ID"));
 				session.setAttribute("sMNm", data.get("MEM_NM"));
 				session.setAttribute("sMLv", data.get("LEVEL_NO"));
+				session.setAttribute("sTCnt", result);
 				//getAttribute("키") : 세션에서 해당 키와 값을 넣는다
 				System.out.println("m_no : "+session.getAttribute("sMNo"));
 				System.out.println("m_id : "+session.getAttribute("sMId"));
 				System.out.println("m_nm : "+session.getAttribute("sMNm"));
 				System.out.println("m_lv : "+session.getAttribute("sMLv"));
 				
-				 mav.setViewName("redirect:Main"); 
+				mav.addObject("result", result);
+				mav.setViewName("redirect:Main"); 
+				
 			}else {
 				mav.addObject("msg", "탈퇴한 회원입니다.");
 				mav.setViewName("login/failedAction");
