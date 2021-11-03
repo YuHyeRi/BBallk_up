@@ -21,6 +21,25 @@
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#login").on("click",function(){
+	   $("#loginForm").attr("action","login");
+	   $("#loginForm").submit();});
+		      
+	$("#logout").on("click", function(){
+	   $("#loginForm").attr("action","logout");
+	   $("#loginForm").submit();
+	});
+
+	$("#join").on("click", function(){
+	   $("#loginForm").attr("action","join");
+	   $("#loginForm").submit();
+	});
+	      
+	$("#mgrpage").on("click", function(){
+	   $("#loginForm").attr("action","mgrPage");
+	   $("#loginForm").submit();
+	});
+	
 	$("#memManage").on("click", function(){
 		location.href="memManage";
 	});
@@ -29,6 +48,9 @@ $(document).ready(function(){
 </head>
 <body>
 <h2>마이페이지</h2>
+<form action="#" id="loginForm" method="post">
+   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <form action="#" id="actionForm" method="post">
 	<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
 	<input type="hidden" id="mem_nm" name="mem_nm" value="${param.mem_nm}">

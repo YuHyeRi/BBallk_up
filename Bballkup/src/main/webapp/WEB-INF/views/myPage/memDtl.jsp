@@ -46,6 +46,25 @@ h2{
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#login").on("click",function(){
+	   $("#loginForm").attr("action","login");
+	   $("#loginForm").submit();});
+		      
+	$("#logout").on("click", function(){
+	   $("#loginForm").attr("action","logout");
+	   $("#loginForm").submit();
+	});
+
+	$("#join").on("click", function(){
+	   $("#loginForm").attr("action","join");
+	   $("#loginForm").submit();
+	});
+	      
+	$("#mgrpage").on("click", function(){
+	   $("#loginForm").attr("action","mgrPage");
+	   $("#loginForm").submit();
+	});
+
 	$("#listBtn").on("click", function(){
 		$("#actionForm").attr("action", "memManage");
 		$("#actionForm").submit();
@@ -118,6 +137,9 @@ function drawMem(data){
 <jsp:include page="../nav.jsp" flush="true" />
 <div class="cardBig">
 <div class="cardDiv">
+<form action="#" id="loginForm" method="post">
+   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <div class="topDiv">
 <h2>회원관리 >> 회원상세</h2>
 <input type="button" value="목록으로" id="listBtn">

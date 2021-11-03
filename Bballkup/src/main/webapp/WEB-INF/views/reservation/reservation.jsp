@@ -4,14 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <title>주최자 예약</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/myCard.css">
+	
 <style type="text/css">
 .ui-datepicker-trigger{
 	cursor:pointer;
 	width:40px;
 }
 .ui-datepicker{
-	margin-top:5px;
-	margin-left:50px;
+	margin-top:10px;
+	margin-left:60px;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui.min.css" />
@@ -21,13 +28,32 @@
 $(document).ready(function() {
    reloadList();
    
+   $("#login").on("click",function(){
+	   $("#loginForm").attr("action","login");
+	   $("#loginForm").submit();});
+	      
+	$("#logout").on("click", function(){
+	   $("#loginForm").attr("action","logout");
+	   $("#loginForm").submit();
+	});
+
+	$("#join").on("click", function(){
+	   $("#loginForm").attr("action","join");
+	   $("#loginForm").submit();
+	});
+	      
+	$("#mypage").on("click", function(){
+	   $("#loginForm").attr("action","myPage");
+	   $("#loginForm").submit();
+	});
+	
   	$.datepicker.setDefaults({
 	monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
 	dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
 	showMonthAfterYear:true,
 	showOn: 'button',
 	closeText: '닫기',
-	buttonImage: 'resources/images/calender.png',
+	buttonImage: 'resources/images/달력2.png',
 	buttonImageOnly: true,
 	dateFormat: 'yy-mm-dd',
 	minDate: 1,
@@ -42,7 +68,7 @@ $(document).ready(function() {
 	});
 
    $("#cancel").on("click", function(){
-	  location.href = "reserveEntry"; //체활모 메인으로 이동
+	  location.href = "pList";
    });
    
 });
@@ -109,55 +135,97 @@ function redrawList(list) {
 	});
 	
 	$("#reservation").on("click", function(){
-		var params = $("#actionForm").serialize();
 		
-		$.ajax({
-			url : "reservations",
-			type : "post",
-			dataType : "json",
-			data : params,
-			success : function(res){
-				if(res.result == "success"){
-					alert("모임 주최가 완료되었습니다");
-					location.href = "login"; //체활모 메인으로 이동
-					
-				}else if(res.result == "failed"){
-					
-					alert("모임 주최에 실패했습니다.");
-					
-				}else{
-					alert("모임 주최 중 문제가 발생했습니다.")
+		if($("#sport").val() == '시설선택'){
+			alert("시설을 선택해 주세요");
+			
+		}else if(checkVal("#date")){
+			alert("날짜를 선택해 주세요");
+			
+		}else if(checkVal("#con")){
+			alert("게시글 내용을 작성해 주세요");
+			
+		}else{
+			
+			var params = $("#actionForm").serialize();
+			
+			$.ajax({
+				url : "reservations",
+				type : "post",
+				dataType : "json",
+				data : params,
+				success : function(res){
+					if(res.result == "success"){
+						alert("모임 주최가 완료되었습니다");
+						location.href = "pList";
+						
+					}else if(res.result == "failed"){
+						
+						alert("모임 주최에 실패했습니다.");
+						
+					}else{
+						alert("모임 주최 중 문제가 발생했습니다.")
+					}
+				},
+				error : function(request, status, error){
+					console.log(error);
 				}
-			},
-			error : function(request, status, error){
-				console.log(error);
-			}
-		});
+			});
+		}
 	});
+}
+
+function checkVal(sel){
+	if($.trim($(sel).val()) == ''){
+		return true;
+	}else{
+		return false;
+	}
 }
 </script>
 </head>
 <body>
+<form action="#" id="loginForm">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+<main>
+<jsp:include page="../nav.jsp" flush="true" />
+<div class="cardBig">
+<div class="addDiv">
 <h2>주최자 예약 페이지</h2>
 <form action="#" id="actionForm" method="post">
-<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
-	<p>▶시설 선택</p>
+	<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
+	<input type="hidden" id="team_no" name="team_no" value="${param.team_no}">
+	<p>▶ 시설 선택</p>
 	<select id="sport" name="sport">
 		<option>시설선택</option>
 	</select><br>
-	<p>▶장소 선택</p>
+	<p>▶ 장소 선택</p>
 	<select id="place" name="place">
 		<option>장소선택</option>
 	</select><br>
-	<p>▶경기일 선택</p>
+	<p>▶ 경기일 선택</p>
 	<input type="text" id="date" name="date" placeholder="날짜를 선택해주세요."><br>
-	<p>▶게시글 내용 작성</p>
+	<p>▶ 게시글 내용 작성</p>
 	<textarea rows="5" cols="50" id="con" name="con"></textarea><br>
-</form>
-<input type="button" id="cancel" name="cancel" value="취소">
-<input type="button" id="reservation" name="reservation" value="주최하기">
+</form><br>
+<div class="btnDiv2">
+	<input type="button" id="cancel" name="cancel" value="취소">
+	<input type="button" id="reservation" name="reservation" value="주최하기">
+</div>
  <table>
     <tbody></tbody>
  </table>
+</div>
+</div>
+</main>
+<footer>
+	<jsp:include page="../footer.jsp" flush="true" />
+</footer>
+
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

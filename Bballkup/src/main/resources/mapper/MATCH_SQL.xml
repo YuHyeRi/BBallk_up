@@ -2,12 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="match">
 	<insert id="matchAdd" parameterType="hashmap">
-		<if test = "#{team_no} != null || #{team_no} != ''">
-			INSERT INTO MATCHES (MATCH_NO, MEM_NO, TEAM_NO, SPORT_NO, PLACE_NM, 
-							MATCH_DDAY, MATCH_PAY, MATCH_CON, 
-							MATCH_STATE, MATCH_DT, MATCH_DEL)
-	        VALUES (MATCH_SEQ.NEXTVAL, #{mem_no}, #{team_no}, #{sport}, #{place}, #{date}, '50000', #{con}, '모집중', SYSDATE, 1)
-		</if>
-		
+		INSERT INTO MATCHES (MATCH_NO, MEM_NO, TEAM_NO, SPORT_NO, PLACE_NM, 
+						MATCH_DDAY, MATCH_PAY, MATCH_CON, 
+						MATCH_STATE, MATCH_DT, MATCH_DEL)
+        VALUES (MATCH_SEQ.NEXTVAL, #{mem_no}, #{team_no}, #{sport}, #{place}, #{date}, '50000', #{con}, '모집중', SYSDATE, 1)
 	</insert>
+	
+	<select id="getMatchCnt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) 
+		FROM MATCHES, MEM
+		WHERE MATCHES.MEM_NO = MEM.MEM_NO AND MATCH_DEL = 1
+	</select>
+	
+	<select id="getMatchList" parameterType="hashmap" resultType="hashmap">
+		SELECT MATCH_NO, MEM_NO, MEM_ID, SPORT_NO, TEAM_NO, PLACE_NM, MATCH_DDAY, MATCH_PAY, MATCH_CON, MATCH_STATE, MATCH_DT
+		FROM(
+		    SELECT MATCH_NO, MATCHES.MEM_NO, MEM_ID, SPORT_NO, TEAM_NO, PLACE_NM, TO_CHAR(MATCH_DDAY, 'YYYY-MM-DD') MATCH_DDAY, MATCH_PAY, MATCH_CON, MATCH_STATE, TO_CHAR(MATCH_DT, 'YYYY-MM-DD') MATCH_DT, ROW_NUMBER()OVER(ORDER BY MATCH_DDAY) AS RNUM
+		    FROM MATCHES INNER JOIN MEM ON MATCHES.MEM_NO = MEM.MEM_NO
+		    WHERE MATCH_DEL = 1
+		    )
+		WHERE RNUM BETWEEN #{startCnt} AND #{endCnt}
+	</select>
 </mapper>
