@@ -39,5 +39,10 @@ public class TMainService implements ITMainService {
 		return iTMainDao.applyState(params);
 	}
 
+	@Override
+	public List<HashMap<String, String>> tMemManageList(HashMap<String, String> params) throws Throwable {
+		return iTMainDao.tMemManageList(params);
+	}
+
 
 } // class end

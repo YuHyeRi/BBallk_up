@@ -15,6 +15,8 @@ public interface ITMainService {
 
 	public int applyState(HashMap<String, String> params) throws Throwable;
 
+	public List<HashMap<String, String>> tMemManageList(HashMap<String, String> params) throws Throwable;
+
 
 
 

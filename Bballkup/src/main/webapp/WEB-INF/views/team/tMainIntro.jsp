@@ -107,6 +107,18 @@
 			$("#actionForm").submit();
 		});
 		
+		$("#tMemManage").on("click",function() {
+			
+			var tno = $(".team_info").attr('no');
+			$("#tno2").val(tno);
+			
+			var mno = ${sMNo};
+			$("#mno2").val(mno);
+			
+			$("#actionForm").attr("action", "tMemManage");	
+			$("#actionForm").submit();
+		});
+		
 	}); // doc end
 	
 </script>
@@ -134,6 +146,8 @@
 		팀명: ${data.TEAM_NM}
 	</div><hr>
 	<input type="button" id="backBtn" value="뒤로가기" /><br><br>
+	<!--주영추가  -->
+	<input type="button" id="tMemManage" value="팀원관리" /><br><br>
 	
 	<div class="con_wrap">
 		<div class="list_wrap">

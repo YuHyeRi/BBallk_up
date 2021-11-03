@@ -1,0 +1,101 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>팀장 - 팀원관리</title>
+	<link rel="stylesheet" href="resources/css/layout/font.css">
+	<link rel="stylesheet" href="resources/css/layout/basic.css">
+	<link rel="stylesheet" href="resources/css/layout/btn.css">
+	<link rel="stylesheet" href="resources/css/layout/loginout.css">
+	<link rel="stylesheet" href="resources/css/layout/nav.css">
+	<link rel="stylesheet" href="resources/css/layout/table.css">
+	
+<script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
+<script>
+	$(document).ready(function() {
+		reloadList();
+	});
+	
+	function reloadList(){		
+		var params = $("#actionForm").serialize(); 
+		
+		$.ajax({
+			url : "tMemManageAjax",	
+			type : "post",			
+			dataType : "json",		
+			data : params,			
+			success : function(res){
+				drawList(res.list);
+			},
+			error : function(request, status, error){
+				console.log(error);
+			}
+		});
+	}
+	function drawList(list){
+		var html = "";
+		
+		for(var data of list){
+
+			html += "<tr no=\"" + data.MEM_NO + "\">           ";
+			html += "<td>" + data.MEM_NO + "</td>     ";
+			html += "<td>" + data.MEM_NM + "</td>     ";
+			html += "<td>" + data.T_MEM_DT + "</td>  ";
+			html += "<td>" + data.APPLY_STATE + "</td>  ";
+			html += "<td><input type=\"button\" id=\"applyBtn\" onclick=\"clickEvnt()\" value=\""+data.APPLY_STATE+"\"></td>  ";
+			html += "</tr>          ";				
+		}
+		
+		$("tbody").html(html);
+	}
+	function clickEvnt(){
+		console.log("탐");
+		
+	}
+</script>
+</head>
+<body>
+<form action="#" id="loginForm">
+<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
+
+<header>
+	<jsp:include page="../header.jsp" flush="true" />
+</header>
+	
+<main>
+	<jsp:include page="../nav.jsp" flush="true" />
+	
+	<h2>팀원관리</h2>
+	<form action="#" id="actionForm" method="post">
+		<input type="hidden" name="mem_no" id="mem_no"> 
+		<input type="hidden" name="tno" id="tno" value="${param.tno}"/>
+	</form>
+		<table>
+			<thead>
+				<tr>
+					<th>회원번호</th>
+					<th>회원명</th>
+					<th>신청날짜</th>
+					<th>승인여부</th>
+					<th>승인/추방버튼</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table> 
+		<br><br>
+</main>
+<br><br>
+	
+	<footer>
+		<jsp:include page="../footer.jsp" flush="true" />
+	</footer>
+	
+	<script type="text/javascript" src="resources/css/js/header.js"></script>
+</body>
+</html>
