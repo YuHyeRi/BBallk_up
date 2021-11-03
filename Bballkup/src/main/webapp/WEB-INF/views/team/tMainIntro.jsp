@@ -58,7 +58,7 @@
 		}
 		
 		// 팀 가입한 사람과 아닌사람에 따라 버튼 다르게 노출
-		if('${cnt}' > 0) {
+		if('${cnt}' > 0 || '${teamManageBtn}' > 0) {
 			$("#regBtn").hide();
 			$("#enterBtn").show();
 		} else {
