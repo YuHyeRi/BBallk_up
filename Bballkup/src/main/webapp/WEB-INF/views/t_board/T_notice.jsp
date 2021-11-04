@@ -74,10 +74,11 @@ $(document).ready(function(){
 		$("#actionForm").submit();
 	});
 	
-	/* $("#tab2").on("click", function(){
+/* 	$("#tab2").on("click", function(){
 		$("#actionForm").attr("action", "T_notice");
 		$("#actionForm").submit();
 	}); */
+	
 	$("#tab4").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#actionForm").attr("action", "tFreeList");
@@ -92,6 +93,7 @@ $(document).ready(function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#actionForm").attr("action", "T_oneline");
 			$("#actionForm").submit();
+		}
 	});
 	
 });
