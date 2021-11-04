@@ -63,7 +63,7 @@
     border: 1px solid #e3ecfb;
 }
 .btn_wrap{
-	width : 20%;
+	width : 15%;
 	text-align: center;
 }
 .write_area .action_btn2 {
@@ -71,6 +71,7 @@
  }
  .action_btn, .action_btn4{
  	height: 90px;
+ 	margin-top: 5px;
  }
  .action_btn2, .action_btn3, .action_btn5, .action_btn4{
  	background-color: white;
@@ -80,7 +81,10 @@
     border: 2px solid #1d2088;
     cursor: pointer;
  }
-
+ .action_btn2, .action_btn3, .action_btn5{
+ 	margin-top : 15px;
+ }
+ 
 </style>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
