@@ -28,10 +28,37 @@
     border: 2px solid #1d2088;
     cursor: pointer;
 }
+
+.map_pop {
+	display: inline-block;
+	width: 600px;
+	height: 400px;
+	padding: 20px;
+	position: absolute;
+	left: calc(50% - 300px);
+	top: calc(50% - 200px);
+	box-shadow: 1px 1px 20px #000;
+	background-color: #fff;
+	z-index: 100;
+}
+
+#back{
+	background-color: white;
+    padding: 5px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #1d2088;
+    cursor: pointer;
+}
+.mapInfo{
+    margin-top: 10px;
+    margin-left: 100px;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui.min.css" />
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script><!-- 이게 제일 상위에 있어야 한다. -->
 <script type="text/javascript" src="resources/script/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe50337f4490ee150d96eadf9b9c740"></script>
 <script type="text/javascript">
 $(document).ready(function() {
    reloadList();
@@ -172,8 +199,44 @@ function redrawList(list) {
 	});
 	
 	$("#mapBtn").on("click", function(){
-		$("#actionForm").attr("action", "map");
-		$("#actionForm").submit();
+		var html = "";
+		
+		html += "<div class=\"map_pop\">                                              ";
+		html += "<div id=\"staticMap\" style=\"width:600px;height:350px;\"></div>     ";
+		html += "<div class=\"mapInfo\">                                              ";
+		html += "	이미지 클릭 시 카카오맵으로 이동합니다.                           ";
+		html += "	<input type=\"button\" id=\"back\" name=\"back\" value=\"지도닫기\">";
+		html += "</div>                                                               ";
+		html += "</div>                                                               ";
+		
+		$("body").append(html);
+		
+		var markerPosition  = new kakao.maps.LatLng($("#y").val(), $("#x").val()); //(Y,X)
+
+		// 이미지 지도에 표시할 마커
+		var marker = {
+		    position: markerPosition
+		};
+
+		var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+		    staticMapOption = { 
+		        center: new kakao.maps.LatLng($("#y").val(), $("#x").val()), // 이미지 지도의 중심좌표
+		        level: 3, // 이미지 지도의 확대 레벨
+		        marker: marker // 이미지 지도에 표시할 마커 
+		 };    
+
+		// 이미지 지도 생성
+		var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+		
+		$(".map_pop").fadeIn("fast");
+		
+		$(".map_pop #back").off("click");
+		$(".map_pop #back").on("click", function() {
+			$(".map_pop").fadeOut("fast", function() {
+				$(".map_pop").remove();
+			});
+		});
+		
 	});
 	
 	$("#reservation").on("click", function(){
