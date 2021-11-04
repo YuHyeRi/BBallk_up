@@ -52,8 +52,7 @@
 $(document).ready(function() {
 	
 	$("#list").on("click", function() {
-		$("#actionForm").attr("action", "pList");
-		$("#actionForm").submit();
+		location.href="pList";
 	});
 	
 	$("#login").on("click",function(){
