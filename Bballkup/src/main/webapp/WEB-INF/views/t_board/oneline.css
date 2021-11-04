@@ -1,42 +1,5 @@
 @charset "UTF-8";
 
-/* #actionForm {
-	min-width: 500px;
-} */
-
-
-
-.user_info {
-	display: inline-table;
-	width: 100px;
-	height: 100px;
-	vertical-align: top;
-	text-align: center;
-}
-
-.user_name {
-	display: table-cell;
-	width: 100px;
-	height: 100px;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 12pt;
-}
-
-.write_con_wrap {
-	display: inline-block;
-	width: 80%;
-	height: 100px;
-	vertical-align: top;
-}
-
-.write_con {
-	width: 90%;
-	height: 90px;
-	resize: none;
-	margin: 2px;
-}
-
 .reple_con {
 	width: 540px;
 	height: 90px;
@@ -112,12 +75,7 @@
 	margin-bottom: 5px;
 }
 
-.con_info {
-	display: inline-table;
-	width: 550px;
-	height: 100px;
-	vertical-align: top;
-}
+
 
 .con {
 	background-color: pink;

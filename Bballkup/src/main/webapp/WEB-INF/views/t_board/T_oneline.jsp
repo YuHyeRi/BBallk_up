@@ -22,11 +22,11 @@
 }
 .write_area {
     display: flex;
-	height: 110px;
-	background-color : red;
+	height: 100px;
+	background-color : #e3ecfb;
+	border-radius: 10px;
 }
 .user_info {
-	background-color : pink;
 	width : 100px;
 	text-align: center;
 	padding-top: 45px;
@@ -35,6 +35,52 @@
 	display: flex;
 	height: 100px;
 }
+.write_con_wrap, .con_info {
+	width: 80%;
+	height: 100px;
+}
+.write_con, .q_re_con {
+	
+	border : none;
+	resize: none;
+	width: 99%;
+    height: 90%;
+    margin: 2px;
+}
+.reple_wrap>.con_info {
+	border: 1px solid #e3ecfb;
+}
+.ob_data_reple{
+	display: flex;
+}
+.reple_wrap{
+    height: 100px;
+    display: flex;
+    width: 100%;
+}
+.con_info{
+	width: 80%;
+    border: 1px solid #e3ecfb;
+}
+.btn_wrap{
+	width : 20%;
+	text-align: center;
+}
+.write_area .action_btn2 {
+  display: none;
+ }
+ .action_btn, .action_btn4{
+ 	height: 90px;
+ }
+ .action_btn2, .action_btn3, .action_btn5, .action_btn4{
+ 	background-color: white;
+    padding: 5px;
+    width: 80px;
+    border-radius: 5px;
+    border: 2px solid #1d2088;
+    cursor: pointer;
+ }
+
 </style>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>

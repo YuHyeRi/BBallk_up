@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Main">
-	<select id="getMain1List" parameterType="hashmap" resultType="hashmap">
-	
-	</select>
 	
 	<select id="getMain2List" parameterType="hashmap" resultType="hashmap">
 	 	SELECT N.NOTICE_NO, N.NOTICE_TITLE, N.MEM_NM, N.NOTICE_DT, N.NOTICE_HIT, N.NOTICE_FILE, N.NOTICE_UP
