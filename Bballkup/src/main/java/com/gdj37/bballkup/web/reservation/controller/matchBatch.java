@@ -12,7 +12,7 @@ public class matchBatch {
 	@Autowired
 	public IReserveDao iReserveDao;
 	
-	@Scheduled(cron = "0 0 0 * * *")
+	@Scheduled(cron = "0 0/15 * * * *")//0분부터 매 15분마다 실행
 	public void stateChange() throws Throwable {
 		
 		iReserveDao.stateChange();
