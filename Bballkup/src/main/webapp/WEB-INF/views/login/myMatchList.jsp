@@ -167,7 +167,7 @@ function drawPaging(pb){
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-	<h2>내가 쓴 글 목록</h2>
+	<h2>나의 예약 내역</h2>
 <div>
 	<form action="#" id="boardGoForm" method="post">
 		<input type="hidden" name="no" id="no" value="${sMNo}">

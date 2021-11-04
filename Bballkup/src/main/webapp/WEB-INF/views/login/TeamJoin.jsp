@@ -50,8 +50,12 @@ function reloadList(){
 		dataType : "json",		// 받아올 데이터의 형태
 		data : params,			// 보낼 데이터(문자열 형태)
 		success : function(res){// 성공(ajax통신성공)시 다음 함수 발생
-			drawList(res.list);
-			drawPaging(res.pb);
+			if(res.list.length == 0){
+				nonMsg();
+			}else{
+				drawList(res.list);
+				drawPaging(res.pb);
+			}
 		},
 		error : function(request, status, error){// 실패시 다음 함수 발생
 			console.log(error);
@@ -75,7 +79,15 @@ function drawList(list){
 	
 	$("tbody").html(html);
 }
+function nonMsg(){
+	var html = "";
+	
+	html += "<tr>           ";
+	html += "<td Colspan=\"5\"> 현재 소속된 팀이 없습니다. </td>     ";
+	html += "</tr>          ";
 
+	$("tbody").html(html);
+}
 </script>
 </head>
 <body>
