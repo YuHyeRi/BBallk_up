@@ -25,7 +25,7 @@
         <button class="dropbtn">팀커뮤니티</button>
         <div class="dropdown-con">
             	<a href="javascript:location.href='tMain';">팀별게시판</a>
-	       <c:if test="${sTCnt eq 0}">
+	       <c:if test="${sTCnt eq 0 && sMLv eq 1}">
 		        <a href="teamAdd">팀장신청</a>
 		   </c:if>
         </div>
