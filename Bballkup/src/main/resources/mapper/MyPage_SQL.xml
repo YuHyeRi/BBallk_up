@@ -56,11 +56,16 @@
 	</select>
 	
 	<select id="getTeamList" parameterType="hashmap" resultType="hashmap">
-		SELECT MEM.MEM_NM, MEM.MEM_ID, MEM.MEM_PHONE, TEAM.TEAM_NO, TEAM.TEAM_NM
+		SELECT MEM.MEM_NM, MEM.MEM_ID, MEM.MEM_PHONE, TEAM.TEAM_NO, TEAM.TEAM_NM, '팀장' AS GBN
+		FROM MEM, TEAM
+		WHERE MEM.MEM_NO = TEAM.MEM_NO
+		AND TEAM.MEM_NO = #{mem_no}
+		UNION ALL
+		SELECT MEM.MEM_NM, MEM.MEM_ID, MEM.MEM_PHONE, TEAM.TEAM_NO, TEAM.TEAM_NM, '팀원' AS GBN
 		FROM MEM, TEAM, T_MEM
 		WHERE MEM.MEM_NO = T_MEM.MEM_NO 
-			AND T_MEM.TEAM_NO = TEAM.TEAM_NO 
-			AND MEM.MEM_NO = #{mem_no}
+		AND T_MEM.TEAM_NO = TEAM.TEAM_NO 
+		AND MEM.MEM_NO = #{mem_no}
 	</select>
 	
 	<select id="teamManageList" parameterType="hashmap" resultType="hashmap">

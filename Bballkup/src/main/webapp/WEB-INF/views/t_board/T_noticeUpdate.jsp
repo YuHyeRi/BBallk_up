@@ -193,6 +193,7 @@ function checkVal(sel) {
 	</form>
 	<form action="#" id="updateForm" method="post">
 		<input type="hidden" name="tno" value="${param.tno}" >
+		<input type="hidden" name="tnm" value="${param.tnm}" />
 		${data.TB_NO}<input type="hidden" name="no" value="${param.no}" />
 		<input type="text" id="title" name="title" value="${data.TB_TITLE}" />
 		<input type="hidden" id="tab" value="${sNMo}" />

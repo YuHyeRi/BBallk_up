@@ -100,6 +100,7 @@ function drawList(list){
 		html += "<tr>           ";
 		html += "<td>" + data.TEAM_NO + "</td>     ";
 		html += "<td>" + data.TEAM_NM + "</td>     ";
+		html += "<td>" + data.GBN + "</td>     ";
 		html += "</tr>          ";	
 			
 	}
@@ -156,6 +157,7 @@ function drawMem(data){
 			<tr class = "nonetr">
 				<th>팀번호</th>
 				<th>팀명</th>
+				<th>구분</th>
 			</tr>
 		</thead>
 		<tbody>

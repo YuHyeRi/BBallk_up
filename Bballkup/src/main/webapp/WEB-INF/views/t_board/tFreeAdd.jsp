@@ -176,6 +176,7 @@
 	
 	<form action="#" id="addForm" method="post">
 		<input type="hidden" name="tno" value="${param.tno}" />
+		<input type="hidden" name="tnm" value="${param.tnm}" />
 		<input type="hidden" id="tab" value="${sNMo}" />
 		제목: <input type="text" id="title" name="title" /><br/><br>
 		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/><br>

@@ -184,7 +184,7 @@ function checkVal(sel) {
 <form action="#" id="addForm" method="post">
 	제목 <input type="text" id="title" name="title" />
 	<input type="hidden" name="tno" value="${param.tno}" />
-	
+	<input type="hidden" name="tnm" value="${param.tnm}" />
 	<input type="checkbox" id="upbtn2"> 중요공지 <br/>
 	<input type="hidden" name="upbtn" value="사과" />
 	<input type="hidden" id="mno" name="mno" value="${param.mno}">
