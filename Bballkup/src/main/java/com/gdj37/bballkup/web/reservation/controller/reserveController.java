@@ -33,7 +33,6 @@ public class reserveController {
 		
 		 int cnt = iReserveService.getCard(params); 
 		
-		
 		 if(cnt > 0) { 
 			 mav.setViewName("reservation/reservation"); 
 		 
