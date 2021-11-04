@@ -53,24 +53,24 @@ $(document).ready(function(){
 		$("#fileName").html($(this).val().substring($(this).val().lastIndexOf("\\")+ 1));
 	});
 	
-	$("#tab2").on("click", function(){
+	/* $("#tab2").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#addForm").attr("action", "T_notice");
 			$("#addForm").submit();
 		}
-	});
+	}); */
 	$("#tab4").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#addForm").attr("action", "tFreeList");
 			$("#addForm").submit();
 		}
 	});
-	$("#tab1").on("click", function(){
+/* 	$("#tab1").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#addForm").attr("action", "T_teammozip");
 			$("#addForm").submit();
 		}
-	});
+	}); */
 	$("#tab3").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#addForm").attr("action", "T_oneline");
