@@ -15,10 +15,12 @@ th{
     border-spacing: 0;
     width: 100%;
 }
-
+.T_table{
+	border-collapse: collapse;
+}
 th, td {
     text-align: center;
-    padding: 10px;
+    padding: 10px 5px;
     font-size: 13px;
     width: 100px;
 }

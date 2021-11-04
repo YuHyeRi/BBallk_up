@@ -36,16 +36,25 @@ public class MainController {
 	@RequestMapping(value="/Mainnotice", method=RequestMethod.POST,
 				produces="text/json;charset=UTF-8")
 	@ResponseBody
-	public String Mainnotice(@RequestParam HashMap<String, String> params) throws Throwable {
+	public String Mainnotice(HttpSession session, @RequestParam HashMap<String, String> params) throws Throwable {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		
+		//공지사항 list = Main2
 		List<HashMap<String, String>> list = iMainService.getMain2List(params);
 		modelMap.put("list", list);
 		
-		List<HashMap<String, String>> list3 = iMainService.getMain3List(params);
-		modelMap.put("list3", list3);
+		if(session.getAttribute("sMNo") != null) {
+			//팀가입현황 list3 = Main3
+			List<HashMap<String, String>> list3 = iMainService.getMain3List(params);
+			modelMap.put("list3", list3);
+		}
 		
+		//체활모 list2 = Main1
+		List<HashMap<String, String>> list2 = iMainService.getMain1List(params);
+		modelMap.put("list2", list2);
+
 		return mapper.writeValueAsString(modelMap);
 	}
+
 }

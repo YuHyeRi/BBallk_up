@@ -133,6 +133,14 @@ function drawList(list) {
 		html += "</tr>               			";
 	}
 	$("tbody").html(html);
+	
+	$("tbody > tr > td:nth-child(4)").each(function() {
+		switch($(this).html()) {
+		case "모집중" : 
+			$(this).css("color", "blue");
+			break;
+		}
+	});
 };
 
 function drawPaging(pb) {

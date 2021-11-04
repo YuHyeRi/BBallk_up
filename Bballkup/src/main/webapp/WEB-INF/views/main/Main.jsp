@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>뽈크업</title>
 	<link rel="stylesheet" href="resources/css/layout/font.css">
 	<link rel="stylesheet" href="resources/css/layout/basic.css">
 	<link rel="stylesheet" href="resources/css/layout/btn.css">
@@ -17,7 +17,12 @@
 	<link rel="stylesheet" href="resources/css/layout/main.css">
 	
 <style>
-	
+.title2{
+	width : 200px;
+}
+.title{
+	width : 180px;
+}
 td img {
 	width : 17px;
 }
@@ -34,8 +39,12 @@ tr:hover{
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
+var interval = null;
+var pNum = 1;
+var playTime = 5000;
 $(document).ready(function(){
-		//공지사항
+	$(".dots > span:nth-child(1)").css("background-color", "#1d2088");
+	interval = setInterval(playImg, playTime);
 		var params = $("#main2").serialize();
 
 		$.ajax({
@@ -45,6 +54,11 @@ $(document).ready(function(){
 			data: params, 
 			success: function(res){ 
 				drawList(res.list);
+				drawList2(res.list2);
+				
+				if($("#mem_no").val() != "") {
+					drawBtn(res.list3);
+				}
 			},
 			error: function(request, status, error){ 
 				console.log(request);
@@ -52,24 +66,21 @@ $(document).ready(function(){
 			}
 		});
 		
-		$("tbody").on("click", "tr", function(){ 
+		$("#tbody2").on("click", "tr", function(){ 
 			$("#no").val($(this).attr("no"));
 			
 			$("#main2").attr("action", "Notice");
 			$("#main2").submit();
 		});
 		
-		//팀커뮤니티
-		$.ajax({
-			url: "Mainnotice", 
-			type: "post", 
-			dataType: "json", 
-			data: params, 
-			success: function(res){ 
-				drawBtn(res.list3);
-			},
-			error: function(request, status, error){ 
-				console.log(error);
+		$("#tbody1").on("click", "tr", function(){ 
+			if($(this).attr("state") == "모집마감" || $(this).attr("state") == "경기취소") {
+				alert("이미 마감된 게시물입니다.");
+			} else {
+				$("#match_no").val($(this).attr("no"));
+			
+				$("#actionForm").attr("action", "pDtl");
+				$("#actionForm").submit();
 			}
 		});
 		
@@ -104,7 +115,31 @@ $(document).ready(function(){
 			$("#main2").attr("action", "tMainIntro");
 			$("#main2").submit();
 		});
+		
+		$(".dots").on("click", "span", function() {
+			$(".dots > span").css("background-color", "#bbb");
+			$(".dots > span:nth-child(" + $(this).attr("no") + ")").css("background-color", "#1d2088");
+			clearInterval(interval);
+			
+			pNum = $(this).attr("no");
+			
+			interval = setInterval(playImg, playTime);
+		});
 });
+
+function playImg() {
+	pNum++;
+	
+	if(pNum > $(".dots span").length) {
+		pNum = 1;
+	}
+	
+	$(".dots > span").css("background-color", "#bbb");
+	$(".dots > span:nth-child(" + pNum + ")").css("background-color", "#1d2088");
+	$(".dots > span:nth-child(" + pNum + ")").click();
+	
+	
+}
 
 function drawBtn(list3){
 	var html = "";
@@ -153,9 +188,30 @@ function drawList(list){
 			html += "</tr>        ";
 		}
 	}
-	$("tbody").html(html);
+	$("#tbody2").html(html);
 }
-
+function drawList2(list2){
+	var html = "";
+	
+	for(var data of list2) {
+		html += "<tr no=\"" + data.MATCH_NO + "\" state=\"" + data.MATCH_STATE + "\">  ";
+		html += "<td>" + data.MATCH_DDAY + "</td>  	";
+		html += "<td>" + data.SPORT_NM + "</td>  	";
+		html += "<td>" + data.PLACE_NM + "</td>  	";
+		html += "<td>" + data.MATCH_STATE + "</td>   	";
+	/* 	html += "<td>" + data.MEM_ID + "</td>   	"; */
+		html += "</tr>               			";
+	}
+	$("#tbody1").html(html);
+	
+	$("#tbody1 > tr > td:nth-child(4)").each(function() {
+		switch($(this).html()) {
+		case "모집중" : 
+			$(this).css("color", "blue");
+			break;
+		}
+	});
+};
 </script>
 </head>
 <body>
@@ -166,12 +222,14 @@ function drawList(list){
 <jsp:include page="../nav.jsp" flush="true" />
 
 <form action="#" id="loginForm" method="post">
+	<input type="hidden" name="mem_no" value="${sMNo}">
+</form>
+<form action="#" id="actionForm" method="post">
+	<input type="hidden" id="team_no" name="team_no" value="">
 	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	<input type="hidden" id="match_no" name="match_no" />
 </form>
 
-<form action="#" id="main1" method="post">
-
-</form>
 <form action="#" id="main2" method="post">
 	<!-- 공지번호 -->
 	<input type="hidden" id="no" name="no"/>
@@ -199,11 +257,11 @@ function drawList(list){
               <img src="resources/images/slide/메인4.jpg" style="width:100%">
             </div>
             <div class="dots" style="text-align:center">
-              <span class="dot" onclick="currentSlide(1)"></span> 
-              <span class="dot" onclick="currentSlide(2)"></span> 
-              <span class="dot" onclick="currentSlide(3)"></span> 
-              <span class="dot" onclick="currentSlide(4)"></span> 
-              <span class="dot" onclick="currentSlide(5)"></span> 
+              <span class="dot" no="1" onclick="currentSlide(1)"></span> 
+              <span class="dot" no="2" onclick="currentSlide(2)"></span> 
+              <span class="dot" no="3" onclick="currentSlide(3)"></span> 
+              <span class="dot" no="4" onclick="currentSlide(4)"></span> 
+              <span class="dot" no="5" onclick="currentSlide(5)"></span> 
             </div>
 		</div>
 	</div>
@@ -211,7 +269,18 @@ function drawList(list){
 	<div class="maindiv">
 		 <div class="mainleft">
 		 	 <div class="enter_div">
-		 	 	<p>체활모</p>
+		 	 	<table class="notice_table">
+					<thead>
+						<tr class="nonetr">
+							<th>경기일</th>
+							<th>시설명</th>
+							<th class="title2">장소</th>
+							<th>마감여부</th>
+							<!-- <th>작성자</th> -->
+						</tr>
+					</thead>
+					<tbody id="tbody1"></tbody>
+				</table>
 		 	 </div>
 		 </div>
 		 <div class="mainrightdiv">
@@ -227,8 +296,7 @@ function drawList(list){
 								<th>조회수</th>
 							</tr>
 						</thead>
-							<tbody>
-							</tbody>
+							<tbody id="tbody2"></tbody>
 					</table>
 				</div>
 			</div>
