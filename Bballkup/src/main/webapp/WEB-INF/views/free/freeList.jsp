@@ -36,26 +36,28 @@
 		reloadList();
 		
 		// 로그인
-		$("#loginBtn").on("click", function() {
-			location.href="login";
-		});
-		
-		// 로그아웃
-		$("#logoutBtn").on("click", function() {
-			location.href="logout";
-		});
-		
-		
-		/* //로그인로그아웃
 		$("#login").on("click",function(){
-			$("#loginForm").attr("action","login");
+		    $("#loginForm").attr("action","login");
+		    $("#loginForm").submit();
+		});
+		      
+		// 로그아웃
+		$("#logout").on("click", function(){
+		    $("#loginForm").attr("action","logout");
+		    $("#loginForm").submit();
+		});
+		
+		// 마이페이지
+		$("#mypage").on("click", function(){
+			$("#loginForm").attr("action","myPage");
 			$("#loginForm").submit();
 		});
 		
-		$("#logout").on("click", function(){
-			$("#loginForm").attr("action","logout");
+		// 관리자페이지
+		$("#mgrpage").on("click", function(){
+			$("#loginForm").attr("action","mgrPage");
 			$("#loginForm").submit();
-		}); */
+		});
 		
 		// 검색버튼
 		$("#searchBtn").on("click", function() {
