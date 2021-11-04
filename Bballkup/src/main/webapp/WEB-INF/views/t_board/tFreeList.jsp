@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="resources/css/layout/T_board.css">
 	
 <style>
-	#paging_wrap span {
+	#paging_wrap span, td {
 		cursor: pointer;
 	}
 	

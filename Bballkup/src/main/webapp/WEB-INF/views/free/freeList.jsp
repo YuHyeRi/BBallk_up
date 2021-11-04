@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 <style>
-	#paging_wrap span {
+	#paging_wrap span, td {
 		cursor: pointer;
 	}
 	
