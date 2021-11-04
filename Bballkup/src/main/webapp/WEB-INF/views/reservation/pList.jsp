@@ -27,6 +27,10 @@
 	text-align:center;
 	margin-bottom: 0.83em;
 }
+
+tr:hover{
+	cursor:pointer;
+}
 .pIntro>h2{
 	display: inline-block;
 	margin-right: 30px;
@@ -45,20 +49,26 @@ $(document).ready(function() {
 	   $("#loginForm").attr("action","logout");
 	   $("#loginForm").submit();
 	});
-
-	$("#join").on("click", function(){
-	   $("#loginForm").attr("action","join");
-	   $("#loginForm").submit();
-	});
 	      
 	$("#mypage").on("click", function(){
 	   $("#loginForm").attr("action","myPage");
+	   $("#loginForm").submit();
+	});
+
+	$("#mgrpage").on("click", function(){
+	   $("#loginForm").attr("action","mgrPage");
 	   $("#loginForm").submit();
 	});
 	
 	$("#addBtn").on("click", function(){
 		 $("#actionForm").attr("action","reservation");
 		 $("#actionForm").submit();
+	});
+	
+	$("tbody").on("click", "tr", function() {
+		$("#match_no").val($(this).attr("no"));
+		$("#actionForm").attr("action", "pDtl");
+		$("#actionForm").submit();
 	});
 });
 function reloadList() {
@@ -123,7 +133,7 @@ function drawPaging(pb) {
 </head>
 <body>
 <form action="#" id="loginForm">
-	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	<input type="hidden" name="mem_no" value="${sMNo}">
 </form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
@@ -131,7 +141,7 @@ function drawPaging(pb) {
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <div class="pIntro">
-	<h2>개인 체육활동 참가모집 게시판</h2>
+<h2>개인 체육활동 참가모집 게시판</h2>
 	<jsp:include page="../modal.jsp" flush="true" />
 </div>
 	<div>
@@ -139,12 +149,14 @@ function drawPaging(pb) {
 			<input type="hidden" id="team_no" name="team_no" value="">
 			<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 			<input type="hidden" id="page" name="page" value="${page}" />
-			<input type="hidden" id="no" name="no" />
+			<input type="hidden" id="match_no" name="match_no" />
 		</form>
 	</div>
-	<div class="pAdd">
-		<input type="button" id="addBtn" name="addBtn" value="모임 주최하기">
-	</div>
+	<c:if test="${sMNo != 4}">
+		<div class="pAdd">
+			<input type="button" id="addBtn" name="addBtn" value="모임 주최하기">
+		</div>
+	</c:if>
 	<div>
 		<table class="notice_table">
 			<thead>

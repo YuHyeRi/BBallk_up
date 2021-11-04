@@ -178,7 +178,7 @@ function checkVal(sel){
 <div class="cardBig">
 <div class="addDiv">
 <form action="#" id="loginForm" method="post">
-   <input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+   <input type="hidden" name="mem_no" value="${sMNo}">
 </form>
 <form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 	<input type="file" name="att" id="att">
