@@ -262,8 +262,7 @@ function redrawList(list) {
 				success : function(res){
 					if(res.result == "success"){
 						alert("모임 주최가 완료되었습니다");
-						location.href = "pList";
-						
+						location.href="pList";
 					}else if(res.result == "failed"){
 						
 						alert("모임 주최에 실패했습니다.");
