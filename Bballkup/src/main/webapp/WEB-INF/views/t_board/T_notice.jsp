@@ -47,16 +47,6 @@ $(document).ready(function(){
 		reloadList();
 	});
 	
-	$("#logout").on("click", function(){
-		$("#loginForm").attr("action","logout");
-		$("#loginForm").submit();
-	});
-	
-	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","Mypage");
-		$("#loginForm").submit();
-	});
-	
 	$("#addBtn").on("click", function(){
 		$("#searchTxt").val($("#oldTxt").val());
 		$("#actionForm").attr("action", "T_noticeAdd");
@@ -255,5 +245,6 @@ var html ="";
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

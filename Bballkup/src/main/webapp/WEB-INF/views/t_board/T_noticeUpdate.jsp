@@ -173,6 +173,9 @@ function checkVal(sel) {
 	<jsp:include page="../T_board.jsp" flush="true" />
 <div class="righttab">
 <h2>팀 공지사항</h2>
+	<form action="#" id="loginForm">
+	<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+	</form>
 	<form id="fileForm" action="fileUploadAjax" method="post" enctype="multipart/form-data">
 		<input type="file" name="att" id="att" />
 	</form>
@@ -228,5 +231,6 @@ function checkVal(sel) {
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

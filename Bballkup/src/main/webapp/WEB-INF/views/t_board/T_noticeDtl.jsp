@@ -30,15 +30,6 @@ $(document).ready(function(){
 		$("#actionForm").submit();
 	});
 	
-	$("#logout").on("click", function(){
-		$("#loginForm").attr("action","logout");
-		$("#loginForm").submit();
-	});
-	
-	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","Mypage");
-		$("#loginForm").submit();
-	});
 	
 	$("#tab2").on("click", function(){
 		$("#actionForm").attr("action", "T_notice");
@@ -161,5 +152,6 @@ $(document).ready(function(){
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

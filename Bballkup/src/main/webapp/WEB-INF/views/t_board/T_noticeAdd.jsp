@@ -49,16 +49,6 @@ $(document).ready(function(){
 		$("#att").click();
 	});
 	
-	$("#logout").on("click", function(){
-		$("#loginForm").attr("action","logout");
-		$("#loginForm").submit();
-	});
-	
-	$("#mypage").on("click", function(){
-		$("#loginForm").attr("action","Mypage");
-		$("#loginForm").submit();
-	});
-	
 	$("#att").on("change", function(){
 		$("#fileName").html($(this).val().substring($(this).val().lastIndexOf("\\")+ 1));
 	});
@@ -211,5 +201,6 @@ function checkVal(sel) {
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
+<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
