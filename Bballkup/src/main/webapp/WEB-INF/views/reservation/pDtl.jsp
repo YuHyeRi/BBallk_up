@@ -47,11 +47,13 @@
 }
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4fe50337f4490ee150d96eadf9b9c740"></script>
 <script>
 $(document).ready(function() {
 	
 	$("#list").on("click", function() {
-		location.href="pList";
+		$("#actionForm").attr("action", "pList");
+		$("#actionForm").submit();
 	});
 	
 	$("#login").on("click",function(){
@@ -104,6 +106,7 @@ $(document).ready(function() {
 			});
 		}
 	})
+	
 });
 
 function checkVal(sel){
@@ -141,8 +144,10 @@ function checkVal(sel){
 [참가모집 게시글 상세]
 <br><br>
 ▶ 경기일 : ${data.MATCH_DDAY}<br><br>	
-▶ 시설명 : ${data.SPORT_NM}<br><br>
-▶ 장소 : ${data.PLACE_NM}<br><br>
+▶ 시설명 : ${data.SPORT_NM}
+<br><br>
+▶ 장소 : ${data.PLACE_NM}
+<br><br>
 ▶ 총 시설 이용료는 ${data.MATCH_PAY}원이며, 참가 인원에 따라 균등하게 분할 계산되어 청구됩니다.<br>
 <br><br>
 [작성자 게시글]<br><br>

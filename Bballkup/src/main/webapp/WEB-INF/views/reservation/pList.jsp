@@ -42,6 +42,11 @@ tr:hover{
 $(document).ready(function() {
 	reloadList();
 	
+	$("#paging_wrap").on("click", "span", function() {
+		$("#page").val($(this).attr("page"));
+		reloadList();
+	});
+	
 	$("#login").on("click",function(){
 	   $("#loginForm").attr("action","login");
 	   $("#loginForm").submit();});
@@ -72,6 +77,7 @@ $(document).ready(function() {
 	});
 	
 	$("tbody").on("click", "tr", function() {
+		
 		$("#match_no").val($(this).attr("no"));
 		var params = $("#actionForm").serialize();
 		
