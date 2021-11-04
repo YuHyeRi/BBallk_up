@@ -14,7 +14,11 @@
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/login.css">
 	<link rel="stylesheet" href="resources/css/layout/table.css">
-	
+<style>
+.nonetr{
+	margin: 20px 0px 20px 0px;
+}
+</style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -86,9 +90,9 @@ function drawList(list){
 	<h2>내가 가입한 팀 목록</h2>
 	<form action="#" id="actionForm" method="post">
 	<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
-		<table>
+		<table class="notice_table">
 			<thead>
-				<tr>
+				<tr class="nonetr">
 					<th>회원번호</th>
 					<th>팀번호</th>
 					<th>팀명</th>

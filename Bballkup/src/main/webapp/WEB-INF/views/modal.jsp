@@ -5,7 +5,7 @@
 	/* display: none; */
 	position: fixed;
 	z-index: 1;
-	padding-top : 100px;
+	padding-top : 10px; 
 	left : 0;
 	top : 0;
 	width: 100%;
@@ -54,11 +54,11 @@
 	<div class="modalcon">
 		<div class="modal_header">
 			<span class="close">&times;</span>
-			<h2>이용가이드</h2>		
+			<h3>이용가이드</h3>		
 		</div>
 		<div class="modal_body">
 			<h3>주최하기 버튼</h3>
-			<p>상단 중앙의 주최하기 버튼을 눌러 주최자 예약 페이지를 확인하세요</p>
+			<p>상단 중앙의 주최하기 버튼을 눌러 체육활동 모임을 주최해보세요</p>
 			<h3>시설 선택</h3>
 			<p>원하는 운동 종목에 맞는 시설을 선택하여 운동구장을 확인해보세요</p>
 			<h3>장소 선택</h3>
@@ -69,6 +69,9 @@
 			<span style="color:red">※ 날짜는 한달 이내로만 예약 할 수 있습니다</span></p>
 			<h3>게시글 내용 작성</h3>
 			<p>체육활동을 주최하면서 참가자들에게 전달할 사항 또는 내용을 자유롭게 작성하세요</p>
+			<h3>참가하기</h3>
+			<p>참가하기 버튼을 눌러 체육활동에 참가해보세요<br>
+			<span style="color:red">※ 경기일에 맞춰 미리 등록한 카드로 자동결제 됩니다</span></p>
 		</div>
 	</div>
 </div>

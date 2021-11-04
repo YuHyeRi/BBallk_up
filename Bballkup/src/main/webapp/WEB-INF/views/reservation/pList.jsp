@@ -52,8 +52,13 @@ $(document).ready(function() {
 	});
 	      
 	$("#mypage").on("click", function(){
-	   $("#loginForm").attr("action","myPage");
-	   $("#loginForm").submit();
+		$("#loginForm").attr("action","myPage");
+		$("#loginForm").submit();
+	});
+	
+	$("#mgrpage").on("click", function(){
+		$("#loginForm").attr("action","mgrPage");
+		$("#loginForm").submit();
 	});
 	
 	$("#addBtn").on("click", function(){

@@ -13,7 +13,11 @@
 	<link rel="stylesheet" href="resources/css/layout/loginout.css">
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/table.css">
-	
+<style>
+#applyBtn:hover{
+	background-color: #e3ecfb;
+}
+</style>	
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
 	$(document).ready(function() {
@@ -102,9 +106,9 @@
 		<input type="hidden" id="mno" name="mno" />
 		<input type="hidden" name="tno" id="tno" value="${param.tno}"/>
 	</form>
-		<table>
+		<table class="notice_table">
 			<thead>
-				<tr>
+				<tr class="nonetr">
 					<th>회원번호</th>
 					<th>회원명</th>
 					<th>신청날짜</th>

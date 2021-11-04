@@ -25,7 +25,7 @@
 	
 	.write_con_wrap .write_con, .update_con_wrap .update_con {
 		resize: none;
-		width: 600px;
+		width: 80%;
 		height: 50px;
 	}
 </style>
@@ -373,10 +373,10 @@
 			</div>
 			<div class="write_con_wrap">
 				<textarea class="write_con" id="con" name="con" placeholder="댓글을 입력해주세요."></textarea><br>
+		        <!-- <div class="btn_wrap"> -->
+		        	<input type="button" value="등록" id="cAddBtn"/>
+				<!-- </div> -->
 	        </div>
-	        <div class="btn_wrap">
-	        	<input type="button" value="등록" id="cAddBtn"/>
-			</div>
 		</form>
 	</div>
 		
