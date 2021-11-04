@@ -252,99 +252,99 @@
 </script>
 </head>
 <body>
-<form action="#" id="loginForm">
-<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
-</form>
-
-<header>
-	<jsp:include page="../header.jsp" flush="true" />
-</header>
-<main>
-<jsp:include page="../nav.jsp" flush="true" />
-<div class="tabcontent">
-<div>
-	<h2>${param.tnm}</h2>
-	<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
-</div>
-<div class="bigtab">
-	<jsp:include page="../T_board.jsp" flush="true" />
-<div class="righttab">
-	<!-- dtl -->
-	<h2>팀 자유게시판</h2>
-	<form action="#" id="actionForm" method="post">
-		<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
-		<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
-		<input type="hidden" name="page" value="${param.page}" />
-		<input type="hidden" name="no" value="${param.no}" />
-		<input type="hidden" name="tno" value="${param.tno}" />
+	<form action="#" id="loginForm">
+		<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
 	</form>
 	
-	<div>
-	<table class="free_table2">
-			<thead>
-				<tr>
-					<th>${param.no} </th>
-					<th class="title">${data.TB_TITLE}</th>
-					<th>${data.MEM_NM}</th>
-					<th>${data.TB_DT}</th>
-					<th>${data.TB_HIT}</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
-	
-	<div class="divcon">
+	<header>
+		<jsp:include page="../header.jsp" flush="true" />
+	</header>
+
+	<main>
+		<jsp:include page="../nav.jsp" flush="true" />
+
+	<div class="tabcontent">
+		<h2>자유게시판</h2><br>
 		<div>
-			<br>
-			${data.TB_CON}
+			<h2>${param.tnm}</h2>
+			<p>${sMNm}님 안녕하세요. ${param.tnm} 커뮤니티 입니다 :)</p>
 		</div>
-	</div><br>
-		<div class="margindiv">
-			<hr>
+		
+		<div class="bigtab">
+			<jsp:include page="../T_board.jsp" flush="true" />
+	
+		<div class="righttab">
+		<!-- dtl -->
+		<form action="#" id="actionForm" method="post">
+			<input type="hidden" name="searchGbn" value="${param.searchGbn}" />
+			<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
+			<input type="hidden" name="page" value="${param.page}" />
+			<input type="hidden" name="no" value="${param.no}" />
+			<input type="hidden" name="tno" value="${param.tno}" />
+		</form>
+		
+		<div class="freebtndiv">
+			<input type="button" value="목록" id="listBtn" /> 
+			<c:if test="${data.MEM_NO eq sMNo}">
+				<input type="button" value="수정" id="updateBtn" /> 
+				<input type="button" value="삭제" id="deleteBtn" /> 
+			</c:if>
+		</div><br>
+	
+		<div>
+			<table class="free_table2">
+				<thead>
+					<tr>
+						<th>${param.no} </th>
+						<th class="title">${data.TB_TITLE}</th>
+						<th>${data.MEM_NM}</th>
+						<th>${data.TB_DT}</th>
+						<th>${data.TB_HIT}</th>
+					</tr>
+				</thead>
+			</table>
+		</div><br>
+	
+		<div class="divcon">
+			<div>${data.TB_CON}</div>
 			<c:if test="${!empty data.TB_FILE}">
 			<div>
 				<c:set var="len" value="${fn:length(data.TB_FILE)}"></c:set>
 				첨부파일: 
 				<a href="resources/upload/${fn:replace(fn:replace(data.TB_FILE, '[', '%5B'), ']', '%5D')}" 
-				download="${fn:substring(data.TB_FILE, 20, len)}">${fn:substring(data.TB_FILE, 20, len)}
-				</a>
+				download="${fn:substring(data.TB_FILE, 20, len)}">${fn:substring(data.TB_FILE, 20, len)}</a>
 			</div>
-			<%-- <div>
+			<div>
 				<img src="resources/upload/${fn:replace(fn:replace(data.TB_FILE, '[', '%5B'), ']', '%5D')}" width="100px" height="100px" />
-			</div> --%>
+			</div>
 			</c:if>
 		</div>
-	<div class="freebtndiv">
-		<input type="button" value="목록" id="listBtn" /> 
-		<c:if test="${data.MEM_NO eq sMNo}">
-			<input type="button" value="수정" id="updateBtn" /> 
-			<input type="button" value="삭제" id="deleteBtn" /> 
-		</c:if>
 		<hr>
-	</div><br>
+		<br>
 	
-	
-	<!-- Comment -->
-	<!-- comm list -->
-	<div class="comm_list">
-		<form action="#" id ="commListForm" method="post">
-		<c:if test="${data.TB_NO eq no}">
-			<c:choose>		
-				<c:when test="${fn:length(list) eq 0}">
-					<i>등록된 댓글이 없습니다.</i>
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="data" items="${list}">
-						<input type="hidden" name="page" id="page" value="${page}">
-						<input type="hidden" name="no" id="no" value="${param.no}">
-						<input type="hidden" name="mno" id="mno" value="${data.MEM_NO}">
-						<input type="hidden" name="reno" id="reno" value="${data.TB_RE_NO}">
-						<div class="comm_data" no="${data.TB_RE_NO}">
-							<img src="resources/images/man.png" width="20px" height="20px">
-							<b>${data.MEM_NM}</b>
-							${data.TB_RE_DT}<br>
-							<div class="con_info">
-								${data.TB_RE_CON}
+		<!-- Comment -->
+		<!-- comm list -->
+		<div class="comm_list">
+			<form action="#" id ="commListForm" method="post">
+			<c:if test="${data.TB_NO eq no}">
+				<c:choose>		
+					<c:when test="${fn:length(list) eq 0}">
+						<i>등록된 댓글이 없습니다.</i><br><br>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="data" items="${list}">
+							<input type="hidden" name="page" id="page" value="${page}">
+							<input type="hidden" name="no" id="no" value="${param.no}">
+							<input type="hidden" name="mno" id="mno" value="${data.MEM_NO}">
+							<input type="hidden" name="reno" id="reno" value="${data.TB_RE_NO}">
+							<div class="comm_data" no="${data.TB_RE_NO}">
+								<img src="resources/images/man.png" width="20px" height="20px">
+								<b>${data.MEM_NM}</b>
+								${data.TB_RE_DT}<br>
+								<div class="con_info">
+									<div class="con">${data.TB_RE_CON}</div>
+								</div>
+								<br><br>
 								<div class="btn_wrap">
 									<c:if test="${data.MEM_NO eq sMNo}">
 										<input type="button" value="수정" id="cUpdateBtn">
@@ -352,87 +352,87 @@
 									</c:if>
 								</div>
 							</div>
-						</div>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</c:if>
-		</form>
-	</div>
-	<br>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</c:if>
+			</form>
+		</div>
 	
-	<!-- 댓글 페이징 -->
-	<div class="comm_paging">
-		<c:choose>
-			<c:when test="${page eq 1}">
-				<span page="1">이전</span>
-			</c:when>
-			<c:otherwise>
-				<span page="${page - 1}">이전</span>
-			</c:otherwise>
-		</c:choose>
-		<c:forEach var="i" begin="${pb.startPcount}" end="${pb.endPcount}" step="1">
+		<!-- 댓글 페이징 -->
+		<div class="comm_paging">
 			<c:choose>
-				<c:when test="${page eq i}">
-					<span page="${i}"><b>${i}</b></span>
+				<c:when test="${page eq 1}">
+					<span page="1"> [이전] </span>
 				</c:when>
 				<c:otherwise>
-					<span page="${i}">${i}</span>
+					<span page="${page - 1}"> [이전] </span>
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>
-		<c:choose>
-			<c:when test="${page eq pb.maxPcount}">
-				<span page="${pb.maxPcount}">다음</span>
-			</c:when>
-			<c:otherwise>
-				<span page="${page + 1}">다음</span>
-			</c:otherwise>
-		</c:choose>
-	</div>
-	<br>
-	
-	<!-- 댓글 작성창 -->
-	<div class="comm_write">
-		<form action="#" id="commAddForm" method="post">
-			<input type="hidden" name="no" id="no" value="${param.no}">
-			<input type="hidden" name="mno" id="mno" value="${sMNo}">
-			<input type="hidden" name="reno" id="reno2">
-			<div class="userinfodiv">
+			<c:forEach var="i" begin="${pb.startPcount}" end="${pb.endPcount}" step="1">
+				<c:choose>
+					<c:when test="${page eq i}">
+						<span page="${i}"> <b>${i}</b> </span>
+					</c:when>
+					<c:otherwise>
+						<span page="${i}"> ${i} </span>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${page eq pb.maxPcount}">
+					<span page="${pb.maxPcount}"> [다음] </span>
+				</c:when>
+				<c:otherwise>
+					<span page="${page + 1}"> [다음] </span>
+				</c:otherwise>
+			</c:choose>
+		</div><hr>
+		<br>
+		
+		<!-- 댓글 작성창 -->
+		<div class="comm_write">
+			<form action="#" id="commAddForm" method="post">
+				<input type="hidden" name="no" id="no" value="${param.no}">
+				<input type="hidden" name="mno" id="mno" value="${sMNo}">
+				<input type="hidden" name="reno" id="reno2">
+				
 				<div class="user_info">
-					<div class="user_name"><b>${sMNm}</b>님</div><br>
+					<div class="user_name">작성자 : ${sMNm}</div><br>
 				</div>
 				<div class="write_con_wrap">
 					<textarea class="write_con" id="con" name="con" placeholder="댓글을 입력해주세요."></textarea><br>
 		        </div>
+		        <div class="btn_wrap">
 		        	<input type="button" value="등록" id="cAddBtn"/>
-		     </div>
-		</form>
-	</div>
-		
-	<!-- 댓글 수정창 -->
-	<div class="comm_update">
-		<form action="#" id="commUpdateForm" method="post">
-			<div class="update_date">
-				<input type="hidden" name="reno" id="reno3">
-				<div class="update_con_wrap">
-					<textarea class="update_con" id="con2" name="con2"></textarea><br>
-		        </div>
-		        <div class="btn2_wrap">
-		        	<input type="button" value="수정" id="cUpdateBtn2"/>
-		        	<input type="button" value="취소" id="cCancelBtn"/>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
+		
+		<!-- 댓글 수정창 -->
+		<div class="comm_update">
+			<form action="#" id="commUpdateForm" method="post">
+				<div class="update_date">
+					<input type="hidden" name="reno" id="reno3">
+					<div class="update_con_wrap">
+						<textarea class="update_con" id="con2" name="con2"></textarea><br>
+			        </div>
+			        <div class="btn2_wrap">
+			        	<input type="button" value="수정" id="cUpdateBtn2"/>
+			        	<input type="button" value="취소" id="cCancelBtn"/>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+		</div>
 	</div>
-</div>
-</div>
-</div>
-</main>
-<footer>
-	<jsp:include page="../footer.jsp" flush="true" />
-</footer>
-
-<script type="text/javascript" src="resources/css/js/header.js"></script>
+	</main>
+	
+	<footer>
+		<jsp:include page="../footer.jsp" flush="true" />
+	</footer>
+	
+	<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
