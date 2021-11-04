@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>개인커뮤니티 자유게시판</title>
 	<link rel="stylesheet" href="resources/css/layout/font.css">
 	<link rel="stylesheet" href="resources/css/layout/basic.css">
 	<link rel="stylesheet" href="resources/css/layout/btn.css">

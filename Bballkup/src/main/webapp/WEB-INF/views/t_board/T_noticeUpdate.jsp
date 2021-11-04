@@ -66,24 +66,24 @@ $(document).ready(function(){
 		$(this).remove();
 	});
 	
-	$("#tab2").on("click", function(){
+/* 	$("#tab2").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#updateForm").attr("action", "T_notice");
 			$("#updateForm").submit();	
 		}
-	});
+	}); */
 	$("#tab4").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#updateForm").attr("action", "tFreeList");
 			$("#updateForm").submit();
 		}
 	});
-	$("#tab1").on("click", function(){
+	/* $("#tab1").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#updateForm").attr("action", "T_teammozip");
 			$("#updateForm").submit();
 		}
-	});
+	}); */
 	$("#tab3").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#updateForm").attr("action", "T_oneline");

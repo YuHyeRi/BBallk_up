@@ -31,21 +31,25 @@ $(document).ready(function(){
 	});
 	
 	
-	$("#tab2").on("click", function(){
+	/* $("#tab2").on("click", function(){
 		$("#actionForm").attr("action", "T_notice");
 		$("#actionForm").submit();
-	});
+	}); */
 	$("#tab4").on("click", function(){
-		$("#actionForm").attr("action", "tFreeList");
-		$("#actionForm").submit();
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "tFreeList");
+			$("#actionForm").submit();
+		}
 	});
-	$("#tab1").on("click", function(){
+	/* $("#tab1").on("click", function(){
 		$("#actionForm").attr("action", "T_teammozip");
 		$("#actionForm").submit();
-	});
+	}); */
 	$("#tab3").on("click", function(){
-		$("#actionForm").attr("action", "T_oneline");
-		$("#actionForm").submit();
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "T_oneline");
+			$("#actionForm").submit();
+		}
 	});
 	
 	$("#deleteBtn").on("click", function(){

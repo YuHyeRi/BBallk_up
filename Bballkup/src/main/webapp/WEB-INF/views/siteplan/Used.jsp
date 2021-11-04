@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이용가이드</title>
+<title>뽈크업 이용가이드</title>
 	<link rel="stylesheet" href="resources/css/layout/font.css">
 	<link rel="stylesheet" href="resources/css/layout/basic.css">
 	<link rel="stylesheet" href="resources/css/layout/btn.css">

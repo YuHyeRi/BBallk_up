@@ -24,7 +24,7 @@
     display: flex;
 	height: 100px;
 	background-color : #e3ecfb;
-	border-radius: 10px;
+	/* border-radius: 10px; */
 }
 .user_info {
 	width : 100px;
@@ -45,10 +45,13 @@
 	resize: none;
 	width: 99%;
     height: 90%;
-    margin: 2px;
+    margin: 3px;
 }
 .reple_wrap>.con_info {
 	border: 1px solid #e3ecfb;
+}
+.reple_wrap>.user_info {
+	padding-top: 15px;
 }
 .ob_data_reple{
 	display: flex;
@@ -234,21 +237,27 @@ $(document).ready(function() {
 	});
 	
 	$("#tab2").on("click", function(){
-		$("#actionForm").attr("action", "T_notice");
-		$("#actionForm").submit();
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "T_notice");
+			$("#actionForm").submit();
+		}
 	});
 	$("#tab4").on("click", function(){
-		$("#actionForm").attr("action", "tFreeList");
-		$("#actionForm").submit();
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "tFreeList");
+			$("#actionForm").submit();
+		}
 	});
-	$("#tab1").on("click", function(){
-		$("#actionForm").attr("action", "T_teammozip");
-		$("#actionForm").submit();
-	});
-	$("#tab3").on("click", function(){
+/* 	$("#tab1").on("click", function(){
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "T_teammozip");
+			$("#actionForm").submit();
+		}
+	}); */
+	/* $("#tab3").on("click", function(){
 		$("#actionForm").attr("action", "T_oneline");
 		$("#actionForm").submit();
-	});
+	}); */
 });
 
 

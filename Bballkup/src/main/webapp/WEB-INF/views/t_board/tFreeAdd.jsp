@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>팀커뮤니티 자유게시판</title>
 	<link rel="stylesheet" href="resources/css/layout/font.css">
 	<link rel="stylesheet" href="resources/css/layout/basic.css">
 	<link rel="stylesheet" href="resources/css/layout/btn.css">
@@ -56,21 +56,15 @@
 		});
 		
 		// 탭 클릭시 이동
-		$("#tab2").on("click", function(){
-			if(confirm("페이지를 벗어나시겠습니까?")){
-				$("#addForm").attr("action", "T_notice");
-				$("#addForm").submit();
-			}
-		});
-		$("#tab4").on("click", function(){
-			if(confirm("페이지를 벗어나시겠습니까?")){
-				$("#addForm").attr("action", "tFreeList");
-				$("#addForm").submit();
-			}
-		});
 		$("#tab1").on("click", function(){
 			if(confirm("페이지를 벗어나시겠습니까?")){
 				$("#addForm").attr("action", "T_teammozip");
+				$("#addForm").submit();
+			}
+		});
+		$("#tab2").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#addForm").attr("action", "T_notice");
 				$("#addForm").submit();
 			}
 		});
