@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Failed</title>
 <script type="text/javascript">
 	alert("${msg}");
 	history.back();
