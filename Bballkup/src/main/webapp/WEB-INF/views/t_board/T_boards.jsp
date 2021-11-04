@@ -40,14 +40,14 @@
 		});
 		
 		// 체활모
-		$("#tab1").on("click", function(){
+		/* $("#tab1").on("click", function(){
 			// 추가한 부분
 			var tno = $(".team_no_list").attr('no');
 			$("#tno3").val(tno);
 			
 			$("#actionForm").attr("action", "T_teammozip");
 			$("#actionForm").submit();
-		});
+		}); */
 		
 		// 질문게시판(한줄게시판)
 		$("#tab3").on("click", function(){

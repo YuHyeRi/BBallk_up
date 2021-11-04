@@ -31,6 +31,11 @@
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
 	$(document).ready(function() {
+		
+		// 알림용
+		/* alert("팀번호 : " + "${param.tno}");
+		alert("팀이름 : " + "${param.tnm}"); */
+		
 		if("${param.searchGbn}" != "") {
 			$("#searchGbn").val("${param.searchGbn}");
 		}
@@ -205,6 +210,7 @@
 			<input type="hidden" id="page" name="page" value="${page}" />
 			<input type="hidden" id="no" name="no" />
 			<input type="hidden" id="tno" name="tno" value="${param.tno}" />
+			<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 			<input type="button" value="검색" id="searchBtn" />
 			<c:if test="${!empty sMId}">
 				<input type="button" value="글작성" id="addBtn" />

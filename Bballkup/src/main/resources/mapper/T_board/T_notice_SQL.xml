@@ -8,6 +8,7 @@
                 INNER JOIN TB_MANAGE
                 ON T_BOARD.TBM_NO = TB_MANAGE.TBM_NO
 		WHERE MEM.MEM_DEL = 1
+		AND TB_UP = 1
         AND TBM_NM = '공지사항'
         AND TB_MANAGE.TEAM_NO = #{tno}
 		<if test="searchTxt != null and searchTxt !=''">

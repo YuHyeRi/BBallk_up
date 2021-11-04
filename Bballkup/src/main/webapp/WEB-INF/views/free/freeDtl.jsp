@@ -32,6 +32,9 @@
 	.write_con_wrap{
 		margin-bottom: 40px;
 	}
+	.btn_wrap{
+		margin-bottom: 20px;
+	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>

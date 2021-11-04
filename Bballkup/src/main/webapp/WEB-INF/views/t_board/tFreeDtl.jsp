@@ -39,6 +39,10 @@
 <script>
 	$(document).ready(function() {
 		
+		// 알림용
+		/* alert("팀번호 : " + "${param.tno}");
+		alert("팀이름 : " + "${param.tnm}"); */
+		
 		// dtl
 		// 상세보기-목록버튼
 		$("#listBtn").on("click", function() {
@@ -275,6 +279,7 @@
 			<input type="hidden" name="page" value="${param.page}" />
 			<input type="hidden" name="no" value="${param.no}" />
 			<input type="hidden" name="tno" value="${param.tno}" />
+			<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 		</form>
 		
 		<div class="freebtndiv">

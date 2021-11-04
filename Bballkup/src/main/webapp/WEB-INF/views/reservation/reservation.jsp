@@ -20,6 +20,14 @@
 	margin-top:10px;
 	margin-left:60px;
 }
+#mapBtn{
+	background-color: white;
+    padding: 2px;
+    width: 70px;
+    border-radius: 5px;
+    border: 2px solid #1d2088;
+    cursor: pointer;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="resources/css/jquery/jquery-ui.min.css" />
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script><!-- 이게 제일 상위에 있어야 한다. -->
@@ -133,10 +141,39 @@ function redrawList(list) {
 			 }
 		}
 		$("#place").append(opt);
+		
+		console.log($(this).val());
+
+		for(var i=0; i<list.length; i++){
+			
+			if(list[i].PLACENM == $("#place option:checked").text()){
+					$("#y").val(list[i].Y);
+					$("#x").val(list[i].X);
+			 }
+		}
+		
+		console.log($("#y").val());
+		console.log($("#x").val());
 	});
 	
 	$("#place").on("change", function(){
 		console.log($(this).val());
+
+		for(var i=0; i<list.length; i++){
+			
+			if(list[i].PLACENM == $("#place option:checked").text()){
+					$("#y").val(list[i].Y);
+					$("#x").val(list[i].X);
+			 }
+		}
+		
+		console.log($("#y").val());
+		console.log($("#x").val()); 
+	});
+	
+	$("#mapBtn").on("click", function(){
+		$("#actionForm").attr("action", "map");
+		$("#actionForm").submit();
 	});
 	
 	$("#reservation").on("click", function(){
@@ -204,6 +241,8 @@ function checkVal(sel){
 <form action="#" id="actionForm" method="post">
 	<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
 	<input type="hidden" id="team_no" name="team_no" value="${param.team_no}">
+	<input type="hidden" id="y" name="y">
+	<input type="hidden" id="x" name="x">
 	<p>▶ 시설 선택</p>
 	<select id="sport" name="sport">
 		<option>시설선택</option>
@@ -211,7 +250,9 @@ function checkVal(sel){
 	<p>▶ 장소 선택</p>
 	<select id="place" name="place">
 		<option>장소선택</option>
-	</select><br>
+	</select>
+	<input type="button" id="mapBtn" name="mapBtn" value="상세보기">
+	<br>
 	<p>▶ 경기일 선택</p>
 	<input type="text" id="date" name="date" placeholder="날짜를 선택해주세요."><br>
 	<p>▶ 게시글 내용 작성</p>

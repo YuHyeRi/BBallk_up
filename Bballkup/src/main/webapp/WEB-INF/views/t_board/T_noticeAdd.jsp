@@ -35,6 +35,10 @@ $(document).ready(function(){
 		enterMode : "2"
 	});
 	
+	// 알림용
+	/* alert("팀번호 : " + "${param.tno}");
+	alert("팀이름 : " + "${param.tnm}"); */
+	
 	$("#cancelBtn").on("click", function(){
 		$("#backForm").submit();
 	});
@@ -53,24 +57,24 @@ $(document).ready(function(){
 		$("#fileName").html($(this).val().substring($(this).val().lastIndexOf("\\")+ 1));
 	});
 	
-	$("#tab2").on("click", function(){
+	/* $("#tab2").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#addForm").attr("action", "T_notice");
 			$("#addForm").submit();
 		}
-	});
+	}); */
 	$("#tab4").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#addForm").attr("action", "tFreeList");
 			$("#addForm").submit();
 		}
 	});
-	$("#tab1").on("click", function(){
+/* 	$("#tab1").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#addForm").attr("action", "T_teammozip");
 			$("#addForm").submit();
 		}
-	});
+	}); */
 	$("#tab3").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#addForm").attr("action", "T_oneline");
@@ -175,6 +179,7 @@ function checkVal(sel) {
 	<input type="hidden" name="searchTxt" value="${param.searchTxt}" />
 	<input type="hidden" name="page" value="${param.page}" />
 	<input type="hidden" id="tno" name="tno" value="${param.tno}" />
+	<input type="hidden" name="tnm" value="${param.tnm}" />
 </form>
 <form action="#" id="addForm" method="post">
 	제목 <input type="text" id="title" name="title" />

@@ -41,6 +41,10 @@ $(document).ready(function(){
 		enterMode : "2"
 	});
 	
+	// 알림용
+	/* alert("팀번호 : " + "${param.tno}");
+	alert("팀이름 : " + "${param.tnm}"); */
+	
 	$("#cancelBtn").on("click", function(){
 		$("#backForm").submit();
 	});
@@ -66,24 +70,24 @@ $(document).ready(function(){
 		$(this).remove();
 	});
 	
-	$("#tab2").on("click", function(){
+/* 	$("#tab2").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#updateForm").attr("action", "T_notice");
 			$("#updateForm").submit();	
 		}
-	});
+	}); */
 	$("#tab4").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#updateForm").attr("action", "tFreeList");
 			$("#updateForm").submit();
 		}
 	});
-	$("#tab1").on("click", function(){
+	/* $("#tab1").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#updateForm").attr("action", "T_teammozip");
 			$("#updateForm").submit();
 		}
-	});
+	}); */
 	$("#tab3").on("click", function(){
 		if(confirm("페이지를 벗어나시겠습니까?")){
 			$("#updateForm").attr("action", "T_oneline");
@@ -185,6 +189,7 @@ function checkVal(sel) {
 		<input type="hidden" name="page" value="${param.page}" />
 		<input type="hidden" name="no" value="${param.no}" />
 		<input type="hidden" name="tno" value="${param.tno}" />
+		<input type="hidden" name="tnm" value="${param.tnm}" />
 	</form>
 	<form action="#" id="updateForm" method="post">
 		<input type="hidden" name="tno" value="${param.tno}" >

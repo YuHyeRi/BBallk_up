@@ -20,6 +20,11 @@
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	// 알림용
+	/* alert("팀번호 : " + "${param.tno}");
+	alert("팀이름 : " + "${param.tnm}"); */
+	
 	$("#listBtn").on("click", function(){
 		$("#actionForm").attr("action", "T_notice");
 		$("#actionForm").submit();
@@ -31,21 +36,25 @@ $(document).ready(function(){
 	});
 	
 	
-	$("#tab2").on("click", function(){
+	/* $("#tab2").on("click", function(){
 		$("#actionForm").attr("action", "T_notice");
 		$("#actionForm").submit();
-	});
+	}); */
 	$("#tab4").on("click", function(){
-		$("#actionForm").attr("action", "tFreeList");
-		$("#actionForm").submit();
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "tFreeList");
+			$("#actionForm").submit();
+		}
 	});
-	$("#tab1").on("click", function(){
+	/* $("#tab1").on("click", function(){
 		$("#actionForm").attr("action", "T_teammozip");
 		$("#actionForm").submit();
-	});
+	}); */
 	$("#tab3").on("click", function(){
-		$("#actionForm").attr("action", "T_oneline");
-		$("#actionForm").submit();
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "T_oneline");
+			$("#actionForm").submit();
+		}
 	});
 	
 	$("#deleteBtn").on("click", function(){
@@ -101,7 +110,7 @@ $(document).ready(function(){
 		<input type="hidden" name="page" value="${param.page}" />
 		<input type="hidden" name="no" value="${param.no}" />
 		<input type="hidden" name="tno" value="${param.tno}" />
-		
+		<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 	</form>
 	<div>
 		<table class="notice_table2">

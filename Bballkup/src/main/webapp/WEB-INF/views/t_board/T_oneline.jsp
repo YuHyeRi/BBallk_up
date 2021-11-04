@@ -73,7 +73,7 @@
   display: none;
  }
  .action_btn, .action_btn4{
- 	height: 90px;
+ 	height: 90px;`
  	margin-top: 5px;
  }
  .action_btn2, .action_btn3, .action_btn5, .action_btn4{
@@ -93,6 +93,10 @@
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	// 알림용
+	/* alert("팀번호 : " + "${param.tno}");
+	alert("팀이름 : " + "${param.tnm}"); */
 	
 	if("${page}" > "${pb.maxPcount}"){
 		$("#page").val("${pb.maxPcount}");
@@ -237,21 +241,27 @@ $(document).ready(function() {
 	});
 	
 	$("#tab2").on("click", function(){
-		$("#actionForm").attr("action", "T_notice");
-		$("#actionForm").submit();
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "T_notice");
+			$("#actionForm").submit();
+		}
 	});
 	$("#tab4").on("click", function(){
-		$("#actionForm").attr("action", "tFreeList");
-		$("#actionForm").submit();
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "tFreeList");
+			$("#actionForm").submit();
+		}
 	});
-	$("#tab1").on("click", function(){
-		$("#actionForm").attr("action", "T_teammozip");
-		$("#actionForm").submit();
-	});
-	$("#tab3").on("click", function(){
+/* 	$("#tab1").on("click", function(){
+		if(confirm("페이지를 벗어나시겠습니까?")){
+			$("#actionForm").attr("action", "T_teammozip");
+			$("#actionForm").submit();
+		}
+	}); */
+	/* $("#tab3").on("click", function(){
 		$("#actionForm").attr("action", "T_oneline");
 		$("#actionForm").submit();
-	});
+	}); */
 });
 
 
@@ -300,6 +310,7 @@ function checkObjVal(obj) {
 	<input type="hidden" id="mno" name="mno" value="${sMNo}"/>
 	<input type="hidden" name="page" id="page" value="${page}"/>
 	<input type="hidden" id="tno" name="tno" value="${param.tno}" />
+	<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 	
 	<div class="write_area">
 		<c:choose>
@@ -329,6 +340,7 @@ function checkObjVal(obj) {
 		<input type="hidden" name="no" id="no2" />
 		<input type="hidden" id="mno" name="mno" value="${mno}"/>
 		<input type="hidden" id="tno" name="tno" value="${param.tno}" />
+		<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 		<input type="hidden" name="q_re_con" id="q_re_con" />
 	</form>
 	<!-- List -->
