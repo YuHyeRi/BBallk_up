@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>뽈크업 사이트소개</title>
    <link rel="stylesheet" href="resources/css/layout/font.css">
    <link rel="stylesheet" href="resources/css/layout/basic.css">
    <link rel="stylesheet" href="resources/css/layout/btn.css">
