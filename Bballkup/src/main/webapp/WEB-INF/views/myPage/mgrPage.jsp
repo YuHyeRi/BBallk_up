@@ -43,6 +43,18 @@ $(document).ready(function(){
 	$(".teamManage").on("click", function(){
 		location.href="teamManage";
 	});
+	//패스워드변경
+	$(".changePw").on("click", function(){
+		$("#gbn").val("pu");
+		$("#actionForm").attr("action", "pwCheckGo");
+		$("#actionForm").submit();
+	});
+	//관리자정보수정
+	$(".changeInfo").on("click", function(){
+		$("#gbn").val("u");
+		$("#actionForm").attr("action", "pwCheckGo");
+		$("#actionForm").submit();
+	});
 	
 });
 </script>
@@ -58,6 +70,7 @@ $(document).ready(function(){
 	<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
 	<input type="hidden" id="mem_nm" name="mem_nm" value="${param.mem_nm}">
 	<input type="hidden" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}">
+	<input type="hidden" id="gbn" name="gbn" value="">
 </form>
 <%-- 	<input type="hidden" name="searchTxt" id="searchTxt" value="${searchTxt}" >
 	<input type="hidden" name="oldTxt" id="oldTxt" value="${searchTxt}" >

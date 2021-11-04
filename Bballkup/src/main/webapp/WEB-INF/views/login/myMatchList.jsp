@@ -120,23 +120,7 @@ function reloadList(){
 //목록 그리기
 function drawList(list){
 	var html = "";
-	/* html += "<td>";
-	html += data.TITLE;	
-	
-	if(data.B_FILE != null){
-		
-		html += "<img src=\"resources/images/attFile.png\">";
-	}
-	
-	html += "</td>  "; 
-	<th>번호</th>
-	<th>커뮤니티</th>
-	<th>날짜</th>
-	<th>종목</th>
-	<th class="title">제목</th>
-	<th>결제금액</th>
-	<th>진행사항</th>
-	*/
+
 	for(var data of list){
 		
 		html += "<tr no=\"" + data.MATCH_NO + "\">";
