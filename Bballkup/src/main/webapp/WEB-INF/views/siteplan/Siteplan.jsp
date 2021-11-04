@@ -36,6 +36,10 @@ $(document).ready(function() {
       $("#loginForm").attr("action","join");
       $("#loginForm").submit();
    });
+   
+   $(".signup").on("click", function(){
+	   location.href="join";
+	});
          
    $("#mypage").on("click", function(){
 		$("#loginForm").attr("action","myPage");
@@ -67,7 +71,7 @@ $(document).ready(function() {
    <div class="site-text">
        <h1 style="font-size:50px">I am Seoul People</h1>
        <p>And I love Sports</p>
-       <button class="join"><span>sign up</span></button>
+       <button class="signup"><span>sign up</span></button>
    </div>
 </div>
 <!-- 관리자만 이미지 수정 버튼 보임 -->
