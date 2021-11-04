@@ -1,28 +1,29 @@
 @charset "UTF-8";
 
-.ob_wrap {
+/* .ob_wrap {
 	border: 2px solid #1d2088;
 	border-radius: 10px;
 	margin-bottom: 20px;
-}
-.user_info {
+	width: 100%;
+} */
+/* .user_info {
 	display: inline-table;
 	width: 100px;
 	height: 100px;
 	vertical-align: top;
 	text-align: center;
-}
-.user_name {
+} */
+/* .user_name {
 	display: table-cell;
 	vertical-align: middle;
-}
+} */
 
-.write_con {
+/* .write_con {
 	height: 90px;
 	resize: none;
 	margin: 2px;
-}
-textarea {
+} */
+/* textarea {
 	width: 100%;
 }
 .write_con_wrap, .con_info {
@@ -34,8 +35,8 @@ textarea {
 
 .btn_wrap{
 	float: right;
-	display : flex;
+	display : flex; 
 	flex-direction: column;
 	padding-top: 17px;
 	margin-right: 20px;
-}
+} */

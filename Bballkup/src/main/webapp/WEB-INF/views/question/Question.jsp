@@ -14,19 +14,89 @@
 	<link rel="stylesheet" href="resources/css/layout/question.css">
 	
 <style>
+
+.qqdiv {
+	width: 100%;
+}
+.ob_wrap {
+	border: 2px solid #1d2088;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	width: 100%;
+}
 .reple_con {
 	width: 540px;
 	height: 90px;
 	resize: none;
 	margin: 2px;
 }
+.user_info {
+	/* display: inline-table; */
+	width: 100px;
+	/* height: 100px; */
+	vertical-align: top;
+	text-align: center;
+	padding-top: 45px;
+}
+.ob_data{
+	border-top : 1px solid #444444;
+	margin-bottom: 5px;
+	display: flex;
+	height: 100px;
+}
+
+.write_con_wrap, .con_info {
+	width: 80%;
+	height: 100px;
+}
+
+.write_con, .q_re_con {
+	resize: none;
+	width: 99%;
+    height: 90%;
+    margin: 3px;
+}
 .reple_text_area{
 	background-color: #e3ecfb;
 }
-#addBtn{
-	height: 50px;
+
+.ob_data_reple{
+	display: flex;
 }
 
+.reple_wrap{
+    height: 100px;
+    display: flex;
+    width: 100%;
+}
+
+.con_info{
+	width: 80%
+}
+.btn_wrap{
+	width: 10%;
+	text-align: center;
+	/* float: right; */
+	display : flex; 
+	flex-direction: column; 
+	padding-top: 10px;
+	margin-right: 5px;
+	margin-left: 10px;
+} 
+
+.action_btn, .action_btn4{
+	width: 100px;
+ 	height: 90px;`
+ 	margin-top: 5px;
+ }
+ .action_btn2, .action_btn3, .action_btn5, .action_btn4{
+ 	background-color: white;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid #1d2088;
+    cursor: pointer;
+ }
 input:hover{
 	background-color: #e3ecfb;
 }
@@ -41,13 +111,18 @@ input{
     margin-bottom: 10px;
 }
 
-.write_area .action_btn2 {
+.write_area {
+    display: flex;
+	height: 100px;
+	margin-bottom: 3px;
+}
+.action_btn2 {
   display: none;
  }
  
 .login_req_wrap {
 	display: inline-table;
-	width: 800px;
+	width: 100%;
 	height: 100px;
 }
 
@@ -75,12 +150,8 @@ input{
 	text-align: center;
 }
 
-.ob_data {
-	border-top : 1px solid #444444;
-	margin-bottom: 5px;
-}
-
 .con_info {
+	width: 80%;
 	display: inline-table;
 	height: 100px;
 	vertical-align: top;
@@ -95,7 +166,7 @@ input{
 }
 .q_re_con {
 	display: inline-table;
-	height: 45px;
+	height: 75px;
 	vertical-align: middle;
 }
 .reple_con {
@@ -103,6 +174,20 @@ input{
 	height: 50px;
 	vertical-align: middle;
 	text-align: left;
+}
+
+.reple_wrap > .user_info  {
+	padding-top: 20px;
+}
+
+.reple_text_area {
+	height: 90px;
+}
+.reple_write_area {
+	height: 90px;
+}
+.reple_text_area > .con_info  {
+	padding-top: 25px;
 }
 
 #paging_wrap2 {
@@ -295,6 +380,7 @@ function checkObjVal(obj) {
 <jsp:include page="../nav.jsp" flush="true" />
 <div class="qqdiv">
 	<!-- 작성+리스트 -->
+	<h2>고객지원 >> 질문게시판</h2>
 	<div class="ob_wrap">	
 		<form action="#" id="actionForm" method="post">
 		<input type="hidden" id="no" name="no"/>
@@ -361,7 +447,7 @@ function checkObjVal(obj) {
 							<c:if test="${!empty data.Q_RE_CON}">
 							<div class="reple_wrap reple_text_area" >
 								<div class="user_info">
-									<img src="resources/images/icon/답변.png" width="20px">			
+									<img src="resources/images/icon/답변.png" width="50px" height="50px">			
 								</div>
 								<div class="con_info">
 									<div id="reple_con" class="reple_con">${data.Q_RE_CON}</div>
@@ -377,7 +463,7 @@ function checkObjVal(obj) {
 							<c:if test="${sMLv eq 0}">
 								<div class="reple_wrap reple_write_area" >
 									<div class="user_info">
-										<img src="resources/images/icon/답변.png" width="20px">			
+										<img src="resources/images/icon/답변.png" width="50px" height="50px">			
 									</div>
 									<div class="con_info">
 										<textarea class="q_re_con" placeholder="댓글을 입력해주세요.">${data.Q_RE_CON}</textarea>	
@@ -402,6 +488,7 @@ function checkObjVal(obj) {
 		</div>
 	<!-- Paging -->
 		<div id="paging_wrap2">
+			<br>
 			<!-- 이전 -->
 		<c:choose>
 			<c:when test="${page eq 1}"> 
