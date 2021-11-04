@@ -27,6 +27,10 @@
 		resize: none;
 		width: 80%;
 		height: 50px;
+		margin-bottom: 10px;
+	}
+	.write_con_wrap{
+		margin-bottom: 40px;
 	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>

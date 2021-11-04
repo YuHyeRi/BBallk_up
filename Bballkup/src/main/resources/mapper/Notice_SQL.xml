@@ -7,6 +7,8 @@
 		FROM NOTICE INNER JOIN MEM
                 ON NOTICE.MEM_NO = MEM.MEM_NO
 		WHERE MEM.MEM_DEL = 1
+		AND NOTICE_UP = 1
+		
 		<if test="searchTxt != null and searchTxt !=''">
 			<choose>
 				<when test="searchGbn eq 0">

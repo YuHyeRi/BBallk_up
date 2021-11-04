@@ -29,6 +29,7 @@
 }
 
 tr:hover{
+	background-color : #e3ecfb;
 	cursor:pointer;
 }
 .pIntro>h2{

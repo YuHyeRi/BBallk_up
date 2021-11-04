@@ -46,6 +46,9 @@ public class MainController {
 		List<HashMap<String, String>> list3 = iMainService.getMain3List(params);
 		modelMap.put("list3", list3);
 		
+		List<HashMap<String, String>> list1 = iMainService.getMain1List(params);
+		modelMap.put("list1", list1);
+		
 		return mapper.writeValueAsString(modelMap);
 	}
 }
