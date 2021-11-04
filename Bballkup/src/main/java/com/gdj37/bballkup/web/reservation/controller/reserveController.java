@@ -232,4 +232,12 @@ public class reserveController {
 		return mapper.writeValueAsString(modelMap);
 	}
 	
+	@RequestMapping(value="/map")
+	public ModelAndView map(ModelAndView mav) {
+		
+		mav.setViewName("reservation/map");
+		
+		return mav;
+	}
+	
 }
