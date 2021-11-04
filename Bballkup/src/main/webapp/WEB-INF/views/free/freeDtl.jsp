@@ -37,6 +37,30 @@
 <script>
 	$(document).ready(function() {
 		
+		// 로그인
+		$("#login").on("click",function(){
+		    $("#loginForm").attr("action","login");
+		    $("#loginForm").submit();
+		});
+		      
+		// 로그아웃
+		$("#logout").on("click", function(){
+		    $("#loginForm").attr("action","logout");
+		    $("#loginForm").submit();
+		});
+		
+		// 마이페이지
+		$("#mypage").on("click", function(){
+			$("#loginForm").attr("action","myPage");
+			$("#loginForm").submit();
+		});
+		
+		// 관리자페이지
+		$("#mgrpage").on("click", function(){
+			$("#loginForm").attr("action","mgrPage");
+			$("#loginForm").submit();
+		});
+		
 		// dtl 부분
 		// 상세보기-목록버튼
 		$("#listBtn").on("click", function() {
