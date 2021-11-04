@@ -25,9 +25,30 @@
 	</select>
 	
 	<select id="getMatch" parameterType="hashmap" resultType="hashmap">
-		SELECT MATCH_NO, SPORT_NM, MEM_NO, PLACE_NM, TO_CHAR(MATCH_DDAY, 'YYYY-MM-DD') AS MATCH_DDAY, MATCH_CON
-		FROM MATCHES, SPORT
-		WHERE MATCHES.SPORT_NO = SPORT.SPORT_NO
-		AND MATCH_NO = #{match_no};
+		SELECT MATCH_NO, SPORT_NM, MATCHES.MEM_NO, MEM_ID, PLACE_NM, TO_CHAR(MATCH_DDAY, 'YYYY-MM-DD') AS MATCH_DDAY, MATCH_CON, MATCH_PAY
+		FROM MATCHES, SPORT, MEM
+		WHERE MATCHES.SPORT_NO = SPORT.SPORT_NO AND MATCHES.MEM_NO = MEM.MEM_NO
+		AND MATCH_NO = #{match_no}
+	</select>
+	
+	<select id="getCard" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM CARD WHERE MEM_NO = #{mem_no}
+	</select>
+	
+	<insert id="attend" parameterType="hashmap">
+		INSERT INTO ATTEND (MEM_NO, MATCH_NO, ATTEND_DT, ATTEND_DEL) 
+		VALUES (#{mem_no}, #{match_no}, SYSDATE, 1)
+	</insert>
+	
+	<select id="getAtt" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM ATTEND WHERE MATCH_NO = #{match_no} AND MEM_NO = #{mem_no}
+	</select>
+	
+	<update id="matchDelete" parameterType="hashmap">
+		UPDATE MATCHES SET MATCH_STATE='경기취소' WHERE MATCH_NO=#{match_no}
+	</update>
+	
+	<select id="stateChk" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM MATCHES WHERE (MATCH_STATE = '모집마감' OR MATCH_STATE = '경기취소') AND MATCH_NO = #{match_no}
 	</select>
 </mapper>

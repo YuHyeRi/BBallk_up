@@ -60,4 +60,15 @@ public class MyPageDao implements IMyPageDao{
 		
 		return sqlSession.selectList("myPage.getTeamList", params);
 	}
+
+	@Override
+	public List<HashMap<String, String>> teamManageList(HashMap<String, String> params) throws Throwable {
+		return sqlSession.selectList("myPage.teamManageList", params);
+	}
+
+	@Override
+	public int teamManageUpdate(HashMap<String, String> params) throws Throwable {
+
+		return sqlSession.update("myPage.teamManageUpdate", params);
+	}
 }

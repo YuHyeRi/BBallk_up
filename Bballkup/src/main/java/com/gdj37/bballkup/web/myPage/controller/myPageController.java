@@ -55,19 +55,47 @@ public class myPageController {
 	@RequestMapping(value = "/teamManage") //관리자페이지>>팀관리
 	public ModelAndView teamManage(@RequestParam  HashMap<String, String> params,
 								ModelAndView mav) {
-		String page = "1";
-		
-		if(params.get("page") != null) {
-			page = params.get("page");
-		}
-		System.out.println("memManage_page:"+page);
-		mav.addObject("page", page);
-		
+	
 		mav.setViewName("myPage/teamManage");
 	
 		return mav;
 	}
 	
+	// list: 팀관리 리스트 
+	@RequestMapping(value = "/teamManages" , method = RequestMethod.POST, 
+			produces = "text/json;charset=UTF-8") //관리자페이지>>팀관리
+	@ResponseBody 
+	public String teamManages(@RequestParam HashMap<String, String> params) throws Throwable{
+			
+		ObjectMapper mapper = new ObjectMapper();
+			
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		List<HashMap<String, String>> list = iMyPageService.teamManageList(params);
+			
+		modelMap.put("list", list);
+		//System.out.println("뽑은 리스트들 : "+list);
+		//modelMap.put("pb", pb);
+			
+		return mapper.writeValueAsString(modelMap);
+			
+	}
+		
+	// 팀관리 승인완료 처리
+	@RequestMapping(value = "/teamManageUpdate" , method = RequestMethod.POST, 
+			produces = "text/json;charset=UTF-8") //관리자페이지>>팀관리
+	@ResponseBody 
+	public String teamManageUpdate(@RequestParam HashMap<String, String> params) throws Throwable{
+			
+		ObjectMapper mapper = new ObjectMapper();
+			
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		int cnt = iMyPageService.teamManageUpdate(params);
+			
+		modelMap.put("cnt",cnt);
+			
+		return mapper.writeValueAsString(modelMap);
+			
+	}
 	@RequestMapping(value = "/memManage") //관리자페이지>>회원관리
 	public ModelAndView memManage(@RequestParam  HashMap<String, String> params,
 								ModelAndView mav) {
