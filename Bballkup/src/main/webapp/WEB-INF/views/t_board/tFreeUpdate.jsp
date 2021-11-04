@@ -188,6 +188,7 @@
 	
 	<form action="#" id="updateForm" method="post">
 		<input type="hidden" name="tno" value="${param.tno}" >
+		<input type="hidden" name="tnm" value="${param.tnm}" />
 		번호: ${param.no}<input type="hidden" name="no" value="${param.no}" /><br><br>
 		제목: <input type="text" id="title" name="title" value="${data.TB_TITLE}"/><br/><br>
 		작성자: ${sMNm}<input type="hidden" name="mno" value="${sMNo}" /><br/><br>
