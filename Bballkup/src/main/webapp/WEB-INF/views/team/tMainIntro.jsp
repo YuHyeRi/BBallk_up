@@ -30,17 +30,23 @@
 	.list_wrap {
 		text-align: center;
 	}
-	
 	.btnzip{
+		display : flex;
+		justify-content: center;
 		margin : 20px 30px 0px 30px ;
 	}
+	
 	#backBtn, #regBtn, #enterBtn, #tMemManage{
 		width: 100px;
 		height: 30px;	
 		border: 2.5px solid #1d2088;
+		margin: 0px 100px 0px 100px;
 	}
  	#regBtn:hover, #enterBtn:hover, #backBtn:hover, #tMemManage:hover {
 		background-color:  #e3ecfb;
+	}
+	.img{
+		margin: 40px;
 	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -157,10 +163,10 @@
 	</div><hr>
 	<div class="btnzip">
 		<input type="button" id="backBtn" value="뒤로가기" />
-		<div class="btn_wrap">
+		<!-- <div class="btn_wrap"> -->
 			<input type="button" id="regBtn" value="가입하기" />
 			<input type="button" id="enterBtn" value="입장하기" />
-		</div>
+		<!-- </div> -->
 	<!--주영추가  -->
 	<input type="button" id="tMemManage" value="팀원관리" /><br><br>
 	</div>
@@ -169,7 +175,8 @@
 		<div class="list_wrap">
 			<div class="team_img">
 				<div>
-					<img src="resources/upload/${fn:replace(fn:replace(data.TEAM_LOGO, '[', '%5B'), ']', '%5D')}" width="100px" height="100px" />
+					<img class="img" src="resources/images/블루타이거즈.jpg">
+					<%-- <img src="resources/upload/${fn:replace(fn:replace(data.TEAM_LOGO, '[', '%5B'), ']', '%5D')}" width="100px" height="100px" /> --%>
 				</div>
 				<c:set var="len" value="${fn:length(data.TEAM_LOGO)}"></c:set>
 				<a href="resources/upload/${fn:replace(fn:replace(data.TEAM_LOGO, '[', '%5B'), ']', '%5D')}" 

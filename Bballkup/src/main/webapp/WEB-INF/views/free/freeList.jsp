@@ -25,7 +25,9 @@
 	td img {
 		width: 15px;
 	}
-	
+	#searchBtn:hover , #addBtn:hover{
+		background-color: #e3ecfb;
+	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
