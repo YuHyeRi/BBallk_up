@@ -41,6 +41,10 @@ $(document).ready(function(){
 		enterMode : "2"
 	});
 	
+	// 알림용
+	/* alert("팀번호 : " + "${param.tno}");
+	alert("팀이름 : " + "${param.tnm}"); */
+	
 	$("#cancelBtn").on("click", function(){
 		$("#backForm").submit();
 	});
@@ -185,6 +189,7 @@ function checkVal(sel) {
 		<input type="hidden" name="page" value="${param.page}" />
 		<input type="hidden" name="no" value="${param.no}" />
 		<input type="hidden" name="tno" value="${param.tno}" />
+		<input type="hidden" name="tnm" value="${param.tnm}" />
 	</form>
 	<form action="#" id="updateForm" method="post">
 		<input type="hidden" name="tno" value="${param.tno}" >

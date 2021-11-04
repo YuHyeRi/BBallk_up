@@ -40,8 +40,8 @@
 	$(document).ready(function() {
 		
 		// 알림용
-		alert("팀번호 : " + "${param.tno}");
-		alert("팀이름 : " + "${param.tnm}");
+		/* alert("팀번호 : " + "${param.tno}");
+		alert("팀이름 : " + "${param.tnm}"); */
 		
 		// dtl
 		// 상세보기-목록버튼

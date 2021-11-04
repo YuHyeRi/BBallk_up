@@ -33,8 +33,8 @@
 	$(document).ready(function() {
 		
 		// 알림용
-		alert("팀번호 : " + "${param.tno}");
-		alert("팀이름 : " + "${param.tnm}");
+		/* alert("팀번호 : " + "${param.tno}");
+		alert("팀이름 : " + "${param.tnm}"); */
 		
 		if("${param.searchGbn}" != "") {
 			$("#searchGbn").val("${param.searchGbn}");

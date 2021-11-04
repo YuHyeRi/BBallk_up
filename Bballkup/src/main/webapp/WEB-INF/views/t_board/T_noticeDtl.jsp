@@ -20,6 +20,11 @@
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	// 알림용
+	/* alert("팀번호 : " + "${param.tno}");
+	alert("팀이름 : " + "${param.tnm}"); */
+	
 	$("#listBtn").on("click", function(){
 		$("#actionForm").attr("action", "T_notice");
 		$("#actionForm").submit();
@@ -105,7 +110,7 @@ $(document).ready(function(){
 		<input type="hidden" name="page" value="${param.page}" />
 		<input type="hidden" name="no" value="${param.no}" />
 		<input type="hidden" name="tno" value="${param.tno}" />
-		
+		<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 	</form>
 	<div>
 		<table class="notice_table2">

@@ -35,6 +35,11 @@ tr:hover{
 <script type="text/javascript">
 
 $(document).ready(function(){
+	
+	// 알림용
+	/* alert("팀번호 : " + "${param.tno}");
+	alert("팀이름 : " + "${param.tnm}"); */
+	
 	if("${param.searchGbn}" != ""){
 		$("#searchGbn").val("${param.searchGbn}");
 	}
@@ -223,6 +228,7 @@ var html ="";
 		<input type="hidden" name="page" id="page" value="${page}" />
 		<input type="hidden" name="no" id="no" />
 		<input type="hidden" value="T_notice" id="mainlist" name="mainlist">
+		<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 		<input type="button" value="검색" id="searchBtn" />
 		<input type="button" value="작성" id="addBtn" />
 	</form>

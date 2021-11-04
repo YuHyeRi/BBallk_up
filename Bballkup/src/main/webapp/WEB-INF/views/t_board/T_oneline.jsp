@@ -94,6 +94,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	// 알림용
+	/* alert("팀번호 : " + "${param.tno}");
+	alert("팀이름 : " + "${param.tnm}"); */
+	
 	if("${page}" > "${pb.maxPcount}"){
 		$("#page").val("${pb.maxPcount}");
 		$("#actionForm").submit();
