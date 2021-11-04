@@ -54,6 +54,13 @@
 			$("#loginForm").submit();
 		});
 		
+		$("#mem_pw").on("keypress", function(){
+			if(event.keyCode == 13){
+				$("#loginBtn").click();
+				return false;
+			}
+		});
+		
 	});
 	
 	//값이 들어있는지 체크

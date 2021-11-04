@@ -18,18 +18,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#login").on("click",function(){
-	   $("#loginForm").attr("action","login");
-	   $("#loginForm").submit();});
+	   $("#actionForm").attr("action","login");
+	   $("#actionForm").submit();});
 		      
 	$("#logout").on("click", function(){
-	   $("#loginForm").attr("action","logout");
-	   $("#loginForm").submit();
+	   $("#actionForm").attr("action","logout");
+	   $("#actionForm").submit();
 	});
 	      
 	$("#mgrpage").on("click", function(){
-	   $("#loginForm").attr("action","mgrPage");
-	   $("#loginForm").submit();
-	});
+	   $("#actionForm").attr("action","mgrPage");
+	   $("#actionForm").submit();
+	}); 
 	
 	$(".memManage").on("click", function(){
 		location.href="memManage";
@@ -113,6 +113,5 @@ $(document).ready(function(){
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
-<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>

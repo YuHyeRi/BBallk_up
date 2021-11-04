@@ -76,22 +76,10 @@ $(document).ready(function(){
 	});
 	
 	$("tbody").on("click", "tr", function(){
-		var tbmNo = $(this).attr("tbmNo");
-		var bGbn = $(this).attr("bGbn");
-		$("#no").val($(this).attr("no"));
+		
+		$("#match_no").val($(this).attr("no"));
 
-		if(tbmNo == 0){
-			if(bGbn == 0){
-				//개인-자유
-				$("#boardGoForm").attr("action", "freeDtl");
-			}
-		}else{
-			if(tbmNo == 1){
-				$("#boardGoForm").attr("action", "tFreeDtl");
-			}else if(tbmNo == 2){
-				$("#boardGoForm").attr("action", "T_noticeDtl");
-			}
-		}
+		$("#boardGoForm").attr("action", "pDtl");
 		$("#boardGoForm").submit();
 	});
 	
@@ -183,6 +171,10 @@ function drawPaging(pb){
 <div>
 	<form action="#" id="boardGoForm" method="post">
 		<input type="hidden" name="no" id="no" value="${sMNo}">
+		<input type="hidden" id="team_no" name="team_no" value="">
+		<input type="hidden" name="mem_no" value="${sMNo}">
+		<input type="hidden" id="page" name="page" value="${page}" />
+		<input type="hidden" id="match_no" name="match_no" />
 	</form>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
