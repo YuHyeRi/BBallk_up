@@ -13,11 +13,26 @@
 	<link rel="stylesheet" href="resources/css/layout/loginout.css">
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/table.css">
-	
+<style type="text/css">
+#applyBtn {
+	background-color: pink;
+}
+
+h2{
+	display:inline-block;
+}
+.noneDiv{
+	text-align:center;
+}
+</style>	
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
 	$(document).ready(function() {
 		reloadList();
+		
+		if($("#applyBtn").val() == "승인완료"){
+			$("#applyBtn").css("background-color","blue");
+		}
 		
 		$("tbody").on("click", "#applyBtn", function() {
 			//console.log($(this).attr("no"));
@@ -60,6 +75,11 @@
 			data : params,			
 			success : function(res){
 				drawList(res.list);
+				if(res.list.length == 0){
+					nonMsg();
+				}else{
+					drawList(res.list);
+				}
 			},
 			error : function(request, status, error){
 				console.log(error);
@@ -83,6 +103,15 @@
 		
 		$("tbody").html(html);
 	}
+	
+	function nonMsg(){
+		var html = "";
+		
+		html = "<p> 현재 소속된 팀원이 없습니다 </p>";
+
+		$(".noneDiv").html(html);
+	}
+
 </script>
 </head>
 <body>
@@ -115,7 +144,8 @@
 			<tbody>
 			</tbody>
 		</table> 
-		<br><br>
+		<div class="noneDiv"></div>
+		<br><br>		
 </main>
 <br><br>
 	
