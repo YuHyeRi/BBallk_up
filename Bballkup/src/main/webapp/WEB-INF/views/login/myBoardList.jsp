@@ -80,11 +80,17 @@ $(document).ready(function(){
 		var bGbn = $(this).attr("bGbn");
 		$("#no").val($(this).attr("no"));
 		$("#tno").val(bGbn);
-		alert("tno:" + $("#tno").val());
+		$("#tnm").val($(this).attr("tNm"));
+
 		if(tbmNo == 0){
 			if(bGbn == 0){
 				//개인-자유
 				$("#boardGoForm").attr("action", "freeDtl");
+			}else if(bGbn == 1){
+				//개인-체활모
+				$("#match_no").val($(this).attr("no"));
+				
+				$("#boardGoForm").attr("action", "pDtl");
 			}
 		}else{
 			if(tbmNo == 1){
@@ -124,7 +130,7 @@ function drawList(list){
 	
 	for(var data of list){
 		
-		html += "<tr no=\"" + data.NO + "\" tbmNo=\"" + data.TBM_NO + "\" bGbn=\""+ data.GBN + "\">";
+		html += "<tr no=\"" + data.NO + "\" tNm=\"" + data.TEAM_NM + "\" tbmNo=\"" + data.TBM_NO + "\" bGbn=\""+ data.GBN + "\">";
 		html += "<td>" + data.NO + "</td>     ";
 		html += "<td>" + data.TEAM_NM + "</td>     ";
 		html += "<td>" + data.TBM_NM + "</td>     ";
@@ -190,9 +196,14 @@ function drawPaging(pb){
 	<h2>내가 쓴 글 목록</h2>
 <div>
 	<form action="#" id="boardGoForm" method="post">
+		<input type="hidden" id="tab" value="${sNMo}" />
 		<input type="hidden" id="mno" name="mno" value="${sMNo}" />
 		<input type="hidden" name="no" id="no" value="">
 		<input type="hidden" name="tno" id="tno" value="" />
+		<input type="hidden" name="tnm" id="tnm" value="" />
+		<input type="hidden" id="match_no" name="match_no" />
+		<input type="hidden" name="mem_no" value="${sMNo}">
+		<input type="hidden" name="page" value="1" />
 	</form>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
