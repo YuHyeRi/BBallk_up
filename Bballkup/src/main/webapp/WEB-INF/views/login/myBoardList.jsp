@@ -79,7 +79,8 @@ $(document).ready(function(){
 		var tbmNo = $(this).attr("tbmNo");
 		var bGbn = $(this).attr("bGbn");
 		$("#no").val($(this).attr("no"));
-
+		$("#tno").val(bGbn);
+		alert("tno:" + $("#tno").val());
 		if(tbmNo == 0){
 			if(bGbn == 0){
 				//개인-자유
@@ -189,7 +190,9 @@ function drawPaging(pb){
 	<h2>내가 쓴 글 목록</h2>
 <div>
 	<form action="#" id="boardGoForm" method="post">
-		<input type="hidden" name="no" id="no" value="${sMNo}">
+		<input type="hidden" id="mno" name="mno" value="${sMNo}" />
+		<input type="hidden" name="no" id="no" value="">
+		<input type="hidden" name="tno" id="tno" value="" />
 	</form>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">

@@ -201,7 +201,9 @@
 	</form>
 	<div class="membtns">
 		<input type="button" value="수정" id="updateBtn">
-		<input type="button" value="탈퇴" id="deleteBtn">
+		<c:if test="${sMLv eq 1}">
+			<input type="button" value="탈퇴" id="deleteBtn">
+		</c:if>
 		<input type="button" value="취소" id="cancleBtn">
 	</div>
 </div>
