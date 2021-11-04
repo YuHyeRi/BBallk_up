@@ -52,7 +52,7 @@
 							
 							if(res.result == "success"){
 								
-								location.href = "login";
+								history.back();
 								
 							}else if(res.result == "feiled"){
 								

@@ -76,22 +76,10 @@ $(document).ready(function(){
 	});
 	
 	$("tbody").on("click", "tr", function(){
-		var tbmNo = $(this).attr("tbmNo");
-		var bGbn = $(this).attr("bGbn");
-		$("#no").val($(this).attr("no"));
+		
+		$("#match_no").val($(this).attr("no"));
 
-		if(tbmNo == 0){
-			if(bGbn == 0){
-				//개인-자유
-				$("#boardGoForm").attr("action", "freeDtl");
-			}
-		}else{
-			if(tbmNo == 1){
-				$("#boardGoForm").attr("action", "tFreeDtl");
-			}else if(tbmNo == 2){
-				$("#boardGoForm").attr("action", "T_noticeDtl");
-			}
-		}
+		$("#boardGoForm").attr("action", "pDtl");
 		$("#boardGoForm").submit();
 	});
 	
@@ -120,23 +108,7 @@ function reloadList(){
 //목록 그리기
 function drawList(list){
 	var html = "";
-	/* html += "<td>";
-	html += data.TITLE;	
-	
-	if(data.B_FILE != null){
-		
-		html += "<img src=\"resources/images/attFile.png\">";
-	}
-	
-	html += "</td>  "; 
-	<th>번호</th>
-	<th>커뮤니티</th>
-	<th>날짜</th>
-	<th>종목</th>
-	<th class="title">제목</th>
-	<th>결제금액</th>
-	<th>진행사항</th>
-	*/
+
 	for(var data of list){
 		
 		html += "<tr no=\"" + data.MATCH_NO + "\">";
@@ -199,6 +171,10 @@ function drawPaging(pb){
 <div>
 	<form action="#" id="boardGoForm" method="post">
 		<input type="hidden" name="no" id="no" value="${sMNo}">
+		<input type="hidden" id="team_no" name="team_no" value="">
+		<input type="hidden" name="mem_no" value="${sMNo}">
+		<input type="hidden" id="page" name="page" value="${page}" />
+		<input type="hidden" id="match_no" name="match_no" />
 	</form>
 	<form action="#" id="actionForm" method="post">
 		<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">

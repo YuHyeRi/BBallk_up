@@ -46,6 +46,11 @@ $(document).ready(function(){
 	   $("#loginForm").attr("action","myPage");
 	   $("#loginForm").submit();
 	});
+
+	$("#mgrpage").on("click", function(){
+		$("#loginForm").attr("action","mgrPage");
+		$("#loginForm").submit();
+	});
 		
  	//신청취소
 	$("#cancelBtn").on("click", function(){

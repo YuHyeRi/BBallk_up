@@ -25,6 +25,11 @@ h2{
 	text-align:center;
 }
 </style>	
+<style>
+#applyBtn:hover{
+	background-color: #e3ecfb;
+}
+</style>	
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
 	$(document).ready(function() {

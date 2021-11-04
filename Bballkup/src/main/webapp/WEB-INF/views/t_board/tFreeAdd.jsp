@@ -55,6 +55,7 @@
 			$("#fileName").html($(this).val().substring($(this).val().lastIndexOf("\\") + 1));
 		});
 		
+		// 탭 클릭시 이동
 		$("#tab2").on("click", function(){
 			if(confirm("페이지를 벗어나시겠습니까?")){
 				$("#addForm").attr("action", "T_notice");

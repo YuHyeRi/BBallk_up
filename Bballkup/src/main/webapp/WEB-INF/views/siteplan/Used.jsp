@@ -46,6 +46,10 @@
 			$("#loginForm").submit();
 		});
 		
+		$("#mgrpage").on("click", function(){
+			$("#loginForm").attr("action","mgrPage");
+			$("#loginForm").submit();
+		});
 		
 	}); // doc end
 </script>

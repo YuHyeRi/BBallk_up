@@ -15,182 +15,26 @@
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	<link rel="stylesheet" href="resources/css/layout/T_board.css">
-<style type="text/css">
-
-.login_wrap {
-	text-align: right;
-	padding: 10px;
-	font-size:12pt;
-}
-
-#actionForm {
-	min-width: 500px;
-}
+<style>
 .ob_wrap {
 	width: 100%;
 	border: 1px solid #444444;
 }
-
 .write_area {
+    display: flex;
 	height: 110px;
+	background-color : red;
 }
-
-.secretCheck {
-   text-align: right;
-}
-
-.secretCheck .secret_text {
-	font-size: 11px;
-}
-
 .user_info {
-	display: inline-table;
-	width: 100px;
-	height: 100px;
-	vertical-align: top;
+	background-color : pink;
+	width : 100px;
 	text-align: center;
+	padding-top: 45px;
 }
-
-.user_name {
-	display: table-cell;
-	width: 100px;
-	height: 100px;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 12pt;
-}
-
-.write_con_wrap {
-	display: inline-block;
-	width: 80%;
-	height: 100px;
-	vertical-align: top;
-}
-
-.write_con {
-	width: 540px;
-	height: 90px;
-	resize: none;
-	margin: 2px;
-}
-
-.reple_con {
-	width: 540px;
-	height: 90px;
-	resize: none;
-	margin: 2px;
-}
-
-.btn_wrap {
-	display: inline-block;
-	width: 150px;
-	height: 100px;
-	vertical-align: top;
-	/* margin-top: 5px; */
-}
-
-.action_btn {
-	width: 146px;
-	height: 96px;
-	margin: 2px;
-}
-
-.action_btn4 {
-	width: 146px;
-	height: 50px;
-	margin: 2px;
-}
-
-.action_btn2, .action_btn3, .action_btn5 {
-	width: 71px;
-	/* height: 96px; */
-	height: 50px;
-	margin: 2px;
-}
-
-.write_area .action_btn2 {
-  display: none;
- }
- 
-.login_req_wrap {
-	display: inline-table;
-	width: 800px;
+.ob_data{
+	display: flex;
 	height: 100px;
 }
-
-.login_req {
-	display: table-cell;
-	width: 800px;
-	height: 100px;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 12pt;
-}
-
-.data_req_wrap {
-	display: inline-table;
-	width: 800px;
-	height: 100px;
-	border-top : 1px solid #444444;
-	margin-bottom: 5px;
-}
-
-.data_req {
-	display: table-cell;
-	width: 800px;
-	height: 100px;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 12pt;
-}
-
-.ob_data {
-	border-top : 1px solid #444444;
-	margin-bottom: 5px;
-}
-
-.con_info {
-	display: inline-table;
-	width: 550px;
-	height: 100px;
-	vertical-align: top;
-}
-
-.con {
-	display: table-cell;
-	width: 100px;
-	height: 100px;
-	vertical-align: middle;
-	text-align: left;
-	font-size: 12pt;
-}
-.q_re_con {
-	display: inline-table;
-	width: 500px;
-	height: 45px;
-	vertical-align: middle;
-}
-.reple_con {
-	display: inline-table;
-	width: 520px;
-	height: 50px;
-	vertical-align: middle;
-	text-align: left;
-	font-size: 12pt;
-}
-
-.paging_wrap {
-	margin: 5px 0px;
-	padding: 5px 0px;
-	border-top: 1px solid #444444;
-	text-align: center;
-}
-.paging_wrap span {
-	margin: 0px 5px;
-	font-size: 12pt;
-	cursor: pointer;
-}
-
 </style>
 <script type="text/javascript"
 		src="resources/script/jquery/jquery-1.12.4.min.js"></script>

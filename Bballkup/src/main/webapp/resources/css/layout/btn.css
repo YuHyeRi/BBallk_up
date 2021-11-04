@@ -16,7 +16,7 @@
     cursor: pointer;
 }
 
-#loginBtn, #mobtn, #cancel1, #cancel2, #deleteCard, #cardAdd, #backBtn, #cancleBtn, #joinBtn, #cAddBtn, #mainlistBtn, #teambuttons>input, #mainbtn, .teambtns, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn, #cancel, #reservation{
+#loginBtn, #applyBtn, #tMemManage, #backBtn, #regBtn, #enterBtn, #mobtn, #cancel1, #cancel2, #deleteCard, #cardAdd, #backBtn, #cancleBtn, #joinBtn, #cAddBtn, #mainlistBtn, #teambuttons>input, #mainbtn, .teambtns, #cancelBtn, #addBtn, #logoutBtn, #searchBtn, #updateBtn, #deleteBtn, #listBtn, #cancel, #reservation{
  	background-color: white;
     padding: 5px;
     width: 80px;

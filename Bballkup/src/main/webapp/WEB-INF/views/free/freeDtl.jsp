@@ -25,13 +25,41 @@
 	
 	.write_con_wrap .write_con, .update_con_wrap .update_con {
 		resize: none;
-		width: 600px;
+		width: 80%;
 		height: 50px;
+		margin-bottom: 10px;
+	}
+	.write_con_wrap{
+		margin-bottom: 40px;
 	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
 	$(document).ready(function() {
+		
+		// 로그인
+		$("#login").on("click",function(){
+		    $("#loginForm").attr("action","login");
+		    $("#loginForm").submit();
+		});
+		      
+		// 로그아웃
+		$("#logout").on("click", function(){
+		    $("#loginForm").attr("action","logout");
+		    $("#loginForm").submit();
+		});
+		
+		// 마이페이지
+		$("#mypage").on("click", function(){
+			$("#loginForm").attr("action","myPage");
+			$("#loginForm").submit();
+		});
+		
+		// 관리자페이지
+		$("#mgrpage").on("click", function(){
+			$("#loginForm").attr("action","mgrPage");
+			$("#loginForm").submit();
+		});
 		
 		// dtl 부분
 		// 상세보기-목록버튼
@@ -373,10 +401,10 @@
 			</div>
 			<div class="write_con_wrap">
 				<textarea class="write_con" id="con" name="con" placeholder="댓글을 입력해주세요."></textarea><br>
+		        <!-- <div class="btn_wrap"> -->
+		        	<input type="button" value="등록" id="cAddBtn"/>
+				<!-- </div> -->
 	        </div>
-	        <div class="btn_wrap">
-	        	<input type="button" value="등록" id="cAddBtn"/>
-			</div>
 		</form>
 	</div>
 		

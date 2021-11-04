@@ -33,6 +33,30 @@
 			enterMode : "2"	
 		});
 		
+		// 로그인
+		$("#login").on("click",function(){
+		    $("#loginForm").attr("action","login");
+		    $("#loginForm").submit();
+		});
+		      
+		// 로그아웃
+		$("#logout").on("click", function(){
+		    $("#loginForm").attr("action","logout");
+		    $("#loginForm").submit();
+		});
+		
+		// 마이페이지
+		$("#mypage").on("click", function(){
+			$("#loginForm").attr("action","myPage");
+			$("#loginForm").submit();
+		});
+		
+		// 관리자페이지
+		$("#mgrpage").on("click", function(){
+			$("#loginForm").attr("action","mgrPage");
+			$("#loginForm").submit();
+		});
+		
 		/* $("#categoryno").val('1').prop("selected", true); */
 		
 		// 취소버튼

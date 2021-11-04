@@ -29,6 +29,30 @@
 			enterMode : "2"				
 		});
  		
+ 		// 로그인
+		$("#login").on("click",function(){
+		    $("#loginForm").attr("action","login");
+		    $("#loginForm").submit();
+		});
+		      
+		// 로그아웃
+		$("#logout").on("click", function(){
+		    $("#loginForm").attr("action","logout");
+		    $("#loginForm").submit();
+		});
+		
+		// 마이페이지
+		$("#mypage").on("click", function(){
+			$("#loginForm").attr("action","myPage");
+			$("#loginForm").submit();
+		});
+		
+		// 관리자페이지
+		$("#mgrpage").on("click", function(){
+			$("#loginForm").attr("action","mgrPage");
+			$("#loginForm").submit();
+		});
+ 		
  		// 취소버튼
 		$("#cancelBtn").on("click", function() {
 			$("#backForm").submit();

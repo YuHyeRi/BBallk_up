@@ -31,20 +31,17 @@
 		text-align: center;
 	}
 	
-	#regBtn, #enterBtn {
-		margin-top: 300px;
-		width: 150px;
-		height: 40px;
-		background-color: rgb(210, 210, 210);
-		border-radius: 10px;
+	.btnzip{
+		margin : 20px 30px 0px 30px ;
 	}
-	
-	#regBtn:hover, #enterBtn:hover {
-		cursor: pointer;
-		background-color: #1d2088;
-		color: white;
+	#backBtn, #regBtn, #enterBtn, #tMemManage{
+		width: 100px;
+		height: 30px;	
+		border: 2.5px solid #1d2088;
 	}
-	
+ 	#regBtn:hover, #enterBtn:hover, #backBtn:hover, #tMemManage:hover {
+		background-color:  #e3ecfb;
+	}
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
@@ -158,9 +155,15 @@
 	<div class="team_info" no="${param.tno}">
 		팀명: ${data.TEAM_NM}
 	</div><hr>
-	<input type="button" id="backBtn" value="뒤로가기" /><br><br>
+	<div class="btnzip">
+		<input type="button" id="backBtn" value="뒤로가기" />
+		<div class="btn_wrap">
+			<input type="button" id="regBtn" value="가입하기" />
+			<input type="button" id="enterBtn" value="입장하기" />
+		</div>
 	<!--주영추가  -->
 	<input type="button" id="tMemManage" value="팀원관리" /><br><br>
+	</div>
 	
 	<div class="con_wrap">
 		<div class="list_wrap">
@@ -176,10 +179,7 @@
 			<div class="team_sport">주종목 : ${data.SPORT_NM}</div><br><br>
 			<div class="team_intro">${data.TEAM_INTRO}</div>
 		</div>
-		<div class="btn_wrap">
-			<input type="button" id="regBtn" value="가입하기" />
-			<input type="button" id="enterBtn" value="입장하기" />
-		</div>
+		
 	</div>
 	
 	</main><br><br>

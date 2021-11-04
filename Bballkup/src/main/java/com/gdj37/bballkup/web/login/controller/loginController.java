@@ -150,32 +150,35 @@ public class loginController {
 		
 		return mapper.writeValueAsString(modelMap);
 	}
+	
 	//비밀번호 재확인 이동
-		@RequestMapping(value = "/pwCheckGo")
-		public ModelAndView pwCheckGo(HttpSession session, ModelAndView mav) throws Throwable {
-			
-			mav.setViewName("login/pwCheck");
-			
-			return mav;
-		}
-		//비밀번호 재확인
-		@RequestMapping(value = "/memPwCheckAjax" , method = RequestMethod.POST, 
-				produces = "text/json;charset=UTF-8")
-		@ResponseBody 
-		public String memPwCheckAjax(@RequestParam HashMap<String, String> params) throws Throwable{
-			
-			ObjectMapper mapper = new ObjectMapper();
-			
-			Map<String, Object> modelMap = new HashMap<String, Object>();
-			
-			HashMap<String, String> data = iLoginService.getMem(params);
-			String mem_pw = Utils.decryptAES128(data.get("MEM_PW")); 
-			data.put("MEM_PW", mem_pw);
-			
-			modelMap.put("data", data);
-			
-			return mapper.writeValueAsString(modelMap);
-		}
+	@RequestMapping(value = "/pwCheckGo")
+	public ModelAndView pwCheckGo(HttpSession session, ModelAndView mav) throws Throwable {
+		
+		mav.setViewName("login/pwCheck");
+		
+		return mav;
+	}
+	
+	//비밀번호 재확인
+	@RequestMapping(value = "/memPwCheckAjax" , method = RequestMethod.POST, 
+			produces = "text/json;charset=UTF-8")
+	@ResponseBody 
+	public String memPwCheckAjax(@RequestParam HashMap<String, String> params) throws Throwable{
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		HashMap<String, String> data = iLoginService.getMem(params);
+		String mem_pw = Utils.decryptAES128(data.get("MEM_PW")); 
+		data.put("MEM_PW", mem_pw);
+		
+		modelMap.put("data", data);
+		
+		return mapper.writeValueAsString(modelMap);
+	}
+	
 	@RequestMapping(value = "/memCUDAjax" , method = RequestMethod.POST, 
 			produces = "text/json;charset=UTF-8")
 	@ResponseBody 
@@ -410,8 +413,9 @@ public class loginController {
 			
 			Map<String, Object> modelMap = new HashMap<String, Object>(); //데이터를 담을 맵
 			
+			//내가 참가한 MATCH_NO받아오기
 			HashMap<String, String> data = iLoginService.getAttend(params);
-			System.out.println("??" + data.get("MATCH_NO"));
+
 			params.put("match_no", data.get("MATCH_NO"));
 			
 			//페이지 취득
@@ -420,7 +424,7 @@ public class loginController {
 			//개수 취득
 			int cnt = iLoginService.getMatchCnt(params);
 			//페이징 정보 취득
-			PagingBean pb = iPagingService.getPagingBean(page, cnt, 3, 2);
+			PagingBean pb = iPagingService.getPagingBean(page, cnt, 10, 10);
 			//데이터 시작, 종료값 할당
 			params.put("startCnt", Integer.toString(pb.getStartCount()));
 			params.put("endCnt", Integer.toString(pb.getEndCount()));

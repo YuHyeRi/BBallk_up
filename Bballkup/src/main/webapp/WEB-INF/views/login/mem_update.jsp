@@ -22,7 +22,7 @@
 		var selectVal = '${data.MEM_PW_GBN}';
 		var radioVal = '${data.MEM_GEN}';
 		$('select#mem_pw_gbn option[value=' + selectVal + ']').attr('selected', 'selected');
-		//$('radio.mem_gen option[value=' + selectVal + ']').attr('selected', 'selected');
+
 		if(radioVal=='F'){
 			$("#mem_genF").attr("checked", "checked");
 		}else{
@@ -45,42 +45,38 @@
 		
 		
 		$("#updateBtn").on("click", function(){
-			if(checkVal("#mem_phone")){
-				
-				alert("핸드폰번호를 입력하세요.");
-				$("#mem_phone").focus();
-				
-			}else if(checkVal("#mem_pwa")){
-				
-				alert("비밀번호 확인용 답변을 입력하세요.");
-				$("#mem_pwa").focus();
+			
+			if(check()){
 				
 			}else{
-				var params = $("#mUpdateForm").serialize();
-				
-				$.ajax({
-					url : "memCUDAjax",
-					type : "post",
-					dataType : "json",
-					data : params,
-					success : function(res){
-						if(res.result == "success"){
-							alert("정보가 수정되었습니다.");
-							$("#loginForm").attr("action","Mypage");
-							$("#loginForm").submit();
-							
-						}else if(res.result == "feiled"){
-							
-							alert("작성에 실패했습니다.");
-							
-						}else{
-							alert("작성중 문제가 발생했습니다.")
+
+				if(confirm("정보를 수정하시겠습니까?")){
+					var params = $("#mUpdateForm").serialize();
+					
+					$.ajax({
+						url : "memCUDAjax",
+						type : "post",
+						dataType : "json",
+						data : params,
+						success : function(res){
+							if(res.result == "success"){
+								
+								//location.href = "Main";
+								history.back();
+								
+							}else if(res.result == "feiled"){
+								
+								alert("작성에 실패했습니다.");
+								
+							}else{
+								alert("작성중 문제가 발생했습니다.")
+							}
+						},
+						error : function(request, status, error){
+							console.log(error);
 						}
-					},
-					error : function(request, status, error){
-						console.log(error);
-					}
-				});
+					});
+				}
 			}
 		});
 		
@@ -115,6 +111,38 @@
 		});
 	});//d
 	
+	function check() {
+		var sMlv = $("#sMLv").val();
+		var memPhone = document.getElementById("mem_phone");
+		
+		console.log("sMlv:" + sMlv);
+		
+		if(checkVal("#mem_phone")){
+			
+			alert("핸드폰번호를 입력하세요.");
+			$("#mem_phone").focus();
+			return true;
+		}//폰번호 유효성 검사
+        var patternPhone = /01[016789]{1}-[^0][0-9]{3,4}-[0-9]{4}/;
+
+        if(!patternPhone.test(memPhone.value))
+        {
+            alert('핸드폰 번호를 확인 해주세요');
+            memPhone.focus();
+            return true;
+        }
+		if(sMlv == '1'){
+			
+			if(checkVal("#mem_pwa")){
+				alert("비밀번호 확인용 답변을 입력하세요.");
+				$("#mem_pwa").focus();
+			}else{
+				return false;
+			}
+			
+		}
+		
+	}
 	
 	//값이 들어있는지 체크
 	function checkVal(sel){
@@ -149,6 +177,7 @@
 			${data.MEM_BD}<br><br>
 		핸드폰<br> 
 			<input type="text" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}" maxlength="13" placeholder="010-0000-0000"><br><br>
+		<c:if test="${sMLv eq 1}">
 		성별<br>
 			여자<input type="radio" class="mem_gen" name="mem_gen" id="mem_genF" value="F">
 			남자<input type="radio" class="mem_gen" name="mem_gen" id="mem_genM" value="M"><br><br>			
@@ -161,6 +190,7 @@
 			</select><br><br>
 		비밀번호 확인용 답변<br>
 			<input type="text" id="mem_pwa" name="mem_pwa" value="${data.MEM_PWA}" placeholder="답변"><br><br>
+		</c:if>
 	</form>
 	<form action="#" id="mDeleteForm" method="post">
 		<input type="hidden" name="gbn" value="d" >

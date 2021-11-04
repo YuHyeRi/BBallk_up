@@ -64,6 +64,32 @@
 			$(this).remove();
 		});
 		
+		// 탭 클릭시 이동
+		$("#tab2").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#updateForm").attr("action", "T_notice");
+				$("#updateForm").submit();
+			}
+		});
+		$("#tab4").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#updateForm").attr("action", "tFreeList");
+				$("#updateForm").submit();
+			}
+		});
+		$("#tab1").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#updateForm").attr("action", "T_teammozip");
+				$("#updateForm").submit();
+			}
+		});
+		$("#tab3").on("click", function(){
+			if(confirm("페이지를 벗어나시겠습니까?")){
+				$("#updateForm").attr("action", "T_oneline");
+				$("#updateForm").submit();
+			}
+		});
+		
 		// 수정 버튼
 		$("#updateBtn").on("click", function() {
 			$("#con").val(CKEDITOR.instances['con'].getData());

@@ -18,18 +18,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#login").on("click",function(){
-	   $("#loginForm").attr("action","login");
-	   $("#loginForm").submit();});
+	   $("#actionForm").attr("action","login");
+	   $("#actionForm").submit();});
 		      
 	$("#logout").on("click", function(){
-	   $("#loginForm").attr("action","logout");
-	   $("#loginForm").submit();
+	   $("#actionForm").attr("action","logout");
+	   $("#actionForm").submit();
 	});
 	      
 	$("#mgrpage").on("click", function(){
-	   $("#loginForm").attr("action","mgrPage");
-	   $("#loginForm").submit();
-	});
+	   $("#actionForm").attr("action","mgrPage");
+	   $("#actionForm").submit();
+	}); 
 	
 	$(".memManage").on("click", function(){
 		location.href="memManage";
@@ -37,6 +37,18 @@ $(document).ready(function(){
 	
 	$(".teamManage").on("click", function(){
 		location.href="teamManage";
+	});
+	//패스워드변경
+	$(".changePw").on("click", function(){
+		$("#gbn").val("pu");
+		$("#actionForm").attr("action", "pwCheckGo");
+		$("#actionForm").submit();
+	});
+	//관리자정보수정
+	$(".changeInfo").on("click", function(){
+		$("#gbn").val("u");
+		$("#actionForm").attr("action", "pwCheckGo");
+		$("#actionForm").submit();
 	});
 	
 });
@@ -53,6 +65,7 @@ $(document).ready(function(){
 	<input type="hidden" id="mem_no" name="mem_no" value="${param.mem_no}">
 	<input type="hidden" id="mem_nm" name="mem_nm" value="${param.mem_nm}">
 	<input type="hidden" id="mem_phone" name="mem_phone" value="${data.MEM_PHONE}">
+	<input type="hidden" id="gbn" name="gbn" value="">
 </form>
 <%-- 	<input type="hidden" name="searchTxt" id="searchTxt" value="${searchTxt}" >
 	<input type="hidden" name="oldTxt" id="oldTxt" value="${searchTxt}" >
@@ -100,6 +113,5 @@ $(document).ready(function(){
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />
 </footer>
-<script type="text/javascript" src="resources/css/js/header.js"></script>
 </body>
 </html>
