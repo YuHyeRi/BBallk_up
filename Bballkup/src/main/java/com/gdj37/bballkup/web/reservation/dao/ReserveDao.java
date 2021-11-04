@@ -53,4 +53,16 @@ public class ReserveDao implements IReserveDao{
 		
 		return sqlSession.selectOne("match.getAtt", params);
 	}
+
+	@Override
+	public int matchDelete(HashMap<String, String> params) throws Throwable {
+
+		return sqlSession.update("match.matchDelete", params);
+	}
+
+	@Override
+	public int stateChk(HashMap<String, String> params) throws Throwable {
+		
+		return sqlSession.selectOne("match.stateChk", params);
+	}
 }

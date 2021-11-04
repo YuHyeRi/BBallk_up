@@ -19,4 +19,8 @@ public interface IReserveDao {
 
 	public int getAtt(HashMap<String, String> params) throws Throwable;
 
+	public int matchDelete(HashMap<String, String> params) throws Throwable;
+
+	public int stateChk(HashMap<String, String> params) throws Throwable;
+
 }

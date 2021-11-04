@@ -55,5 +55,17 @@ public class ReserveService implements IReserveService{
 		
 		return iReserveDao.getAtt(params);
 	}
+
+	@Override
+	public int matchDelete(HashMap<String, String> params) throws Throwable {
+
+		return iReserveDao.matchDelete(params);
+	}
+
+	@Override
+	public int stateChk(HashMap<String, String> params) throws Throwable {
+		
+		return iReserveDao.stateChk(params);
+	}
 	
 }

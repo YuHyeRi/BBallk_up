@@ -43,4 +43,12 @@
 	<select id="getAtt" parameterType="hashmap" resultType="Integer">
 		SELECT COUNT(*) FROM ATTEND WHERE MATCH_NO = #{match_no} AND MEM_NO = #{mem_no}
 	</select>
+	
+	<update id="matchDelete" parameterType="hashmap">
+		UPDATE MATCHES SET MATCH_STATE='경기취소' WHERE MATCH_NO=#{match_no}
+	</update>
+	
+	<select id="stateChk" parameterType="hashmap" resultType="Integer">
+		SELECT COUNT(*) FROM MATCHES WHERE (MATCH_STATE = '모집마감' OR MATCH_STATE = '경기취소') AND MATCH_NO = #{match_no}
+	</select>
 </mapper>
