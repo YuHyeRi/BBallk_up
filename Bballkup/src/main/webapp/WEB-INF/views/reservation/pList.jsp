@@ -67,8 +67,27 @@ $(document).ready(function() {
 	
 	$("tbody").on("click", "tr", function() {
 		$("#match_no").val($(this).attr("no"));
-		$("#actionForm").attr("action", "pDtl");
-		$("#actionForm").submit();
+		var params = $("#actionForm").serialize();
+		
+		$.ajax({					
+			url: "stateChk",
+			type: "post",			
+			data: params,			
+			dataType: "json",		
+			success: function(res) {
+				if(res.result == "success"){
+					$("#actionForm").attr("action", "pDtl");
+					$("#actionForm").submit();
+				}else if(res.result == "failed"){
+					alert("이미 마감된 게시글입니다.");
+				}else{
+					alert("게시글 이동에 실패했습니다.");
+				}
+			},
+			error: function(request, status, error) {
+				console.log(error);
+			}
+		});
 	});
 });
 function reloadList() {

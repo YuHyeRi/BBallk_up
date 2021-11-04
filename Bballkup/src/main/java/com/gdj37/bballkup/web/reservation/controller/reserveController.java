@@ -123,6 +123,27 @@ public class reserveController {
 		return mapper.writeValueAsString(modelMap);
 	}
 	
+	@RequestMapping(value="/stateChk", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	@ResponseBody
+	public String stateChk(@RequestParam HashMap<String, String> params) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+		String result = "success";
+			
+		try {
+			int cnt = iReserveService.stateChk(params);
+			if(cnt > 0 ) {
+					result = "failed";
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			result = "error";
+		}
+		modelMap.put("result", result);
+		return mapper.writeValueAsString(modelMap);
+	}
+	
 	@RequestMapping(value="/pDtl")
 	public ModelAndView pDtl(@RequestParam HashMap<String, String> params, 
 									ModelAndView mav) throws Throwable {
@@ -189,4 +210,27 @@ public class reserveController {
 		
 		return mapper.writeValueAsString(modelMap);
 	}
+	
+	@RequestMapping(value="/matchDeletes", method=RequestMethod.POST, produces="text/json;charset=UTF-8")
+	
+	@ResponseBody
+	public String matchDeletes(@RequestParam HashMap<String, String> params) throws Throwable {
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+			
+		String result = "success";
+			
+		try {
+			int cnt = iReserveService.matchDelete(params);
+			if(cnt == 0 ) {
+					result = "failed";
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			result = "error";
+		}
+		modelMap.put("result", result);
+		return mapper.writeValueAsString(modelMap);
+	}
+	
 }

@@ -79,6 +79,31 @@ $(document).ready(function() {
 		$("#actionForm").submit();
 	});
 	
+	$("#del").on("click", function(){
+		if(confirm("경기를 취소하시겠습니까?")) {
+			var params = $("#actionForm").serialize();
+			
+			$.ajax({
+				url: "matchDeletes",			
+				type: "post",
+				dataType: "json",
+				data: params,
+				success: function(res) {
+					if(res.result == "success") {
+						alert("경기를 취소하였습니다.");
+						location.href = "pList";
+					} else if(res.result == "failed") {
+						alert("경기취소에 실패 하였습니다.");
+					} else {
+						alert("경기취소 중 문제가 발생하였습니다.");
+					}
+				},
+				error: function(request, status, error) {
+					console.log(error);
+				}
+			});
+		}
+	})
 });
 
 function checkVal(sel){
@@ -143,13 +168,13 @@ function checkVal(sel){
 	<c:when test="${sMNo == 4}"><!-- 관리자 -->
 		<div class="dtlBtn">
 			<input type="button" id="list" name="list" value="목록으로">
-			<input type="button" id="del" name="del" value="글 삭제">
+			<input type="button" id="del" name="del" value="경기취소">
 		</div>
 	</c:when>
 	<c:otherwise>
 		<div class="dtlBtn"><!-- 글 작성자 -->
 			<input type="button" id="list" name="list" value="목록으로">
-			<input type="button" id="del" name="del" value="글 삭제">
+			<input type="button" id="del" name="del" value="경기취소">
 		</div>
 	</c:otherwise>
 </c:choose>
