@@ -13,6 +13,18 @@
 	<link rel="stylesheet" href="resources/css/layout/loginout.css">
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/table.css">
+<style type="text/css">
+#applyBtn {
+	background-color: pink;
+}
+
+h2{
+	display:inline-block;
+}
+.noneDiv{
+	text-align:center;
+}
+</style>	
 <style>
 #applyBtn:hover{
 	background-color: #e3ecfb;
@@ -22,6 +34,10 @@
 <script>
 	$(document).ready(function() {
 		reloadList();
+		
+		if($("#applyBtn").val() == "승인완료"){
+			$("#applyBtn").css("background-color","blue");
+		}
 		
 		$("tbody").on("click", "#applyBtn", function() {
 			//console.log($(this).attr("no"));
@@ -64,6 +80,11 @@
 			data : params,			
 			success : function(res){
 				drawList(res.list);
+				if(res.list.length == 0){
+					nonMsg();
+				}else{
+					drawList(res.list);
+				}
 			},
 			error : function(request, status, error){
 				console.log(error);
@@ -87,6 +108,15 @@
 		
 		$("tbody").html(html);
 	}
+	
+	function nonMsg(){
+		var html = "";
+		
+		html = "<p> 현재 소속된 팀원이 없습니다 </p>";
+
+		$(".noneDiv").html(html);
+	}
+
 </script>
 </head>
 <body>
@@ -106,9 +136,9 @@
 		<input type="hidden" id="mno" name="mno" />
 		<input type="hidden" name="tno" id="tno" value="${param.tno}"/>
 	</form>
-		<table class="notice_table">
+		<table>
 			<thead>
-				<tr class="nonetr">
+				<tr>
 					<th>회원번호</th>
 					<th>회원명</th>
 					<th>신청날짜</th>
@@ -119,7 +149,8 @@
 			<tbody>
 			</tbody>
 		</table> 
-		<br><br>
+		<div class="noneDiv"></div>
+		<br><br>		
 </main>
 <br><br>
 	

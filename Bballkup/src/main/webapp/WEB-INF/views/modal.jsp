@@ -73,6 +73,9 @@
 			<p>참가하기 버튼을 눌러 체육활동에 참가해보세요<br>
 			<span style="color:red">※ 경기일에 맞춰 미리 등록한 카드로 자동결제 됩니다</span></p>
 		</div>
+		<div style="text-decoration: underline; cursor: pointer; text-align: end;"> 
+					<a id="chk_today" href="javascript:closeToday();" class="close_day"> 오늘 하루 동안 보지 않기 </a> 
+		</div>
 	</div>
 </div>
 
@@ -94,5 +97,31 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-	
+
+function setCookie(name, value, expiredays){
+	var today = new Date();
+
+	console.log(today.getDate())
+
+	today.setDate(today.getDate() + expiredays); // 현재시간에 하루를 더함 
+
+	document.cookie = name + '=' + escape(value) + '; expires=' + today.toGMTString();
+
+}
+
+$(function(){
+           
+	if(document.cookie.indexOf("popToday=close") < 0 ){      // 쿠키 저장여부 체크
+		document.getElementById("modal").style.display = "block";
+		}else {
+		document.getElementById("modal").style.display = "none"; 
+		}
+});
+
+function closeToday() { 
+	setCookie( "popToday", "close" , 1  ); 
+	$("#modal").css("display", "none");
+	document.getElementById("modal").style.display = "none";
+}
+
 </script>

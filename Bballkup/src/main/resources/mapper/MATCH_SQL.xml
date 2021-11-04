@@ -51,4 +51,8 @@
 	<select id="stateChk" parameterType="hashmap" resultType="Integer">
 		SELECT COUNT(*) FROM MATCHES WHERE (MATCH_STATE = '모집마감' OR MATCH_STATE = '경기취소') AND MATCH_NO = #{match_no}
 	</select>
+	
+	<update id="stateChange">
+		UPDATE MATCHES SET MATCH_STATE='모집마감' WHERE TO_CHAR(MATCH_DDAY, 'YYYY-MM-DD')=TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</update>
 </mapper>

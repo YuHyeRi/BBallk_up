@@ -65,4 +65,10 @@ public class ReserveDao implements IReserveDao{
 		
 		return sqlSession.selectOne("match.stateChk", params);
 	}
+
+	@Override
+	public void stateChange() throws Throwable {
+		sqlSession.update("match.stateChange");
+		
+	}
 }

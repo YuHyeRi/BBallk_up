@@ -23,4 +23,6 @@ public interface IReserveDao {
 
 	public int stateChk(HashMap<String, String> params) throws Throwable;
 
+	public void stateChange() throws Throwable;
+
 }
