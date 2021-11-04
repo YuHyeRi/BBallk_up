@@ -15,6 +15,12 @@
 	<link rel="stylesheet" href="resources/css/layout/login.css">
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 <style>
+td {
+	font-size: 16px;
+}
+.myTeamdiv {
+	height: 500px;
+}
 .nonetr{
 	margin: 20px 0px 20px 0px;
 }
@@ -70,8 +76,8 @@ function drawList(list){
 	for(var data of list){
 		
 		html += "<tr no=\"" + data.MEM_NO + "\">           ";
-		html += "<td>" + data.MEM_NO + "</td>     ";
-		html += "<td>" + data.TEAM_NO + "</td>     ";
+		//html += "<td>" + data.MEM_NO + "</td>     ";
+		//html += "<td>" + data.TEAM_NO + "</td>     ";
 		html += "<td>" + data.TEAM_NM + "</td>     ";
 		html += "<td>" + data.APPLY_STATE + "</td>  ";
 		html += "</tr>          ";
@@ -99,23 +105,25 @@ function nonMsg(){
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
-	<h2>내가 가입한 팀 목록</h2>
+	<h2>마이페이지 >> 내가 가입한 팀 목록</h2>
+	<div class="myTeamdiv">
 	<form action="#" id="actionForm" method="post">
 	<input type="hidden" name="mem_no" id="mem_no" value="${sMNo}">
 		<table class="notice_table">
 			<thead>
 				<tr class="nonetr">
-					<th>회원번호</th>
-					<th>팀번호</th>
+					<!-- <th>회원번호</th>
+					<th>팀번호</th> -->
 					<th>팀명</th>
 					<th>승인여부</th>
-					<th>회원등급</th>
+					<!-- <th>회원등급</th> -->
 				</tr>
 			</thead>
 			<tbody>
 			</tbody>
 		</table>
 	</form>
+	</div>
 </main>
 <footer>
 	<jsp:include page="../footer.jsp" flush="true" />

@@ -47,7 +47,7 @@ tr:hover{
 	$(document).ready(function() {
 		reloadList();
 		
-		$("tbody").on("click", "#applyBtn", function() {
+		$("tbody").on("click", ".applyBtn", function() {
 			//console.log($(this).attr("no"));
 			//console.log($(this).val());
 			
