@@ -23,7 +23,8 @@
 .write_area {
     display: flex;
 	height: 100px;
-	background-color : #e3ecfb;
+	/* background-color : #e3ecfb; */
+	margin-bottom: 3px;
 	/* border-radius: 10px; */
 }
 .user_info {
@@ -40,18 +41,19 @@
 	height: 100px;
 }
 .write_con, .q_re_con {
-	
-	border : none;
 	resize: none;
 	width: 99%;
     height: 90%;
     margin: 3px;
 }
-.reple_wrap>.con_info {
+/* .reple_wrap>.con_info {
 	border: 1px solid #e3ecfb;
-}
+} */
 .reple_wrap>.user_info {
 	padding-top: 15px;
+}
+.reple_text_area{
+	background-color: #e3ecfb;
 }
 .ob_data_reple{
 	display: flex;
@@ -63,7 +65,7 @@
 }
 .con_info{
 	width: 80%;
-    border: 1px solid #e3ecfb;
+ /*    border: 1px solid #e3ecfb; */
 }
 .btn_wrap{
 	width : 15%;
@@ -78,7 +80,7 @@
  }
  .action_btn2, .action_btn3, .action_btn5, .action_btn4{
  	background-color: white;
-    padding: 5px;
+    padding: 3px;
     width: 80px;
     border-radius: 5px;
     border: 2px solid #1d2088;
@@ -87,6 +89,39 @@
  .action_btn2, .action_btn3, .action_btn5{
  	margin-top : 15px;
  }
+ 
+.con {
+	display: table-cell;
+	width: 100%;
+	height: 100px;
+	vertical-align: middle;
+	text-align: left;
+}
+.q_re_con {
+	display: inline-table;
+	height: 75px;
+	vertical-align: middle;
+}
+.reple_con {
+    height: 50px;
+    width: 100%;
+	vertical-align: middle;
+	text-align: left;
+}
+
+.reple_text_area {
+	height: 90px;
+}
+.reple_text_area > .con_info {
+	padding-top: 20px;
+}
+.reple_write_area {
+	height: 90px;
+}
+.reple_wrap > .user_info  {
+	padding-top: 20px;
+}
+ 
  
 </style>
 <script type="text/javascript"
@@ -325,7 +360,7 @@ function checkObjVal(obj) {
 					<div class="user_name">${sMNm}</div>
 				</div>
 				<div class="write_con_wrap">
-					<textarea class="write_con" id="q_con" name="q_con"></textarea>
+					<textarea class="write_con" id="q_con" name="q_con" placeholder="내용을 입력해주세요"></textarea>
 				</div>
 				<div class="btn_wrap" no="${data.TEAM_NO}">
 					<input type="button" value="저장" class="action_btn" id="addBtn"/>

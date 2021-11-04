@@ -15,6 +15,9 @@
 	
 <style type="text/css">
 
+td {
+	font-size: 16px;
+}
 .applyBtn {
 	width: 100px;
     background-color: white;
@@ -91,13 +94,13 @@ function drawList(list){
 		html += "<td>" + data.MEM_NM + "</td>     ";
 		html += "<td>" + data.TEAM_NM + "</td>  ";
 		html += "<td>" + data.TEAM_JOIN_DT + "</td>  ";
-		html += "<td>"		
+		/* html += "<td>"		
 		 if(data.TEAM_STATE == "승인완료") {
 		    html += "<p style = \"color:#1d2088;\"> "+ data.TEAM_STATE ;
 		  } else {
 		    html += "<p style = \"color:red;\"> "+ data.TEAM_STATE ;
 		  }		
-		html += "</td>";
+		html += "</td>"; */
 		html += "<td>"
 		
 			if(data.TEAM_STATE == "승인완료") {
@@ -150,10 +153,10 @@ function drawList(list){
 	<table class="notice_table">
 		<thead>
 			<tr class = "nonetr">
-				<th>회원명</th>
+				<th>팀장명</th>
 				<th>팀명</th>
 				<th>팀신청일자</th>
-				<th>팀승인상태</th>
+				<!-- <th>팀승인상태</th> -->
 				<th>팀승인버튼</th>
 				<th>팀승인일자</th>
 			</tr>

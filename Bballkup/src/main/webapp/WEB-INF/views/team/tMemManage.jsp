@@ -14,7 +14,9 @@
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 <style type="text/css">
-
+td {
+	font-size: 16px;
+}
 h2{
 	display:inline-block;
 }

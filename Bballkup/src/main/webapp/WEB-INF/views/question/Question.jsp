@@ -89,7 +89,7 @@
  	height: 90px;`
  	margin-top: 5px;
  }
- .action_btn2, .action_btn3, .action_btn5, .action_btn4{
+ .action_btn2, .action_btn3, .action_btn5, .action_btn4, .action_btn6{
  	background-color: white;
     padding: 5px;
     width: 100px;
@@ -116,9 +116,9 @@ input{
 	height: 100px;
 	margin-bottom: 3px;
 }
-.action_btn2 {
+ .action_btn6 {
   display: none;
- }
+ } 
  
 .login_req_wrap {
 	display: inline-table;
@@ -171,7 +171,8 @@ input{
 }
 .reple_con {
 	display: inline-table;
-	height: 50px;
+    height: 50px;
+    width: 100%;
 	vertical-align: middle;
 	text-align: left;
 }
@@ -231,7 +232,7 @@ $(document).ready(function() {
 		$("#no").val(no);
 		
 		$(".write_area .action_btn").hide(); 
-		$(".write_area .action_btn2").show(); 
+		$(".write_area .action_btn6").show(); 
 	});
 	
 	$(".write_area #cancelBtn").on("click",function(){
@@ -239,7 +240,7 @@ $(document).ready(function() {
 		$("#no").val("");
 		
 		$(".write_area .action_btn").show();
-		$(".write_area .action_btn2").hide();
+		$(".write_area .action_btn6").hide();
 	});
 	
 	$("body").on("click","#loginBtn",function() { 
@@ -404,8 +405,8 @@ function checkObjVal(obj) {
 					</div>
 					<div class="btn_wrap">
 						<input type="button" value="저장" class="action_btn" id="addBtn"/>
-						<input type="button" value="수정" class="action_btn2" id="update2Btn"/>
-						<input type="button" value="취소" class="action_btn2" id="cancelBtn"/>
+						<input type="button" value="수정" class="action_btn6" id="update2Btn"/>
+						<input type="button" value="취소" class="action_btn6" id="cancelBtn"/>
 					</div>			
 			    </c:otherwise>
 			</c:choose>
