@@ -58,20 +58,20 @@
 		// 탭 클릭시 이동
 		$("#tab1").on("click", function(){
 			if(confirm("페이지를 벗어나시겠습니까?")){
-				$("#actionForm").attr("action", "T_teammozip");
-				$("#actionForm").submit();
+				$("#addForm").attr("action", "T_teammozip");
+				$("#addForm").submit();
 			}
 		});
 		$("#tab2").on("click", function(){
 			if(confirm("페이지를 벗어나시겠습니까?")){
-				$("#actionForm").attr("action", "T_notice");
-				$("#actionForm").submit();
+				$("#addForm").attr("action", "T_notice");
+				$("#addForm").submit();
 			}
 		});
 		$("#tab3").on("click", function(){
 			if(confirm("페이지를 벗어나시겠습니까?")){
-				$("#actionForm").attr("action", "T_oneline");
-				$("#actionForm").submit();
+				$("#addForm").attr("action", "T_oneline");
+				$("#addForm").submit();
 			}
 		});
 		
