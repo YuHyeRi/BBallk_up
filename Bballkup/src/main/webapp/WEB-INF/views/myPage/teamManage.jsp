@@ -14,8 +14,20 @@
 	<link rel="stylesheet" href="resources/css/layout/searchbox.css">
 	
 <style type="text/css">
-.paging_wrap span {
-   cursor: pointer;
+
+.applyBtn {
+	width: 100px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2.5px solid #1d2088;
+    margin-bottom: 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+tr:hover{
+	background-color : #e3ecfb;
+	cursor:pointer;
 }
 </style>
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
@@ -23,8 +35,8 @@
 $(document).ready(function(){
 	reloadList();
 	
-	$("tbody").on("click", "#applyBtn", function() {
-		console.log($(this).attr("no"));
+	$("tbody").on("click", ".applyBtn", function() {
+		//console.log($(this).attr("no"));
 		//console.log($(this).val());
 		
 		var tno = $(this).attr("no");
@@ -32,8 +44,7 @@ $(document).ready(function(){
 		
 		if($(this).val() == '승인완료'){
 			alert("이미 승인된 팀입니다.");
-		} else {
-			
+		} else {			
 			var params = $("#actionForm").serialize();
 			 
 			$.ajax({
@@ -76,16 +87,34 @@ function drawList(list){
 	
 	for(var data of list){
 
-		html += "<tr no=\"" + data.TEAM_NO + "\">           ";
-		html += "<td>" + data.TEAM_NO + "</td>     ";
-		html += "<td>" + data.MEM_NO + "</td>     ";
+		html += "<tr no=\"" + data.TEAM_NO + "\">";
 		html += "<td>" + data.MEM_NM + "</td>     ";
 		html += "<td>" + data.TEAM_NM + "</td>  ";
 		html += "<td>" + data.TEAM_JOIN_DT + "</td>  ";
-		html += "<td>" + data.TEAM_STATE + "</td>  ";
-		html += "<td><input type=\"button\" id=\"applyBtn\" no=\"" + data.TEAM_NO + "\" value=\""+data.TEAM_STATE+"\"></td>  ";
-		html += "<td>" + data.TEAM_APPRO_DT + "</td>  ";
-		html += "</tr>          ";				
+		html += "<td>"		
+		 if(data.TEAM_STATE == "승인완료") {
+		    html += "<p style = \"color:#1d2088;\"> "+ data.TEAM_STATE ;
+		  } else {
+		    html += "<p style = \"color:red;\"> "+ data.TEAM_STATE ;
+		  }		
+		html += "</td>";
+		html += "<td>"
+		
+			if(data.TEAM_STATE == "승인완료") {
+		    	html += "<input type=\"button\" style = \"background-color:#e3ecfb;\" class=\"applyBtn\" no=\"" + data.TEAM_NO + "\" value=\""+data.TEAM_STATE+"\">  ";
+		  	} else {
+			  	html += "<input type=\"button\" style = \"background-color:pink;\" class=\"applyBtn\" no=\"" + data.TEAM_NO + "\" value=\""+data.TEAM_STATE+"\">  "; 
+		  	}				
+		html += "</td>";
+		html += "<td>"
+			
+			if(data.TEAM_APPRO_DT == null) {
+		    	html += "<p>" + "-" + "</p>";
+			} else {
+				html += data.TEAM_APPRO_DT;
+			}
+		html += "</td>";
+		html += "</tr>";				
 	}
 	
 	$("tbody").html(html);
@@ -93,13 +122,16 @@ function drawList(list){
 </script>
 </head>
 <body>
+<form action="#" id="loginForm">
+<input type="hidden" id="mem_no" name="mem_no" value="${sMNo}">
+</form>
 <header>
 	<jsp:include page="../header.jsp" flush="true" />
 </header>
 <main>
 <jsp:include page="../nav.jsp" flush="true" />
 <h2>관리자페이지 >> 팀관리</h2>
-팀검색<br>
+<br>
 <form action="#" id="actionForm" method="post">
 	<%-- <input type="text" name="searchTxt" id="searchTxt" value="${param.searchTxt}" >
 	<input type="hidden" name="oldTxt" id="oldTxt" value="${param.searchTxt}" >
@@ -115,11 +147,9 @@ function drawList(list){
 	<input type="button" value="검색" id="searchBtn"> -->
 </form>
 <div>
-	<table>
+	<table class="notice_table">
 		<thead>
-			<tr>
-				<th>팀번호</th>
-				<th>회원번호</th>
+			<tr class = "nonetr">
 				<th>회원명</th>
 				<th>팀명</th>
 				<th>팀신청일자</th>

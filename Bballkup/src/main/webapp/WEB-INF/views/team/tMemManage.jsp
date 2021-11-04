@@ -14,30 +14,36 @@
 	<link rel="stylesheet" href="resources/css/layout/nav.css">
 	<link rel="stylesheet" href="resources/css/layout/table.css">
 <style type="text/css">
-#applyBtn {
-	background-color: pink;
-}
 
 h2{
 	display:inline-block;
 }
 .noneDiv{
 	text-align:center;
+	height: 600px;
 }
-</style>	
-<style>
-#applyBtn:hover{
-	background-color: #e3ecfb;
+.noneDiv > p {
+	margin-top: 20px;
+}
+.applyBtn {
+	width: 100px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2.5px solid #1d2088;
+    margin-bottom: 20px;
+    cursor: pointer;
+    margin: 10px;
+}
+tr:hover{
+	background-color : #e3ecfb;
+	cursor:pointer;
 }
 </style>	
 <script type="text/javascript" src="resources/script/jquery/jquery-1.12.4.min.js"></script>
 <script>
 	$(document).ready(function() {
 		reloadList();
-		
-		if($("#applyBtn").val() == "승인완료"){
-			$("#applyBtn").css("background-color","blue");
-		}
 		
 		$("tbody").on("click", "#applyBtn", function() {
 			//console.log($(this).attr("no"));
@@ -101,8 +107,22 @@ h2{
 			html += "<td>" + data.MEM_NO + "</td>     ";
 			html += "<td>" + data.MEM_NM + "</td>     ";
 			html += "<td>" + data.T_MEM_DT + "</td>  ";
-			html += "<td>" + data.APPLY_STATE + "</td>  ";
-			html += "<td><input type=\"button\" id=\"applyBtn\" no=\"" + data.MEM_NO + "\" value=\""+data.APPLY_STATE+"\"></td>  ";
+			//html += "<td>" + data.APPLY_STATE + "</td>  ";
+			/* html += "<td>"		
+				 if(data.APPLY_STATE == "승인완료") {
+				    html += "<p style = \"color:#1d2088;\"> "+ data.APPLY_STATE ;
+				  } else {
+				    html += "<p style = \"color:red;\"> "+ data.APPLY_STATE ;
+				  }		
+				html += "</td>"; */
+			//html += "<td><input type=\"button\" class=\"applyBtn\" no=\"" + data.MEM_NO + "\" value=\""+data.APPLY_STATE+"\"></td>  ";
+			html += "<td>"				
+				if(data.APPLY_STATE == "승인완료") {
+			    	html += "<input type=\"button\" style = \"background-color:#e3ecfb;\" class=\"applyBtn\" no=\"" + data.MEM_NO + "\" value=\""+data.APPLY_STATE+"\">  ";
+			  	} else {
+				  	html += "<input type=\"button\" style = \"background-color:pink;\" class=\"applyBtn\" no=\"" + data.MEM_NO + "\" value=\""+data.APPLY_STATE+"\">  "; 
+			  	}				
+			html += "</td>";
 			html += "</tr>          ";				
 		}
 		
@@ -136,14 +156,14 @@ h2{
 		<input type="hidden" id="mno" name="mno" />
 		<input type="hidden" name="tno" id="tno" value="${param.tno}"/>
 	</form>
-		<table>
+		<table class="notice_table">
 			<thead>
-				<tr>
+				<tr class = "nonetr">
 					<th>회원번호</th>
 					<th>회원명</th>
 					<th>신청날짜</th>
-					<th>승인여부</th>
-					<th>승인/추방버튼</th>
+					<!-- <th>승인여부</th> -->
+					<th>승인버튼</th>
 				</tr>
 			</thead>
 			<tbody>
