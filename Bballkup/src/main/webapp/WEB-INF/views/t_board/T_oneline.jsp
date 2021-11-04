@@ -306,6 +306,7 @@ function checkObjVal(obj) {
 	<input type="hidden" id="mno" name="mno" value="${sMNo}"/>
 	<input type="hidden" name="page" id="page" value="${page}"/>
 	<input type="hidden" id="tno" name="tno" value="${param.tno}" />
+	<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 	
 	<div class="write_area">
 		<c:choose>
@@ -335,6 +336,7 @@ function checkObjVal(obj) {
 		<input type="hidden" name="no" id="no2" />
 		<input type="hidden" id="mno" name="mno" value="${mno}"/>
 		<input type="hidden" id="tno" name="tno" value="${param.tno}" />
+		<input type="hidden" id="tnm" name="tnm" value="${param.tnm}" />
 		<input type="hidden" name="q_re_con" id="q_re_con" />
 	</form>
 	<!-- List -->
