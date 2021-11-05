@@ -23,4 +23,6 @@ public interface IT_onelineDao {
 
 	public int repleUpdateQ(HashMap<String, String> params) throws Throwable;
 
+	public HashMap<String, String> TeamLeader(HashMap<String, String> params) throws Throwable;
+
 }

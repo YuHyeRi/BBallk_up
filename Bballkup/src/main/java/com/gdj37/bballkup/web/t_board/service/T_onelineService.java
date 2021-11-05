@@ -67,4 +67,9 @@ public class T_onelineService implements IT_onelineService{
 		
 		return it_onelineDao.repleUpdateQ(params);
 	}
+
+	@Override
+	public HashMap<String, String> TeamLeader(HashMap<String, String> params) throws Throwable {
+		return it_onelineDao.TeamLeader(params);
+	}
 }

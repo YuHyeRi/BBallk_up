@@ -66,4 +66,10 @@ public class T_onelineDao implements IT_onelineDao{
 		return sqlSession.update("tOneline.repleUpdateQ", params);
 	}
 
+	@Override
+	public HashMap<String, String> TeamLeader(HashMap<String, String> params) throws Throwable {
+
+		return sqlSession.selectOne("tOneline.TeamLeader", params);
+	}
+
 }

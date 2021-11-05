@@ -133,6 +133,8 @@ $(document).ready(function() {
 	/* alert("팀번호 : " + "${param.tno}");
 	alert("팀이름 : " + "${param.tnm}"); */
 	
+	//console.log("팀장 : " + '${param.Leader}'); ==> 안받아짐 ㅠ
+	
 	if("${page}" > "${pb.maxPcount}"){
 		$("#page").val("${pb.maxPcount}");
 		$("#actionForm").submit();
@@ -396,8 +398,10 @@ function checkObjVal(obj) {
 							<div class="con">${data.TB_CON}</div>
 						</div>
 						<div class="btn_wrap">				
-							<c:if test="${data.MEM_NM eq sMNm}">
-								<input type="button" value="수정" class="action_btn2" id="updateBtn" />								
+							<c:if test="${data.MEM_NM eq sMNm || sMNo eq 5}">
+								<c:if test="${data.MEM_NM eq sMNm}">
+									<input type="button" value="수정" class="action_btn2" id="updateBtn" />								
+								</c:if>
 								<input type="button" value="삭제" class="action_btn2" id="deleteBtn" />
 							</c:if>
 						</div>

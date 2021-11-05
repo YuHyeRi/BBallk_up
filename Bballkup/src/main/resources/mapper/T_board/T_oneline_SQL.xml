@@ -52,4 +52,11 @@
 		WHERE TB_NO = #{no} AND TEAM_NO = #{tno}
 	</update>
 	
+	<!-- 팀장mem_no가져오기 -->
+	<select id="teamLeader" parameterType="hashmap" resultType="Integer">
+		SELECT MEM_NO, TEAM_NM FROM TEAM
+		WHERE TEAM_STATE = '승인완료'
+		AND MEM_NO = #{mno}
+		AND TEAM_NO = #{tno}
+	</select>
 </mapper>

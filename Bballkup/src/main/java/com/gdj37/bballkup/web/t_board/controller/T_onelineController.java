@@ -24,7 +24,7 @@ public class T_onelineController {
 	public IPagingService iPagingService;
 	
 	@RequestMapping (value="/T_oneline")
-	public ModelAndView Question(
+	public ModelAndView T_oneline(
 			@RequestParam HashMap<String, String> params,
 			ModelAndView mav) throws Throwable {
 		
@@ -48,6 +48,20 @@ public class T_onelineController {
 		return mav;
 	}
 	
+	// 팀장 권한
+	@RequestMapping (value="TeamLeader")
+	public ModelAndView TeamLeader(
+			@RequestParam HashMap<String, String> params,
+			ModelAndView mav) throws Throwable {
+		// 데이터 조회
+		HashMap<String, String> Leader = it_onelineService.TeamLeader(params);
+					
+		mav.addObject("Leader",Leader);
+		System.out.println("Leader =====> " + Leader);
+		
+		mav.setViewName("t_board/T_oneline");
+		return mav;
+	}
 	@RequestMapping (value="/T_onelineAdds")
 	public ModelAndView T_onelineAdds(
 			@RequestParam HashMap<String, String> params,
