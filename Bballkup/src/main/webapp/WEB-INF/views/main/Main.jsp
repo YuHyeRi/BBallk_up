@@ -304,12 +304,21 @@ function drawList2(list2){
 					<div class="team_div">
 						<c:choose>
 							<c:when test="${empty sMNo}">
+								<br>
 								<p>로그인 후 이용 가능합니다</p>
 							</c:when>
 							<c:otherwise>
-								<p>가입한 팀</p>
-								<br>
-								<div id="teambuttons"></div>
+								<c:choose>
+									<c:when test="${sMLv eq 0}">
+										<br>
+										<p>관리자 페이지에서 회원관리를 하실 수 있습니다.</p>
+									</c:when>
+									<c:otherwise>
+										<p>가입한 팀</p>
+										<br>
+										<div id="teambuttons"></div>
+									</c:otherwise>
+								</c:choose>
 							</c:otherwise>
 						</c:choose>
 					</div>
