@@ -8,3 +8,5 @@
 #####     2) 외부 라이브러리 사용 분리 CKeditor 🐑
 #####     3) multipart-form 분리 첨부파일 기능 🐑
 #####     4) Git을 통한 공동작업 🐑
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FYuHyeRi%2Fhit-counter&count_bg=%23E9CED2&title_bg=%23555555&icon=bilibili.svg&icon_color=%23FFF9F9&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
